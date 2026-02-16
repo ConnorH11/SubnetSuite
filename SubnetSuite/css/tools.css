@@ -1,0 +1,364 @@
+/* ============================================================
+   SubnetSuite – Tool-Specific Styles
+   Visualizer canvas, toolbox, device elements
+   NOC Terminal aesthetic
+   ============================================================ */
+
+/* --- Visualizer --- */
+.visualizer-wrapper {
+    display: flex;
+    gap: var(--space-4);
+    margin-top: var(--space-4);
+}
+
+/* Toolbox */
+.toolbox {
+    flex-shrink: 0;
+    width: 90px;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    padding: var(--space-3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--space-2);
+}
+
+.toolbox h5 {
+    font-size: var(--text-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-2);
+}
+
+.toolbox hr {
+    width: 100%;
+    border: none;
+    border-top: 1px solid var(--color-border);
+    margin: var(--space-1) 0;
+}
+
+.toolbox .draggable {
+    width: 50px;
+    height: 50px;
+    cursor: grab;
+    border-radius: var(--radius-sm);
+    padding: var(--space-1);
+    transition: all var(--transition-fast);
+    border: 1px solid transparent;
+}
+
+.toolbox .draggable:hover {
+    border-color: var(--color-primary);
+    background: rgba(232, 165, 65, 0.06);
+    transform: scale(1.05);
+}
+
+.toolbox .draggable:active {
+    cursor: grabbing;
+}
+
+/* Canvas */
+.canvas-wrapper {
+    flex: 1;
+    position: relative;
+    height: 800px;
+    overflow: auto;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+}
+
+.canvas-area {
+    position: relative;
+    width: 100%;
+    min-width: 100%;
+    min-height: 600px;
+    z-index: 2;
+}
+
+#connectionLayer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+    pointer-events: auto;
+}
+
+/* Device elements on canvas */
+.draggable-device {
+    position: absolute;
+    z-index: 3;
+    cursor: move;
+    width: 50px;
+    height: 50px;
+    transition: transform 0.1s ease;
+}
+
+.draggable-device:hover {
+    transform: scale(1.08);
+}
+
+.device-label {
+    position: absolute;
+    text-align: center;
+    width: 80px;
+    font-size: var(--text-xs);
+    color: var(--color-text-primary);
+    background: var(--color-bg-card);
+    border-radius: var(--radius-sm);
+    padding: 1px 4px;
+    z-index: 3;
+    cursor: text;
+    outline: none;
+    border: 1px solid transparent;
+}
+
+.device-label:focus {
+    border-color: var(--color-primary);
+}
+
+.device-ip-display {
+    position: absolute;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--color-accent);
+    background: var(--color-bg-card);
+    padding: 1px 4px;
+    border-radius: var(--radius-sm);
+    z-index: 3;
+    white-space: nowrap;
+}
+
+.interface-ip-label {
+    position: absolute;
+    font-family: var(--font-mono);
+    font-size: 10px;
+    color: var(--color-text-primary);
+    background: var(--color-bg-card);
+    padding: 1px 4px;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+    z-index: 10;
+    white-space: nowrap;
+}
+
+.gateway-ip-label {
+    color: var(--color-success);
+    font-weight: var(--font-semibold);
+}
+
+.subnet-outline {
+    position: absolute;
+    z-index: 0;
+    border-radius: var(--radius-lg);
+    pointer-events: none;
+}
+
+.custom-textbox {
+    position: absolute;
+    z-index: 5;
+    min-width: 50px;
+    min-height: 20px;
+    padding: var(--space-1) var(--space-2);
+    border: 1px dashed var(--color-border);
+    background: var(--color-bg-card);
+    color: var(--color-text-primary);
+    font-size: var(--text-sm);
+    text-align: center;
+    cursor: move;
+    outline: none;
+    border-radius: var(--radius-sm);
+}
+
+.custom-textbox:focus {
+    border-color: var(--color-primary);
+    border-style: solid;
+}
+
+/* Toolbar for visualizer */
+.viz-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-2);
+    padding: var(--space-3) 0;
+}
+
+.viz-toolbar .separator {
+    width: 1px;
+    height: 24px;
+    background: var(--color-border);
+    margin: 0 var(--space-1);
+}
+
+.mode-indicator {
+    font-size: var(--text-xs);
+    font-weight: var(--font-semibold);
+    padding: var(--space-1) var(--space-3);
+    border-radius: var(--radius-full);
+    animation: pulse 1.5s infinite;
+}
+
+.mode-indicator.delete-mode {
+    color: var(--color-danger);
+    background: rgba(248, 113, 113, 0.08);
+    border: 1px solid rgba(248, 113, 113, 0.25);
+}
+
+.mode-indicator.cable-mode {
+    color: var(--color-accent);
+    background: rgba(56, 189, 248, 0.08);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.7;
+    }
+}
+
+/* --- History Panel --- */
+.history-panel {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    padding: var(--space-4);
+    margin-top: var(--space-6);
+}
+
+.history-panel h4 {
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: var(--space-3);
+}
+
+.history-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: var(--space-2) var(--space-3);
+    border-radius: var(--radius-md);
+    cursor: pointer;
+    transition: background var(--transition-fast);
+    font-size: var(--text-sm);
+    font-family: var(--font-mono);
+    color: var(--color-text-secondary);
+}
+
+.history-item:hover {
+    background: var(--color-bg-hover);
+    color: var(--color-text-primary);
+}
+
+.history-item .timestamp {
+    font-family: var(--font-sans);
+    font-size: var(--text-xs);
+    color: var(--color-text-muted);
+}
+
+/* --- Section Spacing --- */
+.tool-section {
+    max-width: var(--container-narrow);
+    margin: 0 auto;
+}
+
+.tool-section-wide {
+    max-width: var(--container-max);
+    margin: 0 auto;
+}
+
+/* --- Hero Section (Homepage) --- */
+.hero {
+    text-align: center;
+    padding: var(--space-16) 0 var(--space-12);
+}
+
+.hero h1 {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: var(--font-bold);
+    margin-bottom: var(--space-4);
+    color: var(--color-text-primary);
+    letter-spacing: -0.025em;
+}
+
+/* The word "Suite" gets the amber accent */
+.hero h1 .brand-accent {
+    color: var(--color-primary);
+}
+
+.hero p {
+    font-size: var(--text-lg);
+    color: var(--color-text-muted);
+    max-width: 550px;
+    margin: 0 auto var(--space-8);
+    line-height: 1.6;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: var(--space-4);
+    margin-top: var(--space-8);
+}
+
+.section-title {
+    font-size: var(--text-sm);
+    font-weight: var(--font-semibold);
+    color: var(--color-text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: var(--space-4);
+    padding-bottom: var(--space-2);
+    border-bottom: 1px solid var(--color-border);
+}
+
+/* --- Responsive --- */
+@media (max-width: 768px) {
+    .visualizer-wrapper {
+        flex-direction: column;
+    }
+
+    .toolbox {
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto;
+        padding: var(--space-2);
+    }
+
+    .toolbox .draggable {
+        width: 40px;
+        height: 40px;
+        flex-shrink: 0;
+    }
+
+    .canvas-wrapper {
+        min-height: 400px;
+    }
+
+    .hero {
+        padding: var(--space-8) 0 var(--space-6);
+    }
+
+    .tools-grid {
+        grid-template-columns: 1fr;
+        gap: var(--space-3);
+    }
+
+    .viz-toolbar {
+        gap: var(--space-1);
+    }
+}
