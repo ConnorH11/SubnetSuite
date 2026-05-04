@@ -45,7 +45,9 @@ async function navigateTo(path) {
     const app = document.getElementById('app');
     if (!app) return;
 
-    const route = path.replace(/^#?\/?/, '');
+    let route = path.replace(/^\/+/, '');
+    if (route === 'index.html') route = '';
+
     const loader = routes[route];
 
     if (!loader) {
@@ -53,7 +55,7 @@ async function navigateTo(path) {
       <div class="text-center mt-5">
         <h1>404</h1>
         <p>Page not found</p>
-        <a href="#/" class="btn btn-primary mt-3">Go Home</a>
+        <a href="/" class="btn btn-primary mt-3" data-route="">Go Home</a>
       </div>`;
         return;
     }
@@ -76,7 +78,7 @@ async function navigateTo(path) {
       <div class="text-center mt-5">
         <h1>Error</h1>
         <p>Failed to load page.</p>
-        <a href="#/" class="btn btn-primary mt-3">Go Home</a>
+        <a href="/" class="btn btn-primary mt-3" data-route="">Go Home</a>
       </div>`;
     }
 
@@ -106,7 +108,7 @@ function updateSEO(route) {
     
     const canonical = document.getElementById('canonical-link');
     if (canonical) {
-        canonical.setAttribute('href', 'https://subnetsuite.com/' + (route ? '#/' + route : ''));
+        canonical.setAttribute('href', 'https://subnetsuite.com/' + route);
     }
 }
 
@@ -120,8 +122,26 @@ function updateActiveNav(route) {
     });
 }
 
-function onHashChange() {
-    navigateTo(window.location.hash || '#/');
+function onPopState() {
+    navigateTo(window.location.pathname);
+}
+
+function handleLinkClicks(e) {
+    const link = e.target.closest('a');
+    if (!link || !link.href) return;
+    
+    // Check if it's an internal route link
+    if (link.hasAttribute('data-route') || link.href.startsWith(window.location.origin)) {
+        // Exclude external links, new tabs, or anchor links that don't match the SPA pattern
+        if (link.getAttribute('target') === '_blank' || link.getAttribute('rel') === 'external') return;
+        
+        e.preventDefault();
+        const url = new URL(link.href);
+        if (window.location.pathname !== url.pathname) {
+            history.pushState(null, '', url.pathname);
+            navigateTo(url.pathname);
+        }
+    }
 }
 
 function init() {
@@ -130,8 +150,10 @@ function init() {
     const darkBtn = document.getElementById('darkModeToggle');
     if (darkBtn) darkBtn.addEventListener('click', toggleTheme);
 
-    window.addEventListener('hashchange', onHashChange);
-    onHashChange();
+    window.addEventListener('popstate', onPopState);
+    document.body.addEventListener('click', handleLinkClicks);
+    
+    onPopState();
 }
 
 if (document.readyState === 'loading') {
