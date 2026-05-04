@@ -1,5 +1,4 @@
 // sim-labs.js
-// Central Lab Catalog - Imports from modular lab files
 
 import { CCNA_LABS } from './labs/sim-labs-ccna.js';
 import { CCNP_LABS } from './labs/sim-labs-ccnp.js';

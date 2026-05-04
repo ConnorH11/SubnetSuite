@@ -1,5 +1,4 @@
 // sim-cli-juniper.js
-// Juniper JunOS CLI emulation
 
 import { isValidIP, cidrToMask, getNetAddr, maskToCidr } from './sim-math.js';
 
@@ -59,7 +58,6 @@ export class JuniperCLI {
         const args = cmd.split(/\s+/);
         const rawArgs = raw.split(/\s+/);
 
-        // Universal
         if (cmd === '?' || cmd === 'help') return this._help();
         if (cmd === 'quit' || cmd === 'exit') return this._exit();
 
@@ -214,7 +212,6 @@ export class JuniperCLI {
     _showRoute() {
         let out = 'inet.0: routes\n';
         out += 'Destination        Gateway            Flags  Pref  Metric  Interface\n';
-        // Connected
         for (const [name, iface] of Object.entries(this.node.interfaces)) {
             if (iface.ip && iface.state === 'up') {
                 const cidr = parseInt(iface.subnet) || 24;
@@ -222,7 +219,6 @@ export class JuniperCLI {
                 out += `${(net + '/' + cidr).padEnd(19)}${'Local'.padEnd(19)}${'D'.padEnd(7)}${String(0).padEnd(6)}${String(0).padEnd(8)}${name}\n`;
             }
         }
-        // Static + dynamic routes
         for (const r of this.node.routingTable) {
             const flag = r.protocol === 'static' ? 'S' : r.protocol === 'ospf' ? 'O' : r.protocol === 'bgp' ? 'B' : '?';
             const pref = r.ad || (r.protocol === 'static' ? 5 : r.protocol === 'ospf' ? 10 : 170);
@@ -238,7 +234,6 @@ export class JuniperCLI {
         out += `    host-name ${this.hostname};\n`;
         out += '}\n';
 
-        // Interfaces
         out += 'interfaces {\n';
         for (const [name, iface] of Object.entries(this.node.interfaces)) {
             out += `    ${name} {\n`;
@@ -255,7 +250,6 @@ export class JuniperCLI {
         }
         out += '}\n';
 
-        // Routing
         if (this.node.routingTable.filter(r => r.protocol === 'static').length > 0 || this.node.ospfConfig.enabled || this.node.bgpConfig.enabled) {
             out += 'routing-options {\n';
             for (const r of this.node.routingTable.filter(r => r.protocol === 'static')) {
@@ -280,7 +274,6 @@ export class JuniperCLI {
             out += '    }\n}\n';
         }
 
-        // Security zones (firewalls)
         if (this.node.type === 'firewall') {
             out += 'security {\n    zones {\n';
             for (const [name, iface] of Object.entries(this.node.interfaces)) {

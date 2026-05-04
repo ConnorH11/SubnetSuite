@@ -1,5 +1,4 @@
 // sim-labs-juniper.js
-// Juniper Certification Labs
 
 export const JUNIPER_LABS = [
     {

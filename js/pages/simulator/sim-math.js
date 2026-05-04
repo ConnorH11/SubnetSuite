@@ -1,5 +1,4 @@
 // sim-math.js
-// Utility functions for IPv4 subnetting and packet routing maths
 
 export function ipToUint(ip) {
     if (!ip) return 0;
@@ -73,7 +72,6 @@ export function ipInSubnet(ip, network, cidr) {
     return netAddr === testNet;
 }
 
-// Get next available IP in a subnet (for DHCP)
 export function getNextIP(network, cidr, excludeSet) {
     const netUint = ipToUint(network);
     const mask = (0xffffffff << (32 - cidr)) >>> 0;

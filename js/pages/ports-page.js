@@ -51,7 +51,6 @@ export function init() {
 
 // [port, protocol, service, description]
 const PORTS = [
-  // System / Well-Known Ports (0-1023)
   [1, 'TCP', 'TCPMUX', 'TCP Port Service Multiplexer'],
   [5, 'TCP', 'RJE', 'Remote Job Entry'],
   [7, 'TCP/UDP', 'Echo', 'Echo service'],
@@ -148,7 +147,6 @@ const PORTS = [
   [993, 'TCP', 'IMAPS', 'IMAP over SSL'],
   [995, 'TCP', 'POP3S', 'POP3 over SSL'],
 
-  // Registered Ports (1024-49151)
   [1080, 'TCP', 'SOCKS', 'SOCKS proxy protocol'],
   [1099, 'TCP', 'Java RMI', 'Java Remote Method Invocation'],
   [1194, 'UDP', 'OpenVPN', 'OpenVPN default port'],
@@ -304,7 +302,6 @@ const PORTS = [
   [43594, 'TCP', 'RuneScape', 'RuneScape login server'],
   [47808, 'UDP', 'BACnet', 'Building Automation and Control'],
 
-  // Dynamic / Private Range markers
   [49152, 'TCP/UDP', 'Ephemeral Start', 'Start of dynamic/ephemeral range (IANA)'],
   [65535, 'TCP/UDP', 'Max Port', 'Maximum valid port number'],
 ];

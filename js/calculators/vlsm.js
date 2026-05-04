@@ -13,7 +13,6 @@ export function calculateVLSM(baseNetworkCidr, subnets) {
  let baseIpUint = (ipToUint(baseIpStr) & baseMask) >>> 0;
  const totalAddresses = Math.pow(2, 32 - baseCidr);
 
- // Sort by host count descending (keeping original index)
  const sorted = subnets
  .map((s, index) => ({ ...s, originalIndex: index }))
  .sort((a, b) => b.hosts - a.hosts);
@@ -28,7 +27,6 @@ export function calculateVLSM(baseNetworkCidr, subnets) {
  throw new Error(`Subnet "${entry.label || (entry.originalIndex + 1)}" must require at least 1 host.`);
  }
 
- // Calculate required bits
  let bits = 0;
  while ((Math.pow(2, bits) - 2) < neededHosts) {
  bits++;
@@ -37,7 +35,6 @@ export function calculateVLSM(baseNetworkCidr, subnets) {
  const cidr = 32 - bits;
  const blockSize = Math.pow(2, bits);
 
- // Align to block boundary
  if ((currentIpUint & (blockSize - 1)) !== 0) {
  currentIpUint = ((currentIpUint + blockSize) & (~(blockSize - 1) >>> 0)) >>> 0;
  }
@@ -45,7 +42,6 @@ export function calculateVLSM(baseNetworkCidr, subnets) {
  const networkUint = currentIpUint;
  const broadcastUint = (networkUint + blockSize - 1) >>> 0;
 
- // Check if we've exceeded the base network
  if (broadcastUint >= baseIpUint + totalAddresses) {
  throw new Error(`Not enough address space. Cannot allocate subnet "${entry.label || (entry.originalIndex + 1)}" (needs ${neededHosts} hosts).`);
  }
@@ -71,7 +67,6 @@ export function calculateVLSM(baseNetworkCidr, subnets) {
  currentIpUint = (networkUint + blockSize) >>> 0;
  }
 
- // Sort results back by original index for display
  results.sort((a, b) => a.originalIndex - b.originalIndex);
 
  return results;

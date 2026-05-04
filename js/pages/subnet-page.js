@@ -56,17 +56,14 @@ export function init() {
  const helpToggle = document.getElementById('helpToggle');
  const helpPanel = document.getElementById('helpPanel');
 
- // Validation
  attachValidation(ipInput, validateIPv4);
  attachValidation(cidrInput, validateCIDR);
 
- // Help toggle
  helpToggle.addEventListener('click', () => {
  helpPanel.classList.toggle('hidden');
  helpToggle.textContent = helpPanel.classList.contains('hidden') ? 'Help' : 'Hide Help';
  });
 
- // Calculate
  function doCalculate() {
  const ip = ipInput.value.trim();
  const cidr = cidrInput.value.trim();
@@ -97,14 +94,12 @@ export function init() {
 
  calcBtn.addEventListener('click', doCalculate);
 
- // Enter key
  [ipInput, cidrInput].forEach(el => {
  el.addEventListener('keydown', (e) => {
  if (e.key === 'Enter') doCalculate();
  });
  });
 
- // Load history
  loadHistory();
 }
 
@@ -144,12 +139,10 @@ function renderResults(r, container) {
  </div>
  </div>`;
 
- // Copy all
  document.getElementById('copyAllBtn').addEventListener('click', function () {
  copyToClipboard(copyAllText, this);
  });
 
- // Individual copy
  container.querySelectorAll('.copy-btn').forEach(btn => {
  btn.addEventListener('click', function () {
  copyToClipboard(this.dataset.copy, this);
@@ -193,7 +186,6 @@ function loadHistory() {
  </div>`;
  }).join('');
 
- // Click to re-calculate
  list.querySelectorAll('.history-item').forEach(item => {
  item.addEventListener('click', () => {
  document.getElementById('subnetIp').value = item.dataset.ip;

@@ -121,7 +121,6 @@ export function render() {
 
 // ===================== INIT =====================
 export function init() {
-    // Reset all state
     deleteMode = false;
     cableMode = false;
     cableStart = null;
@@ -342,7 +341,6 @@ export function init() {
     };
 
     // ===================================================================
-    // INNER FUNCTIONS (closure over canvasEl, svgEl, devices, etc.)
     // ===================================================================
 
     function createDevice(type, iconSrc, x, y, customName, forceId) {
@@ -429,7 +427,6 @@ export function init() {
                     }
                 }
 
-                // Update interface labels
                 if (device?.interfaceLabels) {
                     Object.entries(device.interfaceLabels).forEach(([key, ifLabel]) => {
                         if (key.startsWith('subnet_')) {
@@ -440,7 +437,6 @@ export function init() {
                         }
                     });
                 }
-                // Update peer interface labels & SVG lines
                 connections.forEach(conn => {
                     if (conn.from === el && conn.toDevice?.interfaceLabels?.[device.id]) {
                         positionLabelNearDevice(conn.to, conn.toDevice.interfaceLabels[device.id], 'right', el);
@@ -459,7 +455,6 @@ export function init() {
         el.onclick = function (e) {
             if (isTextbox) return;
             if (deleteMode) {
-                // Remove connections
                 for (let i = connections.length - 1; i >= 0; i--) {
                     if (connections[i].from === el || connections[i].to === el) {
                         const conn = connections[i];
@@ -570,7 +565,6 @@ export function init() {
     }
 
     // ===================================================================
-    // SUBNETTING ENGINE (faithful port of original)
     // ===================================================================
 
     function assignIPAddresses(groupDeviceIds, subnetInfo) {
@@ -581,11 +575,9 @@ export function init() {
         const endDevices = groupDevs.filter(d => d.type.toLowerCase() !== 'router' && d.type.toLowerCase() !== 'l3switch');
 
         if (routers.length === 2 && endDevices.length === 0 && cidr === 30) {
-            // P2P router link
             if (currentIpUint <= lastHostUint) { routers[0].interfaceIPs = routers[0].interfaceIPs || {}; routers[0].interfaceIPs[routers[1].id] = uintToIp(currentIpUint++); }
             if (currentIpUint <= lastHostUint) { routers[1].interfaceIPs = routers[1].interfaceIPs || {}; routers[1].interfaceIPs[routers[0].id] = uintToIp(currentIpUint++); }
         } else if (routers.length >= 1) {
-            // Router acts as gateway
             const router = routers[0];
             if (currentIpUint <= lastHostUint) { router.interfaceIPs = router.interfaceIPs || {}; router.interfaceIPs[`subnet_${networkAddress}`] = uintToIp(currentIpUint++); }
             endDevices.forEach(d => { if (currentIpUint <= lastHostUint) d.ipAddress = uintToIp(currentIpUint++); });
@@ -602,7 +594,6 @@ export function init() {
         let nextNet = baseIpUint;
         subnetResults = [];
 
-        // Clear previous IPs and labels
         Object.values(devices).forEach(d => {
             d.ipAddress = null;
             if (d.ipAddressElement) { d.ipAddressElement.remove(); d.ipAddressElement = null; }
@@ -612,7 +603,6 @@ export function init() {
         });
         document.querySelectorAll('.subnet-outline').forEach(o => o.remove());
 
-        // Sort groups (largest first)
         groups.sort((a, b) => {
             const aDevs = a.map(id => devices[id]).filter(Boolean);
             const bDevs = b.map(id => devices[id]).filter(Boolean);
@@ -835,7 +825,6 @@ export function init() {
             row.innerHTML = `<td>${subnet.networkAddress}/${subnet.cidr}</td><td>${subnet.subnetMask}</td><td>${subnet.firstHost}</td><td>${subnet.lastHost}</td><td>${subnet.broadcastAddress}</td><td>${devDisplay}</td>`;
             tbody.appendChild(row);
 
-            // Subnet outline on canvas
             const elems = subnet.deviceIdsInSubnet.map(id => devices[id]?.element).filter(Boolean);
             if (elems.length > 0) {
                 let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
@@ -859,7 +848,6 @@ export function init() {
         wrapper.style.display = 'block';
         renderInterfaceLabels();
 
-        // Update device visuals
         Object.values(devices).forEach(device => {
             if (device.ipAddress && device.element) {
                 if (!device.ipAddressElement) {
@@ -913,7 +901,6 @@ export function init() {
         container.style.cssText = 'position:absolute;top:-9999px;left:-9999px;background:#fff;padding:20px;z-index:-1;';
         document.body.appendChild(container);
 
-        // Clone results table if visible
         const results = document.getElementById('vizSubnetResults');
         if (results && results.style.display !== 'none') {
             const clone = results.cloneNode(true);
@@ -922,7 +909,6 @@ export function init() {
             container.appendChild(clone);
         }
 
-        // Clone canvas wrapper
         const cloned = wrapperEl.cloneNode(true);
         cloned.style.overflow = 'visible';
         cloned.style.height = 'auto'; cloned.style.width = 'auto';
@@ -932,7 +918,6 @@ export function init() {
         cloned.style.minHeight = `${wrapperEl.scrollHeight}px`;
         container.appendChild(cloned);
 
-        // Rasterize SVG icons to PNG data URIs
         const images = cloned.querySelectorAll('img');
         const promises = Array.from(images).map(img => new Promise(resolve => {
             if (!img.src || !img.src.endsWith('.svg')) { resolve(); return; }
@@ -953,7 +938,6 @@ export function init() {
         try {
             await Promise.all(promises);
 
-            // Use html2canvas if available, otherwise fallback to simple Canvas render
             if (typeof html2canvas === 'function') {
                 const canvas = await html2canvas(container, { backgroundColor: '#ffffff', useCORS: true, allowTaint: true, logging: false, scale: 2 });
                 const link = document.createElement('a');
@@ -961,7 +945,6 @@ export function init() {
                 link.href = canvas.toDataURL();
                 link.click();
             } else {
-                // Fallback: simple canvas-based export
                 const c = document.createElement('canvas');
                 const w = Math.max(wrapperEl.scrollWidth, 800);
                 const h = Math.max(wrapperEl.scrollHeight, 600);
@@ -969,7 +952,6 @@ export function init() {
                 const ctx = c.getContext('2d');
                 ctx.fillStyle = '#1e293b'; ctx.fillRect(0, 0, w, h);
 
-                // Draw connections
                 ctx.strokeStyle = '#3b82f6'; ctx.lineWidth = 2;
                 connections.forEach(conn => {
                     const fEl = conn.fromDevice?.element, tEl = conn.toDevice?.element;
@@ -979,7 +961,6 @@ export function init() {
                     ctx.beginPath(); ctx.moveTo(fx, fy); ctx.lineTo(tx, ty); ctx.stroke();
                 });
 
-                // Draw device labels & types
                 ctx.font = '12px Inter, sans-serif'; ctx.fillStyle = '#f1f5f9'; ctx.textAlign = 'center';
                 Object.values(devices).forEach(dev => {
                     const x = parseInt(dev.element.style.left), y = parseInt(dev.element.style.top);

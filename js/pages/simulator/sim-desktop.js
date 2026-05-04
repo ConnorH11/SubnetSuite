@@ -1,5 +1,4 @@
 // sim-desktop.js
-// Full PC/Server desktop environment with window manager and 15+ apps
 
 import { makeDraggable } from './sim-ui-utils.js';
 import { WindowManager } from './sim-window-manager.js';
@@ -24,12 +23,10 @@ export class SimDesktop {
         const isLinux = this.node.os === 'linux';
         const isServer = this.node.type === 'server';
 
-        // OS-specific wallpaper styles
         const wallpaperStyle = isLinux
             ? 'background: linear-gradient(145deg, #2c001e 0%, #300a24 25%, #44204a 50%, #5e2750 70%, #2c001e 100%);'
             : 'background: linear-gradient(135deg, #0078D4 0%, #005A9E 20%, #004578 40%, #1a3a5c 60%, #0078D4 80%, #2b88d8 100%);';
 
-        // Desktop icon definitions
         const desktopIcons = this._getDesktopIcons(isLinux, isServer);
 
         this.modal.innerHTML = `
@@ -96,7 +93,6 @@ export class SimDesktop {
 
         this.wm = new WindowManager(this.modal.querySelector('.wm-desktop-container'));
 
-        // Power On Button
         const pwrBtn = this.modal.querySelector('#btn-desktop-power-on');
         if (pwrBtn) {
             pwrBtn.addEventListener('click', () => {
@@ -107,13 +103,10 @@ export class SimDesktop {
             });
         }
 
-        // Close button
         this.modal.querySelector('.sim-cli-close').addEventListener('click', () => this.modal.remove());
 
-        // Build start menu
         this._buildStartMenu();
 
-        // Start menu toggle
         const startBtn = this.modal.querySelector('.wm-start-btn');
         const startMenu = this.modal.querySelector('.wm-start-menu');
         startBtn.addEventListener('click', (e) => {
@@ -122,7 +115,6 @@ export class SimDesktop {
         });
         this.modal.addEventListener('click', () => startMenu.classList.add('hidden'));
 
-        // Desktop icon click handlers
         this.modal.querySelectorAll('.wm-desktop-icon').forEach(icon => {
             icon.addEventListener('dblclick', (e) => {
                 if (!this.node.powered) return;
@@ -131,7 +123,6 @@ export class SimDesktop {
             });
         });
 
-        // Update clock
         this.clockInterval = setInterval(() => {
             const clock = this.modal.querySelector('.wm-taskbar-clock');
             if (clock) clock.textContent = new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
@@ -227,7 +218,6 @@ export class SimDesktop {
     _appId(prefix) { return `${prefix}_${++this.appIdCounter}`; }
 
     // ═══════════════════════════════════════════════
-    // APP: Terminal
     // ═══════════════════════════════════════════════
     _openTerminal() {
         const id = this._appId('term');
@@ -308,7 +298,6 @@ export class SimDesktop {
     }
 
     // ═══════════════════════════════════════════════
-    // APP: IP Configuration
     // ═══════════════════════════════════════════════
     _openIPConfig() {
         const id = this._appId('ipconf');
@@ -399,7 +388,6 @@ export class SimDesktop {
     }
 
     // ═══════════════════════════════════════════════
-    // APP: Web Browser
     // ═══════════════════════════════════════════════
     _openBrowser() {
         const id = this._appId('browser');
@@ -435,7 +423,6 @@ export class SimDesktop {
     }
 
     _browserNavigate(viewport, url) {
-        // Try to resolve DNS if it's not an IP
         let targetIp = url;
         if (!isValidIP(url)) {
             const dnsRes = this.engine.resolveDNS(this.node.id, url);
@@ -448,13 +435,10 @@ export class SimDesktop {
 
         viewport.innerHTML = `<div class="browser-loading" style="text-align:center;padding:60px;color:var(--sim-text-muted)"><i class="bi bi-arrow-repeat" style="font-size:32px;animation:spin 1s linear infinite;display:block;margin-bottom:16px"></i><p>Connecting to ${targetIp}...</p></div>`;
 
-        // Simulate network delay
         setTimeout(() => {
             const targetNode = this.engine.graph.findNodeByIP(targetIp);
             
-            // Handle built-in management web UIs for devices (Routers, Switches, Firewalls)
             if (targetNode && targetNode.hasWebUI && (!targetNode.services || !targetNode.services.http)) {
-                // Must be able to ping to access management UI
                 const pingRes = this.engine.ping(this.node.id, targetIp);
                 if (!pingRes.ok) {
                     viewport.innerHTML = `<div class="browser-error" style="text-align:center;padding:40px;color:var(--sim-text-muted)"><i class="bi bi-x-circle-fill" style="font-size:48px;color:var(--sim-danger);margin-bottom:16px;display:block"></i><h3>ERR_CONNECTION_TIMED_OUT</h3><p>${pingRes.reason}</p></div>`;
@@ -464,7 +448,6 @@ export class SimDesktop {
                 return;
             }
 
-            // Handle actual HTTP Server requests
             const response = this.engine.httpRequest(this.node.id, targetIp);
             
             if (!response.ok) {
@@ -472,7 +455,6 @@ export class SimDesktop {
                 return;
             }
 
-            // Render simulated HTML content
             viewport.innerHTML = `<div class="browser-iframe-wrapper" style="width:100%;height:100%;background:white;color:black;overflow:auto;"><iframe style="width:100%;height:100%;border:none;" sandbox="allow-same-origin allow-scripts" srcdoc="${response.content.replace(/"/g, '&quot;')}"></iframe></div>`;
         }, 500);
     }
@@ -601,7 +583,6 @@ export class SimDesktop {
     }
 
     // ═══════════════════════════════════════════════
-    // APP: Wireshark-Lite (Packet Capture)
     // ═══════════════════════════════════════════════
     _openWireshark() {
         const id = this._appId('wireshark');
@@ -634,7 +615,6 @@ export class SimDesktop {
     }
 
     // ═══════════════════════════════════════════════
-    // APP: Text Editor
     // ═══════════════════════════════════════════════
     _openTextEditor(initialFile = '', initialContent = '') {
         const id = this._appId('editor');
@@ -653,7 +633,6 @@ export class SimDesktop {
             const filename = content.querySelector('.editor-filename').value;
             const text = content.querySelector('.editor-textarea').value;
             if (!filename) return;
-            // Save to virtual filesystem
             const parts = filename.split('/').filter(Boolean);
             const name = parts.pop();
             let dir = this.node.filesystem['/'];
@@ -666,7 +645,6 @@ export class SimDesktop {
     }
 
     // ═══════════════════════════════════════════════
-    // APP: File Manager
     // ═══════════════════════════════════════════════
     _openFileManager() {
         const id = this._appId('files');
@@ -715,7 +693,6 @@ export class SimDesktop {
     }
 
     // ═══════════════════════════════════════════════
-    // APP: SSH Client
     // ═══════════════════════════════════════════════
     _openSSHClient() {
         const id = this._appId('ssh');
@@ -745,7 +722,6 @@ export class SimDesktop {
     }
 
     // ═══════════════════════════════════════════════
-    // APP: DNS Lookup
     // ═══════════════════════════════════════════════
     _openDNSLookup() {
         const id = this._appId('dns');
@@ -768,7 +744,6 @@ export class SimDesktop {
     }
 
     // ═══════════════════════════════════════════════
-    // APP: Subnet Calculator
     // ═══════════════════════════════════════════════
     _openSubnetCalc() {
         const id = this._appId('calc');
@@ -803,7 +778,6 @@ export class SimDesktop {
     }
 
     // ═══════════════════════════════════════════════
-    // APP: System Info
     // ═══════════════════════════════════════════════
     _openSystemInfo() {
         const id = this._appId('sysinfo');
@@ -838,7 +812,6 @@ export class SimDesktop {
     }
 
     // ═══════════════════════════════════════════════
-    // APP: Packet Generator
     // ═══════════════════════════════════════════════
     _openPacketGen() {
         const id = this._appId('pktgen');
@@ -865,7 +838,6 @@ export class SimDesktop {
     }
 
     // ═══════════════════════════════════════════════
-    // APP: Network Monitor
     // ═══════════════════════════════════════════════
     _openNetMonitor() {
         const id = this._appId('netmon');
@@ -899,7 +871,6 @@ export class SimDesktop {
     }
 
     // ═══════════════════════════════════════════════
-    // APP: Log Viewer
     // ═══════════════════════════════════════════════
     _openLogViewer() {
         const id = this._appId('log');
@@ -914,7 +885,6 @@ export class SimDesktop {
     }
 
     // ═══════════════════════════════════════════════
-    // APP: DHCP Server Config (Servers only)
     // ═══════════════════════════════════════════════
     _openDHCPServer() {
         const id = this._appId('dhcpsrv');
@@ -964,7 +934,6 @@ export class SimDesktop {
     }
 
     // ═══════════════════════════════════════════════
-    // APP: DNS Server Config (Servers only)
     // ═══════════════════════════════════════════════
     _openDNSServer() {
         const id = this._appId('dnssrv');
@@ -1006,7 +975,6 @@ export class SimDesktop {
     }
 }
 
-// Helpers
 function getPortDisplayShort(name) {
     return name.replace('GigabitEthernet', 'Gi').replace('FastEthernet', 'Fa').replace('TenGigabitEthernet', 'Te').replace('Serial', 'Se').replace('Ethernet', 'Et');
 }

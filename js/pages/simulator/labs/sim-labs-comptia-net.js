@@ -1,5 +1,4 @@
 // sim-labs-comptia-net.js
-// CompTIA Network+ Labs
 
 export const COMPTIA_NET_LABS = [
     {
@@ -143,7 +142,6 @@ export const COMPTIA_NET_LABS = [
             preConfig: {
                 'PC1': { interfaces: { 'Ethernet0': { ip: '10.0.0.10', subnet: '24', state: 'up' } } },
                 'SRV1': { interfaces: { 'eth0': { ip: '10.0.0.20', subnet: '24', state: 'up' } } }
-                // In a real engine we would inject a static bad ARP entry here, 
                 // but for this lab we will simulate the fix via a task requirement to clear arp.
             }
         },
@@ -181,7 +179,6 @@ export const COMPTIA_NET_LABS = [
             preConfig: {
                 'R1': { interfaces: { 'GigabitEthernet0/0/0': { ip: '192.168.1.1', subnet: '24', state: 'up' }, 'GigabitEthernet0/0/1': { ip: '203.0.113.2', subnet: '30', state: 'up' } } },
                 'ISP': { interfaces: { 'GigabitEthernet0/0/0': { ip: '203.0.113.1', subnet: '30', state: 'up' }, 'Loopback0': { ip: '8.8.8.8', subnet: '32', state: 'up' } } },
-                // Incorrect gateway configured
                 'PC1': { interfaces: { 'Ethernet0': { ip: '192.168.1.50', subnet: '24', state: 'up' } }, gateway: '192.168.1.254' }
             }
         },
@@ -226,7 +223,6 @@ export const COMPTIA_NET_LABS = [
             preConfig: {
                 'R1': { interfaces: { 'GigabitEthernet0/0/0': { ip: '10.0.1.1', subnet: '24', state: 'up' }, 'GigabitEthernet0/0/1': { ip: '10.0.12.1', subnet: '30', state: 'up' } } },
                 'R2': { interfaces: { 'GigabitEthernet0/0/0': { ip: '10.0.12.2', subnet: '30', state: 'up' }, 'GigabitEthernet0/0/1': { ip: '10.0.23.1', subnet: '30', state: 'up' } } },
-                // R3 missing route back
                 'R3': { interfaces: { 'GigabitEthernet0/0/0': { ip: '10.0.23.2', subnet: '30', state: 'up' }, 'Loopback0': { ip: '8.8.8.8', subnet: '32', state: 'up' } } },
                 'PC1': { interfaces: { 'Ethernet0': { ip: '10.0.1.10', subnet: '24', state: 'up' } }, gateway: '10.0.1.1' }
             }

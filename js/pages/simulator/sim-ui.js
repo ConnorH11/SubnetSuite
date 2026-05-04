@@ -1,5 +1,4 @@
 // sim-ui.js
-// Enhanced canvas UI with vendor colors, status LEDs, context menus, mini-map
 
 import { VENDORS, CABLE_TYPES, getPortDisplayName } from './sim-device-templates.js';
 
@@ -23,7 +22,6 @@ export class SimulatorUI {
         this.selectedNodeId = null;
         this.selectedCableType = 'copper_straight';
 
-        // Dragging state
         this.isPanning = false;
         this.panStart = { x: 0, y: 0 };
         this.isDraggingNode = false;
@@ -31,7 +29,6 @@ export class SimulatorUI {
         this.connectingFromId = null;
         this.connectingFromPort = null;
 
-        // Undo/redo
         this.undoStack = [];
         this.redoStack = [];
 
@@ -66,7 +63,6 @@ export class SimulatorUI {
     }
 
     initEvents() {
-        // Zoom
         this.viewport.addEventListener('wheel', (e) => {
             e.preventDefault();
             const factor = e.deltaY < 0 ? 1.1 : 0.9;
@@ -80,7 +76,6 @@ export class SimulatorUI {
             this.applyTransform();
         });
 
-        // Pan
         this.viewport.addEventListener('mousedown', (e) => {
             if (e.button === 0 && !e.target.closest('.sim-node')) {
                 this.isPanning = true;
@@ -94,7 +89,6 @@ export class SimulatorUI {
             }
         });
 
-        // Drop from palette
         this.viewport.addEventListener('dragover', (e) => e.preventDefault());
         this.viewport.addEventListener('drop', (e) => {
             e.preventDefault();
@@ -126,7 +120,6 @@ export class SimulatorUI {
             this.dragNodeId = null;
         });
 
-        // Keyboard shortcuts
         window.addEventListener('keydown', (e) => {
             if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
             if (e.key === 'Delete' || e.key === 'Backspace') {
@@ -140,7 +133,6 @@ export class SimulatorUI {
             if ((e.key === 'z' || e.key === 'Z') && (e.ctrlKey || e.metaKey)) this._undo();
         });
 
-        // Right-click context menu
         this.viewport.addEventListener('contextmenu', (e) => {
             e.preventDefault();
             const nodeEl = e.target.closest('.sim-node');
@@ -168,16 +160,15 @@ export class SimulatorUI {
 
         let html = `<div class="ctx-header">${node.name} <span class="ctx-model">${node.model}</span></div>`;
 
-        if (isEndDevice) {
+        if (isEndDevice && node.powered) {
             html += `<div class="ctx-item" data-action="desktop"><i class="bi bi-window-desktop"></i> Open Desktop</div>`;
         }
-        if (isNetDevice) {
+        if (isNetDevice && node.powered) {
             html += `<div class="ctx-item" data-action="cli"><i class="bi bi-terminal"></i> Open CLI</div>`;
         }
-        if (node.hasWebUI) {
-            html += `<div class="ctx-item" data-action="webui"><i class="bi bi-globe2"></i> Open Web UI</div>`;
+        if (node.powered) {
+            html += `<div class="ctx-separator"></div>`;
         }
-        html += `<div class="ctx-separator"></div>`;
         html += `<div class="ctx-item" data-action="power"><i class="bi bi-power"></i> ${node.powered ? 'Power Off' : 'Power On'}</div>`;
         html += `<div class="ctx-item" data-action="rename"><i class="bi bi-pencil"></i> Rename</div>`;
         html += `<div class="ctx-item ctx-danger" data-action="delete"><i class="bi bi-trash"></i> Delete</div>`;
@@ -194,7 +185,6 @@ export class SimulatorUI {
                 switch (action) {
                     case 'desktop': this.engine.openDesktop(nodeId); break;
                     case 'cli': this.engine.openCLI(nodeId); break;
-                    case 'webui': this._openBrowserForDevice(nodeId); break;
                     case 'power':
                         node.powered = !node.powered;
                         if (!node.powered) {
@@ -225,17 +215,7 @@ export class SimulatorUI {
         }, 0);
     }
 
-    _openBrowserForDevice(nodeId) {
-        const node = this.graph.getNode(nodeId);
-        if (!node) return;
-        // Find a PC to open browser from
-        for (const [id, n] of this.graph.nodes.entries()) {
-            if (['pc', 'server'].includes(n.type)) {
-                this.engine.openDesktop(id);
-                return;
-            }
-        }
-    }
+
 
     // ─── Node Rendering ────────────────────────────
 
@@ -259,7 +239,6 @@ export class SimulatorUI {
             <div class="sim-port-hint"></div>
         `;
 
-        // Node Interaction
         el.addEventListener('mousedown', (e) => {
             e.stopPropagation();
             if (e.button !== 0) return;
@@ -283,9 +262,9 @@ export class SimulatorUI {
             }
         });
 
-        // Double-click opens CLI/Desktop
         el.addEventListener('dblclick', (e) => {
             e.stopPropagation();
+            if (!node.powered) return; // Cannot access if powered off
             if (['pc', 'server'].includes(node.type)) {
                 this.engine.openDesktop(node.id);
             } else if (['router', 'switch', 'l3switch', 'firewall'].includes(node.type)) {
@@ -377,7 +356,6 @@ export class SimulatorUI {
                 el = this.createNodeElement(node);
                 this.nodesLayer.appendChild(el);
             } else {
-                // Update position and state
                 el.style.left = `${node.x}px`;
                 el.style.top = `${node.y}px`;
                 el.className = `sim-node ${id === this.selectedNodeId ? 'selected' : ''} ${!node.powered ? 'powered-off' : ''}`;
@@ -399,7 +377,6 @@ export class SimulatorUI {
                     ipLabel.remove();
                 }
 
-                // Update LED
                 const led = el.querySelector('.sim-node-status-led');
                 if (led) led.style.background = node.powered ? '#4caf50' : '#f44336';
             }
@@ -410,7 +387,6 @@ export class SimulatorUI {
             this.nodesLayer.querySelector(`[data-id="${id}"]`)?.remove();
         });
 
-        // Render edges
         this.edgesLayer.innerHTML = '';
 
         this.graph.edges.forEach((edge, id) => {
@@ -430,7 +406,6 @@ export class SimulatorUI {
             if (cable.dash !== 'none') path.setAttribute('stroke-dasharray', cable.dash);
             path.dataset.id = id;
 
-            // Edge click to delete
             path.addEventListener('mousedown', (e) => {
                 if (e.button === 0 && this.tool === 'select') {
                     e.stopPropagation();
@@ -442,7 +417,6 @@ export class SimulatorUI {
 
             group.appendChild(path);
 
-            // Port labels on hover (attach to midpoint)
             const mx = (src.x + tgt.x) / 2;
             const my = (src.y + tgt.y) / 2;
             const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
@@ -494,28 +468,28 @@ export class SimulatorUI {
             </div>
         `;
 
+        const disabledAttr = !node.powered ? 'disabled style="opacity:0.5; cursor:not-allowed;"' : '';
         if (isEndDevice) {
             html += `
                 <div class="insp-section">
-                    <button class="sim-action-btn sim-btn-play" style="width:100%; justify-content:center" id="btn-open-desktop">
+                    <button class="sim-action-btn sim-btn-play" style="width:100%; justify-content:center" id="btn-open-desktop" ${disabledAttr}>
                         <i class="bi bi-window-desktop"></i> Open Desktop
                     </button>
-                    <p class="insp-hint">Access Terminal, IP Config, Browser, Wireshark, and more.</p>
+                    <p class="insp-hint">${!node.powered ? 'Device must be powered on to access desktop.' : 'Access Terminal, IP Config, Browser, Wireshark, and more.'}</p>
                 </div>
             `;
         }
         if (isNetDevice) {
             html += `
                 <div class="insp-section">
-                    <button class="sim-action-btn sim-btn-play" style="width:100%; justify-content:center" id="btn-open-cli">
+                    <button class="sim-action-btn sim-btn-play" style="width:100%; justify-content:center" id="btn-open-cli" ${disabledAttr}>
                         <i class="bi bi-terminal"></i> Open ${node.cliType === 'juniper' ? 'JunOS' : 'IOS'} CLI
                     </button>
-                    <p class="insp-hint">${node.cliType === 'juniper' ? 'Juniper JunOS CLI with set/commit model.' : 'Cisco IOS CLI with full routing, switching, and security config.'}</p>
+                    <p class="insp-hint">${!node.powered ? 'Device must be powered on to access CLI.' : (node.cliType === 'juniper' ? 'Juniper JunOS CLI with set/commit model.' : 'Cisco IOS CLI with full routing, switching, and security config.')}</p>
                 </div>
             `;
         }
 
-        // Interfaces summary
         const ifCount = Object.keys(node.interfaces).length;
         const upCount = Object.values(node.interfaces).filter(i => i.state === 'up').length;
         html += `
@@ -534,7 +508,6 @@ export class SimulatorUI {
             </div>
         `;
 
-        // Features
         html += `
             <div class="insp-section">
                 <h4 class="insp-section-title">Features</h4>
@@ -544,18 +517,18 @@ export class SimulatorUI {
 
         this.inspectorBody.innerHTML = html;
 
-        // Bind events
         this.inspectorBody.querySelector('#prop-name')?.addEventListener('change', (e) => {
             this.graph.updateNode(node.id, { name: e.target.value, hostname: e.target.value });
         });
         this.inspectorBody.querySelector('#btn-open-desktop')?.addEventListener('click', () => {
+            if (!node.powered) return;
             this.engine.openDesktop(node.id);
         });
         this.inspectorBody.querySelector('#btn-open-cli')?.addEventListener('click', () => {
+            if (!node.powered) return;
             this.engine.openCLI(node.id);
         });
 
-        // Header
         this.inspector.querySelector('.inspector-icon i').className = `bi ${node.icon}`;
         this.inspector.querySelector('.inspector-icon i').style.color = vendor.color;
         this.inspector.querySelector('.inspector-title h3').textContent = node.name;
@@ -575,7 +548,6 @@ export class SimulatorUI {
 
         if (this.graph.nodes.size === 0) return;
 
-        // Find bounds
         let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
         this.graph.nodes.forEach(n => {
             if (n.x < minX) minX = n.x;
@@ -590,7 +562,6 @@ export class SimulatorUI {
         const rangeY = maxY - minY || 1;
         const scale = Math.min(w / rangeX, h / rangeY);
 
-        // Draw edges
         ctx.strokeStyle = '#555';
         ctx.lineWidth = 1;
         this.graph.edges.forEach(edge => {
@@ -603,7 +574,6 @@ export class SimulatorUI {
             ctx.stroke();
         });
 
-        // Draw nodes
         this.graph.nodes.forEach(node => {
             const vendor = VENDORS[node.vendor] || VENDORS.generic;
             ctx.fillStyle = node.powered ? vendor.color : '#666';
@@ -612,7 +582,6 @@ export class SimulatorUI {
             ctx.fillRect(nx - 3, ny - 3, 6, 6);
         });
 
-        // Viewport rect
         const vpRect = this.viewport.getBoundingClientRect();
         const vx = (-this.transform.x / this.transform.scale - minX) * scale;
         const vy = (-this.transform.y / this.transform.scale - minY) * scale;
@@ -640,7 +609,6 @@ export class SimulatorUI {
     // ─── Undo ──────────────────────────────────────
 
     _undo() {
-        // Simplified undo — just notification
         console.log('Undo not yet fully implemented');
     }
 

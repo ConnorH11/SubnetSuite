@@ -1,12 +1,9 @@
 // sim-cli.js
-// CLI Router — delegates to vendor-specific CLI implementations
-// Also handles Linux/Windows terminal emulation for PCs and servers
 
 import { CiscoCLI } from './sim-cli-cisco.js';
 import { JuniperCLI } from './sim-cli-juniper.js';
 import { isValidIP, getNetAddr } from './sim-math.js';
 
-// Factory: create the right CLI for a given node
 export function createCLI(node, notifyGraph) {
     switch (node.cliType) {
         case 'cisco': return new CiscoCLI(node, notifyGraph);
@@ -18,7 +15,6 @@ export function createCLI(node, notifyGraph) {
 }
 
 // ═══════════════════════════════════════════════════
-// LINUX TERMINAL EMULATION
 // ═══════════════════════════════════════════════════
 export class LinuxCLI {
     constructor(node, notifyGraph) {
@@ -62,7 +58,6 @@ export class LinuxCLI {
         if (!raw) return '';
         this.addHistory(raw);
 
-        // Handle pipes (simplified)
         if (raw.includes('|')) {
             const parts = raw.split('|').map(s => s.trim());
             let output = this.execute(parts[0]);
@@ -250,7 +245,6 @@ export class LinuxCLI {
         if (!target.startsWith('/')) {
             target = this.cwd + '/' + target;
         }
-        // Normalize
         const parts = target.split('/').filter(Boolean);
         const resolved = [];
         for (const part of parts) {
@@ -387,7 +381,6 @@ export class LinuxCLI {
 }
 
 // ═══════════════════════════════════════════════════
-// WINDOWS CMD EMULATION
 // ═══════════════════════════════════════════════════
 export class WindowsCLI {
     constructor(node, notifyGraph) {
@@ -430,7 +423,6 @@ export class WindowsCLI {
         if (!raw) return '';
         this.addHistory(raw);
 
-        // Handle pipes (simplified)
         if (raw.includes('|')) {
             const parts = raw.split('|').map(s => s.trim());
             let output = this.execute(parts[0]);
@@ -604,7 +596,6 @@ export class WindowsCLI {
         out += `04/23/2026  12:00 PM    <DIR>          .\n`;
         out += `04/23/2026  12:00 PM    <DIR>          ..\n`;
 
-        // Use virtual filesystem if available
         const fsNode = this._getFsNode(this.cwd);
         if (fsNode && fsNode.type === 'dir') {
             let fileCount = 0, totalSize = 0;
@@ -639,7 +630,6 @@ export class WindowsCLI {
 
     _type(args) {
         if (args.length < 2) return 'The syntax of the command is incorrect.';
-        // Try virtual filesystem
         const fsNode = this._getFsNode(this.cwd);
         if (fsNode && fsNode.type === 'dir') {
             const file = fsNode.children[args[1]];
@@ -658,7 +648,6 @@ export class WindowsCLI {
     }
 
     _getFsNode(winPath) {
-        // Map Windows path to virtual filesystem
         const normalized = winPath.replace(/^C:\\?/i, '/').replace(/\\/g, '/');
         const parts = normalized.split('/').filter(Boolean);
         let current = this.node.filesystem?.['/'];
@@ -728,7 +717,6 @@ export class WindowsCLI {
     }
 }
 
-// Helper — local CIDR to mask (avoids circular import issues)
 function _cidrToMaskLocal(c) {
     if (c === 0) return '0.0.0.0';
     const u = (0xffffffff << (32 - c)) >>> 0;

@@ -1,5 +1,4 @@
 // sim-cli-cisco.js
-// Full Cisco IOS CLI emulation for routers, switches, L3 switches, and ASA
 
 import { resolveInterfaceName, DEVICE_TEMPLATES, getPortDisplayName } from './sim-device-templates.js';
 import { ipToUint, uintToIp, cidrToMask, getNetAddr, isValidIP, maskToCidr } from './sim-math.js';
@@ -64,7 +63,6 @@ export class CiscoCLI {
         return '';
     }
 
-    // Tab completion
     tabComplete(partial) {
         const commands = this.getAvailableCommands();
         const matches = commands.filter(c => c.startsWith(partial.toLowerCase()));
@@ -346,7 +344,6 @@ export class CiscoCLI {
 
         if (this.bannerMotd) out += `banner motd ^${this.bannerMotd}^\n!\n`;
 
-        // Interfaces
         const allIf = { ...this.node.interfaces, ...this.node.sviInterfaces };
         for (const [name, iface] of Object.entries(allIf)) {
             out += `interface ${name}\n`;
@@ -364,7 +361,6 @@ export class CiscoCLI {
             out += `!\n`;
         }
 
-        // VLANs
         for (const [vid, vlan] of Object.entries(this.node.vlans)) {
             if (vid !== '1') {
                 out += `vlan ${vid}\n`;
@@ -373,13 +369,11 @@ export class CiscoCLI {
             }
         }
 
-        // Static routes
         const staticRoutes = this.node.routingTable.filter(r => r.protocol === 'static');
         for (const r of staticRoutes) {
             out += `ip route ${r.network} ${cidrToMask(r.cidr)} ${r.nextHop || r.interface}\n`;
         }
 
-        // OSPF
         if (this.node.ospfConfig.enabled) {
             out += `!\nrouter ospf 1\n`;
             if (this.node.ospfConfig.routerId) out += ` router-id ${this.node.ospfConfig.routerId}\n`;
@@ -389,7 +383,6 @@ export class CiscoCLI {
             out += `!\n`;
         }
 
-        // EIGRP
         if (this.node.eigrpConfig.enabled) {
             out += `!\nrouter eigrp ${this.node.eigrpConfig.asNumber}\n`;
             for (const n of this.node.eigrpConfig.networks) {
@@ -398,7 +391,6 @@ export class CiscoCLI {
             out += `!\n`;
         }
 
-        // BGP
         if (this.node.bgpConfig.enabled) {
             out += `!\nrouter bgp ${this.node.bgpConfig.asNumber}\n`;
             for (const n of this.node.bgpConfig.neighbors) {
@@ -410,7 +402,6 @@ export class CiscoCLI {
             out += `!\n`;
         }
 
-        // ACLs
         for (const acl of this.node.aclRules) {
             for (const entry of acl.entries) {
                 if (acl.type === 'standard') {
@@ -421,7 +412,6 @@ export class CiscoCLI {
             }
         }
 
-        // DHCP Pools
         for (const pool of this.node.dhcpPools) {
             out += `!\nip dhcp pool ${pool.name}\n`;
             if (pool.network) out += ` network ${pool.network} ${pool.mask}\n`;
@@ -430,7 +420,6 @@ export class CiscoCLI {
             out += `!\n`;
         }
 
-        // NAT
         if (this.node.natConfig.insideIfaces.length > 0 || this.node.natConfig.outsideIfaces.length > 0) {
             for (const sm of this.node.natConfig.staticMaps) {
                 out += `ip nat inside source static ${sm.inside} ${sm.outside}\n`;
@@ -443,7 +432,6 @@ export class CiscoCLI {
 
     _showIpRoute() {
         let out = `Codes: C - connected, S - static, O - OSPF, D - EIGRP, B - BGP\n\n`;
-        // Connected routes from interfaces
         const allIf = { ...this.node.interfaces, ...this.node.sviInterfaces };
         for (const [name, iface] of Object.entries(allIf)) {
             if (iface.ip && iface.state === 'up') {
@@ -452,7 +440,6 @@ export class CiscoCLI {
                 out += `C    ${net}/${cidr} is directly connected, ${name}\n`;
             }
         }
-        // Routing table entries
         for (const r of this.node.routingTable) {
             const code = r.protocol === 'static' ? 'S' :
                          r.protocol === 'ospf' ? 'O' :
@@ -634,7 +621,6 @@ export class CiscoCLI {
         if (args.length < 2) return '% Incomplete command.';
         const target = args[1];
         if (!isValidIP(target)) return `% Invalid IP address: ${target}`;
-        // The actual ping logic is handled by the engine — this just returns console-style output
         return `__PING__${target}`;
     }
 
@@ -689,7 +675,6 @@ export class CiscoCLI {
                 this.currentInterface = resolved;
                 return '';
             }
-            // Try creating SVI
             if (resolved.match(/^vlan\s*\d+$/i) || ifInput.match(/^vlan\s*\d+$/i)) {
                 const vlanNum = resolved.match(/\d+/);
                 if (vlanNum) {
@@ -798,7 +783,6 @@ export class CiscoCLI {
 
         // ip dhcp excluded-address
         if (cmd.startsWith('ip dhcp excluded-address ')) {
-            // Just track it
             return '';
         }
 

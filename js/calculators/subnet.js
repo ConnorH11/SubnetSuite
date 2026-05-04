@@ -2,12 +2,10 @@ import { ipToUint, uintToIp, cidrToMask, uintToBinary, getIPClass, maskToCidr } 
 
 
 export function calculateSubnet(ipStr, cidrInput) {
- // Parse CIDR
  let cidr;
  let cidrStr = String(cidrInput).trim();
 
  if (cidrStr.includes('.')) {
- // Dotted-decimal mask – convert to CIDR
  cidr = maskToCidr(cidrStr);
  } else {
  cidr = parseInt(cidrStr.replace(/^\//, ''), 10);
@@ -24,7 +22,6 @@ export function calculateSubnet(ipStr, cidrInput) {
  const networkUint = (ipUint & mask) >>> 0;
  const broadcastUint = (networkUint | wildcard) >>> 0;
 
- // Host range
  let firstHostUint, lastHostUint, totalHosts;
 
  if (cidr >= 31) {
@@ -38,16 +35,13 @@ export function calculateSubnet(ipStr, cidrInput) {
  totalHosts = Math.pow(2, 32 - cidr) - 2;
  }
 
- // IP class
  const firstOctet = (ipUint >>> 24) & 0xff;
  const ipClass = getIPClass(firstOctet);
 
- // Binary representations
  const ipBinary = uintToBinary(ipUint);
  const maskBinary = uintToBinary(mask);
  const networkBinary = uintToBinary(networkUint);
 
- // Format binary with dots between octets
  const formatBinary = (bin) =>
  `${bin.substring(0, 8)}.${bin.substring(8, 16)}.${bin.substring(16, 24)}.${bin.substring(24, 32)}`;
 
@@ -63,11 +57,9 @@ export function calculateSubnet(ipStr, cidrInput) {
  totalHosts: totalHosts,
  ipClass: ipClass,
  cidrNotation: `${uintToIp(networkUint)}/${cidr}`,
- // Binary
  ipBinary: formatBinary(ipBinary),
  maskBinary: formatBinary(maskBinary),
  networkBinary: formatBinary(networkBinary),
- // Raw uint values for further calculations
  _networkUint: networkUint,
  _broadcastUint: broadcastUint,
  _firstHostUint: firstHostUint,

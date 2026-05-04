@@ -106,7 +106,6 @@ export function init() {
         const maskStr = uint2ip(mask);
         const wildcardStr = uint2ip(wildcard);
 
-        // Determine default classful note
         let classNote = '';
         if (cidr === 8) classNote = 'A';
         else if (cidr === 16) classNote = 'B';
@@ -129,7 +128,6 @@ export function init() {
 
     tbody.innerHTML = rows.join('');
 
-    // Copy table
     document.getElementById('copyTableBtn').addEventListener('click', function () {
         const header = 'CIDR\tSubnet Mask\tWildcard Mask\tTotal Addresses\tUsable Hosts\tClass';
         const text = header + '\n' + textRows.join('\n');

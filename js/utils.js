@@ -15,7 +15,6 @@ export function copyToClipboard(text, btn) {
  });
 }
 
-// Make globally accessible for inline onclick handlers
 window.copyToClipboard = copyToClipboard;
 
 export function showToast(message, type = 'info') {
@@ -51,7 +50,6 @@ export function validateIPv4(ip) {
 export function validateCIDR(cidr) {
  if (!cidr) return false;
  const clean = cidr.startsWith('/') ? cidr.substring(1) : cidr;
- // Dotted decimal mask
  if (clean.includes('.')) {
  return validateSubnetMask(clean);
  }
@@ -65,7 +63,6 @@ export function validateSubnetMask(mask) {
  if (parts.length !== 4) return false;
  const nums = parts.map(p => parseInt(p, 10));
  if (nums.some(n => isNaN(n) || n < 0 || n > 255)) return false;
- // Convert to 32-bit and check all 1s are contiguous
  const uint = (nums[0] << 24 | nums[1] << 16 | nums[2] << 8 | nums[3]) >>> 0;
  if (uint === 0) return true;
  const inverted = ~uint >>> 0;
@@ -111,7 +108,6 @@ export function maskToCidr(mask) {
 export function cidrToWildcard(cidrOrMask) {
  let prefix;
  if (cidrOrMask.includes('.')) {
- // Dotted decimal mask – invert each octet
  return cidrOrMask.split('.').map(p => 255 - parseInt(p, 10)).join('.');
  }
  const clean = cidrOrMask.startsWith('/') ? cidrOrMask.substring(1) : cidrOrMask;
@@ -192,7 +188,6 @@ export function exportCSV(csvContent, filename) {
 export function parseCIDR(cidrStr) {
  if (!cidrStr) return null;
  const clean = cidrStr.trim().replace(/^\//, '');
- // Dotted-decimal mask
  if (clean.includes('.')) {
  if (!validateSubnetMask(clean)) return null;
  return maskToCidr(clean);

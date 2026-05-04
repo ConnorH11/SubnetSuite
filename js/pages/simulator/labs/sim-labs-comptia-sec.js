@@ -1,5 +1,4 @@
 // sim-labs-comptia-sec.js
-// CompTIA Security+ Labs
 
 export const COMPTIA_SEC_LABS = [
     {

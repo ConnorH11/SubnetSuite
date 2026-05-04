@@ -22,7 +22,6 @@ export function makeDraggable(modal, header) {
             initialY = rect.top - parentRect.top;
         }
         
-        // Remove right/bottom and transform so left/top bindings work cleanly
         modal.style.transform = 'none'; 
         modal.style.right = 'auto';
         modal.style.bottom = 'auto';

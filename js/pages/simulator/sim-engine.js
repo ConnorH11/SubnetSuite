@@ -1,6 +1,4 @@
 // sim-engine.js
-// Enhanced Network Simulation Engine
-// ARP, MAC tables, routing, VLAN, DHCP, DNS, NAT, ACL, STP, packet tracing
 
 import { ipToUint, uintToIp, cidrToMask, getNetAddr, isValidIP, isSameSubnet, maskToCidr, generateMAC, ipInSubnet, getNextIP } from './sim-math.js';
 import { createCLI } from './sim-cli.js';
@@ -38,22 +36,18 @@ export class SimEngine {
         const srcNode = this.graph.getNode(srcNodeId);
         if (!srcNode) return null;
 
-        // Check ARP cache
         if (srcNode.arpTable.has(targetIP)) {
             return srcNode.arpTable.get(targetIP);
         }
 
-        // Find the target node by IP
         const targetNode = this.graph.findNodeByIP(targetIP);
         if (!targetNode) return null;
 
-        // Find the MAC on the matching interface
         for (const iface of Object.values(targetNode.interfaces)) {
             if (iface.ip === targetIP) {
                 const entry = { mac: iface.mac, interface: '', type: 'dynamic', age: 0 };
                 srcNode.arpTable.set(targetIP, entry);
 
-                // Log ARP
                 this._logPacket({
                     type: 'ARP',
                     src: srcNodeId,
@@ -88,22 +82,18 @@ export class SimEngine {
         const client = this.graph.getNode(clientNodeId);
         if (!client) return { ok: false, reason: 'Client not found' };
 
-        // Find DHCP servers reachable in the network
         for (const [id, node] of this.graph.nodes.entries()) {
             if (node.dhcpPools && node.dhcpPools.length > 0) {
                 for (const pool of node.dhcpPools) {
                     if (!pool.network || !pool.mask) continue;
 
-                    // Check if there's a path between client and server
                     const path = this._bfsPath(clientNodeId, id);
                     if (!path) continue;
 
                     const cidr = maskToCidr(pool.mask);
                     if (!pool.leases) pool.leases = new Map();
 
-                    // Find an available IP
                     const usedIPs = new Set(pool.leases.keys());
-                    // Also exclude the server's own IPs and the default router
                     for (const iface of Object.values(node.interfaces)) {
                         if (iface.ip) usedIPs.add(iface.ip);
                     }
@@ -112,7 +102,6 @@ export class SimEngine {
                     const newIP = getNextIP(pool.network, cidr, usedIPs);
                     if (!newIP) continue;
 
-                    // Assign
                     const clientIface = Object.values(client.interfaces)[0];
                     if (!clientIface) continue;
 
@@ -144,7 +133,6 @@ export class SimEngine {
     // ─── DNS Resolution ────────────────────────────
 
     resolveDNS(clientNodeId, hostname) {
-        // Search DNS servers
         for (const [id, node] of this.graph.nodes.entries()) {
             if (node.dnsRecords && node.dnsRecords.length > 0) {
                 for (const record of node.dnsRecords) {
@@ -165,23 +153,18 @@ export class SimEngine {
         if (!srcNode) return { ok: false, reason: 'Invalid source' };
         if (!isValidIP(targetIp)) return { ok: false, reason: 'Invalid destination IP format' };
 
-        // Get source IP
         const srcIf = this._getFirstConfiguredInterface(sourceId);
         if (!srcIf) return { ok: false, reason: 'Source node has no IP assigned' };
 
-        // Find destination node
         const destNode = this.graph.findNodeByIP(targetIp);
         if (!destNode) return { ok: false, reason: `Destination host ${targetIp} unreachable` };
 
-        // Check if source is powered
         if (!srcNode.powered) return { ok: false, reason: 'Source device is powered off' };
         if (!destNode.powered) return { ok: false, reason: 'Destination device is powered off' };
 
-        // BFS to find physical path
         const path = this._bfsPath(sourceId, destNode.id);
         if (!path) return { ok: false, reason: 'Destination host unreachable (no physical path)' };
 
-        // Subnet check
         const srcCidr = parseInt(srcIf.iface.subnet) || 24;
         const srcNet = getNetAddr(srcIf.iface.ip, srcCidr);
 
@@ -191,13 +174,10 @@ export class SimEngine {
         const dstCidr = parseInt(destIf.iface.subnet) || 24;
         const dstNet = getNetAddr(destIf.iface.ip, dstCidr);
 
-        // Same subnet?
         if (srcNet !== dstNet) {
-            // Need gateway
             if (!srcNode.gateway && !this._hasRouteFor(sourceId, targetIp)) {
                 return { ok: false, reason: `Destination host unreachable. No default gateway configured.` };
             }
-            // Check for router in path
             const hasRouter = path.some(id => {
                 const n = this.graph.getNode(id);
                 return n && (n.type === 'router' || n.type === 'l3switch' || n.type === 'firewall');
@@ -207,7 +187,6 @@ export class SimEngine {
             }
         }
 
-        // Check ACLs along the path
         for (const nodeId of path) {
             const node = this.graph.getNode(nodeId);
             if (node && node.aclRules && node.aclRules.length > 0) {
@@ -218,22 +197,17 @@ export class SimEngine {
             }
         }
 
-        // Check interface states along path
         for (const nodeId of path) {
             const node = this.graph.getNode(nodeId);
             if (!node || !node.powered) return { ok: false, reason: `Device ${node?.name || 'unknown'} is powered off` };
         }
 
-        // ARP resolution
         this.resolveARP(sourceId, targetIp);
 
-        // Learn MACs on switches in path
         this._learnMACsAlongPath(path);
 
-        // Success
         const ms = path.length * 8 + Math.floor(Math.random() * 10);
 
-        // Log
         this._logPacket({
             type: 'ICMP',
             src: sourceId,
@@ -308,7 +282,6 @@ export class SimEngine {
         let content = wwwDir['index.html'];
 
         if (!content) {
-            // Default content
             content = `
                 <!DOCTYPE html>
                 <html>
@@ -369,7 +342,6 @@ export class SimEngine {
             for (const neighbor of this.getNeighborNodeIds(current.id)) {
                 if (!visited.has(neighbor)) {
                     visited.add(neighbor);
-                    // Check if edge is up
                     const edge = this._getEdgeBetween(current.id, neighbor);
                     if (edge && edge.status === 'up') {
                         queue.push({ id: neighbor, path: [...current.path, neighbor] });
@@ -430,7 +402,6 @@ export class SimEngine {
         for (const route of node.routingTable) {
             if (ipInSubnet(ip, route.network, route.cidr)) return true;
         }
-        // Check for default route
         return node.routingTable.some(r => r.network === '0.0.0.0' && r.cidr === 0);
     }
 
@@ -487,7 +458,6 @@ export class SimEngine {
     tick() {
         this.tickCount++;
 
-        // Age out ARP and MAC entries
         this.graph.nodes.forEach(node => {
             node.arpTable.forEach((entry, ip) => {
                 entry.age = (entry.age || 0) + 1;
@@ -503,7 +473,6 @@ export class SimEngine {
             });
         });
 
-        // Update edge status based on interface states
         this.graph.edges.forEach(edge => {
             const srcNode = this.graph.getNode(edge.source);
             const tgtNode = this.graph.getNode(edge.target);
@@ -569,7 +538,6 @@ export class SimEngine {
 
             let res = cli.execute(rawCmd);
 
-            // Handle special return values
             if (res && res.startsWith('__PING__')) {
                 const targetIp = res.substring(8);
                 this._handlePingOutput(outDiv, input, promptSpan, cli, targetIp, nodeId);
@@ -647,7 +615,6 @@ export class SimEngine {
             }
         });
 
-        // Maximize / Minimize buttons
         modal.querySelector('.sim-cli-btn-max').addEventListener('click', () => {
             modal.classList.toggle('maximized');
         });
@@ -658,7 +625,6 @@ export class SimEngine {
         modal.addEventListener('click', () => input.focus());
         makeDraggable(modal, modal.querySelector('.sim-cli-header'));
         
-        // Focus input
         setTimeout(() => input.focus(), 100);
     }
 
@@ -694,7 +660,6 @@ export class SimEngine {
         }
         outDiv.appendChild(headerDiv);
 
-        // Simulate 4 ping replies with delay
         let count = 0;
         const total = 4;
         const interval = setInterval(() => {

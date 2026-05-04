@@ -64,10 +64,8 @@ export function init() {
  const helpPanel = document.getElementById('helpPanel');
  const container = document.getElementById('vlsmSubnets');
 
- // Add row
  addBtn.addEventListener('click', () => addRow(container));
 
- // Remove row delegation
  container.addEventListener('click', (e) => {
  if (e.target.classList.contains('vlsm-remove')) {
  const rows = container.querySelectorAll('.vlsm-row');
@@ -76,16 +74,13 @@ export function init() {
  }
  });
 
- // Help toggle
  helpToggle.addEventListener('click', () => {
  helpPanel.classList.toggle('hidden');
  helpToggle.textContent = helpPanel.classList.contains('hidden') ? 'Help' : 'Hide Help';
  });
 
- // Calculate
  calcBtn.addEventListener('click', doCalculate);
 
- // Export
  exportBtn.addEventListener('click', doExport);
 }
 

@@ -1,5 +1,4 @@
 // sim-graph.js
-// Network graph state management — enhanced with full device data model
 
 import { DEVICE_TEMPLATES, CABLE_TYPES, getPortDisplayName } from './sim-device-templates.js';
 
@@ -31,14 +30,12 @@ export class NetworkGraph {
             return null;
         }
 
-        // Auto-increment naming
         const typeKey = `${template.vendor}_${template.type}`;
         if (!this.counters[typeKey]) this.counters[typeKey] = 1;
         const num = this.counters[typeKey]++;
         
         const id = `node_${Date.now()}_${Math.floor(Math.random() * 10000)}`;
         
-        // Generate hostname per vendor convention
         let name;
         if (template.type === 'pc') name = `PC${num}`;
         else if (template.type === 'server') name = `Server${num}`;
@@ -77,11 +74,9 @@ export class NetworkGraph {
             y,
             powered: true,
 
-            // Interfaces
             interfaces: template.interfaces(),
             sviInterfaces: template.sviInterfaces ? template.sviInterfaces() : {},
 
-            // L2 Data
             vlans: { 1: { name: 'default' } },
             macTable: new Map(),    // Map<mac, { port, vlan, type: 'dynamic'|'static', age: number }>
             stpConfig: {
@@ -91,41 +86,33 @@ export class NetworkGraph {
                 portStates: {} // portName -> 'forwarding' | 'blocking' | 'listening' | 'learning' | 'disabled'
             },
 
-            // L3 Data
             routingTable: [],       // [{ network, mask, cidr, nextHop, interface, protocol, metric, ad }]
             arpTable: new Map(),    // Map<ip, { mac, interface, type: 'dynamic'|'static', age: number }>
             gateway: '',
 
-            // Routing Protocols
             ospfConfig: { enabled: false, routerId: '', networks: [], areas: {}, neighbors: [] },
             eigrpConfig: { enabled: false, asNumber: null, networks: [] },
             bgpConfig: { enabled: false, asNumber: null, neighbors: [], networks: [] },
 
-            // Security
             aclRules: [],           // [{ id, type: 'standard'|'extended', entries: [] }]
             natConfig: { insideIfaces: [], outsideIfaces: [], pools: [], staticMaps: [], overload: false },
 
-            // Services (servers)
             dhcpPools: [],          // [{ name, network, mask, defaultRouter, dns, excludeStart, excludeEnd, leases: Map }]
             dnsRecords: [],         // [{ name, type: 'A'|'CNAME'|'MX', value }]
             httpEnabled: false,
             ftpEnabled: false,
             syslogMessages: [],
 
-            // PC/Server services state
             services: {
                 dhcpClient: false,
                 dhcpAssignedIp: null,
             },
 
-            // Firewall-specific
             securityZones: {},
             firewallPolicies: [],
 
-            // Wireless
             wirelessConfig: template.wirelessConfig ? { ...template.wirelessConfig } : null,
 
-            // File system (for PCs/Servers)
             filesystem: {
                 '/': {
                     type: 'dir',
@@ -153,16 +140,13 @@ export class NetworkGraph {
                 }
             },
 
-            // Command history for CLI
             commandHistory: [],
 
-            // Counters for display
             packetsReceived: 0,
             packetsSent: 0,
             packetsDropped: 0,
         };
 
-        // Shortcut accessors
         node.portShortcuts = template.portShortcuts || {};
 
         this.nodes.set(id, node);
@@ -197,7 +181,6 @@ export class NetworkGraph {
     addEdge(sourceId, sourcePort, targetId, targetPort, cableType = 'copper_straight') {
         if (sourceId === targetId) return null;
 
-        // Prevent duplicate port usage
         for (const edge of this.edges.values()) {
             if ((edge.source === sourceId && edge.sourcePort === sourcePort) ||
                 (edge.target === sourceId && edge.targetPort === sourcePort) ||
@@ -281,10 +264,8 @@ export class NetworkGraph {
 
         this.nodes.forEach((node, id) => {
             const serialNode = { ...node };
-            // Convert Maps to objects for JSON
             serialNode.macTable = Object.fromEntries(node.macTable);
             serialNode.arpTable = Object.fromEntries(node.arpTable);
-            // Convert DHCP lease maps
             serialNode.dhcpPools = node.dhcpPools.map(p => ({
                 ...p,
                 leases: p.leases ? Object.fromEntries(p.leases) : {}
@@ -307,7 +288,6 @@ export class NetworkGraph {
             this.annotations = data.annotations || [];
 
             for (const nodeData of data.nodes) {
-                // Restore Maps
                 nodeData.macTable = new Map(Object.entries(nodeData.macTable || {}));
                 nodeData.arpTable = new Map(Object.entries(nodeData.arpTable || {}));
                 nodeData.dhcpPools = (nodeData.dhcpPools || []).map(p => ({
@@ -394,7 +374,6 @@ export class NetworkGraph {
         return null;
     }
 
-    // Get the first IP-configured interface of a node
     getPrimaryIP(nodeId) {
         const node = this.getNode(nodeId);
         if (!node) return null;
@@ -407,7 +386,6 @@ export class NetworkGraph {
         return null;
     }
 
-    // Get interface that matches an IP
     getInterfaceByIP(nodeId, ip) {
         const node = this.getNode(nodeId);
         if (!node) return null;

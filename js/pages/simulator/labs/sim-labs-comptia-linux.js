@@ -1,5 +1,4 @@
 // sim-labs-comptia-linux.js
-// CompTIA Linux+ Labs
 
 export const COMPTIA_LINUX_LABS = [
     {

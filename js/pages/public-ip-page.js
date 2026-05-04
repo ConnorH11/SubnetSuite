@@ -46,7 +46,6 @@ export function render() {
 }
 
 export function init() {
-    // Fetch public IP
     fetch('https://ipapi.co/json/')
         .then(r => r.json())
         .then(data => {
@@ -92,7 +91,6 @@ export function init() {
                 '<div class="card-body"><div class="alert alert-danger">Failed to detect public IP. The API may be unavailable.</div></div>';
         });
 
-    // WebRTC leak test
     document.getElementById('webrtcBtn').addEventListener('click', () => {
         const resultsDiv = document.getElementById('webrtcResults');
         resultsDiv.innerHTML = '<p class="text-muted">Testing...</p>';

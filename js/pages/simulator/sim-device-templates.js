@@ -1,5 +1,4 @@
 // sim-device-templates.js
-// Device template definitions for all vendors and models
 
 export const VENDORS = {
     cisco: { name: 'Cisco', color: '#049fd9', accent: '#005073' },
@@ -40,7 +39,6 @@ function makeInterfaces(defs) {
 }
 
 // ═══════════════════════════════════════════════════
-// CISCO DEVICES
 // ═══════════════════════════════════════════════════
 
 const ciscoRouter4321 = {
@@ -206,7 +204,6 @@ const ciscoASA5506 = {
 };
 
 // ═══════════════════════════════════════════════════
-// JUNIPER DEVICES
 // ═══════════════════════════════════════════════════
 
 const juniperEX3400 = {
@@ -286,7 +283,6 @@ const juniperMX204 = {
 };
 
 // ═══════════════════════════════════════════════════
-// ARISTA DEVICES
 // ═══════════════════════════════════════════════════
 
 const arista7050 = {
@@ -315,7 +311,6 @@ const arista7050 = {
 };
 
 // ═══════════════════════════════════════════════════
-// GENERIC END DEVICES
 // ═══════════════════════════════════════════════════
 
 const linuxPC = {
@@ -441,25 +436,20 @@ const wanEmulator = {
 };
 
 // ═══════════════════════════════════════════════════
-// TEMPLATE REGISTRY
 // ═══════════════════════════════════════════════════
 
 export const DEVICE_TEMPLATES = {
-    // Cisco
     'cisco_router_2901': ciscoRouter2901,
     'cisco_router_4321': ciscoRouter4321,
     'cisco_switch_2960': ciscoSwitch2960,
     'cisco_switch_3560': ciscoSwitch3560,
     'cisco_switch_3850': ciscoSwitch3850,
     'cisco_asa_5506': ciscoASA5506,
-    // Juniper
     'juniper_ex3400': juniperEX3400,
     'juniper_vqfx': juniperVQFX,
     'juniper_srx300': juniperSRX300,
     'juniper_mx204': juniperMX204,
-    // Arista
     'arista_7050': arista7050,
-    // End devices
     'linux_pc': linuxPC,
     'windows_pc': windowsPC,
     'linux_server': linuxServer,
@@ -470,7 +460,6 @@ export const DEVICE_TEMPLATES = {
     'wan_emulator': wanEmulator
 };
 
-// Palette categories for the UI
 export const PALETTE_CATEGORIES = [
     {
         name: 'End Devices',
@@ -523,14 +512,12 @@ export const PALETTE_CATEGORIES = [
     }
 ];
 
-// Helper: resolve interface shortcut to full name
 export function resolveInterfaceName(template, shortName) {
     if (!template || !template.portShortcuts) return shortName;
     const lower = shortName.toLowerCase();
     return template.portShortcuts[lower] || shortName;
 }
 
-// Helper: get short display name for interface
 export function getPortDisplayName(fullName) {
     return fullName
         .replace('GigabitEthernet', 'Gi')

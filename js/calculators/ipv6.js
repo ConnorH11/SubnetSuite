@@ -15,7 +15,6 @@ export function expandIPv6(ip) {
 export function compressIPv6(ipv6) {
  const sections = ipv6.split(':').map(part => part.replace(/^0+/, '') || '0');
 
- // Find longest run of consecutive "0" sections
  let bestStart = -1, bestLen = 0, currStart = -1, currLen = 0;
  for (let i = 0; i <= sections.length; i++) {
  if (i < sections.length && sections[i] === '0') {
@@ -31,7 +30,6 @@ export function compressIPv6(ipv6) {
  }
  }
 
- // Replace longest zero-run with "::"
  if (bestLen > 1) {
  sections.splice(bestStart, bestLen, '');
  if (bestStart === 0) sections.unshift('');
@@ -93,7 +91,6 @@ export function calculateIPv6(input, subnetCount) {
  subnets: null,
  };
 
- // Generate subnets if requested
  if (!isNaN(subnetCount) && subnetCount > 0) {
  const neededBits = Math.ceil(Math.log2(subnetCount));
  const newPrefix = prefix + neededBits;

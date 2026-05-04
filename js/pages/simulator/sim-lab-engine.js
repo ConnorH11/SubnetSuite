@@ -1,5 +1,4 @@
 // sim-lab-engine.js
-// Lab loading, validation, grading, and progress tracking engine
 
 import { LABS } from './sim-labs.js';
 
@@ -47,7 +46,6 @@ export class LabEngine {
     saveProgress(labId, score, total) {
         const progress = this.getProgress();
         const existing = progress[labId];
-        // Only update if better score
         if (!existing || score > existing.score) {
             progress[labId] = { score, total, completedAt: Date.now(), attempts: (existing?.attempts || 0) + 1 };
         } else {
@@ -82,10 +80,8 @@ export class LabEngine {
         this.taskResults = lab.tasks.map(() => ({ status: 'pending', message: '' }));
         this.hintsRevealed = {};
 
-        // Clear current topology
         this.graph.clear();
 
-        // Build the topology from the lab definition
         const nodeIdMap = {}; // lab node reference -> actual node ID
 
         for (const nodeDef of lab.topology.nodes) {
@@ -96,17 +92,14 @@ export class LabEngine {
                     node.name = nodeDef.name;
                     node.hostname = nodeDef.name;
                 }
-                // Apply any pre-configuration
                 if (nodeDef.preConfig) {
                     this._applyPreConfig(node, nodeDef.preConfig);
                 }
             }
         }
 
-        // Store the node ID mapping for validation
         this.currentLab._nodeIdMap = nodeIdMap;
 
-        // Apply topology-level preConfig (keyed by lab node ref IDs)
         if (lab.topology.preConfig) {
             for (const [ref, config] of Object.entries(lab.topology.preConfig)) {
                 const actualId = nodeIdMap[ref];
@@ -117,7 +110,6 @@ export class LabEngine {
             }
         }
 
-        // Build edges
         for (const edgeDef of (lab.topology.edges || [])) {
             const srcId = nodeIdMap[edgeDef.source];
             const tgtId = nodeIdMap[edgeDef.target];
@@ -218,7 +210,6 @@ export class LabEngine {
 
         const total = this.currentLab.tasks.length;
 
-        // Save progress
         this.saveProgress(this.currentLab.id, score, total);
 
         this.notify();
@@ -637,7 +628,6 @@ export class LabEngine {
         if (!srcId) return { passed: false, message: `Source "${check.source}" not found` };
         if (!dstId) return { passed: false, message: `Destination "${check.destination}" not found` };
 
-        // Get an IP from the destination
         const dstNode = this.graph.getNode(dstId);
         const dstIp = this.graph.getPrimaryIP(dstId);
         if (!dstIp) return { passed: false, message: `Destination "${check.destination}" has no IP configured` };

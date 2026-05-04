@@ -179,14 +179,12 @@ export function init() {
             return;
         }
 
-        // Convert to bits per second first
         let bps;
         if (unit.endsWith('ps') && !unit.endsWith('Bps') && unit !== 'bps') {
             bps = value * BIT_MULTIPLIERS[unit];
         } else if (unit === 'bps') {
             bps = value;
         } else {
-            // Bytes/sec units
             bps = value * BYTE_TO_BIT_MULTIPLIERS[unit];
         }
 
@@ -232,7 +230,6 @@ export function init() {
         const perUserBps = perUser * BIT_MULTIPLIERS[perUserUnit];
         const totalBps = perUserBps * users;
 
-        // Recommend link speed tier
         const tiers = [
             { name: 'Fast Ethernet', speed: 100e6 },
             { name: 'Gigabit Ethernet', speed: 1e9 },

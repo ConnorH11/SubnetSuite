@@ -63,7 +63,6 @@ export function init() {
  return;
  }
 
- // Parse all CIDRs
  const networks = [];
  for (const line of lines) {
  try {
@@ -75,7 +74,6 @@ export function init() {
  }
  }
 
- // Check all pairs for overlap
  const overlaps = [];
  for (let i = 0; i < networks.length; i++) {
  for (let j = i + 1; j < networks.length; j++) {
@@ -85,11 +83,9 @@ export function init() {
  }
  }
 
- // Track which CIDRs are involved in overlaps
  const conflicted = new Set();
  overlaps.forEach(([i, j]) => { conflicted.add(i); conflicted.add(j); });
 
- // Build results
  let html = '';
 
  if (overlaps.length === 0) {
@@ -97,7 +93,6 @@ export function init() {
  } else {
  html += `<div class="alert alert-danger" style="margin-bottom:var(16px);"><strong>${overlaps.length} overlap${overlaps.length > 1 ? 's' : ''} detected!</strong></div>`;
 
- // Overlap details
  html += '<div class="card mb-4"><div class="card-header">Conflicting Pairs</div><div class="result-panel">';
  overlaps.forEach(([i, j]) => {
  const a = networks[i];
@@ -111,7 +106,6 @@ export function init() {
  html += '</div></div>';
  }
 
- // Summary table of all blocks
  html += '<div class="card"><div class="card-header">All Blocks</div><div style="overflow-x:auto;"><table class="table"><thead><tr><th>CIDR</th><th>Network</th><th>Broadcast</th><th>Hosts</th><th>Status</th></tr></thead><tbody>';
 
  networks.forEach((net, idx) => {
@@ -160,7 +154,6 @@ function parseCIDR(str) {
 }
 
 function rangesOverlap(a, b) {
- // Two CIDR blocks overlap if either contains the other's network or broadcast
  return (a.network <= b.broadcast && b.network <= a.broadcast);
 }
 

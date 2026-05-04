@@ -1,5 +1,4 @@
 // sim-lab-ui.js
-// UI components for the practice lab system
 
 import { makeDraggable } from './sim-ui-utils.js';
 
@@ -10,7 +9,6 @@ export class LabUI {
         this.browserModal = null;
         this.taskPanel = null;
 
-        // Listen for engine updates
         this.engine.subscribe(() => this._updateTaskPanel());
     }
 
@@ -160,7 +158,6 @@ export class LabUI {
             this.taskPanel = document.createElement('div');
             this.taskPanel.className = 'sim-task-panel collapsed';
             
-            // Allow drag to resize
             let isResizing = false;
             const handle = document.createElement('div');
             handle.className = 'sim-task-panel-resize';
@@ -179,7 +176,6 @@ export class LabUI {
             this.container.appendChild(this.taskPanel);
         }
 
-        // Toggle button
         let toggleBtn = document.getElementById('btn-toggle-tasks');
         if (!toggleBtn) {
             toggleBtn = document.createElement('button');
@@ -268,7 +264,6 @@ export class LabUI {
             document.getElementById('btn-toggle-tasks')?.remove();
         });
 
-        // Make the floating panel draggable via the header
         makeDraggable(this.taskPanel, this.taskPanel.querySelector('.task-panel-header'));
 
         this.taskPanel.querySelectorAll('.btn-check-task').forEach(btn => {
@@ -276,7 +271,6 @@ export class LabUI {
                 const idx = parseInt(btn.dataset.idx);
                 const res = this.engine.checkTask(idx);
                 
-                // If all tasks are now passed, show confetti
                 const allPassed = this.engine.taskResults.every(r => r.status === 'passed');
                 if (res.status === 'passed' && allPassed) {
                     this.engine.saveProgress(lab.id, lab.tasks.length, lab.tasks.length);
@@ -297,7 +291,6 @@ export class LabUI {
         const end = Date.now() + duration;
 
         const frame = () => {
-            // Simplified confetti logic using DOM elements (in a real app you'd use canvas)
             const conf = document.createElement('div');
             conf.className = 'sim-confetti';
             conf.style.left = Math.random() * 100 + 'vw';
@@ -312,7 +305,6 @@ export class LabUI {
         };
         frame();
 
-        // Show a big success modal
         const successModal = document.createElement('div');
         successModal.className = 'sim-lab-success-modal';
         successModal.innerHTML = `

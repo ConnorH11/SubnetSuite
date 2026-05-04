@@ -1,5 +1,4 @@
 // sim-labs-ccnp.js
-// CCNP Certification Labs
 
 export const CCNP_LABS = [
     {
@@ -282,7 +281,6 @@ export const CCNP_LABS = [
             preConfig: {
                 'CustA1': { interfaces: { 'eth0': { ip: '10.0.0.10', subnet: '24', state: 'up' } }, gateway: '10.0.0.1' },
                 'CustA2': { interfaces: { 'eth0': { ip: '10.0.1.10', subnet: '24', state: 'up' } }, gateway: '10.0.1.1' },
-                // Cust B overlaps IP space intentionally
                 'CustB1': { interfaces: { 'eth0': { ip: '10.0.0.10', subnet: '24', state: 'up' } }, gateway: '10.0.0.1' },
                 'CustB2': { interfaces: { 'eth0': { ip: '10.0.1.10', subnet: '24', state: 'up' } }, gateway: '10.0.1.1' }
             }

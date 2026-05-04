@@ -164,7 +164,6 @@ export function init() {
  helpToggle.textContent = helpPanel.classList.contains('hidden') ? 'Help' : 'Hide Help';
  });
 
- // Toggle protocol fields
  const toggleFields = () => {
  document.querySelectorAll('.protocol-fields').forEach(el => el.classList.add('hidden'));
  const protocol = protocolSelect.value;
@@ -175,7 +174,6 @@ export function init() {
  protocolSelect.addEventListener('change', toggleFields);
  toggleFields();
 
- // Generate
  genBtn.addEventListener('click', () => {
  const protocol = protocolSelect.value;
  const vendor = document.getElementById('routeVendor').value;
@@ -184,7 +182,6 @@ export function init() {
 
  const params = { vendor, protocol };
 
- // Collect fields based on protocol
  if (protocol === 'static') {
  params.destIp = document.getElementById('staticDestIp').value.trim();
  params.mask = document.getElementById('staticMask').value.trim();
@@ -218,7 +215,6 @@ export function init() {
  }
  });
 
- // Copy
  document.getElementById('routeCopyBtn').addEventListener('click', function () {
  copyToClipboard(document.getElementById('routeText').value, this);
  });

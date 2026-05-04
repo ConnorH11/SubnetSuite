@@ -1,5 +1,4 @@
 // sim-window-manager.js
-// Desktop window management system with taskbar, z-ordering, minimize/maximize
 
 export class WindowManager {
     constructor(container) {
@@ -50,10 +49,8 @@ export class WindowManager {
 
         this.windows.set(id, windowData);
 
-        // Bring to front on click
         win.addEventListener('mousedown', () => this.focusWindow(id));
 
-        // Titlebar buttons
         win.querySelector('.wm-btn-close').addEventListener('click', (e) => {
             e.stopPropagation();
             this.closeWindow(id);
@@ -67,10 +64,8 @@ export class WindowManager {
             this.maximizeWindow(id);
         });
 
-        // Draggable titlebar
         this._makeDraggable(win, win.querySelector('.wm-titlebar'));
 
-        // Resizable
         this._makeResizable(win);
 
         this.container.querySelector('.wm-desktop-area').appendChild(win);
@@ -110,7 +105,6 @@ export class WindowManager {
         if (!win) return;
 
         if (win.maximized) {
-            // Restore
             if (win.savedBounds) {
                 win.element.style.left = win.savedBounds.left;
                 win.element.style.top = win.savedBounds.top;
@@ -120,7 +114,6 @@ export class WindowManager {
             win.maximized = false;
             win.element.classList.remove('wm-maximized');
         } else {
-            // Save current bounds
             win.savedBounds = {
                 left: win.element.style.left,
                 top: win.element.style.top,
@@ -142,7 +135,6 @@ export class WindowManager {
         win.element.style.zIndex = ++this.zCounter;
         this.activeWindowId = id;
 
-        // Update active state on all windows
         this.windows.forEach((w, wid) => {
             w.element.classList.toggle('wm-focused', wid === id);
         });

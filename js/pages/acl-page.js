@@ -116,7 +116,6 @@ export function init() {
  helpToggle.textContent = helpPanel.classList.contains('hidden') ? 'Help' : 'Hide Help';
  });
 
- // Toggle port inputs based on protocol
  const togglePorts = () => {
  const protocol = protocolSelect.value;
  const disable = protocol === 'ip' || protocol === 'icmp' || protocol === 'any';
@@ -128,7 +127,6 @@ export function init() {
  protocolSelect.addEventListener('change', togglePorts);
  togglePorts();
 
- // Generate
  genBtn.addEventListener('click', () => {
  const outputDiv = document.getElementById('aclOutput');
  const textarea = document.getElementById('aclText');
@@ -155,7 +153,6 @@ export function init() {
  }
  });
 
- // Copy
  document.getElementById('aclCopyBtn').addEventListener('click', function () {
  const text = document.getElementById('aclText').value;
  copyToClipboard(text, this);

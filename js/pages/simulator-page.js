@@ -188,24 +188,19 @@ export default {
         const engine = new SimEngine(graph);
         const ui = new SimulatorUI(container, graph, engine);
 
-        // Init Lab System
         const labEngine = new LabEngine(graph, engine);
         const labUI = new LabUI(container, labEngine);
 
-        // Topbar tools
         container.querySelectorAll('.sim-tool-btn[data-tool]').forEach(btn => {
             btn.addEventListener('click', () => ui.setTool(btn.dataset.tool));
         });
 
-        // Open Labs Browser
         container.querySelector('#sim-btn-labs')?.addEventListener('click', () => {
             labUI.openBrowser();
         });
 
-        // Close inspector
         container.querySelector('.inspector-close').addEventListener('click', () => ui.selectNode(null));
 
-        // Clear
         container.querySelector('#sim-btn-clear')?.addEventListener('click', () => {
             if (confirm('Clear the entire topology?')) {
                 graph.clear();
@@ -213,7 +208,6 @@ export default {
             }
         });
 
-        // Palette drag
         container.querySelectorAll('.sim-device-item').forEach(item => {
             item.addEventListener('dragstart', (e) => {
                 e.dataTransfer.setData('text/plain', item.dataset.template);
@@ -221,7 +215,6 @@ export default {
             });
         });
 
-        // Palette category collapse
         container.querySelectorAll('.sim-palette-cat-header').forEach(header => {
             header.addEventListener('click', () => {
                 const items = header.nextElementSibling;
@@ -230,7 +223,6 @@ export default {
             });
         });
 
-        // Palette search
         container.querySelector('#sim-palette-search')?.addEventListener('input', (e) => {
             const q = e.target.value.toLowerCase();
             container.querySelectorAll('.sim-device-item').forEach(item => {
@@ -239,21 +231,17 @@ export default {
             });
         });
 
-        // Palette collapse button
         container.querySelector('#btn-palette-collapse')?.addEventListener('click', () => {
             container.querySelector('.sim-palette').classList.toggle('collapsed');
         });
 
-        // Cable type selector
         container.querySelector('#sim-cable-type')?.addEventListener('change', (e) => {
             ui.selectedCableType = e.target.value;
         });
 
-        // Simulation controls
         container.querySelector('#sim-btn-play')?.addEventListener('click', () => engine.startSimulation());
         container.querySelector('#sim-btn-pause')?.addEventListener('click', () => engine.stopSimulation());
 
-        // Save/Load
         container.querySelector('#sim-btn-save')?.addEventListener('click', () => {
             const name = prompt('Save topology as:', 'default');
             if (name) {
@@ -287,7 +275,6 @@ export default {
             URL.revokeObjectURL(url);
         });
 
-        // File load via hidden input
         const loadFileInput = document.createElement('input');
         loadFileInput.type = 'file';
         loadFileInput.accept = '.json';
@@ -310,7 +297,6 @@ export default {
             reader.readAsText(file);
         });
 
-        // Zoom buttons
         container.querySelector('#sim-btn-zoomin')?.addEventListener('click', () => {
             ui.transform.scale = Math.min(3, ui.transform.scale * 1.2);
             ui.applyTransform();
@@ -324,7 +310,6 @@ export default {
             ui.applyTransform();
         });
 
-        // Keyboard shortcuts
         const handleKeyDown = (e) => {
             if (['INPUT', 'TEXTAREA', 'SELECT'].includes(document.activeElement.tagName)) return;
             if (e.key === 'Escape') ui.setTool('select');
@@ -332,7 +317,6 @@ export default {
         };
         window.addEventListener('keydown', handleKeyDown);
 
-        // Feedback Form Logic
         const submitFeedbackBtn = document.querySelector('#btn-submit-feedback');
         if (submitFeedbackBtn) {
             submitFeedbackBtn.addEventListener('click', async () => {
@@ -343,7 +327,6 @@ export default {
                     return;
                 }
                 
-                // Set loading state
                 const originalBtnHtml = submitFeedbackBtn.innerHTML;
                 submitFeedbackBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Sending...';
                 submitFeedbackBtn.disabled = true;
@@ -368,7 +351,6 @@ export default {
 
                     const result = await response.json();
                     
-                    // Reset UI
                     submitFeedbackBtn.innerHTML = originalBtnHtml;
                     submitFeedbackBtn.disabled = false;
                     
@@ -394,7 +376,6 @@ export default {
                         throw new Error(result.message || 'Failed to send feedback');
                     }
                 } catch (error) {
-                    // Reset UI on error
                     submitFeedbackBtn.innerHTML = originalBtnHtml;
                     submitFeedbackBtn.disabled = false;
                     

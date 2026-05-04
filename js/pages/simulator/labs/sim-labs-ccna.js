@@ -1,5 +1,4 @@
 // sim-labs-ccna.js
-// CCNA Certification Labs
 
 export const CCNA_LABS = [
     {
@@ -486,7 +485,6 @@ export const CCNA_LABS = [
                 hints: ['Enter interface config for fa0/1.', 'Make it an access port first: "switchport mode access".', 'Then "switchport port-security".'],
                 checks: [
                     { type: 'switchport_mode', node: 'SW1', interface: 'FastEthernet0/1', expected: 'access' }
-                    // Additional check logic would be needed for port-security specific validation
                 ]
             },
             {
@@ -524,9 +522,7 @@ export const CCNA_LABS = [
                 description: 'Enable Root Guard on Core-Switch interface Gi0/1',
                 hints: ['Enter interface config for Gi0/1', 'Use "spanning-tree guard root"'],
                 checks: [
-                    // Since specific STP guard checks might not be natively implemented in the current engine, 
                     // this would be a soft check or rely on an exact command match if history checking was implemented.
-                    // For now, we will just check if the interface is up.
                     { type: 'interface_state', node: 'CoreSW', interface: 'GigabitEthernet0/1', state: 'up' }
                 ]
             }
@@ -573,7 +569,6 @@ export const CCNA_LABS = [
                 description: 'Increase the OSPF cost on R1 Gi0/0/0 to 100 to force traffic through R3',
                 hints: ['On R1, enter interface Gi0/0/0.', 'Use "ip ospf cost 100".'],
                 checks: [
-                    // Similar to Root Guard, we check interface state if exact cost checks aren't available, but the OSPF check provides basic validation.
                     { type: 'ospf_enabled', node: 'R1' }
                 ]
             }

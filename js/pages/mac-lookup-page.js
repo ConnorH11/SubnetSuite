@@ -58,7 +58,6 @@ export function init() {
  return;
  }
 
- // Normalize: remove all separators
  const cleaned = raw.replace(/[:\-\.]/g, '').toLowerCase();
  if (!/^[0-9a-f]{6,12}$/.test(cleaned)) {
  resultsDiv.innerHTML = '<div class="alert alert-danger">Invalid MAC address format.</div>';
