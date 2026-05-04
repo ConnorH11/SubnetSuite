@@ -53,14 +53,14 @@ export default {
                         </div>
                         <div class="sim-palette-cat-items">
                             ${cat.items.map(item => {
-                                const template = DEVICE_TEMPLATES[item.templateId];
-                                return `
+            const template = DEVICE_TEMPLATES[item.templateId];
+            return `
                                 <div class="sim-device-item" draggable="true" data-template="${item.templateId}">
                                     <i class="bi ${template ? template.icon : 'bi-cpu'}"></i>
                                     <span class="device-item-label">${item.label}</span>
                                 </div>
                                 `;
-                            }).join('')}
+        }).join('')}
                         </div>
                     </div>
                 `).join('')}
@@ -69,9 +69,9 @@ export default {
                 <div class="cable-type-select">
                     <label>Cable Type</label>
                     <select class="form-select form-select-sm" id="sim-cable-type">
-                        ${Object.entries(CABLE_TYPES).map(([key, cable]) => 
-                            `<option value="${key}">${cable.name}</option>`
-                        ).join('')}
+                        ${Object.entries(CABLE_TYPES).map(([key, cable]) =>
+            `<option value="${key}">${cable.name}</option>`
+        ).join('')}
                     </select>
                 </div>
             </div>
@@ -146,7 +146,35 @@ export default {
                     <p>Click a device to inspect it</p>
                 </div>
             </div>
-        </aside>
+    </div>
+</div>
+
+<!-- Static Feedback Form -->
+<div class="container mt-4 mb-5" style="max-width: 1000px;">
+    <div class="card shadow-sm border-0">
+        <div class="card-body">
+            <h5 class="card-title text-primary"><i class="bi bi-chat-left-text-fill me-2"></i>Simulator Feedback</h5>
+            <p class="text-muted small">Submit bugs or feature requests directly to the developer.</p>
+            <form id="simFeedbackForm" class="row g-3">
+                <div class="col-md-3">
+                    <label class="form-label fw-bold small text-secondary mb-1">Feedback Type</label>
+                    <select class="form-select" id="feedbackType">
+                        <option value="Bug Report">Bug Report</option>
+                        <option value="Feature Request">Feature Request</option>
+                        <option value="General Feedback">General Feedback</option>
+                    </select>
+                </div>
+                <div class="col-md-7">
+                    <label class="form-label fw-bold small text-secondary mb-1">Details</label>
+                    <textarea class="form-control" id="feedbackDetails" rows="3" placeholder="Describe the bug or feature in detail..." style="resize: none;" required></textarea>
+                </div>
+                <div class="col-md-2 d-flex flex-column justify-content-end">
+                    <button type="button" class="btn btn-primary w-100 fw-bold" id="btn-submit-feedback" style="height: 48px;">
+                        <i class="bi bi-envelope-fill me-1"></i> Send
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 `;
@@ -303,6 +331,86 @@ export default {
             if (e.key === 'c' || e.key === 'C') ui.setTool('connect');
         };
         window.addEventListener('keydown', handleKeyDown);
+
+        // Feedback Form Logic
+        const submitFeedbackBtn = document.querySelector('#btn-submit-feedback');
+        if (submitFeedbackBtn) {
+            submitFeedbackBtn.addEventListener('click', async () => {
+                const type = document.querySelector('#feedbackType').value;
+                const details = document.querySelector('#feedbackDetails').value;
+                if (!details.trim()) {
+                    alert('Please provide some details before submitting.');
+                    return;
+                }
+                
+                // Set loading state
+                const originalBtnHtml = submitFeedbackBtn.innerHTML;
+                submitFeedbackBtn.innerHTML = '<span class="spinner-border spinner-border-sm me-2" role="status" aria-hidden="true"></span>Sending...';
+                submitFeedbackBtn.disabled = true;
+
+                const payload = {
+                    access_key: '2552c28f-c0de-442e-beaa-86bd422f467e',
+                    subject: `[SubnetSuite Simulator] ${type}`,
+                    from_name: 'SubnetSuite Simulator',
+                    Feedback_Type: type,
+                    Details: details
+                };
+
+                try {
+                    const response = await fetch('https://api.web3forms.com/submit', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json'
+                        },
+                        body: JSON.stringify(payload)
+                    });
+
+                    const result = await response.json();
+                    
+                    // Reset UI
+                    submitFeedbackBtn.innerHTML = originalBtnHtml;
+                    submitFeedbackBtn.disabled = false;
+                    
+                    const form = document.querySelector('#simFeedbackForm');
+                    const existingAlert = form.nextElementSibling;
+                    if (existingAlert && existingAlert.classList.contains('alert')) {
+                        existingAlert.remove();
+                    }
+
+                    if (response.ok) {
+                        document.querySelector('#feedbackDetails').value = '';
+                        const alertHtml = `
+                            <div class="alert alert-success mt-3 py-2 fade show" role="alert">
+                                <i class="bi bi-check-circle-fill me-2"></i><strong>Success!</strong> Your feedback has been sent directly to the developer.
+                            </div>
+                        `;
+                        form.insertAdjacentHTML('afterend', alertHtml);
+                        setTimeout(() => {
+                            const alertNode = form.nextElementSibling;
+                            if (alertNode && alertNode.classList.contains('alert')) alertNode.remove();
+                        }, 5000);
+                    } else {
+                        throw new Error(result.message || 'Failed to send feedback');
+                    }
+                } catch (error) {
+                    // Reset UI on error
+                    submitFeedbackBtn.innerHTML = originalBtnHtml;
+                    submitFeedbackBtn.disabled = false;
+                    
+                    const form = document.querySelector('#simFeedbackForm');
+                    const existingAlert = form.nextElementSibling;
+                    if (existingAlert && existingAlert.classList.contains('alert')) existingAlert.remove();
+                    
+                    const alertHtml = `
+                        <div class="alert alert-danger mt-3 py-2 fade show" role="alert">
+                            <i class="bi bi-exclamation-triangle-fill me-2"></i><strong>Error:</strong> Could not send feedback. Please try again later.
+                        </div>
+                    `;
+                    form.insertAdjacentHTML('afterend', alertHtml);
+                }
+            });
+        }
 
         return () => {
             graph.clear();
