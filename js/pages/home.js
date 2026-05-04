@@ -8,37 +8,37 @@ export function render() {
 
   <h4 class="mt-5 mb-3">Calculators</h4>
   <div class="row">
-    ${card('IPv4 Subnet Calculator', 'Calculate network information for an IP address and subnet mask.', '#/subnet')}
-    ${card('VLSM Calculator', 'Perform Variable Length Subnet Masking for efficient subnet allocation.', '#/vlsm')}
-    ${card('Supernetting Tool', 'Combine multiple subnets into a larger network.', '#/supernet')}
-    ${card('IPv6 Subnetting', 'Calculate network information based on IPv6 addresses and subnet masks.', '#/ipv6')}
-    ${card('Binary Calculator', 'Add and subtract binary.', '#/binary')}
-    ${card('Subnet Cheat Sheet', 'Full CIDR reference table with masks, wildcards, and host counts.', '#/cheatsheet')}
-    ${card('CIDR Overlap Checker', 'Detect overlapping or conflicting IP address ranges.', '#/overlap')}
-    ${card('Bandwidth Calculator', 'Transfer time estimates, unit conversion, and capacity planning.', '#/bandwidth')}
+    ${card('IPv4 Subnet Calculator', 'Calculate network information for an IP address and subnet mask.', '/subnet')}
+    ${card('VLSM Calculator', 'Perform Variable Length Subnet Masking for efficient subnet allocation.', '/vlsm')}
+    ${card('Supernetting Tool', 'Combine multiple subnets into a larger network.', '/supernet')}
+    ${card('IPv6 Subnetting', 'Calculate network information based on IPv6 addresses and subnet masks.', '/ipv6')}
+    ${card('Binary Calculator', 'Add and subtract binary.', '/binary')}
+    ${card('Subnet Cheat Sheet', 'Full CIDR reference table with masks, wildcards, and host counts.', '/cheatsheet')}
+    ${card('CIDR Overlap Checker', 'Detect overlapping or conflicting IP address ranges.', '/overlap')}
+    ${card('Bandwidth Calculator', 'Transfer time estimates, unit conversion, and capacity planning.', '/bandwidth')}
   </div>
 
   <h4 class="mt-5 mb-3">Tools</h4>
   <div class="row">
-    ${card('Network Simulator', 'Full-featured network lab with Cisco IOS, Juniper JunOS, routers, switches, PCs, and servers.', '#/simulator', 'bi-diagram-3-fill', true, true)}
-    ${card('Network Visualizer', 'Create graphical representations of your subnetted networks.', '#/visualizer')}
-    ${card('Binary, Hex, and Decimal Converter', 'Convert Binary, Hexadecimal, and Decimal numbers.', '#/converter')}
-    ${card('Public IP &amp; Privacy Check', 'View your public IP, ISP, and check for WebRTC leaks.', '#/publicip')}
-    ${card('MAC Vendor Lookup', 'Identify the manufacturer of a network device by MAC address.', '#/maclookup')}
-    ${card('Packet Header Visualizer', 'Interactive bit-level diagrams of common protocol headers.', '#/headers')}
-    ${card('Port Reference', 'Searchable table of well-known TCP/UDP ports and their services.', '#/ports')}
+    ${card('Network Simulator', 'Full-featured network lab with Cisco IOS, Juniper JunOS, routers, switches, PCs, and servers.', '/simulator', 'bi-diagram-3-fill', true, true)}
+    ${card('Network Visualizer', 'Create graphical representations of your subnetted networks.', '/visualizer')}
+    ${card('Binary, Hex, and Decimal Converter', 'Convert Binary, Hexadecimal, and Decimal numbers.', '/converter')}
+    ${card('Public IP &amp; Privacy Check', 'View your public IP, ISP, and check for WebRTC leaks.', '/publicip')}
+    ${card('MAC Vendor Lookup', 'Identify the manufacturer of a network device by MAC address.', '/maclookup')}
+    ${card('Packet Header Visualizer', 'Interactive bit-level diagrams of common protocol headers.', '/headers')}
+    ${card('Port Reference', 'Searchable table of well-known TCP/UDP ports and their services.', '/ports')}
   </div>
 
   <h4 class="mt-5 mb-3">Generators</h4>
   <div class="row">
-    ${card('ACL Generator', 'Generate Cisco and Juniper ACLs.', '#/acl')}
-    ${card('Route Generator', 'Generate Cisco and Juniper routing configurations.', '#/route')}
+    ${card('ACL Generator', 'Generate Cisco and Juniper ACLs.', '/acl')}
+    ${card('Route Generator', 'Generate Cisco and Juniper routing configurations.', '/route')}
   </div>
 
   <h4 class="mt-5 mb-3">Exams</h4>
   <div class="row">
-    ${card('Flashcards', 'Spaced-repetition flashcards for CCNA, Network+, and more.', '#/flashcards')}
-    ${card('Practice Tests', 'Configurable practice exams with instant grading and explanations.', '#/practice-test')}
+    ${card('Flashcards', 'Spaced-repetition flashcards for CCNA, Network+, and more.', '/flashcards')}
+    ${card('Practice Tests', 'Configurable practice exams with instant grading and explanations.', '/practice-test')}
   </div>
 </div>`;
 }
