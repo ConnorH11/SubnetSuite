@@ -20,6 +20,7 @@ export function render() {
 
   <h4 class="mt-5 mb-3">Tools</h4>
   <div class="row">
+    ${card('Network Simulator', 'Full-featured network lab with Cisco IOS, Juniper JunOS, routers, switches, PCs, and servers.', '#/simulator', 'bi-diagram-3-fill', true, true)}
     ${card('Network Visualizer', 'Create graphical representations of your subnetted networks.', '#/visualizer')}
     ${card('Binary, Hex, and Decimal Converter', 'Convert Binary, Hexadecimal, and Decimal numbers.', '#/converter')}
     ${card('Public IP &amp; Privacy Check', 'View your public IP, ISP, and check for WebRTC leaks.', '#/publicip')}
@@ -36,10 +37,11 @@ export function render() {
 </div>`;
 }
 
-function card(title, desc, href) {
+function card(title, desc, href, icon = '', featured = false, isBeta = false) {
   return `
     <div class="col-md-4 mb-4">
-      <a href="${href}" class="card h-100 shadow-sm tool-card text-decoration-none">
+      <a href="${href}" class="card h-100 shadow-sm tool-card text-decoration-none ${isBeta ? 'position-relative' : ''}">
+        ${isBeta ? '<span class="position-absolute top-0 end-0 translate-middle-y badge rounded-pill bg-warning text-dark shadow-sm border border-light" style="margin-right: -10px; margin-top: 15px; z-index:2">BETA</span>' : ''}
         <div class="card-body text-center">
           <h5 class="card-title">${title}</h5>
           <p class="card-text text-muted">${desc}</p>

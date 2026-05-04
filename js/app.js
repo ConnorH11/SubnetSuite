@@ -11,6 +11,7 @@ const routes = {
     'binary': () => import('./pages/binary-page.js'),
     'converter': () => import('./pages/converter-page.js'),
     'visualizer': () => import('./pages/visualizer-page.js'),
+    'simulator': () => import('./pages/simulator-page.js'),
     'publicip': () => import('./pages/public-ip-page.js'),
     'maclookup': () => import('./pages/mac-lookup-page.js'),
     'cheatsheet': () => import('./pages/cheatsheet-page.js'),
@@ -46,7 +47,8 @@ async function navigateTo(path) {
     }
 
     try {
-        const module = await loader();
+        const rawModule = await loader();
+        const module = rawModule.default || rawModule;
         app.innerHTML = module.render();
         if (module.init) {
             currentCleanup = module.init() || null;
