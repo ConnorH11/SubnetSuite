@@ -1,6606 +1,8945 @@
+/* 
+ * PROCEDURALLY GENERATED CERTIFICATION DATA
+ * Generated for encor 
+ * Contains 156 unique flashcards and 500 procedural practice questions.
+ */
+
 export const data = {
-    flashcards: [
-    {
-        "id": "enc_fc_1000",
-        "domain": "2.0",
-        "front": "What port is used by FTP (Data)?",
-        "back": "TCP Port 20"
-    },
-    {
-        "id": "enc_fc_1001",
-        "domain": "5.0",
-        "front": "Which protocol uses TCP port 20?",
-        "back": "FTP (Data)"
-    },
-    {
-        "id": "enc_fc_1002",
-        "domain": "4.0",
-        "front": "What port is used by FTP (Control)?",
-        "back": "TCP Port 21"
-    },
-    {
-        "id": "enc_fc_1003",
-        "domain": "4.0",
-        "front": "Which protocol uses TCP port 21?",
-        "back": "FTP (Control)"
-    },
-    {
-        "id": "enc_fc_1004",
-        "domain": "4.0",
-        "front": "What port is used by SSH?",
-        "back": "TCP Port 22"
-    },
-    {
-        "id": "enc_fc_1005",
-        "domain": "1.0",
-        "front": "Which protocol uses TCP port 22?",
-        "back": "SSH"
-    },
-    {
-        "id": "enc_fc_1006",
-        "domain": "5.0",
-        "front": "What port is used by Telnet?",
-        "back": "TCP Port 23"
-    },
-    {
-        "id": "enc_fc_1007",
-        "domain": "1.0",
-        "front": "Which protocol uses TCP port 23?",
-        "back": "Telnet"
-    },
-    {
-        "id": "enc_fc_1008",
-        "domain": "2.0",
-        "front": "What port is used by SMTP?",
-        "back": "TCP Port 25"
-    },
-    {
-        "id": "enc_fc_1009",
-        "domain": "4.0",
-        "front": "Which protocol uses TCP port 25?",
-        "back": "SMTP"
-    },
-    {
-        "id": "enc_fc_1010",
-        "domain": "5.0",
-        "front": "What port is used by DNS?",
-        "back": "UDP/TCP Port 53"
-    },
-    {
-        "id": "enc_fc_1011",
-        "domain": "2.0",
-        "front": "Which protocol uses UDP/TCP port 53?",
-        "back": "DNS"
-    },
-    {
-        "id": "enc_fc_1012",
-        "domain": "3.0",
-        "front": "What port is used by DHCP (Server)?",
-        "back": "UDP Port 67"
-    },
-    {
-        "id": "enc_fc_1013",
-        "domain": "2.0",
-        "front": "Which protocol uses UDP port 67?",
-        "back": "DHCP (Server)"
-    },
-    {
-        "id": "enc_fc_1014",
-        "domain": "4.0",
-        "front": "What port is used by DHCP (Client)?",
-        "back": "UDP Port 68"
-    },
-    {
-        "id": "enc_fc_1015",
-        "domain": "5.0",
-        "front": "Which protocol uses UDP port 68?",
-        "back": "DHCP (Client)"
-    },
-    {
-        "id": "enc_fc_1016",
-        "domain": "3.0",
-        "front": "What port is used by TFTP?",
-        "back": "UDP Port 69"
-    },
-    {
-        "id": "enc_fc_1017",
-        "domain": "2.0",
-        "front": "Which protocol uses UDP port 69?",
-        "back": "TFTP"
-    },
-    {
-        "id": "enc_fc_1018",
-        "domain": "5.0",
-        "front": "What port is used by HTTP?",
-        "back": "TCP Port 80"
-    },
-    {
-        "id": "enc_fc_1019",
-        "domain": "4.0",
-        "front": "Which protocol uses TCP port 80?",
-        "back": "HTTP"
-    },
-    {
-        "id": "enc_fc_1020",
-        "domain": "5.0",
-        "front": "What port is used by POP3?",
-        "back": "TCP Port 110"
-    },
-    {
-        "id": "enc_fc_1021",
-        "domain": "1.0",
-        "front": "Which protocol uses TCP port 110?",
-        "back": "POP3"
-    },
-    {
-        "id": "enc_fc_1022",
-        "domain": "4.0",
-        "front": "What port is used by NTP?",
-        "back": "UDP Port 123"
-    },
-    {
-        "id": "enc_fc_1023",
-        "domain": "2.0",
-        "front": "Which protocol uses UDP port 123?",
-        "back": "NTP"
-    },
-    {
-        "id": "enc_fc_1024",
-        "domain": "3.0",
-        "front": "What port is used by IMAP?",
-        "back": "TCP Port 143"
-    },
-    {
-        "id": "enc_fc_1025",
-        "domain": "4.0",
-        "front": "Which protocol uses TCP port 143?",
-        "back": "IMAP"
-    },
-    {
-        "id": "enc_fc_1026",
-        "domain": "5.0",
-        "front": "What port is used by SNMP?",
-        "back": "UDP Port 161"
-    },
-    {
-        "id": "enc_fc_1027",
-        "domain": "4.0",
-        "front": "Which protocol uses UDP port 161?",
-        "back": "SNMP"
-    },
-    {
-        "id": "enc_fc_1028",
-        "domain": "3.0",
-        "front": "What port is used by HTTPS?",
-        "back": "TCP Port 443"
-    },
-    {
-        "id": "enc_fc_1029",
-        "domain": "5.0",
-        "front": "Which protocol uses TCP port 443?",
-        "back": "HTTPS"
-    },
-    {
-        "id": "enc_fc_1030",
-        "domain": "1.0",
-        "front": "What port is used by RDP?",
-        "back": "TCP Port 3389"
-    },
-    {
-        "id": "enc_fc_1031",
-        "domain": "2.0",
-        "front": "Which protocol uses TCP port 3389?",
-        "back": "RDP"
-    },
-    {
-        "id": "enc_fc_1032",
-        "domain": "5.0",
-        "front": "What port is used by Syslog?",
-        "back": "UDP Port 514"
-    },
-    {
-        "id": "enc_fc_1033",
-        "domain": "4.0",
-        "front": "Which protocol uses UDP port 514?",
-        "back": "Syslog"
-    },
-    {
-        "id": "enc_fc_1034",
-        "domain": "2.0",
-        "front": "What port is used by LDAP?",
-        "back": "TCP Port 389"
-    },
-    {
-        "id": "enc_fc_1035",
-        "domain": "1.0",
-        "front": "Which protocol uses TCP port 389?",
-        "back": "LDAP"
-    },
-    {
-        "id": "enc_fc_1036",
-        "domain": "3.0",
-        "front": "What port is used by LDAPS?",
-        "back": "TCP Port 636"
-    },
-    {
-        "id": "enc_fc_1037",
-        "domain": "1.0",
-        "front": "Which protocol uses TCP port 636?",
-        "back": "LDAPS"
-    },
-    {
-        "id": "enc_fc_1038",
-        "domain": "3.0",
-        "front": "What is the default Administrative Distance (AD) for Connected?",
-        "back": "0"
-    },
-    {
-        "id": "enc_fc_1039",
-        "domain": "2.0",
-        "front": "What is the default Administrative Distance (AD) for Static?",
-        "back": "1"
-    },
-    {
-        "id": "enc_fc_1040",
-        "domain": "2.0",
-        "front": "What is the default Administrative Distance (AD) for eBGP?",
-        "back": "20"
-    },
-    {
-        "id": "enc_fc_1041",
-        "domain": "2.0",
-        "front": "What is the default Administrative Distance (AD) for EIGRP (Internal)?",
-        "back": "90"
-    },
-    {
-        "id": "enc_fc_1042",
-        "domain": "1.0",
-        "front": "What is the default Administrative Distance (AD) for IGRP?",
-        "back": "100"
-    },
-    {
-        "id": "enc_fc_1043",
-        "domain": "5.0",
-        "front": "What is the default Administrative Distance (AD) for OSPF?",
-        "back": "110"
-    },
-    {
-        "id": "enc_fc_1044",
-        "domain": "1.0",
-        "front": "What is the default Administrative Distance (AD) for IS-IS?",
-        "back": "115"
-    },
-    {
-        "id": "enc_fc_1045",
-        "domain": "4.0",
-        "front": "What is the default Administrative Distance (AD) for RIP?",
-        "back": "120"
-    },
-    {
-        "id": "enc_fc_1046",
-        "domain": "2.0",
-        "front": "What is the default Administrative Distance (AD) for EIGRP (External)?",
-        "back": "170"
-    },
-    {
-        "id": "enc_fc_1047",
-        "domain": "5.0",
-        "front": "What is the default Administrative Distance (AD) for iBGP?",
-        "back": "200"
-    },
-    {
-        "id": "enc_fc_1048",
-        "domain": "3.0",
-        "front": "Which OSI layer is Layer 7?",
-        "back": "Application"
-    },
-    {
-        "id": "enc_fc_1049",
-        "domain": "1.0",
-        "front": "What is the Protocol Data Unit (PDU) at the Application layer?",
-        "back": "Data"
-    },
-    {
-        "id": "enc_fc_1050",
-        "domain": "1.0",
-        "front": "Which OSI layer is Layer 6?",
-        "back": "Presentation"
-    },
-    {
-        "id": "enc_fc_1051",
-        "domain": "1.0",
-        "front": "What is the Protocol Data Unit (PDU) at the Presentation layer?",
-        "back": "Data"
-    },
-    {
-        "id": "enc_fc_1052",
-        "domain": "3.0",
-        "front": "Which OSI layer is Layer 5?",
-        "back": "Session"
-    },
-    {
-        "id": "enc_fc_1053",
-        "domain": "4.0",
-        "front": "What is the Protocol Data Unit (PDU) at the Session layer?",
-        "back": "Data"
-    },
-    {
-        "id": "enc_fc_1054",
-        "domain": "3.0",
-        "front": "Which OSI layer is Layer 4?",
-        "back": "Transport"
-    },
-    {
-        "id": "enc_fc_1055",
-        "domain": "4.0",
-        "front": "What is the Protocol Data Unit (PDU) at the Transport layer?",
-        "back": "Segments/Datagrams"
-    },
-    {
-        "id": "enc_fc_1056",
-        "domain": "2.0",
-        "front": "Which OSI layer is Layer 3?",
-        "back": "Network"
-    },
-    {
-        "id": "enc_fc_1057",
-        "domain": "3.0",
-        "front": "What is the Protocol Data Unit (PDU) at the Network layer?",
-        "back": "Packets"
-    },
-    {
-        "id": "enc_fc_1058",
-        "domain": "3.0",
-        "front": "Which OSI layer is Layer 2?",
-        "back": "Data Link"
-    },
-    {
-        "id": "enc_fc_1059",
-        "domain": "1.0",
-        "front": "What is the Protocol Data Unit (PDU) at the Data Link layer?",
-        "back": "Frames"
-    },
-    {
-        "id": "enc_fc_1060",
-        "domain": "5.0",
-        "front": "Which OSI layer is Layer 1?",
-        "back": "Physical"
-    },
-    {
-        "id": "enc_fc_1061",
-        "domain": "2.0",
-        "front": "What is the Protocol Data Unit (PDU) at the Physical layer?",
-        "back": "Bits"
-    },
-    {
-        "id": "enc_fc_1062",
-        "domain": "3.0",
-        "front": "What is the subnet mask for a /24 prefix?",
-        "back": "255.255.255.0"
-    },
-    {
-        "id": "enc_fc_1063",
-        "domain": "3.0",
-        "front": "How many usable hosts are in a /24 subnet?",
-        "back": "254"
-    },
-    {
-        "id": "enc_fc_1064",
-        "domain": "5.0",
-        "front": "What is the subnet mask for a /25 prefix?",
-        "back": "255.255.255.128"
-    },
-    {
-        "id": "enc_fc_1065",
-        "domain": "4.0",
-        "front": "How many usable hosts are in a /25 subnet?",
-        "back": "126"
-    },
-    {
-        "id": "enc_fc_1066",
-        "domain": "3.0",
-        "front": "What is the subnet mask for a /26 prefix?",
-        "back": "255.255.255.192"
-    },
-    {
-        "id": "enc_fc_1067",
-        "domain": "5.0",
-        "front": "How many usable hosts are in a /26 subnet?",
-        "back": "62"
-    },
-    {
-        "id": "enc_fc_1068",
-        "domain": "3.0",
-        "front": "What is the subnet mask for a /27 prefix?",
-        "back": "255.255.255.224"
-    },
-    {
-        "id": "enc_fc_1069",
-        "domain": "1.0",
-        "front": "How many usable hosts are in a /27 subnet?",
-        "back": "30"
-    },
-    {
-        "id": "enc_fc_1070",
-        "domain": "1.0",
-        "front": "What is the subnet mask for a /28 prefix?",
-        "back": "255.255.255.240"
-    },
-    {
-        "id": "enc_fc_1071",
-        "domain": "1.0",
-        "front": "How many usable hosts are in a /28 subnet?",
-        "back": "14"
-    },
-    {
-        "id": "enc_fc_1072",
-        "domain": "4.0",
-        "front": "What is the subnet mask for a /29 prefix?",
-        "back": "255.255.255.248"
-    },
-    {
-        "id": "enc_fc_1073",
-        "domain": "1.0",
-        "front": "How many usable hosts are in a /29 subnet?",
-        "back": "6"
-    },
-    {
-        "id": "enc_fc_1074",
-        "domain": "2.0",
-        "front": "What is the subnet mask for a /30 prefix?",
-        "back": "255.255.255.252"
-    },
-    {
-        "id": "enc_fc_1075",
-        "domain": "4.0",
-        "front": "How many usable hosts are in a /30 subnet?",
-        "back": "2"
-    },
-    {
-        "id": "enc_fc_1076",
-        "domain": "2.0",
-        "front": "What is PoE?",
-        "back": "Power over Ethernet, provides power and data over twisted pair"
-    },
-    {
-        "id": "enc_fc_1077",
-        "domain": "2.0",
-        "front": "What is PoE?",
-        "back": "Power over Ethernet, provides power and data over twisted pair"
-    },
-    {
-        "id": "enc_fc_1078",
-        "domain": "1.0",
-        "front": "What is PoE?",
-        "back": "Power over Ethernet, provides power and data over twisted pair"
-    },
-    {
-        "id": "enc_fc_1079",
-        "domain": "5.0",
-        "front": "What is BGP?",
-        "back": "Border Gateway Protocol, the routing protocol of the Internet"
-    },
-    {
-        "id": "enc_fc_1080",
-        "domain": "3.0",
-        "front": "What is OSPF?",
-        "back": "Open Shortest Path First, a link-state routing protocol"
-    },
-    {
-        "id": "enc_fc_1081",
-        "domain": "2.0",
-        "front": "What is Syslog?",
-        "back": "Standard for message logging"
-    },
-    {
-        "id": "enc_fc_1082",
-        "domain": "4.0",
-        "front": "What is Syslog?",
-        "back": "Standard for message logging"
-    },
-    {
-        "id": "enc_fc_1083",
-        "domain": "4.0",
-        "front": "What is VLAN?",
-        "back": "Virtual LAN, logically segments broadcast domains"
-    },
-    {
-        "id": "enc_fc_1084",
-        "domain": "4.0",
-        "front": "What is ICMP?",
-        "back": "Internet Control Message Protocol, used by ping and traceroute"
-    },
-    {
-        "id": "enc_fc_1085",
-        "domain": "3.0",
-        "front": "What is STP?",
-        "back": "Spanning Tree Protocol, prevents Layer 2 loops"
-    },
-    {
-        "id": "enc_fc_1086",
-        "domain": "2.0",
-        "front": "What is NTP?",
-        "back": "Network Time Protocol, synchronizes clocks"
-    },
-    {
-        "id": "enc_fc_1087",
-        "domain": "2.0",
-        "front": "What is WPA3?",
-        "back": "Modern Wi-Fi security standard using SAE"
-    },
-    {
-        "id": "enc_fc_1088",
-        "domain": "4.0",
-        "front": "What is IPv6?",
-        "back": "128-bit IP addressing system"
-    },
-    {
-        "id": "enc_fc_1089",
-        "domain": "5.0",
-        "front": "What is DNS?",
-        "back": "Domain Name System, resolves hostnames to IPs"
-    },
-    {
-        "id": "enc_fc_1090",
-        "domain": "1.0",
-        "front": "What is OSPF?",
-        "back": "Open Shortest Path First, a link-state routing protocol"
-    },
-    {
-        "id": "enc_fc_1091",
-        "domain": "5.0",
-        "front": "What is ARP?",
-        "back": "Address Resolution Protocol, maps IP to MAC address"
-    },
-    {
-        "id": "enc_fc_1092",
-        "domain": "5.0",
-        "front": "What is MAC Address?",
-        "back": "48-bit physical hardware address"
-    },
-    {
-        "id": "enc_fc_1093",
-        "domain": "5.0",
-        "front": "What is ICMP?",
-        "back": "Internet Control Message Protocol, used by ping and traceroute"
-    },
-    {
-        "id": "enc_fc_1094",
-        "domain": "5.0",
-        "front": "What is Syslog?",
-        "back": "Standard for message logging"
-    },
-    {
-        "id": "enc_fc_1095",
-        "domain": "3.0",
-        "front": "What is WPA3?",
-        "back": "Modern Wi-Fi security standard using SAE"
-    },
-    {
-        "id": "enc_fc_1096",
-        "domain": "3.0",
-        "front": "What is PoE?",
-        "back": "Power over Ethernet, provides power and data over twisted pair"
-    },
-    {
-        "id": "enc_fc_1097",
-        "domain": "1.0",
-        "front": "What is DNS?",
-        "back": "Domain Name System, resolves hostnames to IPs"
-    },
-    {
-        "id": "enc_fc_1098",
-        "domain": "1.0",
-        "front": "What is Syslog?",
-        "back": "Standard for message logging"
-    },
-    {
-        "id": "enc_fc_1099",
-        "domain": "5.0",
-        "front": "What is DHCP?",
-        "back": "Dynamic Host Configuration Protocol, assigns IP addresses"
-    },
-    {
-        "id": "enc_fc_1100",
-        "domain": "2.0",
-        "front": "What is ARP?",
-        "back": "Address Resolution Protocol, maps IP to MAC address"
-    },
-    {
-        "id": "enc_fc_1101",
-        "domain": "1.0",
-        "front": "What is VLAN?",
-        "back": "Virtual LAN, logically segments broadcast domains"
-    },
-    {
-        "id": "enc_fc_1102",
-        "domain": "1.0",
-        "front": "What is OSPF?",
-        "back": "Open Shortest Path First, a link-state routing protocol"
-    },
-    {
-        "id": "enc_fc_1103",
-        "domain": "5.0",
-        "front": "What is OSPF?",
-        "back": "Open Shortest Path First, a link-state routing protocol"
-    },
-    {
-        "id": "enc_fc_1104",
-        "domain": "3.0",
-        "front": "What is Syslog?",
-        "back": "Standard for message logging"
-    },
-    {
-        "id": "enc_fc_1105",
-        "domain": "5.0",
-        "front": "What is MTU?",
-        "back": "Maximum Transmission Unit, typically 1500 bytes for Ethernet"
-    },
-    {
-        "id": "enc_fc_1106",
-        "domain": "4.0",
-        "front": "What is MAC Address?",
-        "back": "48-bit physical hardware address"
-    },
-    {
-        "id": "enc_fc_1107",
-        "domain": "2.0",
-        "front": "What is CSMA/CA?",
-        "back": "Collision avoidance protocol used in 802.11 Wi-Fi"
-    },
-    {
-        "id": "enc_fc_1108",
-        "domain": "3.0",
-        "front": "What is MAC Address?",
-        "back": "48-bit physical hardware address"
-    },
-    {
-        "id": "enc_fc_1109",
-        "domain": "5.0",
-        "front": "What is SNMP?",
-        "back": "Simple Network Management Protocol, used to monitor devices"
-    },
-    {
-        "id": "enc_fc_1110",
-        "domain": "1.0",
-        "front": "What is NTP?",
-        "back": "Network Time Protocol, synchronizes clocks"
-    },
-    {
-        "id": "enc_fc_1111",
-        "domain": "1.0",
-        "front": "What is NAT?",
-        "back": "Network Address Translation, maps private IPs to public IPs"
-    },
-    {
-        "id": "enc_fc_1112",
-        "domain": "1.0",
-        "front": "What is PoE?",
-        "back": "Power over Ethernet, provides power and data over twisted pair"
-    },
-    {
-        "id": "enc_fc_1113",
-        "domain": "3.0",
-        "front": "What is MAC Address?",
-        "back": "48-bit physical hardware address"
-    },
-    {
-        "id": "enc_fc_1114",
-        "domain": "5.0",
-        "front": "What is Syslog?",
-        "back": "Standard for message logging"
-    },
-    {
-        "id": "enc_fc_1115",
-        "domain": "5.0",
-        "front": "What is Syslog?",
-        "back": "Standard for message logging"
-    },
-    {
-        "id": "enc_fc_1116",
-        "domain": "4.0",
-        "front": "What is VLAN?",
-        "back": "Virtual LAN, logically segments broadcast domains"
-    },
-    {
-        "id": "enc_fc_1117",
-        "domain": "5.0",
-        "front": "What is MTU?",
-        "back": "Maximum Transmission Unit, typically 1500 bytes for Ethernet"
-    },
-    {
-        "id": "enc_fc_1118",
-        "domain": "4.0",
-        "front": "What is IPsec?",
-        "back": "Protocol suite for secure IP communications by authenticating and encrypting each IP packet"
-    },
-    {
-        "id": "enc_fc_1119",
-        "domain": "2.0",
-        "front": "What is IPsec?",
-        "back": "Protocol suite for secure IP communications by authenticating and encrypting each IP packet"
-    },
-    {
-        "id": "enc_fc_1120",
-        "domain": "1.0",
-        "front": "What is PoE?",
-        "back": "Power over Ethernet, provides power and data over twisted pair"
-    },
-    {
-        "id": "enc_fc_1121",
-        "domain": "5.0",
-        "front": "What is CSMA/CD?",
-        "back": "Collision detection protocol used in legacy Ethernet"
-    },
-    {
-        "id": "enc_fc_1122",
-        "domain": "4.0",
-        "front": "What is OSPF?",
-        "back": "Open Shortest Path First, a link-state routing protocol"
-    },
-    {
-        "id": "enc_fc_1123",
-        "domain": "3.0",
-        "front": "What is NAT?",
-        "back": "Network Address Translation, maps private IPs to public IPs"
-    },
-    {
-        "id": "enc_fc_1124",
-        "domain": "4.0",
-        "front": "What is WPA3?",
-        "back": "Modern Wi-Fi security standard using SAE"
-    },
-    {
-        "id": "enc_fc_1125",
-        "domain": "1.0",
-        "front": "What is PoE?",
-        "back": "Power over Ethernet, provides power and data over twisted pair"
-    },
-    {
-        "id": "enc_fc_1126",
-        "domain": "5.0",
-        "front": "What is DHCP?",
-        "back": "Dynamic Host Configuration Protocol, assigns IP addresses"
-    },
-    {
-        "id": "enc_fc_1127",
-        "domain": "1.0",
-        "front": "What is PoE?",
-        "back": "Power over Ethernet, provides power and data over twisted pair"
-    },
-    {
-        "id": "enc_fc_1128",
-        "domain": "3.0",
-        "front": "What is PoE?",
-        "back": "Power over Ethernet, provides power and data over twisted pair"
-    },
-    {
-        "id": "enc_fc_1129",
-        "domain": "2.0",
-        "front": "What is CSMA/CD?",
-        "back": "Collision detection protocol used in legacy Ethernet"
-    },
-    {
-        "id": "enc_fc_1130",
-        "domain": "3.0",
-        "front": "What is MAC Address?",
-        "back": "48-bit physical hardware address"
-    },
-    {
-        "id": "enc_fc_1131",
-        "domain": "5.0",
-        "front": "What is VLAN?",
-        "back": "Virtual LAN, logically segments broadcast domains"
-    },
-    {
-        "id": "enc_fc_1132",
-        "domain": "5.0",
-        "front": "What is CSMA/CA?",
-        "back": "Collision avoidance protocol used in 802.11 Wi-Fi"
-    },
-    {
-        "id": "enc_fc_1133",
-        "domain": "1.0",
-        "front": "What is PoE?",
-        "back": "Power over Ethernet, provides power and data over twisted pair"
-    },
-    {
-        "id": "enc_fc_1134",
-        "domain": "4.0",
-        "front": "What is DNS?",
-        "back": "Domain Name System, resolves hostnames to IPs"
-    },
-    {
-        "id": "enc_fc_1135",
-        "domain": "1.0",
-        "front": "What is WPA3?",
-        "back": "Modern Wi-Fi security standard using SAE"
-    },
-    {
-        "id": "enc_fc_1136",
-        "domain": "2.0",
-        "front": "What is CSMA/CD?",
-        "back": "Collision detection protocol used in legacy Ethernet"
-    },
-    {
-        "id": "enc_fc_1137",
-        "domain": "1.0",
-        "front": "What is PoE?",
-        "back": "Power over Ethernet, provides power and data over twisted pair"
-    },
-    {
-        "id": "enc_fc_1138",
-        "domain": "1.0",
-        "front": "What is SNMP?",
-        "back": "Simple Network Management Protocol, used to monitor devices"
-    },
-    {
-        "id": "enc_fc_1139",
-        "domain": "4.0",
-        "front": "What is Syslog?",
-        "back": "Standard for message logging"
-    },
-    {
-        "id": "enc_fc_1140",
-        "domain": "3.0",
-        "front": "What is NTP?",
-        "back": "Network Time Protocol, synchronizes clocks"
-    },
-    {
-        "id": "enc_fc_1141",
-        "domain": "3.0",
-        "front": "What is VLAN?",
-        "back": "Virtual LAN, logically segments broadcast domains"
-    },
-    {
-        "id": "enc_fc_1142",
-        "domain": "3.0",
-        "front": "What is ARP?",
-        "back": "Address Resolution Protocol, maps IP to MAC address"
-    },
-    {
-        "id": "enc_fc_1143",
-        "domain": "1.0",
-        "front": "What is WPA3?",
-        "back": "Modern Wi-Fi security standard using SAE"
-    },
-    {
-        "id": "enc_fc_1144",
-        "domain": "1.0",
-        "front": "What is DNS?",
-        "back": "Domain Name System, resolves hostnames to IPs"
-    },
-    {
-        "id": "enc_fc_1145",
-        "domain": "1.0",
-        "front": "What is ARP?",
-        "back": "Address Resolution Protocol, maps IP to MAC address"
-    },
-    {
-        "id": "enc_fc_1146",
-        "domain": "5.0",
-        "front": "What is MTU?",
-        "back": "Maximum Transmission Unit, typically 1500 bytes for Ethernet"
-    },
-    {
-        "id": "enc_fc_1147",
-        "domain": "5.0",
-        "front": "What is NAT?",
-        "back": "Network Address Translation, maps private IPs to public IPs"
-    },
-    {
-        "id": "enc_fc_1148",
-        "domain": "2.0",
-        "front": "What is IPv6?",
-        "back": "128-bit IP addressing system"
-    },
-    {
-        "id": "enc_fc_1149",
-        "domain": "1.0",
-        "front": "What is IPsec?",
-        "back": "Protocol suite for secure IP communications by authenticating and encrypting each IP packet"
-    },
-    {
-        "id": "enc_fc_1150",
-        "domain": "3.0",
-        "front": "What is IPsec?",
-        "back": "Protocol suite for secure IP communications by authenticating and encrypting each IP packet"
-    },
-    {
-        "id": "enc_fc_1151",
-        "domain": "4.0",
-        "front": "What is BGP?",
-        "back": "Border Gateway Protocol, the routing protocol of the Internet"
-    },
-    {
-        "id": "enc_fc_1152",
-        "domain": "5.0",
-        "front": "What is WPA3?",
-        "back": "Modern Wi-Fi security standard using SAE"
-    },
-    {
-        "id": "enc_fc_1153",
-        "domain": "5.0",
-        "front": "What is CSMA/CA?",
-        "back": "Collision avoidance protocol used in 802.11 Wi-Fi"
-    },
-    {
-        "id": "enc_fc_1154",
-        "domain": "4.0",
-        "front": "What is WPA3?",
-        "back": "Modern Wi-Fi security standard using SAE"
-    },
-    {
-        "id": "enc_fc_1155",
-        "domain": "5.0",
-        "front": "What is CSMA/CA?",
-        "back": "Collision avoidance protocol used in 802.11 Wi-Fi"
-    },
-    {
-        "id": "enc_fc_1156",
-        "domain": "5.0",
-        "front": "What is OSPF?",
-        "back": "Open Shortest Path First, a link-state routing protocol"
-    },
-    {
-        "id": "enc_fc_1157",
-        "domain": "3.0",
-        "front": "What is ARP?",
-        "back": "Address Resolution Protocol, maps IP to MAC address"
-    },
-    {
-        "id": "enc_fc_1158",
-        "domain": "2.0",
-        "front": "What is IPsec?",
-        "back": "Protocol suite for secure IP communications by authenticating and encrypting each IP packet"
-    },
-    {
-        "id": "enc_fc_1159",
-        "domain": "3.0",
-        "front": "What is DHCP?",
-        "back": "Dynamic Host Configuration Protocol, assigns IP addresses"
-    },
-    {
-        "id": "enc_fc_1160",
-        "domain": "5.0",
-        "front": "What is OSPF?",
-        "back": "Open Shortest Path First, a link-state routing protocol"
-    },
-    {
-        "id": "enc_fc_1161",
-        "domain": "2.0",
-        "front": "What is CSMA/CA?",
-        "back": "Collision avoidance protocol used in 802.11 Wi-Fi"
-    },
-    {
-        "id": "enc_fc_1162",
-        "domain": "4.0",
-        "front": "What is IPsec?",
-        "back": "Protocol suite for secure IP communications by authenticating and encrypting each IP packet"
-    },
-    {
-        "id": "enc_fc_1163",
-        "domain": "3.0",
-        "front": "What is ARP?",
-        "back": "Address Resolution Protocol, maps IP to MAC address"
-    },
-    {
-        "id": "enc_fc_1164",
-        "domain": "2.0",
-        "front": "What is IPsec?",
-        "back": "Protocol suite for secure IP communications by authenticating and encrypting each IP packet"
-    },
-    {
-        "id": "enc_fc_1165",
-        "domain": "3.0",
-        "front": "What is OSPF?",
-        "back": "Open Shortest Path First, a link-state routing protocol"
-    },
-    {
-        "id": "enc_fc_1166",
-        "domain": "4.0",
-        "front": "What is Syslog?",
-        "back": "Standard for message logging"
-    },
-    {
-        "id": "enc_fc_1167",
-        "domain": "5.0",
-        "front": "What is ICMP?",
-        "back": "Internet Control Message Protocol, used by ping and traceroute"
-    },
-    {
-        "id": "enc_fc_1168",
-        "domain": "1.0",
-        "front": "What is OSPF?",
-        "back": "Open Shortest Path First, a link-state routing protocol"
-    },
-    {
-        "id": "enc_fc_1169",
-        "domain": "4.0",
-        "front": "What is WPA3?",
-        "back": "Modern Wi-Fi security standard using SAE"
-    },
-    {
-        "id": "enc_fc_1170",
-        "domain": "2.0",
-        "front": "What is ARP?",
-        "back": "Address Resolution Protocol, maps IP to MAC address"
-    },
-    {
-        "id": "enc_fc_1171",
-        "domain": "4.0",
-        "front": "What is NAT?",
-        "back": "Network Address Translation, maps private IPs to public IPs"
-    },
-    {
-        "id": "enc_fc_1172",
-        "domain": "2.0",
-        "front": "What is NTP?",
-        "back": "Network Time Protocol, synchronizes clocks"
-    },
-    {
-        "id": "enc_fc_1173",
-        "domain": "1.0",
-        "front": "What is NTP?",
-        "back": "Network Time Protocol, synchronizes clocks"
-    },
-    {
-        "id": "enc_fc_1174",
-        "domain": "4.0",
-        "front": "What is CSMA/CD?",
-        "back": "Collision detection protocol used in legacy Ethernet"
-    },
-    {
-        "id": "enc_fc_1175",
-        "domain": "5.0",
-        "front": "What is IPsec?",
-        "back": "Protocol suite for secure IP communications by authenticating and encrypting each IP packet"
-    },
-    {
-        "id": "enc_fc_1176",
-        "domain": "2.0",
-        "front": "What is VLAN?",
-        "back": "Virtual LAN, logically segments broadcast domains"
-    },
-    {
-        "id": "enc_fc_1177",
-        "domain": "3.0",
-        "front": "What is DNS?",
-        "back": "Domain Name System, resolves hostnames to IPs"
-    },
-    {
-        "id": "enc_fc_1178",
-        "domain": "1.0",
-        "front": "What is VLAN?",
-        "back": "Virtual LAN, logically segments broadcast domains"
-    },
-    {
-        "id": "enc_fc_1179",
-        "domain": "5.0",
-        "front": "What is IPv6?",
-        "back": "128-bit IP addressing system"
-    },
-    {
-        "id": "enc_fc_1180",
-        "domain": "4.0",
-        "front": "What is WPA3?",
-        "back": "Modern Wi-Fi security standard using SAE"
-    },
-    {
-        "id": "enc_fc_1181",
-        "domain": "1.0",
-        "front": "What is NTP?",
-        "back": "Network Time Protocol, synchronizes clocks"
-    },
-    {
-        "id": "enc_fc_1182",
-        "domain": "3.0",
-        "front": "What is SNMP?",
-        "back": "Simple Network Management Protocol, used to monitor devices"
-    },
-    {
-        "id": "enc_fc_1183",
-        "domain": "4.0",
-        "front": "What is MAC Address?",
-        "back": "48-bit physical hardware address"
-    },
-    {
-        "id": "enc_fc_1184",
-        "domain": "3.0",
-        "front": "What is Syslog?",
-        "back": "Standard for message logging"
-    },
-    {
-        "id": "enc_fc_1185",
-        "domain": "2.0",
-        "front": "What is WPA3?",
-        "back": "Modern Wi-Fi security standard using SAE"
-    },
-    {
-        "id": "enc_fc_1186",
-        "domain": "2.0",
-        "front": "What is CSMA/CD?",
-        "back": "Collision detection protocol used in legacy Ethernet"
-    },
-    {
-        "id": "enc_fc_1187",
-        "domain": "2.0",
-        "front": "What is DNS?",
-        "back": "Domain Name System, resolves hostnames to IPs"
-    },
-    {
-        "id": "enc_fc_1188",
-        "domain": "3.0",
-        "front": "What is CSMA/CD?",
-        "back": "Collision detection protocol used in legacy Ethernet"
-    },
-    {
-        "id": "enc_fc_1189",
-        "domain": "3.0",
-        "front": "What is VLAN?",
-        "back": "Virtual LAN, logically segments broadcast domains"
-    },
-    {
-        "id": "enc_fc_1190",
-        "domain": "1.0",
-        "front": "What is PoE?",
-        "back": "Power over Ethernet, provides power and data over twisted pair"
-    },
-    {
-        "id": "enc_fc_1191",
-        "domain": "2.0",
-        "front": "What is NAT?",
-        "back": "Network Address Translation, maps private IPs to public IPs"
-    },
-    {
-        "id": "enc_fc_1192",
-        "domain": "4.0",
-        "front": "What is WPA3?",
-        "back": "Modern Wi-Fi security standard using SAE"
-    },
-    {
-        "id": "enc_fc_1193",
-        "domain": "5.0",
-        "front": "What is IPv6?",
-        "back": "128-bit IP addressing system"
-    },
-    {
-        "id": "enc_fc_1194",
-        "domain": "1.0",
-        "front": "What is NAT?",
-        "back": "Network Address Translation, maps private IPs to public IPs"
-    },
-    {
-        "id": "enc_fc_1195",
-        "domain": "3.0",
-        "front": "What is NTP?",
-        "back": "Network Time Protocol, synchronizes clocks"
-    },
-    {
-        "id": "enc_fc_1196",
-        "domain": "4.0",
-        "front": "What is ICMP?",
-        "back": "Internet Control Message Protocol, used by ping and traceroute"
-    },
-    {
-        "id": "enc_fc_1197",
-        "domain": "2.0",
-        "front": "What is MTU?",
-        "back": "Maximum Transmission Unit, typically 1500 bytes for Ethernet"
-    },
-    {
-        "id": "enc_fc_1198",
-        "domain": "3.0",
-        "front": "What is CSMA/CD?",
-        "back": "Collision detection protocol used in legacy Ethernet"
-    },
-    {
-        "id": "enc_fc_1199",
-        "domain": "5.0",
-        "front": "What is BGP?",
-        "back": "Border Gateway Protocol, the routing protocol of the Internet"
-    },
-    {
-        "id": "enc_fc_1200",
-        "domain": "3.0",
-        "front": "What is NTP?",
-        "back": "Network Time Protocol, synchronizes clocks"
-    },
-    {
-        "id": "enc_fc_1201",
-        "domain": "2.0",
-        "front": "What is CSMA/CA?",
-        "back": "Collision avoidance protocol used in 802.11 Wi-Fi"
-    },
-    {
-        "id": "enc_fc_1202",
-        "domain": "2.0",
-        "front": "What is VLAN?",
-        "back": "Virtual LAN, logically segments broadcast domains"
-    },
-    {
-        "id": "enc_fc_1203",
-        "domain": "1.0",
-        "front": "What is BGP?",
-        "back": "Border Gateway Protocol, the routing protocol of the Internet"
-    },
-    {
-        "id": "enc_fc_1204",
-        "domain": "3.0",
-        "front": "What is MAC Address?",
-        "back": "48-bit physical hardware address"
-    },
-    {
-        "id": "enc_fc_1205",
-        "domain": "2.0",
-        "front": "What is BGP?",
-        "back": "Border Gateway Protocol, the routing protocol of the Internet"
-    },
-    {
-        "id": "enc_fc_1206",
-        "domain": "5.0",
-        "front": "What is NAT?",
-        "back": "Network Address Translation, maps private IPs to public IPs"
-    },
-    {
-        "id": "enc_fc_1207",
-        "domain": "2.0",
-        "front": "What is ARP?",
-        "back": "Address Resolution Protocol, maps IP to MAC address"
-    },
-    {
-        "id": "enc_fc_1208",
-        "domain": "5.0",
-        "front": "What is CSMA/CD?",
-        "back": "Collision detection protocol used in legacy Ethernet"
-    },
-    {
-        "id": "enc_fc_1209",
-        "domain": "5.0",
-        "front": "What is MTU?",
-        "back": "Maximum Transmission Unit, typically 1500 bytes for Ethernet"
-    },
-    {
-        "id": "enc_fc_1210",
-        "domain": "2.0",
-        "front": "What is SNMP?",
-        "back": "Simple Network Management Protocol, used to monitor devices"
-    },
-    {
-        "id": "enc_fc_1211",
-        "domain": "1.0",
-        "front": "What is SNMP?",
-        "back": "Simple Network Management Protocol, used to monitor devices"
-    },
-    {
-        "id": "enc_fc_1212",
-        "domain": "5.0",
-        "front": "What is NAT?",
-        "back": "Network Address Translation, maps private IPs to public IPs"
-    },
-    {
-        "id": "enc_fc_1213",
-        "domain": "2.0",
-        "front": "What is CSMA/CD?",
-        "back": "Collision detection protocol used in legacy Ethernet"
-    },
-    {
-        "id": "enc_fc_1214",
-        "domain": "3.0",
-        "front": "What is BGP?",
-        "back": "Border Gateway Protocol, the routing protocol of the Internet"
-    },
-    {
-        "id": "enc_fc_1215",
-        "domain": "1.0",
-        "front": "What is MAC Address?",
-        "back": "48-bit physical hardware address"
-    },
-    {
-        "id": "enc_fc_1216",
-        "domain": "5.0",
-        "front": "What is CSMA/CA?",
-        "back": "Collision avoidance protocol used in 802.11 Wi-Fi"
-    },
-    {
-        "id": "enc_fc_1217",
-        "domain": "2.0",
-        "front": "What is VLAN?",
-        "back": "Virtual LAN, logically segments broadcast domains"
-    },
-    {
-        "id": "enc_fc_1218",
-        "domain": "2.0",
-        "front": "What is PoE?",
-        "back": "Power over Ethernet, provides power and data over twisted pair"
-    },
-    {
-        "id": "enc_fc_1219",
-        "domain": "3.0",
-        "front": "What is PoE?",
-        "back": "Power over Ethernet, provides power and data over twisted pair"
-    },
-    {
-        "id": "enc_fc_1220",
-        "domain": "2.0",
-        "front": "What is SNMP?",
-        "back": "Simple Network Management Protocol, used to monitor devices"
-    },
-    {
-        "id": "enc_fc_1221",
-        "domain": "3.0",
-        "front": "What is BGP?",
-        "back": "Border Gateway Protocol, the routing protocol of the Internet"
-    },
-    {
-        "id": "enc_fc_1222",
-        "domain": "5.0",
-        "front": "What is MTU?",
-        "back": "Maximum Transmission Unit, typically 1500 bytes for Ethernet"
-    },
-    {
-        "id": "enc_fc_1223",
-        "domain": "2.0",
-        "front": "What is NAT?",
-        "back": "Network Address Translation, maps private IPs to public IPs"
-    },
-    {
-        "id": "enc_fc_1224",
-        "domain": "4.0",
-        "front": "What is MAC Address?",
-        "back": "48-bit physical hardware address"
-    },
-    {
-        "id": "enc_fc_1225",
-        "domain": "2.0",
-        "front": "What is VLAN?",
-        "back": "Virtual LAN, logically segments broadcast domains"
-    },
-    {
-        "id": "enc_fc_1226",
-        "domain": "2.0",
-        "front": "What is DNS?",
-        "back": "Domain Name System, resolves hostnames to IPs"
-    },
-    {
-        "id": "enc_fc_1227",
-        "domain": "2.0",
-        "front": "What is ARP?",
-        "back": "Address Resolution Protocol, maps IP to MAC address"
-    },
-    {
-        "id": "enc_fc_1228",
-        "domain": "4.0",
-        "front": "What is CSMA/CA?",
-        "back": "Collision avoidance protocol used in 802.11 Wi-Fi"
-    },
-    {
-        "id": "enc_fc_1229",
-        "domain": "4.0",
-        "front": "What is SNMP?",
-        "back": "Simple Network Management Protocol, used to monitor devices"
-    },
-    {
-        "id": "enc_fc_1230",
-        "domain": "4.0",
-        "front": "What is MTU?",
-        "back": "Maximum Transmission Unit, typically 1500 bytes for Ethernet"
-    },
-    {
-        "id": "enc_fc_1231",
-        "domain": "3.0",
-        "front": "What is WPA3?",
-        "back": "Modern Wi-Fi security standard using SAE"
-    },
-    {
-        "id": "enc_fc_1232",
-        "domain": "1.0",
-        "front": "What is IPv6?",
-        "back": "128-bit IP addressing system"
-    },
-    {
-        "id": "enc_fc_1233",
-        "domain": "2.0",
-        "front": "What is NTP?",
-        "back": "Network Time Protocol, synchronizes clocks"
-    },
-    {
-        "id": "enc_fc_1234",
-        "domain": "3.0",
-        "front": "What is PoE?",
-        "back": "Power over Ethernet, provides power and data over twisted pair"
-    },
-    {
-        "id": "enc_fc_1235",
-        "domain": "2.0",
-        "front": "What is NTP?",
-        "back": "Network Time Protocol, synchronizes clocks"
-    },
-    {
-        "id": "enc_fc_1236",
-        "domain": "5.0",
-        "front": "What is CSMA/CA?",
-        "back": "Collision avoidance protocol used in 802.11 Wi-Fi"
-    },
-    {
-        "id": "enc_fc_1237",
-        "domain": "3.0",
-        "front": "What is MAC Address?",
-        "back": "48-bit physical hardware address"
-    },
-    {
-        "id": "enc_fc_1238",
-        "domain": "3.0",
-        "front": "What is SNMP?",
-        "back": "Simple Network Management Protocol, used to monitor devices"
-    },
-    {
-        "id": "enc_fc_1239",
-        "domain": "3.0",
-        "front": "What is ICMP?",
-        "back": "Internet Control Message Protocol, used by ping and traceroute"
-    },
-    {
-        "id": "enc_fc_1240",
-        "domain": "2.0",
-        "front": "What is WPA3?",
-        "back": "Modern Wi-Fi security standard using SAE"
-    },
-    {
-        "id": "enc_fc_1241",
-        "domain": "3.0",
-        "front": "What is OSPF?",
-        "back": "Open Shortest Path First, a link-state routing protocol"
-    },
-    {
-        "id": "enc_fc_1242",
-        "domain": "1.0",
-        "front": "What is ARP?",
-        "back": "Address Resolution Protocol, maps IP to MAC address"
-    },
-    {
-        "id": "enc_fc_1243",
-        "domain": "2.0",
-        "front": "What is IPv6?",
-        "back": "128-bit IP addressing system"
-    },
-    {
-        "id": "enc_fc_1244",
-        "domain": "3.0",
-        "front": "What is DHCP?",
-        "back": "Dynamic Host Configuration Protocol, assigns IP addresses"
-    },
-    {
-        "id": "enc_fc_1245",
-        "domain": "3.0",
-        "front": "What is PoE?",
-        "back": "Power over Ethernet, provides power and data over twisted pair"
-    },
-    {
-        "id": "enc_fc_1246",
-        "domain": "3.0",
-        "front": "What is CSMA/CD?",
-        "back": "Collision detection protocol used in legacy Ethernet"
-    },
-    {
-        "id": "enc_fc_1247",
-        "domain": "1.0",
-        "front": "What is ICMP?",
-        "back": "Internet Control Message Protocol, used by ping and traceroute"
-    },
-    {
-        "id": "enc_fc_1248",
-        "domain": "1.0",
-        "front": "What is VLAN?",
-        "back": "Virtual LAN, logically segments broadcast domains"
-    },
-    {
-        "id": "enc_fc_1249",
-        "domain": "1.0",
-        "front": "What is Syslog?",
-        "back": "Standard for message logging"
-    },
-    {
-        "id": "enc_fc_1250",
-        "domain": "5.0",
-        "front": "What is NAT?",
-        "back": "Network Address Translation, maps private IPs to public IPs"
-    },
-    {
-        "id": "enc_fc_1251",
-        "domain": "5.0",
-        "front": "What is MAC Address?",
-        "back": "48-bit physical hardware address"
-    },
-    {
-        "id": "enc_fc_1252",
-        "domain": "4.0",
-        "front": "What is NAT?",
-        "back": "Network Address Translation, maps private IPs to public IPs"
-    },
-    {
-        "id": "enc_fc_1253",
-        "domain": "2.0",
-        "front": "What is ARP?",
-        "back": "Address Resolution Protocol, maps IP to MAC address"
-    },
-    {
-        "id": "enc_fc_1254",
-        "domain": "5.0",
-        "front": "What is NAT?",
-        "back": "Network Address Translation, maps private IPs to public IPs"
-    },
-    {
-        "id": "enc_fc_1255",
-        "domain": "4.0",
-        "front": "What is IPsec?",
-        "back": "Protocol suite for secure IP communications by authenticating and encrypting each IP packet"
-    },
-    {
-        "id": "enc_fc_1256",
-        "domain": "4.0",
-        "front": "What is MAC Address?",
-        "back": "48-bit physical hardware address"
-    },
-    {
-        "id": "enc_fc_1257",
-        "domain": "2.0",
-        "front": "What is OSPF?",
-        "back": "Open Shortest Path First, a link-state routing protocol"
-    },
-    {
-        "id": "enc_fc_1258",
-        "domain": "1.0",
-        "front": "What is IPsec?",
-        "back": "Protocol suite for secure IP communications by authenticating and encrypting each IP packet"
-    },
-    {
-        "id": "enc_fc_1259",
-        "domain": "2.0",
-        "front": "What is CSMA/CA?",
-        "back": "Collision avoidance protocol used in 802.11 Wi-Fi"
-    },
-    {
-        "id": "enc_fc_1260",
-        "domain": "1.0",
-        "front": "What is OSPF?",
-        "back": "Open Shortest Path First, a link-state routing protocol"
-    },
-    {
-        "id": "enc_fc_1261",
-        "domain": "3.0",
-        "front": "What is PoE?",
-        "back": "Power over Ethernet, provides power and data over twisted pair"
-    },
-    {
-        "id": "enc_fc_1262",
-        "domain": "1.0",
-        "front": "What is MAC Address?",
-        "back": "48-bit physical hardware address"
-    },
-    {
-        "id": "enc_fc_1263",
-        "domain": "2.0",
-        "front": "What is IPv6?",
-        "back": "128-bit IP addressing system"
-    },
-    {
-        "id": "enc_fc_1264",
-        "domain": "2.0",
-        "front": "What is NAT?",
-        "back": "Network Address Translation, maps private IPs to public IPs"
-    },
-    {
-        "id": "enc_fc_1265",
-        "domain": "3.0",
-        "front": "What is NAT?",
-        "back": "Network Address Translation, maps private IPs to public IPs"
-    },
-    {
-        "id": "enc_fc_1266",
-        "domain": "5.0",
-        "front": "What is CSMA/CA?",
-        "back": "Collision avoidance protocol used in 802.11 Wi-Fi"
-    },
-    {
-        "id": "enc_fc_1267",
-        "domain": "1.0",
-        "front": "What is IPv6?",
-        "back": "128-bit IP addressing system"
-    },
-    {
-        "id": "enc_fc_1268",
-        "domain": "2.0",
-        "front": "What is WPA3?",
-        "back": "Modern Wi-Fi security standard using SAE"
-    },
-    {
-        "id": "enc_fc_1269",
-        "domain": "4.0",
-        "front": "What is ARP?",
-        "back": "Address Resolution Protocol, maps IP to MAC address"
-    },
-    {
-        "id": "enc_fc_1270",
-        "domain": "3.0",
-        "front": "What is MAC Address?",
-        "back": "48-bit physical hardware address"
-    },
-    {
-        "id": "enc_fc_1271",
-        "domain": "5.0",
-        "front": "What is MAC Address?",
-        "back": "48-bit physical hardware address"
-    },
-    {
-        "id": "enc_fc_1272",
-        "domain": "2.0",
-        "front": "What is NAT?",
-        "back": "Network Address Translation, maps private IPs to public IPs"
-    },
-    {
-        "id": "enc_fc_1273",
-        "domain": "1.0",
-        "front": "What is ARP?",
-        "back": "Address Resolution Protocol, maps IP to MAC address"
-    },
-    {
-        "id": "enc_fc_1274",
-        "domain": "4.0",
-        "front": "What is SNMP?",
-        "back": "Simple Network Management Protocol, used to monitor devices"
-    },
-    {
-        "id": "enc_fc_1275",
-        "domain": "2.0",
-        "front": "What is IPsec?",
-        "back": "Protocol suite for secure IP communications by authenticating and encrypting each IP packet"
-    },
-    {
-        "id": "enc_fc_1276",
-        "domain": "1.0",
-        "front": "What is MTU?",
-        "back": "Maximum Transmission Unit, typically 1500 bytes for Ethernet"
-    },
-    {
-        "id": "enc_fc_1277",
-        "domain": "2.0",
-        "front": "What is IPsec?",
-        "back": "Protocol suite for secure IP communications by authenticating and encrypting each IP packet"
-    },
-    {
-        "id": "enc_fc_1278",
-        "domain": "5.0",
-        "front": "What is NTP?",
-        "back": "Network Time Protocol, synchronizes clocks"
-    },
-    {
-        "id": "enc_fc_1279",
-        "domain": "3.0",
-        "front": "What is DNS?",
-        "back": "Domain Name System, resolves hostnames to IPs"
-    },
-    {
-        "id": "enc_fc_1280",
-        "domain": "5.0",
-        "front": "What is MAC Address?",
-        "back": "48-bit physical hardware address"
-    },
-    {
-        "id": "enc_fc_1281",
-        "domain": "5.0",
-        "front": "What is Syslog?",
-        "back": "Standard for message logging"
-    },
-    {
-        "id": "enc_fc_1282",
-        "domain": "3.0",
-        "front": "What is CSMA/CA?",
-        "back": "Collision avoidance protocol used in 802.11 Wi-Fi"
-    },
-    {
-        "id": "enc_fc_1283",
-        "domain": "1.0",
-        "front": "What is NAT?",
-        "back": "Network Address Translation, maps private IPs to public IPs"
-    },
-    {
-        "id": "enc_fc_1284",
-        "domain": "2.0",
-        "front": "What is SNMP?",
-        "back": "Simple Network Management Protocol, used to monitor devices"
-    },
-    {
-        "id": "enc_fc_1285",
-        "domain": "5.0",
-        "front": "What is DHCP?",
-        "back": "Dynamic Host Configuration Protocol, assigns IP addresses"
-    },
-    {
-        "id": "enc_fc_1286",
-        "domain": "1.0",
-        "front": "What is OSPF?",
-        "back": "Open Shortest Path First, a link-state routing protocol"
-    },
-    {
-        "id": "enc_fc_1287",
-        "domain": "3.0",
-        "front": "What is Syslog?",
-        "back": "Standard for message logging"
-    },
-    {
-        "id": "enc_fc_1288",
-        "domain": "3.0",
-        "front": "What is DHCP?",
-        "back": "Dynamic Host Configuration Protocol, assigns IP addresses"
-    },
-    {
-        "id": "enc_fc_1289",
-        "domain": "5.0",
-        "front": "What is STP?",
-        "back": "Spanning Tree Protocol, prevents Layer 2 loops"
-    },
-    {
-        "id": "enc_fc_1290",
-        "domain": "3.0",
-        "front": "What is OSPF?",
-        "back": "Open Shortest Path First, a link-state routing protocol"
-    },
-    {
-        "id": "enc_fc_1291",
-        "domain": "3.0",
-        "front": "What is SNMP?",
-        "back": "Simple Network Management Protocol, used to monitor devices"
-    },
-    {
-        "id": "enc_fc_1292",
-        "domain": "3.0",
-        "front": "What is CSMA/CD?",
-        "back": "Collision detection protocol used in legacy Ethernet"
-    },
-    {
-        "id": "enc_fc_1293",
-        "domain": "4.0",
-        "front": "What is CSMA/CD?",
-        "back": "Collision detection protocol used in legacy Ethernet"
-    },
-    {
-        "id": "enc_fc_1294",
-        "domain": "5.0",
-        "front": "What is NTP?",
-        "back": "Network Time Protocol, synchronizes clocks"
-    },
-    {
-        "id": "enc_fc_1295",
-        "domain": "5.0",
-        "front": "What is NTP?",
-        "back": "Network Time Protocol, synchronizes clocks"
-    },
-    {
-        "id": "enc_fc_1296",
-        "domain": "5.0",
-        "front": "What is MTU?",
-        "back": "Maximum Transmission Unit, typically 1500 bytes for Ethernet"
-    },
-    {
-        "id": "enc_fc_1297",
-        "domain": "2.0",
-        "front": "What is SNMP?",
-        "back": "Simple Network Management Protocol, used to monitor devices"
-    },
-    {
-        "id": "enc_fc_1298",
-        "domain": "5.0",
-        "front": "What is IPv6?",
-        "back": "128-bit IP addressing system"
-    },
-    {
-        "id": "enc_fc_1299",
-        "domain": "2.0",
-        "front": "What is WPA3?",
-        "back": "Modern Wi-Fi security standard using SAE"
-    }
-],
-    questions: [
-    {
-        "id": "enc_q_1000",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which port is associated with the FTP (Data) service?",
-        "options": [
-            "TCP 20",
-            "TCP 636",
-            "UDP/TCP 53",
-            "TCP 443"
-        ],
-        "answer": [
-            "TCP 20"
-        ],
-        "explanation": "FTP (Data) operates on TCP port 20."
-    },
-    {
-        "id": "enc_q_1001",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which port is associated with the FTP (Control) service?",
-        "options": [
-            "UDP 161",
-            "TCP 23",
-            "TCP 21",
-            "TCP 110"
-        ],
-        "answer": [
-            "TCP 21"
-        ],
-        "explanation": "FTP (Control) operates on TCP port 21."
-    },
-    {
-        "id": "enc_q_1002",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which port is associated with the SSH service?",
-        "options": [
-            "TCP 20",
-            "TCP 110",
-            "TCP 22",
-            "UDP 67"
-        ],
-        "answer": [
-            "TCP 22"
-        ],
-        "explanation": "SSH operates on TCP port 22."
-    },
-    {
-        "id": "enc_q_1003",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which port is associated with the Telnet service?",
-        "options": [
-            "UDP 123",
-            "TCP 443",
-            "UDP 67",
-            "TCP 23"
-        ],
-        "answer": [
-            "TCP 23"
-        ],
-        "explanation": "Telnet operates on TCP port 23."
-    },
-    {
-        "id": "enc_q_1004",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which port is associated with the SMTP service?",
-        "options": [
-            "TCP 25",
-            "TCP 80",
-            "UDP 123",
-            "TCP 21"
-        ],
-        "answer": [
-            "TCP 25"
-        ],
-        "explanation": "SMTP operates on TCP port 25."
-    },
-    {
-        "id": "enc_q_1005",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which port is associated with the DNS service?",
-        "options": [
-            "TCP 23",
-            "TCP 3389",
-            "UDP/TCP 53",
-            "TCP 110"
-        ],
-        "answer": [
-            "UDP/TCP 53"
-        ],
-        "explanation": "DNS operates on UDP/TCP port 53."
-    },
-    {
-        "id": "enc_q_1006",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which port is associated with the DHCP (Server) service?",
-        "options": [
-            "UDP/TCP 53",
-            "TCP 22",
-            "TCP 21",
-            "UDP 67"
-        ],
-        "answer": [
-            "UDP 67"
-        ],
-        "explanation": "DHCP (Server) operates on UDP port 67."
-    },
-    {
-        "id": "enc_q_1007",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which port is associated with the DHCP (Client) service?",
-        "options": [
-            "TCP 20",
-            "TCP 443",
-            "UDP 68",
-            "TCP 110"
-        ],
-        "answer": [
-            "UDP 68"
-        ],
-        "explanation": "DHCP (Client) operates on UDP port 68."
-    },
-    {
-        "id": "enc_q_1008",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which port is associated with the TFTP service?",
-        "options": [
-            "UDP 69",
-            "UDP 67",
-            "UDP 514",
-            "TCP 443"
-        ],
-        "answer": [
-            "UDP 69"
-        ],
-        "explanation": "TFTP operates on UDP port 69."
-    },
-    {
-        "id": "enc_q_1009",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which port is associated with the HTTP service?",
-        "options": [
-            "TCP 20",
-            "TCP 636",
-            "TCP 22",
-            "TCP 80"
-        ],
-        "answer": [
-            "TCP 80"
-        ],
-        "explanation": "HTTP operates on TCP port 80."
-    },
-    {
-        "id": "enc_q_1010",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which port is associated with the POP3 service?",
-        "options": [
-            "TCP 110",
-            "TCP 3389",
-            "TCP 143",
-            "TCP 21"
-        ],
-        "answer": [
-            "TCP 110"
-        ],
-        "explanation": "POP3 operates on TCP port 110."
-    },
-    {
-        "id": "enc_q_1011",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which port is associated with the NTP service?",
-        "options": [
-            "UDP 123",
-            "UDP/TCP 53",
-            "UDP 514",
-            "TCP 21"
-        ],
-        "answer": [
-            "UDP 123"
-        ],
-        "explanation": "NTP operates on UDP port 123."
-    },
-    {
-        "id": "enc_q_1012",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which port is associated with the IMAP service?",
-        "options": [
-            "UDP 123",
-            "UDP 67",
-            "TCP 143",
-            "TCP 20"
-        ],
-        "answer": [
-            "TCP 143"
-        ],
-        "explanation": "IMAP operates on TCP port 143."
-    },
-    {
-        "id": "enc_q_1013",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which port is associated with the SNMP service?",
-        "options": [
-            "UDP 69",
-            "UDP 161",
-            "TCP 3389",
-            "UDP 68"
-        ],
-        "answer": [
-            "UDP 161"
-        ],
-        "explanation": "SNMP operates on UDP port 161."
-    },
-    {
-        "id": "enc_q_1014",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which port is associated with the HTTPS service?",
-        "options": [
-            "TCP 3389",
-            "TCP 25",
-            "TCP 443",
-            "TCP 22"
-        ],
-        "answer": [
-            "TCP 443"
-        ],
-        "explanation": "HTTPS operates on TCP port 443."
-    },
-    {
-        "id": "enc_q_1015",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which port is associated with the RDP service?",
-        "options": [
-            "UDP 123",
-            "TCP 22",
-            "TCP 3389",
-            "UDP 67"
-        ],
-        "answer": [
-            "TCP 3389"
-        ],
-        "explanation": "RDP operates on TCP port 3389."
-    },
-    {
-        "id": "enc_q_1016",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which port is associated with the Syslog service?",
-        "options": [
-            "UDP 514",
-            "UDP 68",
-            "TCP 3389",
-            "TCP 23"
-        ],
-        "answer": [
-            "UDP 514"
-        ],
-        "explanation": "Syslog operates on UDP port 514."
-    },
-    {
-        "id": "enc_q_1017",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which port is associated with the LDAP service?",
-        "options": [
-            "TCP 389",
-            "TCP 25",
-            "UDP 123",
-            "TCP 443"
-        ],
-        "answer": [
-            "TCP 389"
-        ],
-        "explanation": "LDAP operates on TCP port 389."
-    },
-    {
-        "id": "enc_q_1018",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which port is associated with the LDAPS service?",
-        "options": [
-            "TCP 23",
-            "TCP 20",
-            "TCP 110",
-            "TCP 636"
-        ],
-        "answer": [
-            "TCP 636"
-        ],
-        "explanation": "LDAPS operates on TCP port 636."
-    },
-    {
-        "id": "enc_q_1019",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "When configuring a router, what is the default administrative distance of Connected?",
-        "options": [
-            "90",
-            "20",
-            "0",
-            "1"
-        ],
-        "answer": [
-            "0"
-        ],
-        "explanation": "The AD for Connected is 0. Lower AD is preferred."
-    },
-    {
-        "id": "enc_q_1020",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "When configuring a router, what is the default administrative distance of Static?",
-        "options": [
-            "1",
-            "90",
-            "0",
-            "20"
-        ],
-        "answer": [
-            "1"
-        ],
-        "explanation": "The AD for Static is 1. Lower AD is preferred."
-    },
-    {
-        "id": "enc_q_1021",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "When configuring a router, what is the default administrative distance of eBGP?",
-        "options": [
-            "1",
-            "0",
-            "200",
-            "20"
-        ],
-        "answer": [
-            "20"
-        ],
-        "explanation": "The AD for eBGP is 20. Lower AD is preferred."
-    },
-    {
-        "id": "enc_q_1022",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "When configuring a router, what is the default administrative distance of EIGRP (Internal)?",
-        "options": [
-            "120",
-            "100",
-            "20",
-            "90"
-        ],
-        "answer": [
-            "90"
-        ],
-        "explanation": "The AD for EIGRP (Internal) is 90. Lower AD is preferred."
-    },
-    {
-        "id": "enc_q_1023",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "When configuring a router, what is the default administrative distance of IGRP?",
-        "options": [
-            "20",
-            "100",
-            "110",
-            "170"
-        ],
-        "answer": [
-            "100"
-        ],
-        "explanation": "The AD for IGRP is 100. Lower AD is preferred."
-    },
-    {
-        "id": "enc_q_1024",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "When configuring a router, what is the default administrative distance of OSPF?",
-        "options": [
-            "115",
-            "110",
-            "170",
-            "90"
-        ],
-        "answer": [
-            "110"
-        ],
-        "explanation": "The AD for OSPF is 110. Lower AD is preferred."
-    },
-    {
-        "id": "enc_q_1025",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "When configuring a router, what is the default administrative distance of IS-IS?",
-        "options": [
-            "115",
-            "200",
-            "100",
-            "120"
-        ],
-        "answer": [
-            "115"
-        ],
-        "explanation": "The AD for IS-IS is 115. Lower AD is preferred."
-    },
-    {
-        "id": "enc_q_1026",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "When configuring a router, what is the default administrative distance of RIP?",
-        "options": [
-            "200",
-            "0",
-            "90",
-            "120"
-        ],
-        "answer": [
-            "120"
-        ],
-        "explanation": "The AD for RIP is 120. Lower AD is preferred."
-    },
-    {
-        "id": "enc_q_1027",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "When configuring a router, what is the default administrative distance of EIGRP (External)?",
-        "options": [
-            "20",
-            "90",
-            "200",
-            "170"
-        ],
-        "answer": [
-            "170"
-        ],
-        "explanation": "The AD for EIGRP (External) is 170. Lower AD is preferred."
-    },
-    {
-        "id": "enc_q_1028",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "When configuring a router, what is the default administrative distance of iBGP?",
-        "options": [
-            "200",
-            "90",
-            "170",
-            "20"
-        ],
-        "answer": [
-            "200"
-        ],
-        "explanation": "The AD for iBGP is 200. Lower AD is preferred."
-    },
-    {
-        "id": "enc_q_1029",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which OSI layer is responsible for: Network applications?",
-        "options": [
-            "Application",
-            "Transport",
-            "Session",
-            "Presentation"
-        ],
-        "answer": [
-            "Application"
-        ],
-        "explanation": "The Application layer handles network applications."
-    },
-    {
-        "id": "enc_q_1030",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which OSI layer is responsible for: Data formatting and encryption?",
-        "options": [
-            "Presentation",
-            "Application",
-            "Network",
-            "Transport"
-        ],
-        "answer": [
-            "Presentation"
-        ],
-        "explanation": "The Presentation layer handles data formatting and encryption."
-    },
-    {
-        "id": "enc_q_1031",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which OSI layer is responsible for: Session establishment and termination?",
-        "options": [
-            "Session",
-            "Application",
-            "Transport",
-            "Data Link"
-        ],
-        "answer": [
-            "Session"
-        ],
-        "explanation": "The Session layer handles session establishment and termination."
-    },
-    {
-        "id": "enc_q_1032",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which OSI layer is responsible for: End-to-end connections and reliability?",
-        "options": [
-            "Presentation",
-            "Network",
-            "Transport",
-            "Session"
-        ],
-        "answer": [
-            "Transport"
-        ],
-        "explanation": "The Transport layer handles end-to-end connections and reliability."
-    },
-    {
-        "id": "enc_q_1033",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which OSI layer is responsible for: Logical addressing and routing?",
-        "options": [
-            "Application",
-            "Network",
-            "Presentation",
-            "Physical"
-        ],
-        "answer": [
-            "Network"
-        ],
-        "explanation": "The Network layer handles logical addressing and routing."
-    },
-    {
-        "id": "enc_q_1034",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which OSI layer is responsible for: Physical addressing and MAC?",
-        "options": [
-            "Data Link",
-            "Transport",
-            "Presentation",
-            "Session"
-        ],
-        "answer": [
-            "Data Link"
-        ],
-        "explanation": "The Data Link layer handles physical addressing and mac."
-    },
-    {
-        "id": "enc_q_1035",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which OSI layer is responsible for: Media, signal, and binary transmission?",
-        "options": [
-            "Physical",
-            "Session",
-            "Data Link",
-            "Presentation"
-        ],
-        "answer": [
-            "Physical"
-        ],
-        "explanation": "The Physical layer handles media, signal, and binary transmission."
-    },
-    {
-        "id": "enc_q_1036",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Simple Network Management Protocol, used to monitor devices?",
-        "options": [
-            "VLAN",
-            "SNMP",
-            "WPA3",
-            "CSMA/CA"
-        ],
-        "answer": [
-            "SNMP"
-        ],
-        "explanation": "SNMP is the correct answer. It is defined as: Simple Network Management Protocol, used to monitor devices."
-    },
-    {
-        "id": "enc_q_1037",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Network Address Translation, maps private IPs to public IPs?",
-        "options": [
-            "CSMA/CD",
-            "NAT",
-            "NTP",
-            "STP"
-        ],
-        "answer": [
-            "NAT"
-        ],
-        "explanation": "NAT is the correct answer. It is defined as: Network Address Translation, maps private IPs to public IPs."
-    },
-    {
-        "id": "enc_q_1038",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Border Gateway Protocol, the routing protocol of the Internet?",
-        "options": [
-            "CSMA/CD",
-            "BGP",
-            "PoE",
-            "ARP"
-        ],
-        "answer": [
-            "BGP"
-        ],
-        "explanation": "BGP is the correct answer. It is defined as: Border Gateway Protocol, the routing protocol of the Internet."
-    },
-    {
-        "id": "enc_q_1039",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision detection protocol used in legacy Ethernet?",
-        "options": [
-            "CSMA/CD",
-            "NTP",
-            "OSPF",
-            "DNS"
-        ],
-        "answer": [
-            "CSMA/CD"
-        ],
-        "explanation": "CSMA/CD is the correct answer. It is defined as: Collision detection protocol used in legacy Ethernet."
-    },
-    {
-        "id": "enc_q_1040",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 48-bit physical hardware address?",
-        "options": [
-            "STP",
-            "IPsec",
-            "BGP",
-            "MAC Address"
-        ],
-        "answer": [
-            "MAC Address"
-        ],
-        "explanation": "MAC Address is the correct answer. It is defined as: 48-bit physical hardware address."
-    },
-    {
-        "id": "enc_q_1041",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Border Gateway Protocol, the routing protocol of the Internet?",
-        "options": [
-            "STP",
-            "ARP",
-            "VLAN",
-            "BGP"
-        ],
-        "answer": [
-            "BGP"
-        ],
-        "explanation": "BGP is the correct answer. It is defined as: Border Gateway Protocol, the routing protocol of the Internet."
-    },
-    {
-        "id": "enc_q_1042",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Border Gateway Protocol, the routing protocol of the Internet?",
-        "options": [
-            "NAT",
-            "IPsec",
-            "BGP",
-            "VLAN"
-        ],
-        "answer": [
-            "BGP"
-        ],
-        "explanation": "BGP is the correct answer. It is defined as: Border Gateway Protocol, the routing protocol of the Internet."
-    },
-    {
-        "id": "enc_q_1043",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Open Shortest Path First, a link-state routing protocol?",
-        "options": [
-            "VLAN",
-            "NTP",
-            "Syslog",
-            "OSPF"
-        ],
-        "answer": [
-            "OSPF"
-        ],
-        "explanation": "OSPF is the correct answer. It is defined as: Open Shortest Path First, a link-state routing protocol."
-    },
-    {
-        "id": "enc_q_1044",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Virtual LAN, logically segments broadcast domains?",
-        "options": [
-            "OSPF",
-            "ICMP",
-            "IPv6",
-            "VLAN"
-        ],
-        "answer": [
-            "VLAN"
-        ],
-        "explanation": "VLAN is the correct answer. It is defined as: Virtual LAN, logically segments broadcast domains."
-    },
-    {
-        "id": "enc_q_1045",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 48-bit physical hardware address?",
-        "options": [
-            "MAC Address",
-            "STP",
-            "MTU",
-            "BGP"
-        ],
-        "answer": [
-            "MAC Address"
-        ],
-        "explanation": "MAC Address is the correct answer. It is defined as: 48-bit physical hardware address."
-    },
-    {
-        "id": "enc_q_1046",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Internet Control Message Protocol, used by ping and traceroute?",
-        "options": [
-            "ICMP",
-            "BGP",
-            "PoE",
-            "SNMP"
-        ],
-        "answer": [
-            "ICMP"
-        ],
-        "explanation": "ICMP is the correct answer. It is defined as: Internet Control Message Protocol, used by ping and traceroute."
-    },
-    {
-        "id": "enc_q_1047",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 48-bit physical hardware address?",
-        "options": [
-            "MAC Address",
-            "WPA3",
-            "VLAN",
-            "STP"
-        ],
-        "answer": [
-            "MAC Address"
-        ],
-        "explanation": "MAC Address is the correct answer. It is defined as: 48-bit physical hardware address."
-    },
-    {
-        "id": "enc_q_1048",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Open Shortest Path First, a link-state routing protocol?",
-        "options": [
-            "ARP",
-            "MTU",
-            "STP",
-            "OSPF"
-        ],
-        "answer": [
-            "OSPF"
-        ],
-        "explanation": "OSPF is the correct answer. It is defined as: Open Shortest Path First, a link-state routing protocol."
-    },
-    {
-        "id": "enc_q_1049",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Virtual LAN, logically segments broadcast domains?",
-        "options": [
-            "ICMP",
-            "DHCP",
-            "CSMA/CD",
-            "VLAN"
-        ],
-        "answer": [
-            "VLAN"
-        ],
-        "explanation": "VLAN is the correct answer. It is defined as: Virtual LAN, logically segments broadcast domains."
-    },
-    {
-        "id": "enc_q_1050",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Address Resolution Protocol, maps IP to MAC address?",
-        "options": [
-            "ARP",
-            "DNS",
-            "NAT",
-            "WPA3"
-        ],
-        "answer": [
-            "ARP"
-        ],
-        "explanation": "ARP is the correct answer. It is defined as: Address Resolution Protocol, maps IP to MAC address."
-    },
-    {
-        "id": "enc_q_1051",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Spanning Tree Protocol, prevents Layer 2 loops?",
-        "options": [
-            "NAT",
-            "ARP",
-            "BGP",
-            "STP"
-        ],
-        "answer": [
-            "STP"
-        ],
-        "explanation": "STP is the correct answer. It is defined as: Spanning Tree Protocol, prevents Layer 2 loops."
-    },
-    {
-        "id": "enc_q_1052",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 48-bit physical hardware address?",
-        "options": [
-            "IPsec",
-            "NTP",
-            "MTU",
-            "MAC Address"
-        ],
-        "answer": [
-            "MAC Address"
-        ],
-        "explanation": "MAC Address is the correct answer. It is defined as: 48-bit physical hardware address."
-    },
-    {
-        "id": "enc_q_1053",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Simple Network Management Protocol, used to monitor devices?",
-        "options": [
-            "IPv6",
-            "BGP",
-            "OSPF",
-            "SNMP"
-        ],
-        "answer": [
-            "SNMP"
-        ],
-        "explanation": "SNMP is the correct answer. It is defined as: Simple Network Management Protocol, used to monitor devices."
-    },
-    {
-        "id": "enc_q_1054",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Simple Network Management Protocol, used to monitor devices?",
-        "options": [
-            "ICMP",
-            "STP",
-            "SNMP",
-            "MAC Address"
-        ],
-        "answer": [
-            "SNMP"
-        ],
-        "explanation": "SNMP is the correct answer. It is defined as: Simple Network Management Protocol, used to monitor devices."
-    },
-    {
-        "id": "enc_q_1055",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision avoidance protocol used in 802.11 Wi-Fi?",
-        "options": [
-            "WPA3",
-            "MAC Address",
-            "VLAN",
-            "CSMA/CA"
-        ],
-        "answer": [
-            "CSMA/CA"
-        ],
-        "explanation": "CSMA/CA is the correct answer. It is defined as: Collision avoidance protocol used in 802.11 Wi-Fi."
-    },
-    {
-        "id": "enc_q_1056",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Protocol suite for secure IP communications by authenticating and encrypting each IP packet?",
-        "options": [
-            "IPv6",
-            "CSMA/CD",
-            "MTU",
-            "IPsec"
-        ],
-        "answer": [
-            "IPsec"
-        ],
-        "explanation": "IPsec is the correct answer. It is defined as: Protocol suite for secure IP communications by authenticating and encrypting each IP packet."
-    },
-    {
-        "id": "enc_q_1057",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision avoidance protocol used in 802.11 Wi-Fi?",
-        "options": [
-            "MTU",
-            "CSMA/CA",
-            "CSMA/CD",
-            "VLAN"
-        ],
-        "answer": [
-            "CSMA/CA"
-        ],
-        "explanation": "CSMA/CA is the correct answer. It is defined as: Collision avoidance protocol used in 802.11 Wi-Fi."
-    },
-    {
-        "id": "enc_q_1058",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Protocol suite for secure IP communications by authenticating and encrypting each IP packet?",
-        "options": [
-            "IPsec",
-            "DHCP",
-            "MTU",
-            "BGP"
-        ],
-        "answer": [
-            "IPsec"
-        ],
-        "explanation": "IPsec is the correct answer. It is defined as: Protocol suite for secure IP communications by authenticating and encrypting each IP packet."
-    },
-    {
-        "id": "enc_q_1059",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision detection protocol used in legacy Ethernet?",
-        "options": [
-            "PoE",
-            "SNMP",
-            "VLAN",
-            "CSMA/CD"
-        ],
-        "answer": [
-            "CSMA/CD"
-        ],
-        "explanation": "CSMA/CD is the correct answer. It is defined as: Collision detection protocol used in legacy Ethernet."
-    },
-    {
-        "id": "enc_q_1060",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Domain Name System, resolves hostnames to IPs?",
-        "options": [
-            "Syslog",
-            "BGP",
-            "ARP",
-            "DNS"
-        ],
-        "answer": [
-            "DNS"
-        ],
-        "explanation": "DNS is the correct answer. It is defined as: Domain Name System, resolves hostnames to IPs."
-    },
-    {
-        "id": "enc_q_1061",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Border Gateway Protocol, the routing protocol of the Internet?",
-        "options": [
-            "OSPF",
-            "BGP",
-            "IPsec",
-            "IPv6"
-        ],
-        "answer": [
-            "BGP"
-        ],
-        "explanation": "BGP is the correct answer. It is defined as: Border Gateway Protocol, the routing protocol of the Internet."
-    },
-    {
-        "id": "enc_q_1062",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Border Gateway Protocol, the routing protocol of the Internet?",
-        "options": [
-            "BGP",
-            "PoE",
-            "CSMA/CD",
-            "IPsec"
-        ],
-        "answer": [
-            "BGP"
-        ],
-        "explanation": "BGP is the correct answer. It is defined as: Border Gateway Protocol, the routing protocol of the Internet."
-    },
-    {
-        "id": "enc_q_1063",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Domain Name System, resolves hostnames to IPs?",
-        "options": [
-            "DNS",
-            "CSMA/CD",
-            "OSPF",
-            "STP"
-        ],
-        "answer": [
-            "DNS"
-        ],
-        "explanation": "DNS is the correct answer. It is defined as: Domain Name System, resolves hostnames to IPs."
-    },
-    {
-        "id": "enc_q_1064",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Border Gateway Protocol, the routing protocol of the Internet?",
-        "options": [
-            "BGP",
-            "IPv6",
-            "ICMP",
-            "Syslog"
-        ],
-        "answer": [
-            "BGP"
-        ],
-        "explanation": "BGP is the correct answer. It is defined as: Border Gateway Protocol, the routing protocol of the Internet."
-    },
-    {
-        "id": "enc_q_1065",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 48-bit physical hardware address?",
-        "options": [
-            "MAC Address",
-            "IPsec",
-            "OSPF",
-            "NAT"
-        ],
-        "answer": [
-            "MAC Address"
-        ],
-        "explanation": "MAC Address is the correct answer. It is defined as: 48-bit physical hardware address."
-    },
-    {
-        "id": "enc_q_1066",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Border Gateway Protocol, the routing protocol of the Internet?",
-        "options": [
-            "VLAN",
-            "MAC Address",
-            "BGP",
-            "STP"
-        ],
-        "answer": [
-            "BGP"
-        ],
-        "explanation": "BGP is the correct answer. It is defined as: Border Gateway Protocol, the routing protocol of the Internet."
-    },
-    {
-        "id": "enc_q_1067",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Power over Ethernet, provides power and data over twisted pair?",
-        "options": [
-            "PoE",
-            "CSMA/CD",
-            "VLAN",
-            "DHCP"
-        ],
-        "answer": [
-            "PoE"
-        ],
-        "explanation": "PoE is the correct answer. It is defined as: Power over Ethernet, provides power and data over twisted pair."
-    },
-    {
-        "id": "enc_q_1068",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 48-bit physical hardware address?",
-        "options": [
-            "WPA3",
-            "DNS",
-            "STP",
-            "MAC Address"
-        ],
-        "answer": [
-            "MAC Address"
-        ],
-        "explanation": "MAC Address is the correct answer. It is defined as: 48-bit physical hardware address."
-    },
-    {
-        "id": "enc_q_1069",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Border Gateway Protocol, the routing protocol of the Internet?",
-        "options": [
-            "NTP",
-            "WPA3",
-            "BGP",
-            "STP"
-        ],
-        "answer": [
-            "BGP"
-        ],
-        "explanation": "BGP is the correct answer. It is defined as: Border Gateway Protocol, the routing protocol of the Internet."
-    },
-    {
-        "id": "enc_q_1070",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Open Shortest Path First, a link-state routing protocol?",
-        "options": [
-            "OSPF",
-            "IPv6",
-            "CSMA/CA",
-            "IPsec"
-        ],
-        "answer": [
-            "OSPF"
-        ],
-        "explanation": "OSPF is the correct answer. It is defined as: Open Shortest Path First, a link-state routing protocol."
-    },
-    {
-        "id": "enc_q_1071",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Simple Network Management Protocol, used to monitor devices?",
-        "options": [
-            "NAT",
-            "NTP",
-            "VLAN",
-            "SNMP"
-        ],
-        "answer": [
-            "SNMP"
-        ],
-        "explanation": "SNMP is the correct answer. It is defined as: Simple Network Management Protocol, used to monitor devices."
-    },
-    {
-        "id": "enc_q_1072",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 48-bit physical hardware address?",
-        "options": [
-            "VLAN",
-            "MAC Address",
-            "OSPF",
-            "DNS"
-        ],
-        "answer": [
-            "MAC Address"
-        ],
-        "explanation": "MAC Address is the correct answer. It is defined as: 48-bit physical hardware address."
-    },
-    {
-        "id": "enc_q_1073",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 128-bit IP addressing system?",
-        "options": [
-            "CSMA/CD",
-            "NAT",
-            "DNS",
-            "IPv6"
-        ],
-        "answer": [
-            "IPv6"
-        ],
-        "explanation": "IPv6 is the correct answer. It is defined as: 128-bit IP addressing system."
-    },
-    {
-        "id": "enc_q_1074",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Dynamic Host Configuration Protocol, assigns IP addresses?",
-        "options": [
-            "PoE",
-            "DNS",
-            "DHCP",
-            "MTU"
-        ],
-        "answer": [
-            "DHCP"
-        ],
-        "explanation": "DHCP is the correct answer. It is defined as: Dynamic Host Configuration Protocol, assigns IP addresses."
-    },
-    {
-        "id": "enc_q_1075",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision detection protocol used in legacy Ethernet?",
-        "options": [
-            "Syslog",
-            "CSMA/CD",
-            "MAC Address",
-            "STP"
-        ],
-        "answer": [
-            "CSMA/CD"
-        ],
-        "explanation": "CSMA/CD is the correct answer. It is defined as: Collision detection protocol used in legacy Ethernet."
-    },
-    {
-        "id": "enc_q_1076",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Virtual LAN, logically segments broadcast domains?",
-        "options": [
-            "STP",
-            "OSPF",
-            "VLAN",
-            "NAT"
-        ],
-        "answer": [
-            "VLAN"
-        ],
-        "explanation": "VLAN is the correct answer. It is defined as: Virtual LAN, logically segments broadcast domains."
-    },
-    {
-        "id": "enc_q_1077",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 128-bit IP addressing system?",
-        "options": [
-            "STP",
-            "VLAN",
-            "PoE",
-            "IPv6"
-        ],
-        "answer": [
-            "IPv6"
-        ],
-        "explanation": "IPv6 is the correct answer. It is defined as: 128-bit IP addressing system."
-    },
-    {
-        "id": "enc_q_1078",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Open Shortest Path First, a link-state routing protocol?",
-        "options": [
-            "WPA3",
-            "VLAN",
-            "MTU",
-            "OSPF"
-        ],
-        "answer": [
-            "OSPF"
-        ],
-        "explanation": "OSPF is the correct answer. It is defined as: Open Shortest Path First, a link-state routing protocol."
-    },
-    {
-        "id": "enc_q_1079",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision detection protocol used in legacy Ethernet?",
-        "options": [
-            "STP",
-            "SNMP",
-            "OSPF",
-            "CSMA/CD"
-        ],
-        "answer": [
-            "CSMA/CD"
-        ],
-        "explanation": "CSMA/CD is the correct answer. It is defined as: Collision detection protocol used in legacy Ethernet."
-    },
-    {
-        "id": "enc_q_1080",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision avoidance protocol used in 802.11 Wi-Fi?",
-        "options": [
-            "CSMA/CD",
-            "ARP",
-            "MTU",
-            "CSMA/CA"
-        ],
-        "answer": [
-            "CSMA/CA"
-        ],
-        "explanation": "CSMA/CA is the correct answer. It is defined as: Collision avoidance protocol used in 802.11 Wi-Fi."
-    },
-    {
-        "id": "enc_q_1081",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Virtual LAN, logically segments broadcast domains?",
-        "options": [
-            "VLAN",
-            "WPA3",
-            "DHCP",
-            "BGP"
-        ],
-        "answer": [
-            "VLAN"
-        ],
-        "explanation": "VLAN is the correct answer. It is defined as: Virtual LAN, logically segments broadcast domains."
-    },
-    {
-        "id": "enc_q_1082",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Internet Control Message Protocol, used by ping and traceroute?",
-        "options": [
-            "IPv6",
-            "ICMP",
-            "OSPF",
-            "MTU"
-        ],
-        "answer": [
-            "ICMP"
-        ],
-        "explanation": "ICMP is the correct answer. It is defined as: Internet Control Message Protocol, used by ping and traceroute."
-    },
-    {
-        "id": "enc_q_1083",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision detection protocol used in legacy Ethernet?",
-        "options": [
-            "NTP",
-            "OSPF",
-            "WPA3",
-            "CSMA/CD"
-        ],
-        "answer": [
-            "CSMA/CD"
-        ],
-        "explanation": "CSMA/CD is the correct answer. It is defined as: Collision detection protocol used in legacy Ethernet."
-    },
-    {
-        "id": "enc_q_1084",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Internet Control Message Protocol, used by ping and traceroute?",
-        "options": [
-            "BGP",
-            "STP",
-            "VLAN",
-            "ICMP"
-        ],
-        "answer": [
-            "ICMP"
-        ],
-        "explanation": "ICMP is the correct answer. It is defined as: Internet Control Message Protocol, used by ping and traceroute."
-    },
-    {
-        "id": "enc_q_1085",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Spanning Tree Protocol, prevents Layer 2 loops?",
-        "options": [
-            "STP",
-            "CSMA/CD",
-            "ARP",
-            "DHCP"
-        ],
-        "answer": [
-            "STP"
-        ],
-        "explanation": "STP is the correct answer. It is defined as: Spanning Tree Protocol, prevents Layer 2 loops."
-    },
-    {
-        "id": "enc_q_1086",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Protocol suite for secure IP communications by authenticating and encrypting each IP packet?",
-        "options": [
-            "ARP",
-            "IPv6",
-            "IPsec",
-            "MAC Address"
-        ],
-        "answer": [
-            "IPsec"
-        ],
-        "explanation": "IPsec is the correct answer. It is defined as: Protocol suite for secure IP communications by authenticating and encrypting each IP packet."
-    },
-    {
-        "id": "enc_q_1087",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Simple Network Management Protocol, used to monitor devices?",
-        "options": [
-            "ARP",
-            "SNMP",
-            "NTP",
-            "VLAN"
-        ],
-        "answer": [
-            "SNMP"
-        ],
-        "explanation": "SNMP is the correct answer. It is defined as: Simple Network Management Protocol, used to monitor devices."
-    },
-    {
-        "id": "enc_q_1088",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Network Address Translation, maps private IPs to public IPs?",
-        "options": [
-            "STP",
-            "NAT",
-            "VLAN",
-            "Syslog"
-        ],
-        "answer": [
-            "NAT"
-        ],
-        "explanation": "NAT is the correct answer. It is defined as: Network Address Translation, maps private IPs to public IPs."
-    },
-    {
-        "id": "enc_q_1089",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Protocol suite for secure IP communications by authenticating and encrypting each IP packet?",
-        "options": [
-            "IPsec",
-            "CSMA/CD",
-            "STP",
-            "BGP"
-        ],
-        "answer": [
-            "IPsec"
-        ],
-        "explanation": "IPsec is the correct answer. It is defined as: Protocol suite for secure IP communications by authenticating and encrypting each IP packet."
-    },
-    {
-        "id": "enc_q_1090",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Internet Control Message Protocol, used by ping and traceroute?",
-        "options": [
-            "ICMP",
-            "DNS",
-            "VLAN",
-            "STP"
-        ],
-        "answer": [
-            "ICMP"
-        ],
-        "explanation": "ICMP is the correct answer. It is defined as: Internet Control Message Protocol, used by ping and traceroute."
-    },
-    {
-        "id": "enc_q_1091",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Spanning Tree Protocol, prevents Layer 2 loops?",
-        "options": [
-            "IPsec",
-            "CSMA/CD",
-            "BGP",
-            "STP"
-        ],
-        "answer": [
-            "STP"
-        ],
-        "explanation": "STP is the correct answer. It is defined as: Spanning Tree Protocol, prevents Layer 2 loops."
-    },
-    {
-        "id": "enc_q_1092",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Dynamic Host Configuration Protocol, assigns IP addresses?",
-        "options": [
-            "DHCP",
-            "BGP",
-            "CSMA/CD",
-            "OSPF"
-        ],
-        "answer": [
-            "DHCP"
-        ],
-        "explanation": "DHCP is the correct answer. It is defined as: Dynamic Host Configuration Protocol, assigns IP addresses."
-    },
-    {
-        "id": "enc_q_1093",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 48-bit physical hardware address?",
-        "options": [
-            "MAC Address",
-            "ICMP",
-            "SNMP",
-            "Syslog"
-        ],
-        "answer": [
-            "MAC Address"
-        ],
-        "explanation": "MAC Address is the correct answer. It is defined as: 48-bit physical hardware address."
-    },
-    {
-        "id": "enc_q_1094",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Spanning Tree Protocol, prevents Layer 2 loops?",
-        "options": [
-            "OSPF",
-            "NTP",
-            "VLAN",
-            "STP"
-        ],
-        "answer": [
-            "STP"
-        ],
-        "explanation": "STP is the correct answer. It is defined as: Spanning Tree Protocol, prevents Layer 2 loops."
-    },
-    {
-        "id": "enc_q_1095",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Domain Name System, resolves hostnames to IPs?",
-        "options": [
-            "ARP",
-            "MAC Address",
-            "ICMP",
-            "DNS"
-        ],
-        "answer": [
-            "DNS"
-        ],
-        "explanation": "DNS is the correct answer. It is defined as: Domain Name System, resolves hostnames to IPs."
-    },
-    {
-        "id": "enc_q_1096",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Standard for message logging?",
-        "options": [
-            "DHCP",
-            "CSMA/CA",
-            "Syslog",
-            "MTU"
-        ],
-        "answer": [
-            "Syslog"
-        ],
-        "explanation": "Syslog is the correct answer. It is defined as: Standard for message logging."
-    },
-    {
-        "id": "enc_q_1097",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision detection protocol used in legacy Ethernet?",
-        "options": [
-            "CSMA/CD",
-            "VLAN",
-            "STP",
-            "MTU"
-        ],
-        "answer": [
-            "CSMA/CD"
-        ],
-        "explanation": "CSMA/CD is the correct answer. It is defined as: Collision detection protocol used in legacy Ethernet."
-    },
-    {
-        "id": "enc_q_1098",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Power over Ethernet, provides power and data over twisted pair?",
-        "options": [
-            "PoE",
-            "CSMA/CD",
-            "MTU",
-            "OSPF"
-        ],
-        "answer": [
-            "PoE"
-        ],
-        "explanation": "PoE is the correct answer. It is defined as: Power over Ethernet, provides power and data over twisted pair."
-    },
-    {
-        "id": "enc_q_1099",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 128-bit IP addressing system?",
-        "options": [
-            "ARP",
-            "DHCP",
-            "IPsec",
-            "IPv6"
-        ],
-        "answer": [
-            "IPv6"
-        ],
-        "explanation": "IPv6 is the correct answer. It is defined as: 128-bit IP addressing system."
-    },
-    {
-        "id": "enc_q_1100",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Address Resolution Protocol, maps IP to MAC address?",
-        "options": [
-            "Syslog",
-            "STP",
-            "NAT",
-            "ARP"
-        ],
-        "answer": [
-            "ARP"
-        ],
-        "explanation": "ARP is the correct answer. It is defined as: Address Resolution Protocol, maps IP to MAC address."
-    },
-    {
-        "id": "enc_q_1101",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Virtual LAN, logically segments broadcast domains?",
-        "options": [
-            "MTU",
-            "MAC Address",
-            "CSMA/CA",
-            "VLAN"
-        ],
-        "answer": [
-            "VLAN"
-        ],
-        "explanation": "VLAN is the correct answer. It is defined as: Virtual LAN, logically segments broadcast domains."
-    },
-    {
-        "id": "enc_q_1102",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 48-bit physical hardware address?",
-        "options": [
-            "DHCP",
-            "Syslog",
-            "MAC Address",
-            "SNMP"
-        ],
-        "answer": [
-            "MAC Address"
-        ],
-        "explanation": "MAC Address is the correct answer. It is defined as: 48-bit physical hardware address."
-    },
-    {
-        "id": "enc_q_1103",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Network Address Translation, maps private IPs to public IPs?",
-        "options": [
-            "PoE",
-            "MAC Address",
-            "NAT",
-            "MTU"
-        ],
-        "answer": [
-            "NAT"
-        ],
-        "explanation": "NAT is the correct answer. It is defined as: Network Address Translation, maps private IPs to public IPs."
-    },
-    {
-        "id": "enc_q_1104",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Standard for message logging?",
-        "options": [
-            "IPsec",
-            "WPA3",
-            "Syslog",
-            "NAT"
-        ],
-        "answer": [
-            "Syslog"
-        ],
-        "explanation": "Syslog is the correct answer. It is defined as: Standard for message logging."
-    },
-    {
-        "id": "enc_q_1105",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Domain Name System, resolves hostnames to IPs?",
-        "options": [
-            "DNS",
-            "ICMP",
-            "VLAN",
-            "STP"
-        ],
-        "answer": [
-            "DNS"
-        ],
-        "explanation": "DNS is the correct answer. It is defined as: Domain Name System, resolves hostnames to IPs."
-    },
-    {
-        "id": "enc_q_1106",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 128-bit IP addressing system?",
-        "options": [
-            "DNS",
-            "IPsec",
-            "IPv6",
-            "Syslog"
-        ],
-        "answer": [
-            "IPv6"
-        ],
-        "explanation": "IPv6 is the correct answer. It is defined as: 128-bit IP addressing system."
-    },
-    {
-        "id": "enc_q_1107",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Dynamic Host Configuration Protocol, assigns IP addresses?",
-        "options": [
-            "SNMP",
-            "BGP",
-            "PoE",
-            "DHCP"
-        ],
-        "answer": [
-            "DHCP"
-        ],
-        "explanation": "DHCP is the correct answer. It is defined as: Dynamic Host Configuration Protocol, assigns IP addresses."
-    },
-    {
-        "id": "enc_q_1108",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision detection protocol used in legacy Ethernet?",
-        "options": [
-            "CSMA/CD",
-            "NAT",
-            "IPv6",
-            "DHCP"
-        ],
-        "answer": [
-            "CSMA/CD"
-        ],
-        "explanation": "CSMA/CD is the correct answer. It is defined as: Collision detection protocol used in legacy Ethernet."
-    },
-    {
-        "id": "enc_q_1109",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision detection protocol used in legacy Ethernet?",
-        "options": [
-            "CSMA/CA",
-            "BGP",
-            "DHCP",
-            "CSMA/CD"
-        ],
-        "answer": [
-            "CSMA/CD"
-        ],
-        "explanation": "CSMA/CD is the correct answer. It is defined as: Collision detection protocol used in legacy Ethernet."
-    },
-    {
-        "id": "enc_q_1110",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Network Time Protocol, synchronizes clocks?",
-        "options": [
-            "IPv6",
-            "NTP",
-            "ARP",
-            "VLAN"
-        ],
-        "answer": [
-            "NTP"
-        ],
-        "explanation": "NTP is the correct answer. It is defined as: Network Time Protocol, synchronizes clocks."
-    },
-    {
-        "id": "enc_q_1111",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Address Resolution Protocol, maps IP to MAC address?",
-        "options": [
-            "CSMA/CA",
-            "CSMA/CD",
-            "ARP",
-            "NAT"
-        ],
-        "answer": [
-            "ARP"
-        ],
-        "explanation": "ARP is the correct answer. It is defined as: Address Resolution Protocol, maps IP to MAC address."
-    },
-    {
-        "id": "enc_q_1112",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Domain Name System, resolves hostnames to IPs?",
-        "options": [
-            "IPv6",
-            "DHCP",
-            "DNS",
-            "BGP"
-        ],
-        "answer": [
-            "DNS"
-        ],
-        "explanation": "DNS is the correct answer. It is defined as: Domain Name System, resolves hostnames to IPs."
-    },
-    {
-        "id": "enc_q_1113",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Standard for message logging?",
-        "options": [
-            "Syslog",
-            "NTP",
-            "NAT",
-            "OSPF"
-        ],
-        "answer": [
-            "Syslog"
-        ],
-        "explanation": "Syslog is the correct answer. It is defined as: Standard for message logging."
-    },
-    {
-        "id": "enc_q_1114",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Border Gateway Protocol, the routing protocol of the Internet?",
-        "options": [
-            "BGP",
-            "DHCP",
-            "VLAN",
-            "NTP"
-        ],
-        "answer": [
-            "BGP"
-        ],
-        "explanation": "BGP is the correct answer. It is defined as: Border Gateway Protocol, the routing protocol of the Internet."
-    },
-    {
-        "id": "enc_q_1115",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Spanning Tree Protocol, prevents Layer 2 loops?",
-        "options": [
-            "PoE",
-            "STP",
-            "ARP",
-            "NAT"
-        ],
-        "answer": [
-            "STP"
-        ],
-        "explanation": "STP is the correct answer. It is defined as: Spanning Tree Protocol, prevents Layer 2 loops."
-    },
-    {
-        "id": "enc_q_1116",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Simple Network Management Protocol, used to monitor devices?",
-        "options": [
-            "IPv6",
-            "NTP",
-            "SNMP",
-            "Syslog"
-        ],
-        "answer": [
-            "SNMP"
-        ],
-        "explanation": "SNMP is the correct answer. It is defined as: Simple Network Management Protocol, used to monitor devices."
-    },
-    {
-        "id": "enc_q_1117",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Virtual LAN, logically segments broadcast domains?",
-        "options": [
-            "IPv6",
-            "VLAN",
-            "NAT",
-            "SNMP"
-        ],
-        "answer": [
-            "VLAN"
-        ],
-        "explanation": "VLAN is the correct answer. It is defined as: Virtual LAN, logically segments broadcast domains."
-    },
-    {
-        "id": "enc_q_1118",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Open Shortest Path First, a link-state routing protocol?",
-        "options": [
-            "SNMP",
-            "WPA3",
-            "OSPF",
-            "VLAN"
-        ],
-        "answer": [
-            "OSPF"
-        ],
-        "explanation": "OSPF is the correct answer. It is defined as: Open Shortest Path First, a link-state routing protocol."
-    },
-    {
-        "id": "enc_q_1119",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Network Address Translation, maps private IPs to public IPs?",
-        "options": [
-            "NTP",
-            "NAT",
-            "ARP",
-            "VLAN"
-        ],
-        "answer": [
-            "NAT"
-        ],
-        "explanation": "NAT is the correct answer. It is defined as: Network Address Translation, maps private IPs to public IPs."
-    },
-    {
-        "id": "enc_q_1120",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Border Gateway Protocol, the routing protocol of the Internet?",
-        "options": [
-            "IPv6",
-            "IPsec",
-            "BGP",
-            "CSMA/CA"
-        ],
-        "answer": [
-            "BGP"
-        ],
-        "explanation": "BGP is the correct answer. It is defined as: Border Gateway Protocol, the routing protocol of the Internet."
-    },
-    {
-        "id": "enc_q_1121",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Power over Ethernet, provides power and data over twisted pair?",
-        "options": [
-            "SNMP",
-            "PoE",
-            "CSMA/CA",
-            "NAT"
-        ],
-        "answer": [
-            "PoE"
-        ],
-        "explanation": "PoE is the correct answer. It is defined as: Power over Ethernet, provides power and data over twisted pair."
-    },
-    {
-        "id": "enc_q_1122",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Dynamic Host Configuration Protocol, assigns IP addresses?",
-        "options": [
-            "DHCP",
-            "BGP",
-            "Syslog",
-            "IPv6"
-        ],
-        "answer": [
-            "DHCP"
-        ],
-        "explanation": "DHCP is the correct answer. It is defined as: Dynamic Host Configuration Protocol, assigns IP addresses."
-    },
-    {
-        "id": "enc_q_1123",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Protocol suite for secure IP communications by authenticating and encrypting each IP packet?",
-        "options": [
-            "IPsec",
-            "SNMP",
-            "STP",
-            "VLAN"
-        ],
-        "answer": [
-            "IPsec"
-        ],
-        "explanation": "IPsec is the correct answer. It is defined as: Protocol suite for secure IP communications by authenticating and encrypting each IP packet."
-    },
-    {
-        "id": "enc_q_1124",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 128-bit IP addressing system?",
-        "options": [
-            "BGP",
-            "VLAN",
-            "SNMP",
-            "IPv6"
-        ],
-        "answer": [
-            "IPv6"
-        ],
-        "explanation": "IPv6 is the correct answer. It is defined as: 128-bit IP addressing system."
-    },
-    {
-        "id": "enc_q_1125",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision detection protocol used in legacy Ethernet?",
-        "options": [
-            "IPv6",
-            "DHCP",
-            "IPsec",
-            "CSMA/CD"
-        ],
-        "answer": [
-            "CSMA/CD"
-        ],
-        "explanation": "CSMA/CD is the correct answer. It is defined as: Collision detection protocol used in legacy Ethernet."
-    },
-    {
-        "id": "enc_q_1126",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Maximum Transmission Unit, typically 1500 bytes for Ethernet?",
-        "options": [
-            "MAC Address",
-            "CSMA/CA",
-            "IPsec",
-            "MTU"
-        ],
-        "answer": [
-            "MTU"
-        ],
-        "explanation": "MTU is the correct answer. It is defined as: Maximum Transmission Unit, typically 1500 bytes for Ethernet."
-    },
-    {
-        "id": "enc_q_1127",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Open Shortest Path First, a link-state routing protocol?",
-        "options": [
-            "ICMP",
-            "BGP",
-            "NAT",
-            "OSPF"
-        ],
-        "answer": [
-            "OSPF"
-        ],
-        "explanation": "OSPF is the correct answer. It is defined as: Open Shortest Path First, a link-state routing protocol."
-    },
-    {
-        "id": "enc_q_1128",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Maximum Transmission Unit, typically 1500 bytes for Ethernet?",
-        "options": [
-            "DNS",
-            "NAT",
-            "IPsec",
-            "MTU"
-        ],
-        "answer": [
-            "MTU"
-        ],
-        "explanation": "MTU is the correct answer. It is defined as: Maximum Transmission Unit, typically 1500 bytes for Ethernet."
-    },
-    {
-        "id": "enc_q_1129",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Power over Ethernet, provides power and data over twisted pair?",
-        "options": [
-            "DHCP",
-            "CSMA/CA",
-            "PoE",
-            "Syslog"
-        ],
-        "answer": [
-            "PoE"
-        ],
-        "explanation": "PoE is the correct answer. It is defined as: Power over Ethernet, provides power and data over twisted pair."
-    },
-    {
-        "id": "enc_q_1130",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 128-bit IP addressing system?",
-        "options": [
-            "CSMA/CD",
-            "ICMP",
-            "CSMA/CA",
-            "IPv6"
-        ],
-        "answer": [
-            "IPv6"
-        ],
-        "explanation": "IPv6 is the correct answer. It is defined as: 128-bit IP addressing system."
-    },
-    {
-        "id": "enc_q_1131",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Simple Network Management Protocol, used to monitor devices?",
-        "options": [
-            "VLAN",
-            "BGP",
-            "ARP",
-            "SNMP"
-        ],
-        "answer": [
-            "SNMP"
-        ],
-        "explanation": "SNMP is the correct answer. It is defined as: Simple Network Management Protocol, used to monitor devices."
-    },
-    {
-        "id": "enc_q_1132",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 128-bit IP addressing system?",
-        "options": [
-            "IPv6",
-            "MAC Address",
-            "DHCP",
-            "DNS"
-        ],
-        "answer": [
-            "IPv6"
-        ],
-        "explanation": "IPv6 is the correct answer. It is defined as: 128-bit IP addressing system."
-    },
-    {
-        "id": "enc_q_1133",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Standard for message logging?",
-        "options": [
-            "Syslog",
-            "SNMP",
-            "CSMA/CA",
-            "IPv6"
-        ],
-        "answer": [
-            "Syslog"
-        ],
-        "explanation": "Syslog is the correct answer. It is defined as: Standard for message logging."
-    },
-    {
-        "id": "enc_q_1134",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Modern Wi-Fi security standard using SAE?",
-        "options": [
-            "WPA3",
-            "NAT",
-            "ARP",
-            "IPsec"
-        ],
-        "answer": [
-            "WPA3"
-        ],
-        "explanation": "WPA3 is the correct answer. It is defined as: Modern Wi-Fi security standard using SAE."
-    },
-    {
-        "id": "enc_q_1135",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Network Address Translation, maps private IPs to public IPs?",
-        "options": [
-            "NAT",
-            "PoE",
-            "ARP",
-            "DNS"
-        ],
-        "answer": [
-            "NAT"
-        ],
-        "explanation": "NAT is the correct answer. It is defined as: Network Address Translation, maps private IPs to public IPs."
-    },
-    {
-        "id": "enc_q_1136",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Virtual LAN, logically segments broadcast domains?",
-        "options": [
-            "CSMA/CA",
-            "MAC Address",
-            "CSMA/CD",
-            "VLAN"
-        ],
-        "answer": [
-            "VLAN"
-        ],
-        "explanation": "VLAN is the correct answer. It is defined as: Virtual LAN, logically segments broadcast domains."
-    },
-    {
-        "id": "enc_q_1137",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Standard for message logging?",
-        "options": [
-            "Syslog",
-            "NAT",
-            "PoE",
-            "ARP"
-        ],
-        "answer": [
-            "Syslog"
-        ],
-        "explanation": "Syslog is the correct answer. It is defined as: Standard for message logging."
-    },
-    {
-        "id": "enc_q_1138",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Border Gateway Protocol, the routing protocol of the Internet?",
-        "options": [
-            "CSMA/CA",
-            "MAC Address",
-            "BGP",
-            "CSMA/CD"
-        ],
-        "answer": [
-            "BGP"
-        ],
-        "explanation": "BGP is the correct answer. It is defined as: Border Gateway Protocol, the routing protocol of the Internet."
-    },
-    {
-        "id": "enc_q_1139",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision avoidance protocol used in 802.11 Wi-Fi?",
-        "options": [
-            "MTU",
-            "CSMA/CA",
-            "SNMP",
-            "PoE"
-        ],
-        "answer": [
-            "CSMA/CA"
-        ],
-        "explanation": "CSMA/CA is the correct answer. It is defined as: Collision avoidance protocol used in 802.11 Wi-Fi."
-    },
-    {
-        "id": "enc_q_1140",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 48-bit physical hardware address?",
-        "options": [
-            "VLAN",
-            "IPv6",
-            "IPsec",
-            "MAC Address"
-        ],
-        "answer": [
-            "MAC Address"
-        ],
-        "explanation": "MAC Address is the correct answer. It is defined as: 48-bit physical hardware address."
-    },
-    {
-        "id": "enc_q_1141",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision avoidance protocol used in 802.11 Wi-Fi?",
-        "options": [
-            "CSMA/CA",
-            "WPA3",
-            "NAT",
-            "CSMA/CD"
-        ],
-        "answer": [
-            "CSMA/CA"
-        ],
-        "explanation": "CSMA/CA is the correct answer. It is defined as: Collision avoidance protocol used in 802.11 Wi-Fi."
-    },
-    {
-        "id": "enc_q_1142",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision detection protocol used in legacy Ethernet?",
-        "options": [
-            "MTU",
-            "CSMA/CD",
-            "BGP",
-            "MAC Address"
-        ],
-        "answer": [
-            "CSMA/CD"
-        ],
-        "explanation": "CSMA/CD is the correct answer. It is defined as: Collision detection protocol used in legacy Ethernet."
-    },
-    {
-        "id": "enc_q_1143",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Standard for message logging?",
-        "options": [
-            "Syslog",
-            "OSPF",
-            "BGP",
-            "ARP"
-        ],
-        "answer": [
-            "Syslog"
-        ],
-        "explanation": "Syslog is the correct answer. It is defined as: Standard for message logging."
-    },
-    {
-        "id": "enc_q_1144",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Simple Network Management Protocol, used to monitor devices?",
-        "options": [
-            "MAC Address",
-            "OSPF",
-            "ARP",
-            "SNMP"
-        ],
-        "answer": [
-            "SNMP"
-        ],
-        "explanation": "SNMP is the correct answer. It is defined as: Simple Network Management Protocol, used to monitor devices."
-    },
-    {
-        "id": "enc_q_1145",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 48-bit physical hardware address?",
-        "options": [
-            "STP",
-            "IPv6",
-            "CSMA/CD",
-            "MAC Address"
-        ],
-        "answer": [
-            "MAC Address"
-        ],
-        "explanation": "MAC Address is the correct answer. It is defined as: 48-bit physical hardware address."
-    },
-    {
-        "id": "enc_q_1146",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 48-bit physical hardware address?",
-        "options": [
-            "MAC Address",
-            "DNS",
-            "PoE",
-            "NTP"
-        ],
-        "answer": [
-            "MAC Address"
-        ],
-        "explanation": "MAC Address is the correct answer. It is defined as: 48-bit physical hardware address."
-    },
-    {
-        "id": "enc_q_1147",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Border Gateway Protocol, the routing protocol of the Internet?",
-        "options": [
-            "BGP",
-            "ARP",
-            "SNMP",
-            "MAC Address"
-        ],
-        "answer": [
-            "BGP"
-        ],
-        "explanation": "BGP is the correct answer. It is defined as: Border Gateway Protocol, the routing protocol of the Internet."
-    },
-    {
-        "id": "enc_q_1148",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 48-bit physical hardware address?",
-        "options": [
-            "PoE",
-            "CSMA/CD",
-            "MAC Address",
-            "BGP"
-        ],
-        "answer": [
-            "MAC Address"
-        ],
-        "explanation": "MAC Address is the correct answer. It is defined as: 48-bit physical hardware address."
-    },
-    {
-        "id": "enc_q_1149",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Virtual LAN, logically segments broadcast domains?",
-        "options": [
-            "IPv6",
-            "VLAN",
-            "STP",
-            "MTU"
-        ],
-        "answer": [
-            "VLAN"
-        ],
-        "explanation": "VLAN is the correct answer. It is defined as: Virtual LAN, logically segments broadcast domains."
-    },
-    {
-        "id": "enc_q_1150",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Open Shortest Path First, a link-state routing protocol?",
-        "options": [
-            "ARP",
-            "OSPF",
-            "DHCP",
-            "VLAN"
-        ],
-        "answer": [
-            "OSPF"
-        ],
-        "explanation": "OSPF is the correct answer. It is defined as: Open Shortest Path First, a link-state routing protocol."
-    },
-    {
-        "id": "enc_q_1151",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Power over Ethernet, provides power and data over twisted pair?",
-        "options": [
-            "PoE",
-            "BGP",
-            "SNMP",
-            "STP"
-        ],
-        "answer": [
-            "PoE"
-        ],
-        "explanation": "PoE is the correct answer. It is defined as: Power over Ethernet, provides power and data over twisted pair."
-    },
-    {
-        "id": "enc_q_1152",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Address Resolution Protocol, maps IP to MAC address?",
-        "options": [
-            "BGP",
-            "IPsec",
-            "DHCP",
-            "ARP"
-        ],
-        "answer": [
-            "ARP"
-        ],
-        "explanation": "ARP is the correct answer. It is defined as: Address Resolution Protocol, maps IP to MAC address."
-    },
-    {
-        "id": "enc_q_1153",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Address Resolution Protocol, maps IP to MAC address?",
-        "options": [
-            "ARP",
-            "VLAN",
-            "BGP",
-            "DNS"
-        ],
-        "answer": [
-            "ARP"
-        ],
-        "explanation": "ARP is the correct answer. It is defined as: Address Resolution Protocol, maps IP to MAC address."
-    },
-    {
-        "id": "enc_q_1154",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Address Resolution Protocol, maps IP to MAC address?",
-        "options": [
-            "BGP",
-            "IPsec",
-            "ARP",
-            "CSMA/CD"
-        ],
-        "answer": [
-            "ARP"
-        ],
-        "explanation": "ARP is the correct answer. It is defined as: Address Resolution Protocol, maps IP to MAC address."
-    },
-    {
-        "id": "enc_q_1155",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Simple Network Management Protocol, used to monitor devices?",
-        "options": [
-            "SNMP",
-            "CSMA/CD",
-            "STP",
-            "NAT"
-        ],
-        "answer": [
-            "SNMP"
-        ],
-        "explanation": "SNMP is the correct answer. It is defined as: Simple Network Management Protocol, used to monitor devices."
-    },
-    {
-        "id": "enc_q_1156",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Maximum Transmission Unit, typically 1500 bytes for Ethernet?",
-        "options": [
-            "MTU",
-            "WPA3",
-            "PoE",
-            "IPsec"
-        ],
-        "answer": [
-            "MTU"
-        ],
-        "explanation": "MTU is the correct answer. It is defined as: Maximum Transmission Unit, typically 1500 bytes for Ethernet."
-    },
-    {
-        "id": "enc_q_1157",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Protocol suite for secure IP communications by authenticating and encrypting each IP packet?",
-        "options": [
-            "MAC Address",
-            "NTP",
-            "Syslog",
-            "IPsec"
-        ],
-        "answer": [
-            "IPsec"
-        ],
-        "explanation": "IPsec is the correct answer. It is defined as: Protocol suite for secure IP communications by authenticating and encrypting each IP packet."
-    },
-    {
-        "id": "enc_q_1158",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Simple Network Management Protocol, used to monitor devices?",
-        "options": [
-            "SNMP",
-            "NTP",
-            "IPv6",
-            "MAC Address"
-        ],
-        "answer": [
-            "SNMP"
-        ],
-        "explanation": "SNMP is the correct answer. It is defined as: Simple Network Management Protocol, used to monitor devices."
-    },
-    {
-        "id": "enc_q_1159",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 128-bit IP addressing system?",
-        "options": [
-            "IPv6",
-            "ARP",
-            "PoE",
-            "OSPF"
-        ],
-        "answer": [
-            "IPv6"
-        ],
-        "explanation": "IPv6 is the correct answer. It is defined as: 128-bit IP addressing system."
-    },
-    {
-        "id": "enc_q_1160",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Open Shortest Path First, a link-state routing protocol?",
-        "options": [
-            "SNMP",
-            "DHCP",
-            "OSPF",
-            "CSMA/CD"
-        ],
-        "answer": [
-            "OSPF"
-        ],
-        "explanation": "OSPF is the correct answer. It is defined as: Open Shortest Path First, a link-state routing protocol."
-    },
-    {
-        "id": "enc_q_1161",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 48-bit physical hardware address?",
-        "options": [
-            "STP",
-            "MAC Address",
-            "IPv6",
-            "PoE"
-        ],
-        "answer": [
-            "MAC Address"
-        ],
-        "explanation": "MAC Address is the correct answer. It is defined as: 48-bit physical hardware address."
-    },
-    {
-        "id": "enc_q_1162",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Open Shortest Path First, a link-state routing protocol?",
-        "options": [
-            "OSPF",
-            "VLAN",
-            "CSMA/CA",
-            "NAT"
-        ],
-        "answer": [
-            "OSPF"
-        ],
-        "explanation": "OSPF is the correct answer. It is defined as: Open Shortest Path First, a link-state routing protocol."
-    },
-    {
-        "id": "enc_q_1163",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Address Resolution Protocol, maps IP to MAC address?",
-        "options": [
-            "WPA3",
-            "IPsec",
-            "NAT",
-            "ARP"
-        ],
-        "answer": [
-            "ARP"
-        ],
-        "explanation": "ARP is the correct answer. It is defined as: Address Resolution Protocol, maps IP to MAC address."
-    },
-    {
-        "id": "enc_q_1164",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Virtual LAN, logically segments broadcast domains?",
-        "options": [
-            "VLAN",
-            "SNMP",
-            "PoE",
-            "Syslog"
-        ],
-        "answer": [
-            "VLAN"
-        ],
-        "explanation": "VLAN is the correct answer. It is defined as: Virtual LAN, logically segments broadcast domains."
-    },
-    {
-        "id": "enc_q_1165",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Domain Name System, resolves hostnames to IPs?",
-        "options": [
-            "MAC Address",
-            "DNS",
-            "PoE",
-            "IPv6"
-        ],
-        "answer": [
-            "DNS"
-        ],
-        "explanation": "DNS is the correct answer. It is defined as: Domain Name System, resolves hostnames to IPs."
-    },
-    {
-        "id": "enc_q_1166",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 128-bit IP addressing system?",
-        "options": [
-            "BGP",
-            "ARP",
-            "MAC Address",
-            "IPv6"
-        ],
-        "answer": [
-            "IPv6"
-        ],
-        "explanation": "IPv6 is the correct answer. It is defined as: 128-bit IP addressing system."
-    },
-    {
-        "id": "enc_q_1167",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Modern Wi-Fi security standard using SAE?",
-        "options": [
-            "MTU",
-            "MAC Address",
-            "CSMA/CA",
-            "WPA3"
-        ],
-        "answer": [
-            "WPA3"
-        ],
-        "explanation": "WPA3 is the correct answer. It is defined as: Modern Wi-Fi security standard using SAE."
-    },
-    {
-        "id": "enc_q_1168",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision avoidance protocol used in 802.11 Wi-Fi?",
-        "options": [
-            "CSMA/CA",
-            "STP",
-            "WPA3",
-            "IPsec"
-        ],
-        "answer": [
-            "CSMA/CA"
-        ],
-        "explanation": "CSMA/CA is the correct answer. It is defined as: Collision avoidance protocol used in 802.11 Wi-Fi."
-    },
-    {
-        "id": "enc_q_1169",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 48-bit physical hardware address?",
-        "options": [
-            "MAC Address",
-            "STP",
-            "VLAN",
-            "MTU"
-        ],
-        "answer": [
-            "MAC Address"
-        ],
-        "explanation": "MAC Address is the correct answer. It is defined as: 48-bit physical hardware address."
-    },
-    {
-        "id": "enc_q_1170",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Standard for message logging?",
-        "options": [
-            "BGP",
-            "Syslog",
-            "MTU",
-            "STP"
-        ],
-        "answer": [
-            "Syslog"
-        ],
-        "explanation": "Syslog is the correct answer. It is defined as: Standard for message logging."
-    },
-    {
-        "id": "enc_q_1171",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Virtual LAN, logically segments broadcast domains?",
-        "options": [
-            "STP",
-            "DNS",
-            "WPA3",
-            "VLAN"
-        ],
-        "answer": [
-            "VLAN"
-        ],
-        "explanation": "VLAN is the correct answer. It is defined as: Virtual LAN, logically segments broadcast domains."
-    },
-    {
-        "id": "enc_q_1172",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Modern Wi-Fi security standard using SAE?",
-        "options": [
-            "PoE",
-            "MTU",
-            "VLAN",
-            "WPA3"
-        ],
-        "answer": [
-            "WPA3"
-        ],
-        "explanation": "WPA3 is the correct answer. It is defined as: Modern Wi-Fi security standard using SAE."
-    },
-    {
-        "id": "enc_q_1173",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Protocol suite for secure IP communications by authenticating and encrypting each IP packet?",
-        "options": [
-            "DHCP",
-            "NTP",
-            "STP",
-            "IPsec"
-        ],
-        "answer": [
-            "IPsec"
-        ],
-        "explanation": "IPsec is the correct answer. It is defined as: Protocol suite for secure IP communications by authenticating and encrypting each IP packet."
-    },
-    {
-        "id": "enc_q_1174",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Standard for message logging?",
-        "options": [
-            "Syslog",
-            "IPv6",
-            "DHCP",
-            "CSMA/CA"
-        ],
-        "answer": [
-            "Syslog"
-        ],
-        "explanation": "Syslog is the correct answer. It is defined as: Standard for message logging."
-    },
-    {
-        "id": "enc_q_1175",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision avoidance protocol used in 802.11 Wi-Fi?",
-        "options": [
-            "ICMP",
-            "CSMA/CA",
-            "IPsec",
-            "CSMA/CD"
-        ],
-        "answer": [
-            "CSMA/CA"
-        ],
-        "explanation": "CSMA/CA is the correct answer. It is defined as: Collision avoidance protocol used in 802.11 Wi-Fi."
-    },
-    {
-        "id": "enc_q_1176",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Address Resolution Protocol, maps IP to MAC address?",
-        "options": [
-            "CSMA/CD",
-            "OSPF",
-            "STP",
-            "ARP"
-        ],
-        "answer": [
-            "ARP"
-        ],
-        "explanation": "ARP is the correct answer. It is defined as: Address Resolution Protocol, maps IP to MAC address."
-    },
-    {
-        "id": "enc_q_1177",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Power over Ethernet, provides power and data over twisted pair?",
-        "options": [
-            "IPsec",
-            "PoE",
-            "NTP",
-            "WPA3"
-        ],
-        "answer": [
-            "PoE"
-        ],
-        "explanation": "PoE is the correct answer. It is defined as: Power over Ethernet, provides power and data over twisted pair."
-    },
-    {
-        "id": "enc_q_1178",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Dynamic Host Configuration Protocol, assigns IP addresses?",
-        "options": [
-            "ICMP",
-            "WPA3",
-            "VLAN",
-            "DHCP"
-        ],
-        "answer": [
-            "DHCP"
-        ],
-        "explanation": "DHCP is the correct answer. It is defined as: Dynamic Host Configuration Protocol, assigns IP addresses."
-    },
-    {
-        "id": "enc_q_1179",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Standard for message logging?",
-        "options": [
-            "DHCP",
-            "VLAN",
-            "Syslog",
-            "MTU"
-        ],
-        "answer": [
-            "Syslog"
-        ],
-        "explanation": "Syslog is the correct answer. It is defined as: Standard for message logging."
-    },
-    {
-        "id": "enc_q_1180",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Open Shortest Path First, a link-state routing protocol?",
-        "options": [
-            "BGP",
-            "NAT",
-            "CSMA/CA",
-            "OSPF"
-        ],
-        "answer": [
-            "OSPF"
-        ],
-        "explanation": "OSPF is the correct answer. It is defined as: Open Shortest Path First, a link-state routing protocol."
-    },
-    {
-        "id": "enc_q_1181",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Modern Wi-Fi security standard using SAE?",
-        "options": [
-            "CSMA/CD",
-            "SNMP",
-            "NTP",
-            "WPA3"
-        ],
-        "answer": [
-            "WPA3"
-        ],
-        "explanation": "WPA3 is the correct answer. It is defined as: Modern Wi-Fi security standard using SAE."
-    },
-    {
-        "id": "enc_q_1182",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Domain Name System, resolves hostnames to IPs?",
-        "options": [
-            "DNS",
-            "CSMA/CA",
-            "PoE",
-            "STP"
-        ],
-        "answer": [
-            "DNS"
-        ],
-        "explanation": "DNS is the correct answer. It is defined as: Domain Name System, resolves hostnames to IPs."
-    },
-    {
-        "id": "enc_q_1183",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Standard for message logging?",
-        "options": [
-            "WPA3",
-            "MAC Address",
-            "Syslog",
-            "IPsec"
-        ],
-        "answer": [
-            "Syslog"
-        ],
-        "explanation": "Syslog is the correct answer. It is defined as: Standard for message logging."
-    },
-    {
-        "id": "enc_q_1184",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Border Gateway Protocol, the routing protocol of the Internet?",
-        "options": [
-            "BGP",
-            "MAC Address",
-            "SNMP",
-            "DNS"
-        ],
-        "answer": [
-            "BGP"
-        ],
-        "explanation": "BGP is the correct answer. It is defined as: Border Gateway Protocol, the routing protocol of the Internet."
-    },
-    {
-        "id": "enc_q_1185",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Protocol suite for secure IP communications by authenticating and encrypting each IP packet?",
-        "options": [
-            "IPsec",
-            "CSMA/CD",
-            "Syslog",
-            "STP"
-        ],
-        "answer": [
-            "IPsec"
-        ],
-        "explanation": "IPsec is the correct answer. It is defined as: Protocol suite for secure IP communications by authenticating and encrypting each IP packet."
-    },
-    {
-        "id": "enc_q_1186",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Standard for message logging?",
-        "options": [
-            "DHCP",
-            "IPv6",
-            "DNS",
-            "Syslog"
-        ],
-        "answer": [
-            "Syslog"
-        ],
-        "explanation": "Syslog is the correct answer. It is defined as: Standard for message logging."
-    },
-    {
-        "id": "enc_q_1187",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision avoidance protocol used in 802.11 Wi-Fi?",
-        "options": [
-            "CSMA/CD",
-            "CSMA/CA",
-            "ARP",
-            "NAT"
-        ],
-        "answer": [
-            "CSMA/CA"
-        ],
-        "explanation": "CSMA/CA is the correct answer. It is defined as: Collision avoidance protocol used in 802.11 Wi-Fi."
-    },
-    {
-        "id": "enc_q_1188",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Standard for message logging?",
-        "options": [
-            "DHCP",
-            "Syslog",
-            "IPv6",
-            "VLAN"
-        ],
-        "answer": [
-            "Syslog"
-        ],
-        "explanation": "Syslog is the correct answer. It is defined as: Standard for message logging."
-    },
-    {
-        "id": "enc_q_1189",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Protocol suite for secure IP communications by authenticating and encrypting each IP packet?",
-        "options": [
-            "CSMA/CD",
-            "IPv6",
-            "ARP",
-            "IPsec"
-        ],
-        "answer": [
-            "IPsec"
-        ],
-        "explanation": "IPsec is the correct answer. It is defined as: Protocol suite for secure IP communications by authenticating and encrypting each IP packet."
-    },
-    {
-        "id": "enc_q_1190",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Power over Ethernet, provides power and data over twisted pair?",
-        "options": [
-            "Syslog",
-            "CSMA/CD",
-            "NTP",
-            "PoE"
-        ],
-        "answer": [
-            "PoE"
-        ],
-        "explanation": "PoE is the correct answer. It is defined as: Power over Ethernet, provides power and data over twisted pair."
-    },
-    {
-        "id": "enc_q_1191",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Dynamic Host Configuration Protocol, assigns IP addresses?",
-        "options": [
-            "DNS",
-            "MAC Address",
-            "SNMP",
-            "DHCP"
-        ],
-        "answer": [
-            "DHCP"
-        ],
-        "explanation": "DHCP is the correct answer. It is defined as: Dynamic Host Configuration Protocol, assigns IP addresses."
-    },
-    {
-        "id": "enc_q_1192",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision detection protocol used in legacy Ethernet?",
-        "options": [
-            "CSMA/CD",
-            "NAT",
-            "NTP",
-            "PoE"
-        ],
-        "answer": [
-            "CSMA/CD"
-        ],
-        "explanation": "CSMA/CD is the correct answer. It is defined as: Collision detection protocol used in legacy Ethernet."
-    },
-    {
-        "id": "enc_q_1193",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Border Gateway Protocol, the routing protocol of the Internet?",
-        "options": [
-            "STP",
-            "MTU",
-            "BGP",
-            "NAT"
-        ],
-        "answer": [
-            "BGP"
-        ],
-        "explanation": "BGP is the correct answer. It is defined as: Border Gateway Protocol, the routing protocol of the Internet."
-    },
-    {
-        "id": "enc_q_1194",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Protocol suite for secure IP communications by authenticating and encrypting each IP packet?",
-        "options": [
-            "IPsec",
-            "MTU",
-            "WPA3",
-            "OSPF"
-        ],
-        "answer": [
-            "IPsec"
-        ],
-        "explanation": "IPsec is the correct answer. It is defined as: Protocol suite for secure IP communications by authenticating and encrypting each IP packet."
-    },
-    {
-        "id": "enc_q_1195",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Protocol suite for secure IP communications by authenticating and encrypting each IP packet?",
-        "options": [
-            "MTU",
-            "IPsec",
-            "OSPF",
-            "STP"
-        ],
-        "answer": [
-            "IPsec"
-        ],
-        "explanation": "IPsec is the correct answer. It is defined as: Protocol suite for secure IP communications by authenticating and encrypting each IP packet."
-    },
-    {
-        "id": "enc_q_1196",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Dynamic Host Configuration Protocol, assigns IP addresses?",
-        "options": [
-            "DHCP",
-            "VLAN",
-            "NTP",
-            "IPv6"
-        ],
-        "answer": [
-            "DHCP"
-        ],
-        "explanation": "DHCP is the correct answer. It is defined as: Dynamic Host Configuration Protocol, assigns IP addresses."
-    },
-    {
-        "id": "enc_q_1197",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Domain Name System, resolves hostnames to IPs?",
-        "options": [
-            "DNS",
-            "NAT",
-            "BGP",
-            "SNMP"
-        ],
-        "answer": [
-            "DNS"
-        ],
-        "explanation": "DNS is the correct answer. It is defined as: Domain Name System, resolves hostnames to IPs."
-    },
-    {
-        "id": "enc_q_1198",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 128-bit IP addressing system?",
-        "options": [
-            "IPv6",
-            "NAT",
-            "IPsec",
-            "MTU"
-        ],
-        "answer": [
-            "IPv6"
-        ],
-        "explanation": "IPv6 is the correct answer. It is defined as: 128-bit IP addressing system."
-    },
-    {
-        "id": "enc_q_1199",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Open Shortest Path First, a link-state routing protocol?",
-        "options": [
-            "NAT",
-            "OSPF",
-            "IPsec",
-            "MTU"
-        ],
-        "answer": [
-            "OSPF"
-        ],
-        "explanation": "OSPF is the correct answer. It is defined as: Open Shortest Path First, a link-state routing protocol."
-    },
-    {
-        "id": "enc_q_1200",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 48-bit physical hardware address?",
-        "options": [
-            "ARP",
-            "DNS",
-            "NTP",
-            "MAC Address"
-        ],
-        "answer": [
-            "MAC Address"
-        ],
-        "explanation": "MAC Address is the correct answer. It is defined as: 48-bit physical hardware address."
-    },
-    {
-        "id": "enc_q_1201",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Internet Control Message Protocol, used by ping and traceroute?",
-        "options": [
-            "CSMA/CA",
-            "ICMP",
-            "NTP",
-            "DNS"
-        ],
-        "answer": [
-            "ICMP"
-        ],
-        "explanation": "ICMP is the correct answer. It is defined as: Internet Control Message Protocol, used by ping and traceroute."
-    },
-    {
-        "id": "enc_q_1202",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Dynamic Host Configuration Protocol, assigns IP addresses?",
-        "options": [
-            "DHCP",
-            "CSMA/CA",
-            "PoE",
-            "NAT"
-        ],
-        "answer": [
-            "DHCP"
-        ],
-        "explanation": "DHCP is the correct answer. It is defined as: Dynamic Host Configuration Protocol, assigns IP addresses."
-    },
-    {
-        "id": "enc_q_1203",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 48-bit physical hardware address?",
-        "options": [
-            "MAC Address",
-            "DHCP",
-            "NAT",
-            "WPA3"
-        ],
-        "answer": [
-            "MAC Address"
-        ],
-        "explanation": "MAC Address is the correct answer. It is defined as: 48-bit physical hardware address."
-    },
-    {
-        "id": "enc_q_1204",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Dynamic Host Configuration Protocol, assigns IP addresses?",
-        "options": [
-            "DHCP",
-            "DNS",
-            "VLAN",
-            "SNMP"
-        ],
-        "answer": [
-            "DHCP"
-        ],
-        "explanation": "DHCP is the correct answer. It is defined as: Dynamic Host Configuration Protocol, assigns IP addresses."
-    },
-    {
-        "id": "enc_q_1205",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Address Resolution Protocol, maps IP to MAC address?",
-        "options": [
-            "PoE",
-            "STP",
-            "ARP",
-            "VLAN"
-        ],
-        "answer": [
-            "ARP"
-        ],
-        "explanation": "ARP is the correct answer. It is defined as: Address Resolution Protocol, maps IP to MAC address."
-    },
-    {
-        "id": "enc_q_1206",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Simple Network Management Protocol, used to monitor devices?",
-        "options": [
-            "STP",
-            "BGP",
-            "DHCP",
-            "SNMP"
-        ],
-        "answer": [
-            "SNMP"
-        ],
-        "explanation": "SNMP is the correct answer. It is defined as: Simple Network Management Protocol, used to monitor devices."
-    },
-    {
-        "id": "enc_q_1207",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Open Shortest Path First, a link-state routing protocol?",
-        "options": [
-            "ARP",
-            "BGP",
-            "CSMA/CD",
-            "OSPF"
-        ],
-        "answer": [
-            "OSPF"
-        ],
-        "explanation": "OSPF is the correct answer. It is defined as: Open Shortest Path First, a link-state routing protocol."
-    },
-    {
-        "id": "enc_q_1208",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Border Gateway Protocol, the routing protocol of the Internet?",
-        "options": [
-            "BGP",
-            "DHCP",
-            "MAC Address",
-            "VLAN"
-        ],
-        "answer": [
-            "BGP"
-        ],
-        "explanation": "BGP is the correct answer. It is defined as: Border Gateway Protocol, the routing protocol of the Internet."
-    },
-    {
-        "id": "enc_q_1209",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Standard for message logging?",
-        "options": [
-            "Syslog",
-            "CSMA/CD",
-            "VLAN",
-            "STP"
-        ],
-        "answer": [
-            "Syslog"
-        ],
-        "explanation": "Syslog is the correct answer. It is defined as: Standard for message logging."
-    },
-    {
-        "id": "enc_q_1210",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision detection protocol used in legacy Ethernet?",
-        "options": [
-            "ARP",
-            "CSMA/CA",
-            "CSMA/CD",
-            "Syslog"
-        ],
-        "answer": [
-            "CSMA/CD"
-        ],
-        "explanation": "CSMA/CD is the correct answer. It is defined as: Collision detection protocol used in legacy Ethernet."
-    },
-    {
-        "id": "enc_q_1211",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Simple Network Management Protocol, used to monitor devices?",
-        "options": [
-            "VLAN",
-            "SNMP",
-            "NTP",
-            "STP"
-        ],
-        "answer": [
-            "SNMP"
-        ],
-        "explanation": "SNMP is the correct answer. It is defined as: Simple Network Management Protocol, used to monitor devices."
-    },
-    {
-        "id": "enc_q_1212",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision avoidance protocol used in 802.11 Wi-Fi?",
-        "options": [
-            "ICMP",
-            "MAC Address",
-            "CSMA/CA",
-            "BGP"
-        ],
-        "answer": [
-            "CSMA/CA"
-        ],
-        "explanation": "CSMA/CA is the correct answer. It is defined as: Collision avoidance protocol used in 802.11 Wi-Fi."
-    },
-    {
-        "id": "enc_q_1213",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Border Gateway Protocol, the routing protocol of the Internet?",
-        "options": [
-            "VLAN",
-            "ARP",
-            "IPv6",
-            "BGP"
-        ],
-        "answer": [
-            "BGP"
-        ],
-        "explanation": "BGP is the correct answer. It is defined as: Border Gateway Protocol, the routing protocol of the Internet."
-    },
-    {
-        "id": "enc_q_1214",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Modern Wi-Fi security standard using SAE?",
-        "options": [
-            "OSPF",
-            "ICMP",
-            "WPA3",
-            "BGP"
-        ],
-        "answer": [
-            "WPA3"
-        ],
-        "explanation": "WPA3 is the correct answer. It is defined as: Modern Wi-Fi security standard using SAE."
-    },
-    {
-        "id": "enc_q_1215",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision avoidance protocol used in 802.11 Wi-Fi?",
-        "options": [
-            "SNMP",
-            "CSMA/CA",
-            "OSPF",
-            "BGP"
-        ],
-        "answer": [
-            "CSMA/CA"
-        ],
-        "explanation": "CSMA/CA is the correct answer. It is defined as: Collision avoidance protocol used in 802.11 Wi-Fi."
-    },
-    {
-        "id": "enc_q_1216",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision avoidance protocol used in 802.11 Wi-Fi?",
-        "options": [
-            "CSMA/CA",
-            "STP",
-            "MAC Address",
-            "DNS"
-        ],
-        "answer": [
-            "CSMA/CA"
-        ],
-        "explanation": "CSMA/CA is the correct answer. It is defined as: Collision avoidance protocol used in 802.11 Wi-Fi."
-    },
-    {
-        "id": "enc_q_1217",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Power over Ethernet, provides power and data over twisted pair?",
-        "options": [
-            "Syslog",
-            "WPA3",
-            "PoE",
-            "ARP"
-        ],
-        "answer": [
-            "PoE"
-        ],
-        "explanation": "PoE is the correct answer. It is defined as: Power over Ethernet, provides power and data over twisted pair."
-    },
-    {
-        "id": "enc_q_1218",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Spanning Tree Protocol, prevents Layer 2 loops?",
-        "options": [
-            "STP",
-            "VLAN",
-            "WPA3",
-            "Syslog"
-        ],
-        "answer": [
-            "STP"
-        ],
-        "explanation": "STP is the correct answer. It is defined as: Spanning Tree Protocol, prevents Layer 2 loops."
-    },
-    {
-        "id": "enc_q_1219",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Open Shortest Path First, a link-state routing protocol?",
-        "options": [
-            "IPsec",
-            "NTP",
-            "BGP",
-            "OSPF"
-        ],
-        "answer": [
-            "OSPF"
-        ],
-        "explanation": "OSPF is the correct answer. It is defined as: Open Shortest Path First, a link-state routing protocol."
-    },
-    {
-        "id": "enc_q_1220",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Border Gateway Protocol, the routing protocol of the Internet?",
-        "options": [
-            "BGP",
-            "VLAN",
-            "DNS",
-            "STP"
-        ],
-        "answer": [
-            "BGP"
-        ],
-        "explanation": "BGP is the correct answer. It is defined as: Border Gateway Protocol, the routing protocol of the Internet."
-    },
-    {
-        "id": "enc_q_1221",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Maximum Transmission Unit, typically 1500 bytes for Ethernet?",
-        "options": [
-            "MTU",
-            "NAT",
-            "IPsec",
-            "MAC Address"
-        ],
-        "answer": [
-            "MTU"
-        ],
-        "explanation": "MTU is the correct answer. It is defined as: Maximum Transmission Unit, typically 1500 bytes for Ethernet."
-    },
-    {
-        "id": "enc_q_1222",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Spanning Tree Protocol, prevents Layer 2 loops?",
-        "options": [
-            "WPA3",
-            "VLAN",
-            "STP",
-            "OSPF"
-        ],
-        "answer": [
-            "STP"
-        ],
-        "explanation": "STP is the correct answer. It is defined as: Spanning Tree Protocol, prevents Layer 2 loops."
-    },
-    {
-        "id": "enc_q_1223",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Modern Wi-Fi security standard using SAE?",
-        "options": [
-            "CSMA/CD",
-            "WPA3",
-            "OSPF",
-            "NTP"
-        ],
-        "answer": [
-            "WPA3"
-        ],
-        "explanation": "WPA3 is the correct answer. It is defined as: Modern Wi-Fi security standard using SAE."
-    },
-    {
-        "id": "enc_q_1224",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Modern Wi-Fi security standard using SAE?",
-        "options": [
-            "ICMP",
-            "Syslog",
-            "MTU",
-            "WPA3"
-        ],
-        "answer": [
-            "WPA3"
-        ],
-        "explanation": "WPA3 is the correct answer. It is defined as: Modern Wi-Fi security standard using SAE."
-    },
-    {
-        "id": "enc_q_1225",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Modern Wi-Fi security standard using SAE?",
-        "options": [
-            "BGP",
-            "ARP",
-            "DHCP",
-            "WPA3"
-        ],
-        "answer": [
-            "WPA3"
-        ],
-        "explanation": "WPA3 is the correct answer. It is defined as: Modern Wi-Fi security standard using SAE."
-    },
-    {
-        "id": "enc_q_1226",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Spanning Tree Protocol, prevents Layer 2 loops?",
-        "options": [
-            "NAT",
-            "IPsec",
-            "STP",
-            "ICMP"
-        ],
-        "answer": [
-            "STP"
-        ],
-        "explanation": "STP is the correct answer. It is defined as: Spanning Tree Protocol, prevents Layer 2 loops."
-    },
-    {
-        "id": "enc_q_1227",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Simple Network Management Protocol, used to monitor devices?",
-        "options": [
-            "Syslog",
-            "PoE",
-            "BGP",
-            "SNMP"
-        ],
-        "answer": [
-            "SNMP"
-        ],
-        "explanation": "SNMP is the correct answer. It is defined as: Simple Network Management Protocol, used to monitor devices."
-    },
-    {
-        "id": "enc_q_1228",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Border Gateway Protocol, the routing protocol of the Internet?",
-        "options": [
-            "ICMP",
-            "IPv6",
-            "BGP",
-            "Syslog"
-        ],
-        "answer": [
-            "BGP"
-        ],
-        "explanation": "BGP is the correct answer. It is defined as: Border Gateway Protocol, the routing protocol of the Internet."
-    },
-    {
-        "id": "enc_q_1229",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Network Address Translation, maps private IPs to public IPs?",
-        "options": [
-            "MTU",
-            "NAT",
-            "VLAN",
-            "DHCP"
-        ],
-        "answer": [
-            "NAT"
-        ],
-        "explanation": "NAT is the correct answer. It is defined as: Network Address Translation, maps private IPs to public IPs."
-    },
-    {
-        "id": "enc_q_1230",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Modern Wi-Fi security standard using SAE?",
-        "options": [
-            "WPA3",
-            "BGP",
-            "CSMA/CD",
-            "NAT"
-        ],
-        "answer": [
-            "WPA3"
-        ],
-        "explanation": "WPA3 is the correct answer. It is defined as: Modern Wi-Fi security standard using SAE."
-    },
-    {
-        "id": "enc_q_1231",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Domain Name System, resolves hostnames to IPs?",
-        "options": [
-            "OSPF",
-            "DHCP",
-            "BGP",
-            "DNS"
-        ],
-        "answer": [
-            "DNS"
-        ],
-        "explanation": "DNS is the correct answer. It is defined as: Domain Name System, resolves hostnames to IPs."
-    },
-    {
-        "id": "enc_q_1232",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision detection protocol used in legacy Ethernet?",
-        "options": [
-            "CSMA/CD",
-            "ARP",
-            "Syslog",
-            "MAC Address"
-        ],
-        "answer": [
-            "CSMA/CD"
-        ],
-        "explanation": "CSMA/CD is the correct answer. It is defined as: Collision detection protocol used in legacy Ethernet."
-    },
-    {
-        "id": "enc_q_1233",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Maximum Transmission Unit, typically 1500 bytes for Ethernet?",
-        "options": [
-            "CSMA/CD",
-            "OSPF",
-            "NTP",
-            "MTU"
-        ],
-        "answer": [
-            "MTU"
-        ],
-        "explanation": "MTU is the correct answer. It is defined as: Maximum Transmission Unit, typically 1500 bytes for Ethernet."
-    },
-    {
-        "id": "enc_q_1234",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Protocol suite for secure IP communications by authenticating and encrypting each IP packet?",
-        "options": [
-            "IPsec",
-            "VLAN",
-            "OSPF",
-            "STP"
-        ],
-        "answer": [
-            "IPsec"
-        ],
-        "explanation": "IPsec is the correct answer. It is defined as: Protocol suite for secure IP communications by authenticating and encrypting each IP packet."
-    },
-    {
-        "id": "enc_q_1235",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Power over Ethernet, provides power and data over twisted pair?",
-        "options": [
-            "IPsec",
-            "PoE",
-            "MAC Address",
-            "ICMP"
-        ],
-        "answer": [
-            "PoE"
-        ],
-        "explanation": "PoE is the correct answer. It is defined as: Power over Ethernet, provides power and data over twisted pair."
-    },
-    {
-        "id": "enc_q_1236",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Dynamic Host Configuration Protocol, assigns IP addresses?",
-        "options": [
-            "VLAN",
-            "IPsec",
-            "BGP",
-            "DHCP"
-        ],
-        "answer": [
-            "DHCP"
-        ],
-        "explanation": "DHCP is the correct answer. It is defined as: Dynamic Host Configuration Protocol, assigns IP addresses."
-    },
-    {
-        "id": "enc_q_1237",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Address Resolution Protocol, maps IP to MAC address?",
-        "options": [
-            "NAT",
-            "ICMP",
-            "STP",
-            "ARP"
-        ],
-        "answer": [
-            "ARP"
-        ],
-        "explanation": "ARP is the correct answer. It is defined as: Address Resolution Protocol, maps IP to MAC address."
-    },
-    {
-        "id": "enc_q_1238",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision avoidance protocol used in 802.11 Wi-Fi?",
-        "options": [
-            "CSMA/CA",
-            "WPA3",
-            "SNMP",
-            "CSMA/CD"
-        ],
-        "answer": [
-            "CSMA/CA"
-        ],
-        "explanation": "CSMA/CA is the correct answer. It is defined as: Collision avoidance protocol used in 802.11 Wi-Fi."
-    },
-    {
-        "id": "enc_q_1239",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Spanning Tree Protocol, prevents Layer 2 loops?",
-        "options": [
-            "STP",
-            "IPsec",
-            "NAT",
-            "PoE"
-        ],
-        "answer": [
-            "STP"
-        ],
-        "explanation": "STP is the correct answer. It is defined as: Spanning Tree Protocol, prevents Layer 2 loops."
-    },
-    {
-        "id": "enc_q_1240",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 128-bit IP addressing system?",
-        "options": [
-            "CSMA/CA",
-            "ARP",
-            "VLAN",
-            "IPv6"
-        ],
-        "answer": [
-            "IPv6"
-        ],
-        "explanation": "IPv6 is the correct answer. It is defined as: 128-bit IP addressing system."
-    },
-    {
-        "id": "enc_q_1241",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Modern Wi-Fi security standard using SAE?",
-        "options": [
-            "BGP",
-            "IPsec",
-            "IPv6",
-            "WPA3"
-        ],
-        "answer": [
-            "WPA3"
-        ],
-        "explanation": "WPA3 is the correct answer. It is defined as: Modern Wi-Fi security standard using SAE."
-    },
-    {
-        "id": "enc_q_1242",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Maximum Transmission Unit, typically 1500 bytes for Ethernet?",
-        "options": [
-            "MTU",
-            "IPv6",
-            "BGP",
-            "OSPF"
-        ],
-        "answer": [
-            "MTU"
-        ],
-        "explanation": "MTU is the correct answer. It is defined as: Maximum Transmission Unit, typically 1500 bytes for Ethernet."
-    },
-    {
-        "id": "enc_q_1243",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Power over Ethernet, provides power and data over twisted pair?",
-        "options": [
-            "NTP",
-            "NAT",
-            "PoE",
-            "OSPF"
-        ],
-        "answer": [
-            "PoE"
-        ],
-        "explanation": "PoE is the correct answer. It is defined as: Power over Ethernet, provides power and data over twisted pair."
-    },
-    {
-        "id": "enc_q_1244",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Domain Name System, resolves hostnames to IPs?",
-        "options": [
-            "VLAN",
-            "CSMA/CD",
-            "IPsec",
-            "DNS"
-        ],
-        "answer": [
-            "DNS"
-        ],
-        "explanation": "DNS is the correct answer. It is defined as: Domain Name System, resolves hostnames to IPs."
-    },
-    {
-        "id": "enc_q_1245",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Standard for message logging?",
-        "options": [
-            "NAT",
-            "Syslog",
-            "ARP",
-            "MTU"
-        ],
-        "answer": [
-            "Syslog"
-        ],
-        "explanation": "Syslog is the correct answer. It is defined as: Standard for message logging."
-    },
-    {
-        "id": "enc_q_1246",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Network Address Translation, maps private IPs to public IPs?",
-        "options": [
-            "NAT",
-            "VLAN",
-            "STP",
-            "MTU"
-        ],
-        "answer": [
-            "NAT"
-        ],
-        "explanation": "NAT is the correct answer. It is defined as: Network Address Translation, maps private IPs to public IPs."
-    },
-    {
-        "id": "enc_q_1247",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Virtual LAN, logically segments broadcast domains?",
-        "options": [
-            "IPv6",
-            "DNS",
-            "IPsec",
-            "VLAN"
-        ],
-        "answer": [
-            "VLAN"
-        ],
-        "explanation": "VLAN is the correct answer. It is defined as: Virtual LAN, logically segments broadcast domains."
-    },
-    {
-        "id": "enc_q_1248",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Network Address Translation, maps private IPs to public IPs?",
-        "options": [
-            "NAT",
-            "CSMA/CD",
-            "VLAN",
-            "STP"
-        ],
-        "answer": [
-            "NAT"
-        ],
-        "explanation": "NAT is the correct answer. It is defined as: Network Address Translation, maps private IPs to public IPs."
-    },
-    {
-        "id": "enc_q_1249",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Internet Control Message Protocol, used by ping and traceroute?",
-        "options": [
-            "SNMP",
-            "OSPF",
-            "ICMP",
-            "NTP"
-        ],
-        "answer": [
-            "ICMP"
-        ],
-        "explanation": "ICMP is the correct answer. It is defined as: Internet Control Message Protocol, used by ping and traceroute."
-    },
-    {
-        "id": "enc_q_1250",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Domain Name System, resolves hostnames to IPs?",
-        "options": [
-            "NTP",
-            "SNMP",
-            "DHCP",
-            "DNS"
-        ],
-        "answer": [
-            "DNS"
-        ],
-        "explanation": "DNS is the correct answer. It is defined as: Domain Name System, resolves hostnames to IPs."
-    },
-    {
-        "id": "enc_q_1251",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Network Time Protocol, synchronizes clocks?",
-        "options": [
-            "MAC Address",
-            "OSPF",
-            "MTU",
-            "NTP"
-        ],
-        "answer": [
-            "NTP"
-        ],
-        "explanation": "NTP is the correct answer. It is defined as: Network Time Protocol, synchronizes clocks."
-    },
-    {
-        "id": "enc_q_1252",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision avoidance protocol used in 802.11 Wi-Fi?",
-        "options": [
-            "DNS",
-            "DHCP",
-            "NAT",
-            "CSMA/CA"
-        ],
-        "answer": [
-            "CSMA/CA"
-        ],
-        "explanation": "CSMA/CA is the correct answer. It is defined as: Collision avoidance protocol used in 802.11 Wi-Fi."
-    },
-    {
-        "id": "enc_q_1253",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Address Resolution Protocol, maps IP to MAC address?",
-        "options": [
-            "CSMA/CA",
-            "DHCP",
-            "IPsec",
-            "ARP"
-        ],
-        "answer": [
-            "ARP"
-        ],
-        "explanation": "ARP is the correct answer. It is defined as: Address Resolution Protocol, maps IP to MAC address."
-    },
-    {
-        "id": "enc_q_1254",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Internet Control Message Protocol, used by ping and traceroute?",
-        "options": [
-            "MAC Address",
-            "STP",
-            "VLAN",
-            "ICMP"
-        ],
-        "answer": [
-            "ICMP"
-        ],
-        "explanation": "ICMP is the correct answer. It is defined as: Internet Control Message Protocol, used by ping and traceroute."
-    },
-    {
-        "id": "enc_q_1255",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Domain Name System, resolves hostnames to IPs?",
-        "options": [
-            "DNS",
-            "STP",
-            "MTU",
-            "CSMA/CD"
-        ],
-        "answer": [
-            "DNS"
-        ],
-        "explanation": "DNS is the correct answer. It is defined as: Domain Name System, resolves hostnames to IPs."
-    },
-    {
-        "id": "enc_q_1256",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Domain Name System, resolves hostnames to IPs?",
-        "options": [
-            "DNS",
-            "IPsec",
-            "STP",
-            "WPA3"
-        ],
-        "answer": [
-            "DNS"
-        ],
-        "explanation": "DNS is the correct answer. It is defined as: Domain Name System, resolves hostnames to IPs."
-    },
-    {
-        "id": "enc_q_1257",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Spanning Tree Protocol, prevents Layer 2 loops?",
-        "options": [
-            "SNMP",
-            "BGP",
-            "STP",
-            "NAT"
-        ],
-        "answer": [
-            "STP"
-        ],
-        "explanation": "STP is the correct answer. It is defined as: Spanning Tree Protocol, prevents Layer 2 loops."
-    },
-    {
-        "id": "enc_q_1258",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Address Resolution Protocol, maps IP to MAC address?",
-        "options": [
-            "ARP",
-            "DHCP",
-            "WPA3",
-            "VLAN"
-        ],
-        "answer": [
-            "ARP"
-        ],
-        "explanation": "ARP is the correct answer. It is defined as: Address Resolution Protocol, maps IP to MAC address."
-    },
-    {
-        "id": "enc_q_1259",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Virtual LAN, logically segments broadcast domains?",
-        "options": [
-            "DNS",
-            "VLAN",
-            "NAT",
-            "STP"
-        ],
-        "answer": [
-            "VLAN"
-        ],
-        "explanation": "VLAN is the correct answer. It is defined as: Virtual LAN, logically segments broadcast domains."
-    },
-    {
-        "id": "enc_q_1260",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision avoidance protocol used in 802.11 Wi-Fi?",
-        "options": [
-            "ICMP",
-            "IPv6",
-            "STP",
-            "CSMA/CA"
-        ],
-        "answer": [
-            "CSMA/CA"
-        ],
-        "explanation": "CSMA/CA is the correct answer. It is defined as: Collision avoidance protocol used in 802.11 Wi-Fi."
-    },
-    {
-        "id": "enc_q_1261",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 48-bit physical hardware address?",
-        "options": [
-            "MAC Address",
-            "VLAN",
-            "DHCP",
-            "PoE"
-        ],
-        "answer": [
-            "MAC Address"
-        ],
-        "explanation": "MAC Address is the correct answer. It is defined as: 48-bit physical hardware address."
-    },
-    {
-        "id": "enc_q_1262",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Maximum Transmission Unit, typically 1500 bytes for Ethernet?",
-        "options": [
-            "MTU",
-            "NAT",
-            "WPA3",
-            "DNS"
-        ],
-        "answer": [
-            "MTU"
-        ],
-        "explanation": "MTU is the correct answer. It is defined as: Maximum Transmission Unit, typically 1500 bytes for Ethernet."
-    },
-    {
-        "id": "enc_q_1263",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 128-bit IP addressing system?",
-        "options": [
-            "SNMP",
-            "PoE",
-            "CSMA/CD",
-            "IPv6"
-        ],
-        "answer": [
-            "IPv6"
-        ],
-        "explanation": "IPv6 is the correct answer. It is defined as: 128-bit IP addressing system."
-    },
-    {
-        "id": "enc_q_1264",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 48-bit physical hardware address?",
-        "options": [
-            "BGP",
-            "NAT",
-            "MTU",
-            "MAC Address"
-        ],
-        "answer": [
-            "MAC Address"
-        ],
-        "explanation": "MAC Address is the correct answer. It is defined as: 48-bit physical hardware address."
-    },
-    {
-        "id": "enc_q_1265",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Border Gateway Protocol, the routing protocol of the Internet?",
-        "options": [
-            "OSPF",
-            "BGP",
-            "DNS",
-            "IPsec"
-        ],
-        "answer": [
-            "BGP"
-        ],
-        "explanation": "BGP is the correct answer. It is defined as: Border Gateway Protocol, the routing protocol of the Internet."
-    },
-    {
-        "id": "enc_q_1266",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 128-bit IP addressing system?",
-        "options": [
-            "IPv6",
-            "CSMA/CD",
-            "DNS",
-            "VLAN"
-        ],
-        "answer": [
-            "IPv6"
-        ],
-        "explanation": "IPv6 is the correct answer. It is defined as: 128-bit IP addressing system."
-    },
-    {
-        "id": "enc_q_1267",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Internet Control Message Protocol, used by ping and traceroute?",
-        "options": [
-            "ICMP",
-            "SNMP",
-            "NAT",
-            "MAC Address"
-        ],
-        "answer": [
-            "ICMP"
-        ],
-        "explanation": "ICMP is the correct answer. It is defined as: Internet Control Message Protocol, used by ping and traceroute."
-    },
-    {
-        "id": "enc_q_1268",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Spanning Tree Protocol, prevents Layer 2 loops?",
-        "options": [
-            "STP",
-            "MTU",
-            "NAT",
-            "DNS"
-        ],
-        "answer": [
-            "STP"
-        ],
-        "explanation": "STP is the correct answer. It is defined as: Spanning Tree Protocol, prevents Layer 2 loops."
-    },
-    {
-        "id": "enc_q_1269",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision avoidance protocol used in 802.11 Wi-Fi?",
-        "options": [
-            "IPsec",
-            "CSMA/CA",
-            "Syslog",
-            "BGP"
-        ],
-        "answer": [
-            "CSMA/CA"
-        ],
-        "explanation": "CSMA/CA is the correct answer. It is defined as: Collision avoidance protocol used in 802.11 Wi-Fi."
-    },
-    {
-        "id": "enc_q_1270",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Open Shortest Path First, a link-state routing protocol?",
-        "options": [
-            "MTU",
-            "DHCP",
-            "OSPF",
-            "PoE"
-        ],
-        "answer": [
-            "OSPF"
-        ],
-        "explanation": "OSPF is the correct answer. It is defined as: Open Shortest Path First, a link-state routing protocol."
-    },
-    {
-        "id": "enc_q_1271",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision detection protocol used in legacy Ethernet?",
-        "options": [
-            "CSMA/CD",
-            "DHCP",
-            "MAC Address",
-            "IPsec"
-        ],
-        "answer": [
-            "CSMA/CD"
-        ],
-        "explanation": "CSMA/CD is the correct answer. It is defined as: Collision detection protocol used in legacy Ethernet."
-    },
-    {
-        "id": "enc_q_1272",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 128-bit IP addressing system?",
-        "options": [
-            "IPv6",
-            "NTP",
-            "BGP",
-            "DHCP"
-        ],
-        "answer": [
-            "IPv6"
-        ],
-        "explanation": "IPv6 is the correct answer. It is defined as: 128-bit IP addressing system."
-    },
-    {
-        "id": "enc_q_1273",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Spanning Tree Protocol, prevents Layer 2 loops?",
-        "options": [
-            "NAT",
-            "PoE",
-            "STP",
-            "SNMP"
-        ],
-        "answer": [
-            "STP"
-        ],
-        "explanation": "STP is the correct answer. It is defined as: Spanning Tree Protocol, prevents Layer 2 loops."
-    },
-    {
-        "id": "enc_q_1274",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Simple Network Management Protocol, used to monitor devices?",
-        "options": [
-            "IPsec",
-            "ARP",
-            "SNMP",
-            "ICMP"
-        ],
-        "answer": [
-            "SNMP"
-        ],
-        "explanation": "SNMP is the correct answer. It is defined as: Simple Network Management Protocol, used to monitor devices."
-    },
-    {
-        "id": "enc_q_1275",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision detection protocol used in legacy Ethernet?",
-        "options": [
-            "PoE",
-            "CSMA/CD",
-            "DNS",
-            "BGP"
-        ],
-        "answer": [
-            "CSMA/CD"
-        ],
-        "explanation": "CSMA/CD is the correct answer. It is defined as: Collision detection protocol used in legacy Ethernet."
-    },
-    {
-        "id": "enc_q_1276",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Standard for message logging?",
-        "options": [
-            "WPA3",
-            "Syslog",
-            "MTU",
-            "DHCP"
-        ],
-        "answer": [
-            "Syslog"
-        ],
-        "explanation": "Syslog is the correct answer. It is defined as: Standard for message logging."
-    },
-    {
-        "id": "enc_q_1277",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Network Time Protocol, synchronizes clocks?",
-        "options": [
-            "SNMP",
-            "CSMA/CD",
-            "NTP",
-            "DNS"
-        ],
-        "answer": [
-            "NTP"
-        ],
-        "explanation": "NTP is the correct answer. It is defined as: Network Time Protocol, synchronizes clocks."
-    },
-    {
-        "id": "enc_q_1278",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Maximum Transmission Unit, typically 1500 bytes for Ethernet?",
-        "options": [
-            "MAC Address",
-            "NAT",
-            "DNS",
-            "MTU"
-        ],
-        "answer": [
-            "MTU"
-        ],
-        "explanation": "MTU is the correct answer. It is defined as: Maximum Transmission Unit, typically 1500 bytes for Ethernet."
-    },
-    {
-        "id": "enc_q_1279",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Network Time Protocol, synchronizes clocks?",
-        "options": [
-            "NTP",
-            "MTU",
-            "NAT",
-            "BGP"
-        ],
-        "answer": [
-            "NTP"
-        ],
-        "explanation": "NTP is the correct answer. It is defined as: Network Time Protocol, synchronizes clocks."
-    },
-    {
-        "id": "enc_q_1280",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Power over Ethernet, provides power and data over twisted pair?",
-        "options": [
-            "CSMA/CA",
-            "SNMP",
-            "PoE",
-            "BGP"
-        ],
-        "answer": [
-            "PoE"
-        ],
-        "explanation": "PoE is the correct answer. It is defined as: Power over Ethernet, provides power and data over twisted pair."
-    },
-    {
-        "id": "enc_q_1281",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Virtual LAN, logically segments broadcast domains?",
-        "options": [
-            "VLAN",
-            "ARP",
-            "PoE",
-            "STP"
-        ],
-        "answer": [
-            "VLAN"
-        ],
-        "explanation": "VLAN is the correct answer. It is defined as: Virtual LAN, logically segments broadcast domains."
-    },
-    {
-        "id": "enc_q_1282",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision avoidance protocol used in 802.11 Wi-Fi?",
-        "options": [
-            "WPA3",
-            "PoE",
-            "Syslog",
-            "CSMA/CA"
-        ],
-        "answer": [
-            "CSMA/CA"
-        ],
-        "explanation": "CSMA/CA is the correct answer. It is defined as: Collision avoidance protocol used in 802.11 Wi-Fi."
-    },
-    {
-        "id": "enc_q_1283",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Open Shortest Path First, a link-state routing protocol?",
-        "options": [
-            "NAT",
-            "OSPF",
-            "DNS",
-            "ARP"
-        ],
-        "answer": [
-            "OSPF"
-        ],
-        "explanation": "OSPF is the correct answer. It is defined as: Open Shortest Path First, a link-state routing protocol."
-    },
-    {
-        "id": "enc_q_1284",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Power over Ethernet, provides power and data over twisted pair?",
-        "options": [
-            "PoE",
-            "VLAN",
-            "ICMP",
-            "SNMP"
-        ],
-        "answer": [
-            "PoE"
-        ],
-        "explanation": "PoE is the correct answer. It is defined as: Power over Ethernet, provides power and data over twisted pair."
-    },
-    {
-        "id": "enc_q_1285",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision avoidance protocol used in 802.11 Wi-Fi?",
-        "options": [
-            "MTU",
-            "ICMP",
-            "SNMP",
-            "CSMA/CA"
-        ],
-        "answer": [
-            "CSMA/CA"
-        ],
-        "explanation": "CSMA/CA is the correct answer. It is defined as: Collision avoidance protocol used in 802.11 Wi-Fi."
-    },
-    {
-        "id": "enc_q_1286",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Dynamic Host Configuration Protocol, assigns IP addresses?",
-        "options": [
-            "DHCP",
-            "CSMA/CA",
-            "NTP",
-            "WPA3"
-        ],
-        "answer": [
-            "DHCP"
-        ],
-        "explanation": "DHCP is the correct answer. It is defined as: Dynamic Host Configuration Protocol, assigns IP addresses."
-    },
-    {
-        "id": "enc_q_1287",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Maximum Transmission Unit, typically 1500 bytes for Ethernet?",
-        "options": [
-            "MTU",
-            "IPsec",
-            "WPA3",
-            "OSPF"
-        ],
-        "answer": [
-            "MTU"
-        ],
-        "explanation": "MTU is the correct answer. It is defined as: Maximum Transmission Unit, typically 1500 bytes for Ethernet."
-    },
-    {
-        "id": "enc_q_1288",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Network Time Protocol, synchronizes clocks?",
-        "options": [
-            "NTP",
-            "VLAN",
-            "CSMA/CA",
-            "ARP"
-        ],
-        "answer": [
-            "NTP"
-        ],
-        "explanation": "NTP is the correct answer. It is defined as: Network Time Protocol, synchronizes clocks."
-    },
-    {
-        "id": "enc_q_1289",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Protocol suite for secure IP communications by authenticating and encrypting each IP packet?",
-        "options": [
-            "IPsec",
-            "NTP",
-            "VLAN",
-            "MTU"
-        ],
-        "answer": [
-            "IPsec"
-        ],
-        "explanation": "IPsec is the correct answer. It is defined as: Protocol suite for secure IP communications by authenticating and encrypting each IP packet."
-    },
-    {
-        "id": "enc_q_1290",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Dynamic Host Configuration Protocol, assigns IP addresses?",
-        "options": [
-            "DHCP",
-            "DNS",
-            "NTP",
-            "ICMP"
-        ],
-        "answer": [
-            "DHCP"
-        ],
-        "explanation": "DHCP is the correct answer. It is defined as: Dynamic Host Configuration Protocol, assigns IP addresses."
-    },
-    {
-        "id": "enc_q_1291",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 128-bit IP addressing system?",
-        "options": [
-            "IPv6",
-            "NAT",
-            "BGP",
-            "MAC Address"
-        ],
-        "answer": [
-            "IPv6"
-        ],
-        "explanation": "IPv6 is the correct answer. It is defined as: 128-bit IP addressing system."
-    },
-    {
-        "id": "enc_q_1292",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Spanning Tree Protocol, prevents Layer 2 loops?",
-        "options": [
-            "IPv6",
-            "STP",
-            "IPsec",
-            "NAT"
-        ],
-        "answer": [
-            "STP"
-        ],
-        "explanation": "STP is the correct answer. It is defined as: Spanning Tree Protocol, prevents Layer 2 loops."
-    },
-    {
-        "id": "enc_q_1293",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Network Time Protocol, synchronizes clocks?",
-        "options": [
-            "Syslog",
-            "MAC Address",
-            "CSMA/CD",
-            "NTP"
-        ],
-        "answer": [
-            "NTP"
-        ],
-        "explanation": "NTP is the correct answer. It is defined as: Network Time Protocol, synchronizes clocks."
-    },
-    {
-        "id": "enc_q_1294",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Standard for message logging?",
-        "options": [
-            "CSMA/CD",
-            "MAC Address",
-            "VLAN",
-            "Syslog"
-        ],
-        "answer": [
-            "Syslog"
-        ],
-        "explanation": "Syslog is the correct answer. It is defined as: Standard for message logging."
-    },
-    {
-        "id": "enc_q_1295",
-        "domain": "2.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Protocol suite for secure IP communications by authenticating and encrypting each IP packet?",
-        "options": [
-            "SNMP",
-            "PoE",
-            "VLAN",
-            "IPsec"
-        ],
-        "answer": [
-            "IPsec"
-        ],
-        "explanation": "IPsec is the correct answer. It is defined as: Protocol suite for secure IP communications by authenticating and encrypting each IP packet."
-    },
-    {
-        "id": "enc_q_1296",
-        "domain": "1.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Open Shortest Path First, a link-state routing protocol?",
-        "options": [
-            "CSMA/CD",
-            "BGP",
-            "OSPF",
-            "NAT"
-        ],
-        "answer": [
-            "OSPF"
-        ],
-        "explanation": "OSPF is the correct answer. It is defined as: Open Shortest Path First, a link-state routing protocol."
-    },
-    {
-        "id": "enc_q_1297",
-        "domain": "5.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Collision detection protocol used in legacy Ethernet?",
-        "options": [
-            "CSMA/CD",
-            "Syslog",
-            "OSPF",
-            "DHCP"
-        ],
-        "answer": [
-            "CSMA/CD"
-        ],
-        "explanation": "CSMA/CD is the correct answer. It is defined as: Collision detection protocol used in legacy Ethernet."
-    },
-    {
-        "id": "enc_q_1298",
-        "domain": "4.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: 48-bit physical hardware address?",
-        "options": [
-            "MAC Address",
-            "VLAN",
-            "MTU",
-            "Syslog"
-        ],
-        "answer": [
-            "MAC Address"
-        ],
-        "explanation": "MAC Address is the correct answer. It is defined as: 48-bit physical hardware address."
-    },
-    {
-        "id": "enc_q_1299",
-        "domain": "3.0",
-        "type": "multiple-choice",
-        "text": "Which of the following describes: Power over Ethernet, provides power and data over twisted pair?",
-        "options": [
-            "NAT",
-            "IPv6",
-            "CSMA/CA",
-            "PoE"
-        ],
-        "answer": [
-            "PoE"
-        ],
-        "explanation": "PoE is the correct answer. It is defined as: Power over Ethernet, provides power and data over twisted pair."
-    }
-]
+    "flashcards": [
+        {
+            "id": "encor_fc_1000",
+            "domain": "1.0",
+            "front": "What is Cisco SD-WAN?",
+            "back": "A software-defined approach to managing wide-area networks."
+        },
+        {
+            "id": "encor_fc_1001",
+            "domain": "2.0",
+            "front": "What is a VRF?",
+            "back": "Virtual Routing and Forwarding, allows multiple instances of a routing table to co-exist."
+        },
+        {
+            "id": "encor_fc_1002",
+            "domain": "3.0",
+            "front": "What BGP attribute is used to influence inbound traffic from an external AS?",
+            "back": "MED (Multi-Exit Discriminator)"
+        },
+        {
+            "id": "encor_fc_1003",
+            "domain": "3.0",
+            "front": "Which OSPF LSA type is generated by an ASBR?",
+            "back": "Type 5 (External LSA)"
+        },
+        {
+            "id": "encor_fc_1004",
+            "domain": "4.0",
+            "front": "What is NetFlow?",
+            "back": "A network protocol developed by Cisco for collecting IP traffic information."
+        },
+        {
+            "id": "encor_fc_1005",
+            "domain": "5.0",
+            "front": "What data format does RESTCONF use?",
+            "back": "XML and JSON"
+        },
+        {
+            "id": "encor_fc_1006",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.70.181/27?",
+            "back": "192.168.70.160"
+        },
+        {
+            "id": "encor_fc_1007",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.70.181/27?",
+            "back": "192.168.70.191"
+        },
+        {
+            "id": "encor_fc_1008",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /27 subnet?",
+            "back": "30 usable hosts"
+        },
+        {
+            "id": "encor_fc_1009",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.193.101/27?",
+            "back": "192.168.193.96"
+        },
+        {
+            "id": "encor_fc_1010",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.193.101/27?",
+            "back": "192.168.193.127"
+        },
+        {
+            "id": "encor_fc_1011",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /27 subnet?",
+            "back": "30 usable hosts"
+        },
+        {
+            "id": "encor_fc_1012",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.144.115/24?",
+            "back": "192.168.144.0"
+        },
+        {
+            "id": "encor_fc_1013",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.144.115/24?",
+            "back": "192.168.144.255"
+        },
+        {
+            "id": "encor_fc_1014",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /24 subnet?",
+            "back": "254 usable hosts"
+        },
+        {
+            "id": "encor_fc_1015",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.79.13/25?",
+            "back": "192.168.79.0"
+        },
+        {
+            "id": "encor_fc_1016",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.79.13/25?",
+            "back": "192.168.79.127"
+        },
+        {
+            "id": "encor_fc_1017",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /25 subnet?",
+            "back": "126 usable hosts"
+        },
+        {
+            "id": "encor_fc_1018",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.57.165/26?",
+            "back": "192.168.57.128"
+        },
+        {
+            "id": "encor_fc_1019",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.57.165/26?",
+            "back": "192.168.57.191"
+        },
+        {
+            "id": "encor_fc_1020",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /26 subnet?",
+            "back": "62 usable hosts"
+        },
+        {
+            "id": "encor_fc_1021",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.97.137/25?",
+            "back": "192.168.97.128"
+        },
+        {
+            "id": "encor_fc_1022",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.97.137/25?",
+            "back": "192.168.97.255"
+        },
+        {
+            "id": "encor_fc_1023",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /25 subnet?",
+            "back": "126 usable hosts"
+        },
+        {
+            "id": "encor_fc_1024",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.199.109/29?",
+            "back": "192.168.199.104"
+        },
+        {
+            "id": "encor_fc_1025",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.199.109/29?",
+            "back": "192.168.199.111"
+        },
+        {
+            "id": "encor_fc_1026",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /29 subnet?",
+            "back": "6 usable hosts"
+        },
+        {
+            "id": "encor_fc_1027",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.117.161/27?",
+            "back": "192.168.117.160"
+        },
+        {
+            "id": "encor_fc_1028",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.117.161/27?",
+            "back": "192.168.117.191"
+        },
+        {
+            "id": "encor_fc_1029",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /27 subnet?",
+            "back": "30 usable hosts"
+        },
+        {
+            "id": "encor_fc_1030",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.34.113/29?",
+            "back": "192.168.34.112"
+        },
+        {
+            "id": "encor_fc_1031",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.34.113/29?",
+            "back": "192.168.34.119"
+        },
+        {
+            "id": "encor_fc_1032",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /29 subnet?",
+            "back": "6 usable hosts"
+        },
+        {
+            "id": "encor_fc_1033",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.101.10/25?",
+            "back": "192.168.101.0"
+        },
+        {
+            "id": "encor_fc_1034",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.101.10/25?",
+            "back": "192.168.101.127"
+        },
+        {
+            "id": "encor_fc_1035",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /25 subnet?",
+            "back": "126 usable hosts"
+        },
+        {
+            "id": "encor_fc_1036",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.59.13/25?",
+            "back": "192.168.59.0"
+        },
+        {
+            "id": "encor_fc_1037",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.59.13/25?",
+            "back": "192.168.59.127"
+        },
+        {
+            "id": "encor_fc_1038",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /25 subnet?",
+            "back": "126 usable hosts"
+        },
+        {
+            "id": "encor_fc_1039",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.65.59/28?",
+            "back": "192.168.65.48"
+        },
+        {
+            "id": "encor_fc_1040",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.65.59/28?",
+            "back": "192.168.65.63"
+        },
+        {
+            "id": "encor_fc_1041",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /28 subnet?",
+            "back": "14 usable hosts"
+        },
+        {
+            "id": "encor_fc_1042",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.144.166/26?",
+            "back": "192.168.144.128"
+        },
+        {
+            "id": "encor_fc_1043",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.144.166/26?",
+            "back": "192.168.144.191"
+        },
+        {
+            "id": "encor_fc_1044",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /26 subnet?",
+            "back": "62 usable hosts"
+        },
+        {
+            "id": "encor_fc_1045",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.179.214/29?",
+            "back": "192.168.179.208"
+        },
+        {
+            "id": "encor_fc_1046",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.179.214/29?",
+            "back": "192.168.179.215"
+        },
+        {
+            "id": "encor_fc_1047",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /29 subnet?",
+            "back": "6 usable hosts"
+        },
+        {
+            "id": "encor_fc_1048",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.177.147/24?",
+            "back": "192.168.177.0"
+        },
+        {
+            "id": "encor_fc_1049",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.177.147/24?",
+            "back": "192.168.177.255"
+        },
+        {
+            "id": "encor_fc_1050",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /24 subnet?",
+            "back": "254 usable hosts"
+        },
+        {
+            "id": "encor_fc_1051",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.172.233/28?",
+            "back": "192.168.172.224"
+        },
+        {
+            "id": "encor_fc_1052",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.172.233/28?",
+            "back": "192.168.172.239"
+        },
+        {
+            "id": "encor_fc_1053",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /28 subnet?",
+            "back": "14 usable hosts"
+        },
+        {
+            "id": "encor_fc_1054",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.52.239/27?",
+            "back": "192.168.52.224"
+        },
+        {
+            "id": "encor_fc_1055",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.52.239/27?",
+            "back": "192.168.52.255"
+        },
+        {
+            "id": "encor_fc_1056",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /27 subnet?",
+            "back": "30 usable hosts"
+        },
+        {
+            "id": "encor_fc_1057",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.39.17/28?",
+            "back": "192.168.39.16"
+        },
+        {
+            "id": "encor_fc_1058",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.39.17/28?",
+            "back": "192.168.39.31"
+        },
+        {
+            "id": "encor_fc_1059",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /28 subnet?",
+            "back": "14 usable hosts"
+        },
+        {
+            "id": "encor_fc_1060",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.65.53/28?",
+            "back": "192.168.65.48"
+        },
+        {
+            "id": "encor_fc_1061",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.65.53/28?",
+            "back": "192.168.65.63"
+        },
+        {
+            "id": "encor_fc_1062",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /28 subnet?",
+            "back": "14 usable hosts"
+        },
+        {
+            "id": "encor_fc_1063",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.46.41/24?",
+            "back": "192.168.46.0"
+        },
+        {
+            "id": "encor_fc_1064",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.46.41/24?",
+            "back": "192.168.46.255"
+        },
+        {
+            "id": "encor_fc_1065",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /24 subnet?",
+            "back": "254 usable hosts"
+        },
+        {
+            "id": "encor_fc_1066",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.97.228/26?",
+            "back": "192.168.97.192"
+        },
+        {
+            "id": "encor_fc_1067",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.97.228/26?",
+            "back": "192.168.97.255"
+        },
+        {
+            "id": "encor_fc_1068",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /26 subnet?",
+            "back": "62 usable hosts"
+        },
+        {
+            "id": "encor_fc_1069",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.11.195/28?",
+            "back": "192.168.11.192"
+        },
+        {
+            "id": "encor_fc_1070",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.11.195/28?",
+            "back": "192.168.11.207"
+        },
+        {
+            "id": "encor_fc_1071",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /28 subnet?",
+            "back": "14 usable hosts"
+        },
+        {
+            "id": "encor_fc_1072",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.104.40/24?",
+            "back": "192.168.104.0"
+        },
+        {
+            "id": "encor_fc_1073",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.104.40/24?",
+            "back": "192.168.104.255"
+        },
+        {
+            "id": "encor_fc_1074",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /24 subnet?",
+            "back": "254 usable hosts"
+        },
+        {
+            "id": "encor_fc_1075",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.103.114/28?",
+            "back": "192.168.103.112"
+        },
+        {
+            "id": "encor_fc_1076",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.103.114/28?",
+            "back": "192.168.103.127"
+        },
+        {
+            "id": "encor_fc_1077",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /28 subnet?",
+            "back": "14 usable hosts"
+        },
+        {
+            "id": "encor_fc_1078",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.166.125/26?",
+            "back": "192.168.166.64"
+        },
+        {
+            "id": "encor_fc_1079",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.166.125/26?",
+            "back": "192.168.166.127"
+        },
+        {
+            "id": "encor_fc_1080",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /26 subnet?",
+            "back": "62 usable hosts"
+        },
+        {
+            "id": "encor_fc_1081",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.114.208/24?",
+            "back": "192.168.114.0"
+        },
+        {
+            "id": "encor_fc_1082",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.114.208/24?",
+            "back": "192.168.114.255"
+        },
+        {
+            "id": "encor_fc_1083",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /24 subnet?",
+            "back": "254 usable hosts"
+        },
+        {
+            "id": "encor_fc_1084",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.95.110/24?",
+            "back": "192.168.95.0"
+        },
+        {
+            "id": "encor_fc_1085",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.95.110/24?",
+            "back": "192.168.95.255"
+        },
+        {
+            "id": "encor_fc_1086",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /24 subnet?",
+            "back": "254 usable hosts"
+        },
+        {
+            "id": "encor_fc_1087",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.138.104/26?",
+            "back": "192.168.138.64"
+        },
+        {
+            "id": "encor_fc_1088",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.138.104/26?",
+            "back": "192.168.138.127"
+        },
+        {
+            "id": "encor_fc_1089",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /26 subnet?",
+            "back": "62 usable hosts"
+        },
+        {
+            "id": "encor_fc_1090",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.176.173/25?",
+            "back": "192.168.176.128"
+        },
+        {
+            "id": "encor_fc_1091",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.176.173/25?",
+            "back": "192.168.176.255"
+        },
+        {
+            "id": "encor_fc_1092",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /25 subnet?",
+            "back": "126 usable hosts"
+        },
+        {
+            "id": "encor_fc_1093",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.155.39/26?",
+            "back": "192.168.155.0"
+        },
+        {
+            "id": "encor_fc_1094",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.155.39/26?",
+            "back": "192.168.155.63"
+        },
+        {
+            "id": "encor_fc_1095",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /26 subnet?",
+            "back": "62 usable hosts"
+        },
+        {
+            "id": "encor_fc_1096",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.67.204/28?",
+            "back": "192.168.67.192"
+        },
+        {
+            "id": "encor_fc_1097",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.67.204/28?",
+            "back": "192.168.67.207"
+        },
+        {
+            "id": "encor_fc_1098",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /28 subnet?",
+            "back": "14 usable hosts"
+        },
+        {
+            "id": "encor_fc_1099",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.50.41/29?",
+            "back": "192.168.50.40"
+        },
+        {
+            "id": "encor_fc_1100",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.50.41/29?",
+            "back": "192.168.50.47"
+        },
+        {
+            "id": "encor_fc_1101",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /29 subnet?",
+            "back": "6 usable hosts"
+        },
+        {
+            "id": "encor_fc_1102",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.102.212/29?",
+            "back": "192.168.102.208"
+        },
+        {
+            "id": "encor_fc_1103",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.102.212/29?",
+            "back": "192.168.102.215"
+        },
+        {
+            "id": "encor_fc_1104",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /29 subnet?",
+            "back": "6 usable hosts"
+        },
+        {
+            "id": "encor_fc_1105",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.102.61/29?",
+            "back": "192.168.102.56"
+        },
+        {
+            "id": "encor_fc_1106",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.102.61/29?",
+            "back": "192.168.102.63"
+        },
+        {
+            "id": "encor_fc_1107",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /29 subnet?",
+            "back": "6 usable hosts"
+        },
+        {
+            "id": "encor_fc_1108",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.115.66/27?",
+            "back": "192.168.115.64"
+        },
+        {
+            "id": "encor_fc_1109",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.115.66/27?",
+            "back": "192.168.115.95"
+        },
+        {
+            "id": "encor_fc_1110",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /27 subnet?",
+            "back": "30 usable hosts"
+        },
+        {
+            "id": "encor_fc_1111",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.161.156/28?",
+            "back": "192.168.161.144"
+        },
+        {
+            "id": "encor_fc_1112",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.161.156/28?",
+            "back": "192.168.161.159"
+        },
+        {
+            "id": "encor_fc_1113",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /28 subnet?",
+            "back": "14 usable hosts"
+        },
+        {
+            "id": "encor_fc_1114",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.26.162/29?",
+            "back": "192.168.26.160"
+        },
+        {
+            "id": "encor_fc_1115",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.26.162/29?",
+            "back": "192.168.26.167"
+        },
+        {
+            "id": "encor_fc_1116",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /29 subnet?",
+            "back": "6 usable hosts"
+        },
+        {
+            "id": "encor_fc_1117",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.98.166/29?",
+            "back": "192.168.98.160"
+        },
+        {
+            "id": "encor_fc_1118",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.98.166/29?",
+            "back": "192.168.98.167"
+        },
+        {
+            "id": "encor_fc_1119",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /29 subnet?",
+            "back": "6 usable hosts"
+        },
+        {
+            "id": "encor_fc_1120",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.42.45/26?",
+            "back": "192.168.42.0"
+        },
+        {
+            "id": "encor_fc_1121",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.42.45/26?",
+            "back": "192.168.42.63"
+        },
+        {
+            "id": "encor_fc_1122",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /26 subnet?",
+            "back": "62 usable hosts"
+        },
+        {
+            "id": "encor_fc_1123",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.151.248/25?",
+            "back": "192.168.151.128"
+        },
+        {
+            "id": "encor_fc_1124",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.151.248/25?",
+            "back": "192.168.151.255"
+        },
+        {
+            "id": "encor_fc_1125",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /25 subnet?",
+            "back": "126 usable hosts"
+        },
+        {
+            "id": "encor_fc_1126",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.35.33/28?",
+            "back": "192.168.35.32"
+        },
+        {
+            "id": "encor_fc_1127",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.35.33/28?",
+            "back": "192.168.35.47"
+        },
+        {
+            "id": "encor_fc_1128",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /28 subnet?",
+            "back": "14 usable hosts"
+        },
+        {
+            "id": "encor_fc_1129",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.136.25/24?",
+            "back": "192.168.136.0"
+        },
+        {
+            "id": "encor_fc_1130",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.136.25/24?",
+            "back": "192.168.136.255"
+        },
+        {
+            "id": "encor_fc_1131",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /24 subnet?",
+            "back": "254 usable hosts"
+        },
+        {
+            "id": "encor_fc_1132",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.118.88/26?",
+            "back": "192.168.118.64"
+        },
+        {
+            "id": "encor_fc_1133",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.118.88/26?",
+            "back": "192.168.118.127"
+        },
+        {
+            "id": "encor_fc_1134",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /26 subnet?",
+            "back": "62 usable hosts"
+        },
+        {
+            "id": "encor_fc_1135",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.18.201/24?",
+            "back": "192.168.18.0"
+        },
+        {
+            "id": "encor_fc_1136",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.18.201/24?",
+            "back": "192.168.18.255"
+        },
+        {
+            "id": "encor_fc_1137",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /24 subnet?",
+            "back": "254 usable hosts"
+        },
+        {
+            "id": "encor_fc_1138",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.188.189/27?",
+            "back": "192.168.188.160"
+        },
+        {
+            "id": "encor_fc_1139",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.188.189/27?",
+            "back": "192.168.188.191"
+        },
+        {
+            "id": "encor_fc_1140",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /27 subnet?",
+            "back": "30 usable hosts"
+        },
+        {
+            "id": "encor_fc_1141",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.137.196/29?",
+            "back": "192.168.137.192"
+        },
+        {
+            "id": "encor_fc_1142",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.137.196/29?",
+            "back": "192.168.137.199"
+        },
+        {
+            "id": "encor_fc_1143",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /29 subnet?",
+            "back": "6 usable hosts"
+        },
+        {
+            "id": "encor_fc_1144",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.162.241/26?",
+            "back": "192.168.162.192"
+        },
+        {
+            "id": "encor_fc_1145",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.162.241/26?",
+            "back": "192.168.162.255"
+        },
+        {
+            "id": "encor_fc_1146",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /26 subnet?",
+            "back": "62 usable hosts"
+        },
+        {
+            "id": "encor_fc_1147",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.53.25/24?",
+            "back": "192.168.53.0"
+        },
+        {
+            "id": "encor_fc_1148",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.53.25/24?",
+            "back": "192.168.53.255"
+        },
+        {
+            "id": "encor_fc_1149",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /24 subnet?",
+            "back": "254 usable hosts"
+        },
+        {
+            "id": "encor_fc_1150",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.117.218/27?",
+            "back": "192.168.117.192"
+        },
+        {
+            "id": "encor_fc_1151",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.117.218/27?",
+            "back": "192.168.117.223"
+        },
+        {
+            "id": "encor_fc_1152",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /27 subnet?",
+            "back": "30 usable hosts"
+        },
+        {
+            "id": "encor_fc_1153",
+            "domain": "1.0",
+            "front": "What is the Network ID for 192.168.127.196/27?",
+            "back": "192.168.127.192"
+        },
+        {
+            "id": "encor_fc_1154",
+            "domain": "1.0",
+            "front": "What is the Broadcast Address for 192.168.127.196/27?",
+            "back": "192.168.127.223"
+        },
+        {
+            "id": "encor_fc_1155",
+            "domain": "1.0",
+            "front": "How many usable hosts are available in a /27 subnet?",
+            "back": "30 usable hosts"
+        }
+    ],
+    "questions": [
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 66.15.41.31/24:\n1. A OSPF route via 58.171.240.191 with an Administrative Distance of 102.\n2. A OSPF route via 121.171.170.87 with an Administrative Distance of 108.\n3. A default route (0.0.0.0/0) via 78.233.68.27.\nWhich next-hop will the router select for a packet destined to 66.15.41.50?",
+            "options": [
+                "58.171.240.191",
+                "78.233.68.27",
+                "It will drop the packet",
+                "121.171.170.87"
+            ],
+            "answer": [
+                "58.171.240.191"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 102 via 58.171.240.191.",
+            "id": "encor_q_1000"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 66.78.77.185/24:\n1. A Static route via 18.226.222.169 with an Administrative Distance of 101.\n2. A OSPF route via 32.237.170.163 with an Administrative Distance of 104.\n3. A default route (0.0.0.0/0) via 111.128.4.228.\nWhich next-hop will the router select for a packet destined to 66.78.77.50?",
+            "options": [
+                "111.128.4.228",
+                "32.237.170.163",
+                "18.226.222.169",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "18.226.222.169"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 101 via 18.226.222.169.",
+            "id": "encor_q_1001"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "An OSPF router has an auto-cost reference-bandwidth of 100 Mbps. It has an interface with a bandwidth of 1000 Mbps. What will be the OSPF cost of this interface?",
+            "options": [
+                "1",
+                "10",
+                "0"
+            ],
+            "answer": [
+                "1"
+            ],
+            "explanation": "OSPF Cost is (Reference Bandwidth / Interface Bandwidth). 100 / 1000 = 1.",
+            "id": "encor_q_1002"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.43.1.0/24 [110/2] via 192.168.1.1\nD    10.43.1.0/25 [90/30720] via 192.168.2.1\nS    10.43.0.0/16 [1/0] via 192.168.3.1\nC    10.43.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.43.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "192.168.3.1",
+                "It will be processed locally as it is directly connected",
+                "192.168.1.1",
+                "192.168.2.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.43.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1003"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "An OSPF router has an auto-cost reference-bandwidth of 10000 Mbps. It has an interface with a bandwidth of 10 Mbps. What will be the OSPF cost of this interface?",
+            "options": [
+                "1",
+                "1000",
+                "10000",
+                "500"
+            ],
+            "answer": [
+                "1000"
+            ],
+            "explanation": "OSPF Cost is (Reference Bandwidth / Interface Bandwidth). 10000 / 10 = 1000.",
+            "id": "encor_q_1004"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.29.1.0/24 [110/2] via 192.168.1.1\nD    10.29.1.0/25 [90/30720] via 192.168.2.1\nS    10.29.0.0/16 [1/0] via 192.168.3.1\nC    10.29.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.29.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "192.168.3.1",
+                "It will be processed locally as it is directly connected",
+                "192.168.1.1",
+                "192.168.2.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.29.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1005"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "An OSPF router has an auto-cost reference-bandwidth of 10000 Mbps. It has an interface with a bandwidth of 100 Mbps. What will be the OSPF cost of this interface?",
+            "options": [
+                "100",
+                "1",
+                "50",
+                "1000"
+            ],
+            "answer": [
+                "100"
+            ],
+            "explanation": "OSPF Cost is (Reference Bandwidth / Interface Bandwidth). 10000 / 100 = 100.",
+            "id": "encor_q_1006"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.13.1.0/24 [110/2] via 192.168.1.1\nD    10.13.1.0/25 [90/30720] via 192.168.2.1\nS    10.13.0.0/16 [1/0] via 192.168.3.1\nC    10.13.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.13.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "It will be processed locally as it is directly connected",
+                "192.168.2.1",
+                "192.168.1.1",
+                "192.168.3.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.13.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1007"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.36.1.0/24 [110/2] via 192.168.1.1\nD    10.36.1.0/25 [90/30720] via 192.168.2.1\nS    10.36.0.0/16 [1/0] via 192.168.3.1\nC    10.36.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.36.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "It will be processed locally as it is directly connected",
+                "192.168.2.1",
+                "192.168.1.1",
+                "192.168.3.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.36.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1008"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Which BGP attribute is described by the following: Cisco proprietary, highest is preferred, local to router?",
+            "options": [
+                "Local Preference",
+                "Weight",
+                "AS Path",
+                "MED"
+            ],
+            "answer": [
+                "Weight"
+            ],
+            "explanation": "Weight is exactly described as: Cisco proprietary, highest is preferred, local to router.",
+            "id": "encor_q_1009"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.42.1.0/24 [110/2] via 192.168.1.1\nD    10.42.1.0/25 [90/30720] via 192.168.2.1\nS    10.42.0.0/16 [1/0] via 192.168.3.1\nC    10.42.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.42.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "192.168.1.1",
+                "192.168.3.1",
+                "It will be processed locally as it is directly connected",
+                "192.168.2.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.42.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1010"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.35.1.0/24 [110/2] via 192.168.1.1\nD    10.35.1.0/25 [90/30720] via 192.168.2.1\nS    10.35.0.0/16 [1/0] via 192.168.3.1\nC    10.35.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.35.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "192.168.3.1",
+                "192.168.1.1",
+                "192.168.2.1",
+                "It will be processed locally as it is directly connected"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.35.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1011"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "An OSPF router has an auto-cost reference-bandwidth of 1000 Mbps. It has an interface with a bandwidth of 10 Mbps. What will be the OSPF cost of this interface?",
+            "options": [
+                "1",
+                "100",
+                "1000",
+                "50"
+            ],
+            "answer": [
+                "100"
+            ],
+            "explanation": "OSPF Cost is (Reference Bandwidth / Interface Bandwidth). 1000 / 10 = 100.",
+            "id": "encor_q_1012"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "An OSPF router has an auto-cost reference-bandwidth of 1000 Mbps. It has an interface with a bandwidth of 1000 Mbps. What will be the OSPF cost of this interface?",
+            "options": [
+                "10",
+                "1",
+                "0"
+            ],
+            "answer": [
+                "1"
+            ],
+            "explanation": "OSPF Cost is (Reference Bandwidth / Interface Bandwidth). 1000 / 1000 = 1.",
+            "id": "encor_q_1013"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 167.27.157.220/24:\n1. A EIGRP route via 71.78.235.179 with an Administrative Distance of 90.\n2. A EIGRP route via 129.98.191.206 with an Administrative Distance of 92.\n3. A default route (0.0.0.0/0) via 183.6.100.129.\nWhich next-hop will the router select for a packet destined to 167.27.157.50?",
+            "options": [
+                "It will drop the packet",
+                "183.6.100.129",
+                "129.98.191.206",
+                "71.78.235.179"
+            ],
+            "answer": [
+                "71.78.235.179"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 90 via 71.78.235.179.",
+            "id": "encor_q_1014"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "An OSPF router has an auto-cost reference-bandwidth of 100 Mbps. It has an interface with a bandwidth of 10 Mbps. What will be the OSPF cost of this interface?",
+            "options": [
+                "1",
+                "10",
+                "100",
+                "5"
+            ],
+            "answer": [
+                "10"
+            ],
+            "explanation": "OSPF Cost is (Reference Bandwidth / Interface Bandwidth). 100 / 10 = 10.",
+            "id": "encor_q_1015"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 219.162.95.89/24:\n1. A EIGRP route via 204.207.88.36 with an Administrative Distance of 98.\n2. A RIP route via 92.1.199.191 with an Administrative Distance of 107.\n3. A default route (0.0.0.0/0) via 157.145.21.173.\nWhich next-hop will the router select for a packet destined to 219.162.95.50?",
+            "options": [
+                "204.207.88.36",
+                "157.145.21.173",
+                "92.1.199.191",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "204.207.88.36"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 98 via 204.207.88.36.",
+            "id": "encor_q_1016"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Which BGP attribute is described by the following: Sent to iBGP peers, highest is preferred, influences outbound traffic?",
+            "options": [
+                "Local Preference",
+                "Weight",
+                "MED",
+                "AS Path"
+            ],
+            "answer": [
+                "Local Preference"
+            ],
+            "explanation": "Local Preference is exactly described as: Sent to iBGP peers, highest is preferred, influences outbound traffic.",
+            "id": "encor_q_1017"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.11.1.0/24 [110/2] via 192.168.1.1\nD    10.11.1.0/25 [90/30720] via 192.168.2.1\nS    10.11.0.0/16 [1/0] via 192.168.3.1\nC    10.11.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.11.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "It will be processed locally as it is directly connected",
+                "192.168.1.1",
+                "192.168.3.1",
+                "192.168.2.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.11.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1018"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.15.1.0/24 [110/2] via 192.168.1.1\nD    10.15.1.0/25 [90/30720] via 192.168.2.1\nS    10.15.0.0/16 [1/0] via 192.168.3.1\nC    10.15.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.15.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "It will be processed locally as it is directly connected",
+                "192.168.2.1",
+                "192.168.1.1",
+                "192.168.3.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.15.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1019"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Which BGP attribute is described by the following: Sent to eBGP peers, lowest is preferred, influences inbound traffic?",
+            "options": [
+                "AS Path",
+                "Local Preference",
+                "Weight",
+                "MED"
+            ],
+            "answer": [
+                "MED"
+            ],
+            "explanation": "MED is exactly described as: Sent to eBGP peers, lowest is preferred, influences inbound traffic.",
+            "id": "encor_q_1020"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.12.1.0/24 [110/2] via 192.168.1.1\nD    10.12.1.0/25 [90/30720] via 192.168.2.1\nS    10.12.0.0/16 [1/0] via 192.168.3.1\nC    10.12.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.12.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "192.168.2.1",
+                "192.168.3.1",
+                "192.168.1.1",
+                "It will be processed locally as it is directly connected"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.12.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1021"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 37.35.87.26/24:\n1. A OSPF route via 37.88.41.113 with an Administrative Distance of 96.\n2. A OSPF route via 64.39.87.102 with an Administrative Distance of 98.\n3. A default route (0.0.0.0/0) via 187.178.16.214.\nWhich next-hop will the router select for a packet destined to 37.35.87.50?",
+            "options": [
+                "187.178.16.214",
+                "37.88.41.113",
+                "It will drop the packet",
+                "64.39.87.102"
+            ],
+            "answer": [
+                "37.88.41.113"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 96 via 37.88.41.113.",
+            "id": "encor_q_1022"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.37.1.0/24 [110/2] via 192.168.1.1\nD    10.37.1.0/25 [90/30720] via 192.168.2.1\nS    10.37.0.0/16 [1/0] via 192.168.3.1\nC    10.37.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.37.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "192.168.3.1",
+                "192.168.2.1",
+                "192.168.1.1",
+                "It will be processed locally as it is directly connected"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.37.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1023"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Which BGP attribute is described by the following: Shortest path is preferred, prevents routing loops?",
+            "options": [
+                "Local Preference",
+                "AS Path",
+                "MED",
+                "Weight"
+            ],
+            "answer": [
+                "AS Path"
+            ],
+            "explanation": "AS Path is exactly described as: Shortest path is preferred, prevents routing loops.",
+            "id": "encor_q_1024"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 136.0.13.220/24:\n1. A EIGRP route via 190.133.235.113 with an Administrative Distance of 104.\n2. A RIP route via 59.98.87.91 with an Administrative Distance of 107.\n3. A default route (0.0.0.0/0) via 155.131.131.103.\nWhich next-hop will the router select for a packet destined to 136.0.13.50?",
+            "options": [
+                "190.133.235.113",
+                "59.98.87.91",
+                "It will drop the packet",
+                "155.131.131.103"
+            ],
+            "answer": [
+                "190.133.235.113"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 104 via 190.133.235.113.",
+            "id": "encor_q_1025"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "An OSPF router has an auto-cost reference-bandwidth of 10000 Mbps. It has an interface with a bandwidth of 1000 Mbps. What will be the OSPF cost of this interface?",
+            "options": [
+                "100",
+                "1",
+                "5",
+                "10"
+            ],
+            "answer": [
+                "10"
+            ],
+            "explanation": "OSPF Cost is (Reference Bandwidth / Interface Bandwidth). 10000 / 1000 = 10.",
+            "id": "encor_q_1026"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.39.1.0/24 [110/2] via 192.168.1.1\nD    10.39.1.0/25 [90/30720] via 192.168.2.1\nS    10.39.0.0/16 [1/0] via 192.168.3.1\nC    10.39.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.39.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "192.168.1.1",
+                "192.168.2.1",
+                "It will be processed locally as it is directly connected",
+                "192.168.3.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.39.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1027"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "An OSPF router has an auto-cost reference-bandwidth of 100 Mbps. It has an interface with a bandwidth of 100 Mbps. What will be the OSPF cost of this interface?",
+            "options": [
+                "0",
+                "1",
+                "10"
+            ],
+            "answer": [
+                "1"
+            ],
+            "explanation": "OSPF Cost is (Reference Bandwidth / Interface Bandwidth). 100 / 100 = 1.",
+            "id": "encor_q_1028"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 223.32.166.211/24:\n1. A EIGRP route via 26.182.89.181 with an Administrative Distance of 90.\n2. A RIP route via 202.243.235.13 with an Administrative Distance of 96.\n3. A default route (0.0.0.0/0) via 57.154.127.57.\nWhich next-hop will the router select for a packet destined to 223.32.166.50?",
+            "options": [
+                "57.154.127.57",
+                "26.182.89.181",
+                "It will drop the packet",
+                "202.243.235.13"
+            ],
+            "answer": [
+                "26.182.89.181"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 90 via 26.182.89.181.",
+            "id": "encor_q_1029"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 146.101.169.2/24:\n1. A Static route via 142.205.50.135 with an Administrative Distance of 101.\n2. A OSPF route via 135.154.115.207 with an Administrative Distance of 106.\n3. A default route (0.0.0.0/0) via 24.129.202.201.\nWhich next-hop will the router select for a packet destined to 146.101.169.50?",
+            "options": [
+                "135.154.115.207",
+                "It will drop the packet",
+                "142.205.50.135",
+                "24.129.202.201"
+            ],
+            "answer": [
+                "142.205.50.135"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 101 via 142.205.50.135.",
+            "id": "encor_q_1030"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 214.56.18.233/24:\n1. A Static route via 221.78.59.85 with an Administrative Distance of 92.\n2. A RIP route via 151.160.89.131 with an Administrative Distance of 95.\n3. A default route (0.0.0.0/0) via 28.58.8.144.\nWhich next-hop will the router select for a packet destined to 214.56.18.50?",
+            "options": [
+                "28.58.8.144",
+                "151.160.89.131",
+                "221.78.59.85",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "221.78.59.85"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 92 via 221.78.59.85.",
+            "id": "encor_q_1031"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 149.123.93.157/24:\n1. A EIGRP route via 18.98.102.225 with an Administrative Distance of 110.\n2. A RIP route via 31.131.64.105 with an Administrative Distance of 115.\n3. A default route (0.0.0.0/0) via 113.66.90.125.\nWhich next-hop will the router select for a packet destined to 149.123.93.50?",
+            "options": [
+                "31.131.64.105",
+                "113.66.90.125",
+                "It will drop the packet",
+                "18.98.102.225"
+            ],
+            "answer": [
+                "18.98.102.225"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 18.98.102.225.",
+            "id": "encor_q_1032"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.30.1.0/24 [110/2] via 192.168.1.1\nD    10.30.1.0/25 [90/30720] via 192.168.2.1\nS    10.30.0.0/16 [1/0] via 192.168.3.1\nC    10.30.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.30.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "192.168.1.1",
+                "It will be processed locally as it is directly connected",
+                "192.168.3.1",
+                "192.168.2.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.30.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1033"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 118.18.159.208/24:\n1. A OSPF route via 169.247.24.38 with an Administrative Distance of 100.\n2. A EIGRP route via 82.235.190.174 with an Administrative Distance of 102.\n3. A default route (0.0.0.0/0) via 101.109.128.181.\nWhich next-hop will the router select for a packet destined to 118.18.159.50?",
+            "options": [
+                "It will drop the packet",
+                "101.109.128.181",
+                "169.247.24.38",
+                "82.235.190.174"
+            ],
+            "answer": [
+                "169.247.24.38"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 100 via 169.247.24.38.",
+            "id": "encor_q_1034"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 64.12.211.161/24:\n1. A Static route via 131.202.185.69 with an Administrative Distance of 108.\n2. A RIP route via 131.165.110.207 with an Administrative Distance of 114.\n3. A default route (0.0.0.0/0) via 11.248.144.111.\nWhich next-hop will the router select for a packet destined to 64.12.211.50?",
+            "options": [
+                "It will drop the packet",
+                "11.248.144.111",
+                "131.165.110.207",
+                "131.202.185.69"
+            ],
+            "answer": [
+                "131.202.185.69"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 108 via 131.202.185.69.",
+            "id": "encor_q_1035"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.20.1.0/24 [110/2] via 192.168.1.1\nD    10.20.1.0/25 [90/30720] via 192.168.2.1\nS    10.20.0.0/16 [1/0] via 192.168.3.1\nC    10.20.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.20.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "It will be processed locally as it is directly connected",
+                "192.168.2.1",
+                "192.168.1.1",
+                "192.168.3.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.20.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1036"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.49.1.0/24 [110/2] via 192.168.1.1\nD    10.49.1.0/25 [90/30720] via 192.168.2.1\nS    10.49.0.0/16 [1/0] via 192.168.3.1\nC    10.49.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.49.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "It will be processed locally as it is directly connected",
+                "192.168.2.1",
+                "192.168.3.1",
+                "192.168.1.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.49.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1037"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "An OSPF router has an auto-cost reference-bandwidth of 1000 Mbps. It has an interface with a bandwidth of 100 Mbps. What will be the OSPF cost of this interface?",
+            "options": [
+                "10",
+                "100",
+                "5",
+                "1"
+            ],
+            "answer": [
+                "10"
+            ],
+            "explanation": "OSPF Cost is (Reference Bandwidth / Interface Bandwidth). 1000 / 100 = 10.",
+            "id": "encor_q_1038"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 131.184.54.222/24:\n1. A OSPF route via 102.189.26.133 with an Administrative Distance of 100.\n2. A OSPF route via 221.0.146.137 with an Administrative Distance of 109.\n3. A default route (0.0.0.0/0) via 183.27.125.26.\nWhich next-hop will the router select for a packet destined to 131.184.54.50?",
+            "options": [
+                "102.189.26.133",
+                "221.0.146.137",
+                "183.27.125.26",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "102.189.26.133"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 100 via 102.189.26.133.",
+            "id": "encor_q_1039"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 149.233.128.127/24:\n1. A Static route via 181.255.195.19 with an Administrative Distance of 108.\n2. A EIGRP route via 107.174.154.140 with an Administrative Distance of 111.\n3. A default route (0.0.0.0/0) via 107.184.103.85.\nWhich next-hop will the router select for a packet destined to 149.233.128.50?",
+            "options": [
+                "It will drop the packet",
+                "181.255.195.19",
+                "107.184.103.85",
+                "107.174.154.140"
+            ],
+            "answer": [
+                "181.255.195.19"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 108 via 181.255.195.19.",
+            "id": "encor_q_1040"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.26.1.0/24 [110/2] via 192.168.1.1\nD    10.26.1.0/25 [90/30720] via 192.168.2.1\nS    10.26.0.0/16 [1/0] via 192.168.3.1\nC    10.26.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.26.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "192.168.3.1",
+                "It will be processed locally as it is directly connected",
+                "192.168.2.1",
+                "192.168.1.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.26.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1041"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.32.1.0/24 [110/2] via 192.168.1.1\nD    10.32.1.0/25 [90/30720] via 192.168.2.1\nS    10.32.0.0/16 [1/0] via 192.168.3.1\nC    10.32.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.32.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "192.168.1.1",
+                "192.168.2.1",
+                "It will be processed locally as it is directly connected",
+                "192.168.3.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.32.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1042"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.46.1.0/24 [110/2] via 192.168.1.1\nD    10.46.1.0/25 [90/30720] via 192.168.2.1\nS    10.46.0.0/16 [1/0] via 192.168.3.1\nC    10.46.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.46.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "192.168.3.1",
+                "192.168.1.1",
+                "192.168.2.1",
+                "It will be processed locally as it is directly connected"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.46.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1043"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.34.1.0/24 [110/2] via 192.168.1.1\nD    10.34.1.0/25 [90/30720] via 192.168.2.1\nS    10.34.0.0/16 [1/0] via 192.168.3.1\nC    10.34.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.34.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "192.168.2.1",
+                "It will be processed locally as it is directly connected",
+                "192.168.3.1",
+                "192.168.1.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.34.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1044"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 199.114.213.53/24:\n1. A EIGRP route via 98.200.235.144 with an Administrative Distance of 107.\n2. A OSPF route via 162.42.3.187 with an Administrative Distance of 115.\n3. A default route (0.0.0.0/0) via 43.4.241.133.\nWhich next-hop will the router select for a packet destined to 199.114.213.50?",
+            "options": [
+                "162.42.3.187",
+                "43.4.241.133",
+                "It will drop the packet",
+                "98.200.235.144"
+            ],
+            "answer": [
+                "98.200.235.144"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 107 via 98.200.235.144.",
+            "id": "encor_q_1045"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 68.89.51.71/24:\n1. A Static route via 123.76.85.241 with an Administrative Distance of 95.\n2. A OSPF route via 206.201.70.143 with an Administrative Distance of 103.\n3. A default route (0.0.0.0/0) via 131.158.167.239.\nWhich next-hop will the router select for a packet destined to 68.89.51.50?",
+            "options": [
+                "131.158.167.239",
+                "It will drop the packet",
+                "206.201.70.143",
+                "123.76.85.241"
+            ],
+            "answer": [
+                "123.76.85.241"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 95 via 123.76.85.241.",
+            "id": "encor_q_1046"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 214.47.157.25/24:\n1. A Static route via 50.102.201.61 with an Administrative Distance of 110.\n2. A RIP route via 113.222.109.230 with an Administrative Distance of 111.\n3. A default route (0.0.0.0/0) via 208.203.194.102.\nWhich next-hop will the router select for a packet destined to 214.47.157.50?",
+            "options": [
+                "50.102.201.61",
+                "208.203.194.102",
+                "113.222.109.230",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "50.102.201.61"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 50.102.201.61.",
+            "id": "encor_q_1047"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 108.142.51.233/24:\n1. A OSPF route via 139.74.66.11 with an Administrative Distance of 97.\n2. A OSPF route via 22.118.245.151 with an Administrative Distance of 99.\n3. A default route (0.0.0.0/0) via 15.59.92.215.\nWhich next-hop will the router select for a packet destined to 108.142.51.50?",
+            "options": [
+                "15.59.92.215",
+                "It will drop the packet",
+                "22.118.245.151",
+                "139.74.66.11"
+            ],
+            "answer": [
+                "139.74.66.11"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 97 via 139.74.66.11.",
+            "id": "encor_q_1048"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.45.1.0/24 [110/2] via 192.168.1.1\nD    10.45.1.0/25 [90/30720] via 192.168.2.1\nS    10.45.0.0/16 [1/0] via 192.168.3.1\nC    10.45.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.45.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "It will be processed locally as it is directly connected",
+                "192.168.3.1",
+                "192.168.1.1",
+                "192.168.2.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.45.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1049"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 193.47.66.76/24:\n1. A OSPF route via 155.21.230.144 with an Administrative Distance of 109.\n2. A RIP route via 192.37.207.209 with an Administrative Distance of 111.\n3. A default route (0.0.0.0/0) via 207.174.107.46.\nWhich next-hop will the router select for a packet destined to 193.47.66.50?",
+            "options": [
+                "192.37.207.209",
+                "155.21.230.144",
+                "207.174.107.46",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "155.21.230.144"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 109 via 155.21.230.144.",
+            "id": "encor_q_1050"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 128.83.201.224/24:\n1. A Static route via 168.227.132.198 with an Administrative Distance of 101.\n2. A EIGRP route via 40.229.42.155 with an Administrative Distance of 104.\n3. A default route (0.0.0.0/0) via 181.114.180.21.\nWhich next-hop will the router select for a packet destined to 128.83.201.50?",
+            "options": [
+                "It will drop the packet",
+                "40.229.42.155",
+                "168.227.132.198",
+                "181.114.180.21"
+            ],
+            "answer": [
+                "168.227.132.198"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 101 via 168.227.132.198.",
+            "id": "encor_q_1051"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.38.1.0/24 [110/2] via 192.168.1.1\nD    10.38.1.0/25 [90/30720] via 192.168.2.1\nS    10.38.0.0/16 [1/0] via 192.168.3.1\nC    10.38.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.38.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "192.168.3.1",
+                "192.168.2.1",
+                "It will be processed locally as it is directly connected",
+                "192.168.1.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.38.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1052"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.14.1.0/24 [110/2] via 192.168.1.1\nD    10.14.1.0/25 [90/30720] via 192.168.2.1\nS    10.14.0.0/16 [1/0] via 192.168.3.1\nC    10.14.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.14.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "192.168.3.1",
+                "192.168.2.1",
+                "192.168.1.1",
+                "It will be processed locally as it is directly connected"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.14.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1053"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.19.1.0/24 [110/2] via 192.168.1.1\nD    10.19.1.0/25 [90/30720] via 192.168.2.1\nS    10.19.0.0/16 [1/0] via 192.168.3.1\nC    10.19.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.19.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "192.168.1.1",
+                "192.168.3.1",
+                "It will be processed locally as it is directly connected",
+                "192.168.2.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.19.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1054"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 15.107.249.242/24:\n1. A EIGRP route via 72.173.194.236 with an Administrative Distance of 95.\n2. A EIGRP route via 68.69.177.72 with an Administrative Distance of 101.\n3. A default route (0.0.0.0/0) via 114.123.248.139.\nWhich next-hop will the router select for a packet destined to 15.107.249.50?",
+            "options": [
+                "It will drop the packet",
+                "72.173.194.236",
+                "114.123.248.139",
+                "68.69.177.72"
+            ],
+            "answer": [
+                "72.173.194.236"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 95 via 72.173.194.236.",
+            "id": "encor_q_1055"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 117.103.81.250/24:\n1. A OSPF route via 214.23.61.175 with an Administrative Distance of 93.\n2. A RIP route via 212.44.27.84 with an Administrative Distance of 102.\n3. A default route (0.0.0.0/0) via 117.199.91.106.\nWhich next-hop will the router select for a packet destined to 117.103.81.50?",
+            "options": [
+                "117.199.91.106",
+                "It will drop the packet",
+                "214.23.61.175",
+                "212.44.27.84"
+            ],
+            "answer": [
+                "214.23.61.175"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 93 via 214.23.61.175.",
+            "id": "encor_q_1056"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 63.121.168.142/24:\n1. A OSPF route via 43.74.202.100 with an Administrative Distance of 104.\n2. A OSPF route via 201.26.60.28 with an Administrative Distance of 106.\n3. A default route (0.0.0.0/0) via 95.53.152.2.\nWhich next-hop will the router select for a packet destined to 63.121.168.50?",
+            "options": [
+                "It will drop the packet",
+                "201.26.60.28",
+                "95.53.152.2",
+                "43.74.202.100"
+            ],
+            "answer": [
+                "43.74.202.100"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 104 via 43.74.202.100.",
+            "id": "encor_q_1057"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 212.94.187.126/24:\n1. A OSPF route via 137.87.234.115 with an Administrative Distance of 106.\n2. A OSPF route via 108.59.56.90 with an Administrative Distance of 112.\n3. A default route (0.0.0.0/0) via 148.182.73.226.\nWhich next-hop will the router select for a packet destined to 212.94.187.50?",
+            "options": [
+                "108.59.56.90",
+                "148.182.73.226",
+                "137.87.234.115",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "137.87.234.115"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 106 via 137.87.234.115.",
+            "id": "encor_q_1058"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 86.189.164.150/24:\n1. A Static route via 203.6.97.45 with an Administrative Distance of 110.\n2. A EIGRP route via 90.177.39.78 with an Administrative Distance of 113.\n3. A default route (0.0.0.0/0) via 76.76.249.50.\nWhich next-hop will the router select for a packet destined to 86.189.164.50?",
+            "options": [
+                "203.6.97.45",
+                "76.76.249.50",
+                "90.177.39.78",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "203.6.97.45"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 203.6.97.45.",
+            "id": "encor_q_1059"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 62.35.29.217/24:\n1. A EIGRP route via 81.67.217.185 with an Administrative Distance of 101.\n2. A OSPF route via 160.30.120.45 with an Administrative Distance of 110.\n3. A default route (0.0.0.0/0) via 52.80.4.188.\nWhich next-hop will the router select for a packet destined to 62.35.29.50?",
+            "options": [
+                "It will drop the packet",
+                "160.30.120.45",
+                "52.80.4.188",
+                "81.67.217.185"
+            ],
+            "answer": [
+                "81.67.217.185"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 101 via 81.67.217.185.",
+            "id": "encor_q_1060"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 104.19.46.25/24:\n1. A EIGRP route via 158.87.40.48 with an Administrative Distance of 94.\n2. A RIP route via 45.246.208.44 with an Administrative Distance of 95.\n3. A default route (0.0.0.0/0) via 60.33.159.131.\nWhich next-hop will the router select for a packet destined to 104.19.46.50?",
+            "options": [
+                "158.87.40.48",
+                "It will drop the packet",
+                "45.246.208.44",
+                "60.33.159.131"
+            ],
+            "answer": [
+                "158.87.40.48"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 94 via 158.87.40.48.",
+            "id": "encor_q_1061"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.44.1.0/24 [110/2] via 192.168.1.1\nD    10.44.1.0/25 [90/30720] via 192.168.2.1\nS    10.44.0.0/16 [1/0] via 192.168.3.1\nC    10.44.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.44.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "It will be processed locally as it is directly connected",
+                "192.168.2.1",
+                "192.168.1.1",
+                "192.168.3.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.44.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1062"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 120.56.111.70/24:\n1. A Static route via 126.12.87.42 with an Administrative Distance of 104.\n2. A EIGRP route via 143.160.130.134 with an Administrative Distance of 109.\n3. A default route (0.0.0.0/0) via 126.19.90.230.\nWhich next-hop will the router select for a packet destined to 120.56.111.50?",
+            "options": [
+                "126.19.90.230",
+                "126.12.87.42",
+                "It will drop the packet",
+                "143.160.130.134"
+            ],
+            "answer": [
+                "126.12.87.42"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 104 via 126.12.87.42.",
+            "id": "encor_q_1063"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 167.180.127.104/24:\n1. A EIGRP route via 96.200.22.26 with an Administrative Distance of 109.\n2. A RIP route via 95.43.90.196 with an Administrative Distance of 117.\n3. A default route (0.0.0.0/0) via 16.79.208.114.\nWhich next-hop will the router select for a packet destined to 167.180.127.50?",
+            "options": [
+                "16.79.208.114",
+                "96.200.22.26",
+                "It will drop the packet",
+                "95.43.90.196"
+            ],
+            "answer": [
+                "96.200.22.26"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 109 via 96.200.22.26.",
+            "id": "encor_q_1064"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.16.1.0/24 [110/2] via 192.168.1.1\nD    10.16.1.0/25 [90/30720] via 192.168.2.1\nS    10.16.0.0/16 [1/0] via 192.168.3.1\nC    10.16.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.16.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "192.168.2.1",
+                "192.168.1.1",
+                "It will be processed locally as it is directly connected",
+                "192.168.3.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.16.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1065"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.23.1.0/24 [110/2] via 192.168.1.1\nD    10.23.1.0/25 [90/30720] via 192.168.2.1\nS    10.23.0.0/16 [1/0] via 192.168.3.1\nC    10.23.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.23.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "192.168.3.1",
+                "192.168.2.1",
+                "It will be processed locally as it is directly connected",
+                "192.168.1.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.23.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1066"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 190.168.75.211/24:\n1. A OSPF route via 30.48.222.167 with an Administrative Distance of 110.\n2. A EIGRP route via 112.207.55.216 with an Administrative Distance of 120.\n3. A default route (0.0.0.0/0) via 156.135.158.213.\nWhich next-hop will the router select for a packet destined to 190.168.75.50?",
+            "options": [
+                "112.207.55.216",
+                "30.48.222.167",
+                "It will drop the packet",
+                "156.135.158.213"
+            ],
+            "answer": [
+                "30.48.222.167"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 30.48.222.167.",
+            "id": "encor_q_1067"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 123.157.83.184/24:\n1. A Static route via 42.105.197.43 with an Administrative Distance of 106.\n2. A EIGRP route via 156.118.172.44 with an Administrative Distance of 109.\n3. A default route (0.0.0.0/0) via 41.93.149.175.\nWhich next-hop will the router select for a packet destined to 123.157.83.50?",
+            "options": [
+                "42.105.197.43",
+                "It will drop the packet",
+                "156.118.172.44",
+                "41.93.149.175"
+            ],
+            "answer": [
+                "42.105.197.43"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 106 via 42.105.197.43.",
+            "id": "encor_q_1068"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 204.186.212.63/24:\n1. A Static route via 101.150.103.217 with an Administrative Distance of 109.\n2. A EIGRP route via 64.213.57.173 with an Administrative Distance of 111.\n3. A default route (0.0.0.0/0) via 126.42.52.110.\nWhich next-hop will the router select for a packet destined to 204.186.212.50?",
+            "options": [
+                "64.213.57.173",
+                "101.150.103.217",
+                "It will drop the packet",
+                "126.42.52.110"
+            ],
+            "answer": [
+                "101.150.103.217"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 109 via 101.150.103.217.",
+            "id": "encor_q_1069"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 205.227.1.71/24:\n1. A Static route via 36.200.54.227 with an Administrative Distance of 97.\n2. A OSPF route via 132.252.227.122 with an Administrative Distance of 98.\n3. A default route (0.0.0.0/0) via 198.208.86.115.\nWhich next-hop will the router select for a packet destined to 205.227.1.50?",
+            "options": [
+                "It will drop the packet",
+                "198.208.86.115",
+                "132.252.227.122",
+                "36.200.54.227"
+            ],
+            "answer": [
+                "36.200.54.227"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 97 via 36.200.54.227.",
+            "id": "encor_q_1070"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 187.226.16.171/24:\n1. A Static route via 218.196.251.109 with an Administrative Distance of 91.\n2. A RIP route via 80.49.81.175 with an Administrative Distance of 101.\n3. A default route (0.0.0.0/0) via 11.197.220.233.\nWhich next-hop will the router select for a packet destined to 187.226.16.50?",
+            "options": [
+                "80.49.81.175",
+                "218.196.251.109",
+                "11.197.220.233",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "218.196.251.109"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 91 via 218.196.251.109.",
+            "id": "encor_q_1071"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.10.1.0/24 [110/2] via 192.168.1.1\nD    10.10.1.0/25 [90/30720] via 192.168.2.1\nS    10.10.0.0/16 [1/0] via 192.168.3.1\nC    10.10.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.10.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "192.168.1.1",
+                "It will be processed locally as it is directly connected",
+                "192.168.2.1",
+                "192.168.3.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.10.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1072"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.47.1.0/24 [110/2] via 192.168.1.1\nD    10.47.1.0/25 [90/30720] via 192.168.2.1\nS    10.47.0.0/16 [1/0] via 192.168.3.1\nC    10.47.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.47.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "192.168.1.1",
+                "It will be processed locally as it is directly connected",
+                "192.168.3.1",
+                "192.168.2.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.47.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1073"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 124.201.240.24/24:\n1. A Static route via 178.207.179.63 with an Administrative Distance of 100.\n2. A EIGRP route via 218.85.249.202 with an Administrative Distance of 109.\n3. A default route (0.0.0.0/0) via 144.252.244.128.\nWhich next-hop will the router select for a packet destined to 124.201.240.50?",
+            "options": [
+                "It will drop the packet",
+                "178.207.179.63",
+                "144.252.244.128",
+                "218.85.249.202"
+            ],
+            "answer": [
+                "178.207.179.63"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 100 via 178.207.179.63.",
+            "id": "encor_q_1074"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 200.182.218.177/24:\n1. A EIGRP route via 209.28.227.183 with an Administrative Distance of 104.\n2. A RIP route via 204.94.18.50 with an Administrative Distance of 111.\n3. A default route (0.0.0.0/0) via 128.118.101.26.\nWhich next-hop will the router select for a packet destined to 200.182.218.50?",
+            "options": [
+                "209.28.227.183",
+                "204.94.18.50",
+                "It will drop the packet",
+                "128.118.101.26"
+            ],
+            "answer": [
+                "209.28.227.183"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 104 via 209.28.227.183.",
+            "id": "encor_q_1075"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.50.1.0/24 [110/2] via 192.168.1.1\nD    10.50.1.0/25 [90/30720] via 192.168.2.1\nS    10.50.0.0/16 [1/0] via 192.168.3.1\nC    10.50.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.50.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "192.168.1.1",
+                "192.168.2.1",
+                "It will be processed locally as it is directly connected",
+                "192.168.3.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.50.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1076"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 116.96.56.235/24:\n1. A Static route via 80.44.239.106 with an Administrative Distance of 94.\n2. A EIGRP route via 42.206.99.195 with an Administrative Distance of 97.\n3. A default route (0.0.0.0/0) via 49.71.200.125.\nWhich next-hop will the router select for a packet destined to 116.96.56.50?",
+            "options": [
+                "80.44.239.106",
+                "49.71.200.125",
+                "It will drop the packet",
+                "42.206.99.195"
+            ],
+            "answer": [
+                "80.44.239.106"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 94 via 80.44.239.106.",
+            "id": "encor_q_1077"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 187.48.139.119/24:\n1. A EIGRP route via 42.213.47.74 with an Administrative Distance of 104.\n2. A EIGRP route via 56.83.39.144 with an Administrative Distance of 108.\n3. A default route (0.0.0.0/0) via 43.171.241.62.\nWhich next-hop will the router select for a packet destined to 187.48.139.50?",
+            "options": [
+                "It will drop the packet",
+                "56.83.39.144",
+                "42.213.47.74",
+                "43.171.241.62"
+            ],
+            "answer": [
+                "42.213.47.74"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 104 via 42.213.47.74.",
+            "id": "encor_q_1078"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 97.238.5.8/24:\n1. A Static route via 112.173.205.238 with an Administrative Distance of 94.\n2. A EIGRP route via 187.79.194.112 with an Administrative Distance of 104.\n3. A default route (0.0.0.0/0) via 189.221.207.74.\nWhich next-hop will the router select for a packet destined to 97.238.5.50?",
+            "options": [
+                "112.173.205.238",
+                "187.79.194.112",
+                "It will drop the packet",
+                "189.221.207.74"
+            ],
+            "answer": [
+                "112.173.205.238"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 94 via 112.173.205.238.",
+            "id": "encor_q_1079"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 176.85.34.63/24:\n1. A Static route via 138.76.103.50 with an Administrative Distance of 95.\n2. A EIGRP route via 46.75.21.185 with an Administrative Distance of 96.\n3. A default route (0.0.0.0/0) via 189.215.72.136.\nWhich next-hop will the router select for a packet destined to 176.85.34.50?",
+            "options": [
+                "46.75.21.185",
+                "189.215.72.136",
+                "It will drop the packet",
+                "138.76.103.50"
+            ],
+            "answer": [
+                "138.76.103.50"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 95 via 138.76.103.50.",
+            "id": "encor_q_1080"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 108.62.3.253/24:\n1. A OSPF route via 172.131.67.109 with an Administrative Distance of 92.\n2. A OSPF route via 38.138.200.225 with an Administrative Distance of 102.\n3. A default route (0.0.0.0/0) via 208.232.34.80.\nWhich next-hop will the router select for a packet destined to 108.62.3.50?",
+            "options": [
+                "It will drop the packet",
+                "38.138.200.225",
+                "208.232.34.80",
+                "172.131.67.109"
+            ],
+            "answer": [
+                "172.131.67.109"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 92 via 172.131.67.109.",
+            "id": "encor_q_1081"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 133.153.157.167/24:\n1. A EIGRP route via 54.148.179.124 with an Administrative Distance of 107.\n2. A EIGRP route via 204.157.169.45 with an Administrative Distance of 111.\n3. A default route (0.0.0.0/0) via 189.182.198.151.\nWhich next-hop will the router select for a packet destined to 133.153.157.50?",
+            "options": [
+                "189.182.198.151",
+                "204.157.169.45",
+                "It will drop the packet",
+                "54.148.179.124"
+            ],
+            "answer": [
+                "54.148.179.124"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 107 via 54.148.179.124.",
+            "id": "encor_q_1082"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.21.1.0/24 [110/2] via 192.168.1.1\nD    10.21.1.0/25 [90/30720] via 192.168.2.1\nS    10.21.0.0/16 [1/0] via 192.168.3.1\nC    10.21.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.21.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "192.168.3.1",
+                "192.168.1.1",
+                "It will be processed locally as it is directly connected",
+                "192.168.2.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.21.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1083"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 194.84.212.8/24:\n1. A Static route via 199.22.5.104 with an Administrative Distance of 101.\n2. A RIP route via 191.109.62.56 with an Administrative Distance of 108.\n3. A default route (0.0.0.0/0) via 171.145.148.190.\nWhich next-hop will the router select for a packet destined to 194.84.212.50?",
+            "options": [
+                "199.22.5.104",
+                "171.145.148.190",
+                "It will drop the packet",
+                "191.109.62.56"
+            ],
+            "answer": [
+                "199.22.5.104"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 101 via 199.22.5.104.",
+            "id": "encor_q_1084"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 91.142.112.139/24:\n1. A EIGRP route via 129.73.79.19 with an Administrative Distance of 91.\n2. A EIGRP route via 175.87.135.209 with an Administrative Distance of 93.\n3. A default route (0.0.0.0/0) via 50.157.155.133.\nWhich next-hop will the router select for a packet destined to 91.142.112.50?",
+            "options": [
+                "50.157.155.133",
+                "175.87.135.209",
+                "It will drop the packet",
+                "129.73.79.19"
+            ],
+            "answer": [
+                "129.73.79.19"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 91 via 129.73.79.19.",
+            "id": "encor_q_1085"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.18.1.0/24 [110/2] via 192.168.1.1\nD    10.18.1.0/25 [90/30720] via 192.168.2.1\nS    10.18.0.0/16 [1/0] via 192.168.3.1\nC    10.18.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.18.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "192.168.1.1",
+                "192.168.3.1",
+                "192.168.2.1",
+                "It will be processed locally as it is directly connected"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.18.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1086"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.33.1.0/24 [110/2] via 192.168.1.1\nD    10.33.1.0/25 [90/30720] via 192.168.2.1\nS    10.33.0.0/16 [1/0] via 192.168.3.1\nC    10.33.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.33.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "It will be processed locally as it is directly connected",
+                "192.168.3.1",
+                "192.168.2.1",
+                "192.168.1.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.33.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1087"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.48.1.0/24 [110/2] via 192.168.1.1\nD    10.48.1.0/25 [90/30720] via 192.168.2.1\nS    10.48.0.0/16 [1/0] via 192.168.3.1\nC    10.48.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.48.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "192.168.1.1",
+                "192.168.2.1",
+                "It will be processed locally as it is directly connected",
+                "192.168.3.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.48.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1088"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 14.125.143.46/24:\n1. A EIGRP route via 177.71.235.108 with an Administrative Distance of 102.\n2. A OSPF route via 105.162.69.90 with an Administrative Distance of 104.\n3. A default route (0.0.0.0/0) via 167.28.123.180.\nWhich next-hop will the router select for a packet destined to 14.125.143.50?",
+            "options": [
+                "It will drop the packet",
+                "177.71.235.108",
+                "167.28.123.180",
+                "105.162.69.90"
+            ],
+            "answer": [
+                "177.71.235.108"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 102 via 177.71.235.108.",
+            "id": "encor_q_1089"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 75.209.68.120/24:\n1. A Static route via 79.197.250.120 with an Administrative Distance of 94.\n2. A OSPF route via 118.176.33.92 with an Administrative Distance of 99.\n3. A default route (0.0.0.0/0) via 155.25.180.65.\nWhich next-hop will the router select for a packet destined to 75.209.68.50?",
+            "options": [
+                "It will drop the packet",
+                "118.176.33.92",
+                "155.25.180.65",
+                "79.197.250.120"
+            ],
+            "answer": [
+                "79.197.250.120"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 94 via 79.197.250.120.",
+            "id": "encor_q_1090"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 54.67.250.139/24:\n1. A OSPF route via 182.233.89.212 with an Administrative Distance of 109.\n2. A RIP route via 116.54.39.93 with an Administrative Distance of 116.\n3. A default route (0.0.0.0/0) via 13.130.96.218.\nWhich next-hop will the router select for a packet destined to 54.67.250.50?",
+            "options": [
+                "13.130.96.218",
+                "116.54.39.93",
+                "182.233.89.212",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "182.233.89.212"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 109 via 182.233.89.212.",
+            "id": "encor_q_1091"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.41.1.0/24 [110/2] via 192.168.1.1\nD    10.41.1.0/25 [90/30720] via 192.168.2.1\nS    10.41.0.0/16 [1/0] via 192.168.3.1\nC    10.41.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.41.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "192.168.1.1",
+                "192.168.2.1",
+                "192.168.3.1",
+                "It will be processed locally as it is directly connected"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.41.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1092"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 213.82.78.201/24:\n1. A EIGRP route via 31.190.193.63 with an Administrative Distance of 105.\n2. A RIP route via 19.203.171.85 with an Administrative Distance of 107.\n3. A default route (0.0.0.0/0) via 195.217.214.137.\nWhich next-hop will the router select for a packet destined to 213.82.78.50?",
+            "options": [
+                "195.217.214.137",
+                "19.203.171.85",
+                "It will drop the packet",
+                "31.190.193.63"
+            ],
+            "answer": [
+                "31.190.193.63"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 105 via 31.190.193.63.",
+            "id": "encor_q_1093"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 124.191.183.41/24:\n1. A EIGRP route via 73.151.75.64 with an Administrative Distance of 96.\n2. A OSPF route via 212.227.164.97 with an Administrative Distance of 100.\n3. A default route (0.0.0.0/0) via 119.175.50.1.\nWhich next-hop will the router select for a packet destined to 124.191.183.50?",
+            "options": [
+                "212.227.164.97",
+                "73.151.75.64",
+                "119.175.50.1",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "73.151.75.64"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 96 via 73.151.75.64.",
+            "id": "encor_q_1094"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 178.254.71.102/24:\n1. A EIGRP route via 217.162.182.8 with an Administrative Distance of 98.\n2. A OSPF route via 55.113.249.89 with an Administrative Distance of 100.\n3. A default route (0.0.0.0/0) via 185.206.93.55.\nWhich next-hop will the router select for a packet destined to 178.254.71.50?",
+            "options": [
+                "It will drop the packet",
+                "217.162.182.8",
+                "55.113.249.89",
+                "185.206.93.55"
+            ],
+            "answer": [
+                "217.162.182.8"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 98 via 217.162.182.8.",
+            "id": "encor_q_1095"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.22.1.0/24 [110/2] via 192.168.1.1\nD    10.22.1.0/25 [90/30720] via 192.168.2.1\nS    10.22.0.0/16 [1/0] via 192.168.3.1\nC    10.22.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.22.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "192.168.3.1",
+                "192.168.1.1",
+                "192.168.2.1",
+                "It will be processed locally as it is directly connected"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.22.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1096"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 204.10.210.35/24:\n1. A EIGRP route via 187.158.37.141 with an Administrative Distance of 107.\n2. A RIP route via 204.61.162.66 with an Administrative Distance of 114.\n3. A default route (0.0.0.0/0) via 36.139.208.241.\nWhich next-hop will the router select for a packet destined to 204.10.210.50?",
+            "options": [
+                "It will drop the packet",
+                "204.61.162.66",
+                "187.158.37.141",
+                "36.139.208.241"
+            ],
+            "answer": [
+                "187.158.37.141"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 107 via 187.158.37.141.",
+            "id": "encor_q_1097"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 39.203.16.79/24:\n1. A EIGRP route via 54.246.109.83 with an Administrative Distance of 100.\n2. A OSPF route via 73.82.207.177 with an Administrative Distance of 101.\n3. A default route (0.0.0.0/0) via 141.51.124.215.\nWhich next-hop will the router select for a packet destined to 39.203.16.50?",
+            "options": [
+                "54.246.109.83",
+                "It will drop the packet",
+                "73.82.207.177",
+                "141.51.124.215"
+            ],
+            "answer": [
+                "54.246.109.83"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 100 via 54.246.109.83.",
+            "id": "encor_q_1098"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.31.1.0/24 [110/2] via 192.168.1.1\nD    10.31.1.0/25 [90/30720] via 192.168.2.1\nS    10.31.0.0/16 [1/0] via 192.168.3.1\nC    10.31.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.31.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "It will be processed locally as it is directly connected",
+                "192.168.3.1",
+                "192.168.1.1",
+                "192.168.2.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.31.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1099"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 150.219.46.72/24:\n1. A Static route via 45.229.146.38 with an Administrative Distance of 105.\n2. A EIGRP route via 153.200.58.37 with an Administrative Distance of 115.\n3. A default route (0.0.0.0/0) via 117.129.42.99.\nWhich next-hop will the router select for a packet destined to 150.219.46.50?",
+            "options": [
+                "153.200.58.37",
+                "45.229.146.38",
+                "It will drop the packet",
+                "117.129.42.99"
+            ],
+            "answer": [
+                "45.229.146.38"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 105 via 45.229.146.38.",
+            "id": "encor_q_1100"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 157.186.154.157/24:\n1. A OSPF route via 86.177.95.64 with an Administrative Distance of 95.\n2. A EIGRP route via 154.184.227.106 with an Administrative Distance of 96.\n3. A default route (0.0.0.0/0) via 97.150.73.42.\nWhich next-hop will the router select for a packet destined to 157.186.154.50?",
+            "options": [
+                "154.184.227.106",
+                "It will drop the packet",
+                "86.177.95.64",
+                "97.150.73.42"
+            ],
+            "answer": [
+                "86.177.95.64"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 95 via 86.177.95.64.",
+            "id": "encor_q_1101"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 90.97.170.190/24:\n1. A OSPF route via 157.17.138.93 with an Administrative Distance of 102.\n2. A OSPF route via 21.227.138.132 with an Administrative Distance of 104.\n3. A default route (0.0.0.0/0) via 117.121.202.249.\nWhich next-hop will the router select for a packet destined to 90.97.170.50?",
+            "options": [
+                "It will drop the packet",
+                "157.17.138.93",
+                "21.227.138.132",
+                "117.121.202.249"
+            ],
+            "answer": [
+                "157.17.138.93"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 102 via 157.17.138.93.",
+            "id": "encor_q_1102"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 69.206.182.82/24:\n1. A EIGRP route via 26.21.161.57 with an Administrative Distance of 94.\n2. A EIGRP route via 59.22.134.169 with an Administrative Distance of 102.\n3. A default route (0.0.0.0/0) via 99.111.199.62.\nWhich next-hop will the router select for a packet destined to 69.206.182.50?",
+            "options": [
+                "59.22.134.169",
+                "It will drop the packet",
+                "26.21.161.57",
+                "99.111.199.62"
+            ],
+            "answer": [
+                "26.21.161.57"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 94 via 26.21.161.57.",
+            "id": "encor_q_1103"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 175.192.149.161/24:\n1. A OSPF route via 160.86.235.29 with an Administrative Distance of 105.\n2. A RIP route via 24.60.36.98 with an Administrative Distance of 106.\n3. A default route (0.0.0.0/0) via 38.108.200.39.\nWhich next-hop will the router select for a packet destined to 175.192.149.50?",
+            "options": [
+                "160.86.235.29",
+                "38.108.200.39",
+                "24.60.36.98",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "160.86.235.29"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 105 via 160.86.235.29.",
+            "id": "encor_q_1104"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 49.248.197.177/24:\n1. A Static route via 160.8.95.114 with an Administrative Distance of 108.\n2. A OSPF route via 60.152.61.166 with an Administrative Distance of 117.\n3. A default route (0.0.0.0/0) via 41.158.142.48.\nWhich next-hop will the router select for a packet destined to 49.248.197.50?",
+            "options": [
+                "It will drop the packet",
+                "60.152.61.166",
+                "41.158.142.48",
+                "160.8.95.114"
+            ],
+            "answer": [
+                "160.8.95.114"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 108 via 160.8.95.114.",
+            "id": "encor_q_1105"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 202.120.207.244/24:\n1. A EIGRP route via 205.53.71.8 with an Administrative Distance of 105.\n2. A EIGRP route via 66.242.217.199 with an Administrative Distance of 110.\n3. A default route (0.0.0.0/0) via 55.170.204.228.\nWhich next-hop will the router select for a packet destined to 202.120.207.50?",
+            "options": [
+                "55.170.204.228",
+                "It will drop the packet",
+                "205.53.71.8",
+                "66.242.217.199"
+            ],
+            "answer": [
+                "205.53.71.8"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 105 via 205.53.71.8.",
+            "id": "encor_q_1106"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 44.220.80.6/24:\n1. A Static route via 103.23.42.172 with an Administrative Distance of 108.\n2. A RIP route via 125.131.141.218 with an Administrative Distance of 111.\n3. A default route (0.0.0.0/0) via 65.229.137.189.\nWhich next-hop will the router select for a packet destined to 44.220.80.50?",
+            "options": [
+                "125.131.141.218",
+                "65.229.137.189",
+                "It will drop the packet",
+                "103.23.42.172"
+            ],
+            "answer": [
+                "103.23.42.172"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 108 via 103.23.42.172.",
+            "id": "encor_q_1107"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 27.78.104.129/24:\n1. A OSPF route via 187.196.222.79 with an Administrative Distance of 103.\n2. A EIGRP route via 156.5.28.145 with an Administrative Distance of 113.\n3. A default route (0.0.0.0/0) via 56.15.78.27.\nWhich next-hop will the router select for a packet destined to 27.78.104.50?",
+            "options": [
+                "187.196.222.79",
+                "156.5.28.145",
+                "56.15.78.27",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "187.196.222.79"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 103 via 187.196.222.79.",
+            "id": "encor_q_1108"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 17.243.216.172/24:\n1. A EIGRP route via 196.253.219.109 with an Administrative Distance of 100.\n2. A OSPF route via 69.217.49.103 with an Administrative Distance of 110.\n3. A default route (0.0.0.0/0) via 206.243.185.236.\nWhich next-hop will the router select for a packet destined to 17.243.216.50?",
+            "options": [
+                "69.217.49.103",
+                "It will drop the packet",
+                "206.243.185.236",
+                "196.253.219.109"
+            ],
+            "answer": [
+                "196.253.219.109"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 100 via 196.253.219.109.",
+            "id": "encor_q_1109"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 161.182.6.98/24:\n1. A Static route via 20.127.150.157 with an Administrative Distance of 108.\n2. A OSPF route via 202.87.82.227 with an Administrative Distance of 114.\n3. A default route (0.0.0.0/0) via 134.52.232.246.\nWhich next-hop will the router select for a packet destined to 161.182.6.50?",
+            "options": [
+                "134.52.232.246",
+                "It will drop the packet",
+                "202.87.82.227",
+                "20.127.150.157"
+            ],
+            "answer": [
+                "20.127.150.157"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 108 via 20.127.150.157.",
+            "id": "encor_q_1110"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 144.61.73.219/24:\n1. A OSPF route via 164.24.79.254 with an Administrative Distance of 102.\n2. A RIP route via 59.107.64.86 with an Administrative Distance of 106.\n3. A default route (0.0.0.0/0) via 79.209.168.19.\nWhich next-hop will the router select for a packet destined to 144.61.73.50?",
+            "options": [
+                "It will drop the packet",
+                "79.209.168.19",
+                "164.24.79.254",
+                "59.107.64.86"
+            ],
+            "answer": [
+                "164.24.79.254"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 102 via 164.24.79.254.",
+            "id": "encor_q_1111"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 184.183.192.235/24:\n1. A EIGRP route via 16.26.144.38 with an Administrative Distance of 92.\n2. A EIGRP route via 64.35.226.235 with an Administrative Distance of 100.\n3. A default route (0.0.0.0/0) via 168.234.72.111.\nWhich next-hop will the router select for a packet destined to 184.183.192.50?",
+            "options": [
+                "It will drop the packet",
+                "16.26.144.38",
+                "168.234.72.111",
+                "64.35.226.235"
+            ],
+            "answer": [
+                "16.26.144.38"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 92 via 16.26.144.38.",
+            "id": "encor_q_1112"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.25.1.0/24 [110/2] via 192.168.1.1\nD    10.25.1.0/25 [90/30720] via 192.168.2.1\nS    10.25.0.0/16 [1/0] via 192.168.3.1\nC    10.25.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.25.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "192.168.1.1",
+                "192.168.2.1",
+                "192.168.3.1",
+                "It will be processed locally as it is directly connected"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.25.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1113"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 217.40.85.59/24:\n1. A OSPF route via 109.46.75.203 with an Administrative Distance of 102.\n2. A OSPF route via 11.160.206.147 with an Administrative Distance of 103.\n3. A default route (0.0.0.0/0) via 86.76.88.147.\nWhich next-hop will the router select for a packet destined to 217.40.85.50?",
+            "options": [
+                "86.76.88.147",
+                "11.160.206.147",
+                "It will drop the packet",
+                "109.46.75.203"
+            ],
+            "answer": [
+                "109.46.75.203"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 102 via 109.46.75.203.",
+            "id": "encor_q_1114"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 70.204.255.53/24:\n1. A OSPF route via 29.204.146.254 with an Administrative Distance of 96.\n2. A OSPF route via 21.44.41.174 with an Administrative Distance of 105.\n3. A default route (0.0.0.0/0) via 130.85.229.43.\nWhich next-hop will the router select for a packet destined to 70.204.255.50?",
+            "options": [
+                "It will drop the packet",
+                "21.44.41.174",
+                "29.204.146.254",
+                "130.85.229.43"
+            ],
+            "answer": [
+                "29.204.146.254"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 96 via 29.204.146.254.",
+            "id": "encor_q_1115"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 85.50.224.248/24:\n1. A EIGRP route via 101.237.41.101 with an Administrative Distance of 106.\n2. A OSPF route via 131.38.154.140 with an Administrative Distance of 115.\n3. A default route (0.0.0.0/0) via 126.145.86.43.\nWhich next-hop will the router select for a packet destined to 85.50.224.50?",
+            "options": [
+                "131.38.154.140",
+                "126.145.86.43",
+                "101.237.41.101",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "101.237.41.101"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 106 via 101.237.41.101.",
+            "id": "encor_q_1116"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 69.92.129.129/24:\n1. A Static route via 131.2.157.173 with an Administrative Distance of 95.\n2. A EIGRP route via 69.233.3.93 with an Administrative Distance of 103.\n3. A default route (0.0.0.0/0) via 137.67.187.66.\nWhich next-hop will the router select for a packet destined to 69.92.129.50?",
+            "options": [
+                "131.2.157.173",
+                "It will drop the packet",
+                "137.67.187.66",
+                "69.233.3.93"
+            ],
+            "answer": [
+                "131.2.157.173"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 95 via 131.2.157.173.",
+            "id": "encor_q_1117"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 169.205.245.97/24:\n1. A OSPF route via 54.42.161.105 with an Administrative Distance of 101.\n2. A EIGRP route via 174.22.244.24 with an Administrative Distance of 107.\n3. A default route (0.0.0.0/0) via 108.113.1.54.\nWhich next-hop will the router select for a packet destined to 169.205.245.50?",
+            "options": [
+                "108.113.1.54",
+                "174.22.244.24",
+                "It will drop the packet",
+                "54.42.161.105"
+            ],
+            "answer": [
+                "54.42.161.105"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 101 via 54.42.161.105.",
+            "id": "encor_q_1118"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 25.228.113.73/24:\n1. A EIGRP route via 108.120.128.104 with an Administrative Distance of 99.\n2. A RIP route via 222.248.109.110 with an Administrative Distance of 101.\n3. A default route (0.0.0.0/0) via 148.65.55.105.\nWhich next-hop will the router select for a packet destined to 25.228.113.50?",
+            "options": [
+                "148.65.55.105",
+                "108.120.128.104",
+                "222.248.109.110",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "108.120.128.104"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 99 via 108.120.128.104.",
+            "id": "encor_q_1119"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 189.6.44.77/24:\n1. A OSPF route via 215.104.81.172 with an Administrative Distance of 98.\n2. A EIGRP route via 150.163.2.59 with an Administrative Distance of 99.\n3. A default route (0.0.0.0/0) via 39.82.249.101.\nWhich next-hop will the router select for a packet destined to 189.6.44.50?",
+            "options": [
+                "It will drop the packet",
+                "39.82.249.101",
+                "150.163.2.59",
+                "215.104.81.172"
+            ],
+            "answer": [
+                "215.104.81.172"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 98 via 215.104.81.172.",
+            "id": "encor_q_1120"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 96.228.234.7/24:\n1. A EIGRP route via 192.60.233.107 with an Administrative Distance of 93.\n2. A OSPF route via 189.214.222.201 with an Administrative Distance of 96.\n3. A default route (0.0.0.0/0) via 99.10.9.216.\nWhich next-hop will the router select for a packet destined to 96.228.234.50?",
+            "options": [
+                "99.10.9.216",
+                "It will drop the packet",
+                "189.214.222.201",
+                "192.60.233.107"
+            ],
+            "answer": [
+                "192.60.233.107"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 93 via 192.60.233.107.",
+            "id": "encor_q_1121"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 93.114.33.190/24:\n1. A OSPF route via 156.14.38.38 with an Administrative Distance of 104.\n2. A RIP route via 125.196.234.7 with an Administrative Distance of 111.\n3. A default route (0.0.0.0/0) via 209.120.227.83.\nWhich next-hop will the router select for a packet destined to 93.114.33.50?",
+            "options": [
+                "It will drop the packet",
+                "125.196.234.7",
+                "156.14.38.38",
+                "209.120.227.83"
+            ],
+            "answer": [
+                "156.14.38.38"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 104 via 156.14.38.38.",
+            "id": "encor_q_1122"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.40.1.0/24 [110/2] via 192.168.1.1\nD    10.40.1.0/25 [90/30720] via 192.168.2.1\nS    10.40.0.0/16 [1/0] via 192.168.3.1\nC    10.40.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.40.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "It will be processed locally as it is directly connected",
+                "192.168.3.1",
+                "192.168.2.1",
+                "192.168.1.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.40.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1123"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 111.17.57.188/24:\n1. A EIGRP route via 84.59.231.110 with an Administrative Distance of 110.\n2. A EIGRP route via 45.20.87.141 with an Administrative Distance of 120.\n3. A default route (0.0.0.0/0) via 194.198.61.168.\nWhich next-hop will the router select for a packet destined to 111.17.57.50?",
+            "options": [
+                "It will drop the packet",
+                "84.59.231.110",
+                "194.198.61.168",
+                "45.20.87.141"
+            ],
+            "answer": [
+                "84.59.231.110"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 84.59.231.110.",
+            "id": "encor_q_1124"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 203.244.1.212/24:\n1. A Static route via 41.130.188.8 with an Administrative Distance of 104.\n2. A OSPF route via 12.212.214.128 with an Administrative Distance of 113.\n3. A default route (0.0.0.0/0) via 75.245.11.5.\nWhich next-hop will the router select for a packet destined to 203.244.1.50?",
+            "options": [
+                "41.130.188.8",
+                "75.245.11.5",
+                "It will drop the packet",
+                "12.212.214.128"
+            ],
+            "answer": [
+                "41.130.188.8"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 104 via 41.130.188.8.",
+            "id": "encor_q_1125"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.17.1.0/24 [110/2] via 192.168.1.1\nD    10.17.1.0/25 [90/30720] via 192.168.2.1\nS    10.17.0.0/16 [1/0] via 192.168.3.1\nC    10.17.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.17.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "192.168.1.1",
+                "192.168.3.1",
+                "It will be processed locally as it is directly connected",
+                "192.168.2.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.17.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1126"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 220.202.90.90/24:\n1. A Static route via 210.97.22.203 with an Administrative Distance of 104.\n2. A OSPF route via 22.253.176.158 with an Administrative Distance of 112.\n3. A default route (0.0.0.0/0) via 13.110.148.90.\nWhich next-hop will the router select for a packet destined to 220.202.90.50?",
+            "options": [
+                "210.97.22.203",
+                "It will drop the packet",
+                "22.253.176.158",
+                "13.110.148.90"
+            ],
+            "answer": [
+                "210.97.22.203"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 104 via 210.97.22.203.",
+            "id": "encor_q_1127"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 173.175.146.166/24:\n1. A EIGRP route via 155.213.1.7 with an Administrative Distance of 98.\n2. A RIP route via 53.87.109.21 with an Administrative Distance of 100.\n3. A default route (0.0.0.0/0) via 200.214.200.203.\nWhich next-hop will the router select for a packet destined to 173.175.146.50?",
+            "options": [
+                "155.213.1.7",
+                "53.87.109.21",
+                "It will drop the packet",
+                "200.214.200.203"
+            ],
+            "answer": [
+                "155.213.1.7"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 98 via 155.213.1.7.",
+            "id": "encor_q_1128"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 212.249.85.187/24:\n1. A OSPF route via 38.230.45.86 with an Administrative Distance of 94.\n2. A RIP route via 20.248.224.56 with an Administrative Distance of 99.\n3. A default route (0.0.0.0/0) via 55.240.185.13.\nWhich next-hop will the router select for a packet destined to 212.249.85.50?",
+            "options": [
+                "38.230.45.86",
+                "55.240.185.13",
+                "20.248.224.56",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "38.230.45.86"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 94 via 38.230.45.86.",
+            "id": "encor_q_1129"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 54.253.161.239/24:\n1. A Static route via 66.108.119.125 with an Administrative Distance of 94.\n2. A EIGRP route via 128.177.43.201 with an Administrative Distance of 103.\n3. A default route (0.0.0.0/0) via 84.161.81.196.\nWhich next-hop will the router select for a packet destined to 54.253.161.50?",
+            "options": [
+                "66.108.119.125",
+                "84.161.81.196",
+                "It will drop the packet",
+                "128.177.43.201"
+            ],
+            "answer": [
+                "66.108.119.125"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 94 via 66.108.119.125.",
+            "id": "encor_q_1130"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 211.61.82.89/24:\n1. A EIGRP route via 56.84.226.57 with an Administrative Distance of 104.\n2. A EIGRP route via 198.65.11.204 with an Administrative Distance of 109.\n3. A default route (0.0.0.0/0) via 112.63.69.206.\nWhich next-hop will the router select for a packet destined to 211.61.82.50?",
+            "options": [
+                "56.84.226.57",
+                "It will drop the packet",
+                "112.63.69.206",
+                "198.65.11.204"
+            ],
+            "answer": [
+                "56.84.226.57"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 104 via 56.84.226.57.",
+            "id": "encor_q_1131"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 93.34.13.54/24:\n1. A Static route via 119.156.148.245 with an Administrative Distance of 93.\n2. A EIGRP route via 112.198.22.120 with an Administrative Distance of 97.\n3. A default route (0.0.0.0/0) via 174.194.211.191.\nWhich next-hop will the router select for a packet destined to 93.34.13.50?",
+            "options": [
+                "119.156.148.245",
+                "It will drop the packet",
+                "112.198.22.120",
+                "174.194.211.191"
+            ],
+            "answer": [
+                "119.156.148.245"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 93 via 119.156.148.245.",
+            "id": "encor_q_1132"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 142.76.107.58/24:\n1. A Static route via 10.133.158.41 with an Administrative Distance of 96.\n2. A RIP route via 52.91.99.170 with an Administrative Distance of 98.\n3. A default route (0.0.0.0/0) via 79.172.97.253.\nWhich next-hop will the router select for a packet destined to 142.76.107.50?",
+            "options": [
+                "10.133.158.41",
+                "79.172.97.253",
+                "It will drop the packet",
+                "52.91.99.170"
+            ],
+            "answer": [
+                "10.133.158.41"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 96 via 10.133.158.41.",
+            "id": "encor_q_1133"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 208.226.76.104/24:\n1. A EIGRP route via 60.248.64.48 with an Administrative Distance of 105.\n2. A EIGRP route via 223.135.29.211 with an Administrative Distance of 110.\n3. A default route (0.0.0.0/0) via 210.136.204.31.\nWhich next-hop will the router select for a packet destined to 208.226.76.50?",
+            "options": [
+                "60.248.64.48",
+                "210.136.204.31",
+                "223.135.29.211",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "60.248.64.48"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 105 via 60.248.64.48.",
+            "id": "encor_q_1134"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 169.90.246.190/24:\n1. A OSPF route via 84.64.238.95 with an Administrative Distance of 98.\n2. A EIGRP route via 194.4.225.129 with an Administrative Distance of 103.\n3. A default route (0.0.0.0/0) via 74.164.78.184.\nWhich next-hop will the router select for a packet destined to 169.90.246.50?",
+            "options": [
+                "74.164.78.184",
+                "194.4.225.129",
+                "84.64.238.95",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "84.64.238.95"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 98 via 84.64.238.95.",
+            "id": "encor_q_1135"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 116.169.132.176/24:\n1. A OSPF route via 59.231.16.143 with an Administrative Distance of 100.\n2. A OSPF route via 86.38.107.181 with an Administrative Distance of 108.\n3. A default route (0.0.0.0/0) via 36.35.24.194.\nWhich next-hop will the router select for a packet destined to 116.169.132.50?",
+            "options": [
+                "59.231.16.143",
+                "86.38.107.181",
+                "36.35.24.194",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "59.231.16.143"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 100 via 59.231.16.143.",
+            "id": "encor_q_1136"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 109.247.193.121/24:\n1. A EIGRP route via 212.20.71.197 with an Administrative Distance of 108.\n2. A EIGRP route via 31.88.100.190 with an Administrative Distance of 112.\n3. A default route (0.0.0.0/0) via 142.100.150.179.\nWhich next-hop will the router select for a packet destined to 109.247.193.50?",
+            "options": [
+                "212.20.71.197",
+                "It will drop the packet",
+                "31.88.100.190",
+                "142.100.150.179"
+            ],
+            "answer": [
+                "212.20.71.197"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 108 via 212.20.71.197.",
+            "id": "encor_q_1137"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 170.70.128.200/24:\n1. A Static route via 179.74.8.198 with an Administrative Distance of 96.\n2. A OSPF route via 194.83.248.190 with an Administrative Distance of 101.\n3. A default route (0.0.0.0/0) via 206.255.125.157.\nWhich next-hop will the router select for a packet destined to 170.70.128.50?",
+            "options": [
+                "179.74.8.198",
+                "It will drop the packet",
+                "194.83.248.190",
+                "206.255.125.157"
+            ],
+            "answer": [
+                "179.74.8.198"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 96 via 179.74.8.198.",
+            "id": "encor_q_1138"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 214.236.138.170/24:\n1. A Static route via 113.120.112.5 with an Administrative Distance of 98.\n2. A OSPF route via 71.164.10.134 with an Administrative Distance of 104.\n3. A default route (0.0.0.0/0) via 200.27.147.78.\nWhich next-hop will the router select for a packet destined to 214.236.138.50?",
+            "options": [
+                "200.27.147.78",
+                "71.164.10.134",
+                "It will drop the packet",
+                "113.120.112.5"
+            ],
+            "answer": [
+                "113.120.112.5"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 98 via 113.120.112.5.",
+            "id": "encor_q_1139"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 149.62.166.36/24:\n1. A EIGRP route via 145.23.99.80 with an Administrative Distance of 96.\n2. A OSPF route via 94.10.42.88 with an Administrative Distance of 104.\n3. A default route (0.0.0.0/0) via 96.130.111.60.\nWhich next-hop will the router select for a packet destined to 149.62.166.50?",
+            "options": [
+                "96.130.111.60",
+                "It will drop the packet",
+                "94.10.42.88",
+                "145.23.99.80"
+            ],
+            "answer": [
+                "145.23.99.80"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 96 via 145.23.99.80.",
+            "id": "encor_q_1140"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 180.64.107.85/24:\n1. A Static route via 198.213.195.166 with an Administrative Distance of 98.\n2. A RIP route via 126.190.8.121 with an Administrative Distance of 105.\n3. A default route (0.0.0.0/0) via 72.160.106.146.\nWhich next-hop will the router select for a packet destined to 180.64.107.50?",
+            "options": [
+                "198.213.195.166",
+                "126.190.8.121",
+                "72.160.106.146",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "198.213.195.166"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 98 via 198.213.195.166.",
+            "id": "encor_q_1141"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 48.40.245.200/24:\n1. A OSPF route via 17.80.153.48 with an Administrative Distance of 106.\n2. A EIGRP route via 174.200.165.187 with an Administrative Distance of 116.\n3. A default route (0.0.0.0/0) via 150.246.226.5.\nWhich next-hop will the router select for a packet destined to 48.40.245.50?",
+            "options": [
+                "17.80.153.48",
+                "174.200.165.187",
+                "It will drop the packet",
+                "150.246.226.5"
+            ],
+            "answer": [
+                "17.80.153.48"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 106 via 17.80.153.48.",
+            "id": "encor_q_1142"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 36.98.147.107/24:\n1. A Static route via 129.33.196.220 with an Administrative Distance of 92.\n2. A RIP route via 95.15.88.244 with an Administrative Distance of 100.\n3. A default route (0.0.0.0/0) via 24.98.119.220.\nWhich next-hop will the router select for a packet destined to 36.98.147.50?",
+            "options": [
+                "95.15.88.244",
+                "129.33.196.220",
+                "It will drop the packet",
+                "24.98.119.220"
+            ],
+            "answer": [
+                "129.33.196.220"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 92 via 129.33.196.220.",
+            "id": "encor_q_1143"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 94.252.125.226/24:\n1. A OSPF route via 76.9.96.179 with an Administrative Distance of 95.\n2. A RIP route via 173.34.108.130 with an Administrative Distance of 104.\n3. A default route (0.0.0.0/0) via 129.59.52.180.\nWhich next-hop will the router select for a packet destined to 94.252.125.50?",
+            "options": [
+                "It will drop the packet",
+                "129.59.52.180",
+                "76.9.96.179",
+                "173.34.108.130"
+            ],
+            "answer": [
+                "76.9.96.179"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 95 via 76.9.96.179.",
+            "id": "encor_q_1144"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 86.181.64.236/24:\n1. A OSPF route via 103.242.138.54 with an Administrative Distance of 100.\n2. A EIGRP route via 173.213.54.42 with an Administrative Distance of 110.\n3. A default route (0.0.0.0/0) via 168.178.135.20.\nWhich next-hop will the router select for a packet destined to 86.181.64.50?",
+            "options": [
+                "168.178.135.20",
+                "It will drop the packet",
+                "103.242.138.54",
+                "173.213.54.42"
+            ],
+            "answer": [
+                "103.242.138.54"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 100 via 103.242.138.54.",
+            "id": "encor_q_1145"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.24.1.0/24 [110/2] via 192.168.1.1\nD    10.24.1.0/25 [90/30720] via 192.168.2.1\nS    10.24.0.0/16 [1/0] via 192.168.3.1\nC    10.24.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.24.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "192.168.2.1",
+                "It will be processed locally as it is directly connected",
+                "192.168.3.1",
+                "192.168.1.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.24.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1146"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 185.219.152.37/24:\n1. A Static route via 98.167.29.229 with an Administrative Distance of 108.\n2. A OSPF route via 166.102.27.217 with an Administrative Distance of 113.\n3. A default route (0.0.0.0/0) via 17.38.238.192.\nWhich next-hop will the router select for a packet destined to 185.219.152.50?",
+            "options": [
+                "166.102.27.217",
+                "17.38.238.192",
+                "It will drop the packet",
+                "98.167.29.229"
+            ],
+            "answer": [
+                "98.167.29.229"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 108 via 98.167.29.229.",
+            "id": "encor_q_1147"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 13.140.27.189/24:\n1. A Static route via 216.181.217.154 with an Administrative Distance of 96.\n2. A EIGRP route via 85.245.244.69 with an Administrative Distance of 98.\n3. A default route (0.0.0.0/0) via 88.232.173.242.\nWhich next-hop will the router select for a packet destined to 13.140.27.50?",
+            "options": [
+                "216.181.217.154",
+                "It will drop the packet",
+                "85.245.244.69",
+                "88.232.173.242"
+            ],
+            "answer": [
+                "216.181.217.154"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 96 via 216.181.217.154.",
+            "id": "encor_q_1148"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 193.243.207.49/24:\n1. A EIGRP route via 222.213.86.7 with an Administrative Distance of 110.\n2. A EIGRP route via 16.254.77.88 with an Administrative Distance of 113.\n3. A default route (0.0.0.0/0) via 43.222.215.209.\nWhich next-hop will the router select for a packet destined to 193.243.207.50?",
+            "options": [
+                "43.222.215.209",
+                "It will drop the packet",
+                "222.213.86.7",
+                "16.254.77.88"
+            ],
+            "answer": [
+                "222.213.86.7"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 222.213.86.7.",
+            "id": "encor_q_1149"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 146.174.154.190/24:\n1. A EIGRP route via 123.111.23.149 with an Administrative Distance of 103.\n2. A EIGRP route via 42.206.255.80 with an Administrative Distance of 108.\n3. A default route (0.0.0.0/0) via 126.165.89.84.\nWhich next-hop will the router select for a packet destined to 146.174.154.50?",
+            "options": [
+                "It will drop the packet",
+                "123.111.23.149",
+                "126.165.89.84",
+                "42.206.255.80"
+            ],
+            "answer": [
+                "123.111.23.149"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 103 via 123.111.23.149.",
+            "id": "encor_q_1150"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 51.87.161.142/24:\n1. A OSPF route via 44.115.69.136 with an Administrative Distance of 96.\n2. A EIGRP route via 197.6.134.204 with an Administrative Distance of 102.\n3. A default route (0.0.0.0/0) via 142.141.30.164.\nWhich next-hop will the router select for a packet destined to 51.87.161.50?",
+            "options": [
+                "44.115.69.136",
+                "197.6.134.204",
+                "It will drop the packet",
+                "142.141.30.164"
+            ],
+            "answer": [
+                "44.115.69.136"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 96 via 44.115.69.136.",
+            "id": "encor_q_1151"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 213.63.171.138/24:\n1. A Static route via 213.178.234.43 with an Administrative Distance of 105.\n2. A OSPF route via 83.59.45.200 with an Administrative Distance of 108.\n3. A default route (0.0.0.0/0) via 222.175.35.164.\nWhich next-hop will the router select for a packet destined to 213.63.171.50?",
+            "options": [
+                "222.175.35.164",
+                "It will drop the packet",
+                "213.178.234.43",
+                "83.59.45.200"
+            ],
+            "answer": [
+                "213.178.234.43"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 105 via 213.178.234.43.",
+            "id": "encor_q_1152"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 134.234.144.133/24:\n1. A OSPF route via 11.139.168.197 with an Administrative Distance of 102.\n2. A OSPF route via 113.30.34.248 with an Administrative Distance of 112.\n3. A default route (0.0.0.0/0) via 145.150.248.182.\nWhich next-hop will the router select for a packet destined to 134.234.144.50?",
+            "options": [
+                "145.150.248.182",
+                "It will drop the packet",
+                "11.139.168.197",
+                "113.30.34.248"
+            ],
+            "answer": [
+                "11.139.168.197"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 102 via 11.139.168.197.",
+            "id": "encor_q_1153"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 52.108.159.251/24:\n1. A OSPF route via 75.172.57.44 with an Administrative Distance of 97.\n2. A EIGRP route via 82.215.216.112 with an Administrative Distance of 105.\n3. A default route (0.0.0.0/0) via 77.97.205.238.\nWhich next-hop will the router select for a packet destined to 52.108.159.50?",
+            "options": [
+                "75.172.57.44",
+                "It will drop the packet",
+                "77.97.205.238",
+                "82.215.216.112"
+            ],
+            "answer": [
+                "75.172.57.44"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 97 via 75.172.57.44.",
+            "id": "encor_q_1154"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 56.225.176.102/24:\n1. A OSPF route via 190.238.22.157 with an Administrative Distance of 102.\n2. A EIGRP route via 60.161.234.149 with an Administrative Distance of 109.\n3. A default route (0.0.0.0/0) via 33.1.69.57.\nWhich next-hop will the router select for a packet destined to 56.225.176.50?",
+            "options": [
+                "60.161.234.149",
+                "It will drop the packet",
+                "190.238.22.157",
+                "33.1.69.57"
+            ],
+            "answer": [
+                "190.238.22.157"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 102 via 190.238.22.157.",
+            "id": "encor_q_1155"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 43.140.61.53/24:\n1. A Static route via 68.74.126.231 with an Administrative Distance of 94.\n2. A EIGRP route via 118.73.141.163 with an Administrative Distance of 103.\n3. A default route (0.0.0.0/0) via 148.141.4.74.\nWhich next-hop will the router select for a packet destined to 43.140.61.50?",
+            "options": [
+                "It will drop the packet",
+                "148.141.4.74",
+                "118.73.141.163",
+                "68.74.126.231"
+            ],
+            "answer": [
+                "68.74.126.231"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 94 via 68.74.126.231.",
+            "id": "encor_q_1156"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 15.120.63.232/24:\n1. A OSPF route via 84.227.167.245 with an Administrative Distance of 99.\n2. A RIP route via 145.226.83.91 with an Administrative Distance of 104.\n3. A default route (0.0.0.0/0) via 173.239.85.84.\nWhich next-hop will the router select for a packet destined to 15.120.63.50?",
+            "options": [
+                "173.239.85.84",
+                "84.227.167.245",
+                "145.226.83.91",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "84.227.167.245"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 99 via 84.227.167.245.",
+            "id": "encor_q_1157"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 160.201.176.188/24:\n1. A OSPF route via 122.194.149.53 with an Administrative Distance of 93.\n2. A EIGRP route via 176.198.225.52 with an Administrative Distance of 98.\n3. A default route (0.0.0.0/0) via 199.44.98.41.\nWhich next-hop will the router select for a packet destined to 160.201.176.50?",
+            "options": [
+                "122.194.149.53",
+                "176.198.225.52",
+                "It will drop the packet",
+                "199.44.98.41"
+            ],
+            "answer": [
+                "122.194.149.53"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 93 via 122.194.149.53.",
+            "id": "encor_q_1158"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 17.45.156.214/24:\n1. A EIGRP route via 128.152.228.166 with an Administrative Distance of 108.\n2. A OSPF route via 76.65.238.239 with an Administrative Distance of 112.\n3. A default route (0.0.0.0/0) via 83.181.214.121.\nWhich next-hop will the router select for a packet destined to 17.45.156.50?",
+            "options": [
+                "83.181.214.121",
+                "128.152.228.166",
+                "76.65.238.239",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "128.152.228.166"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 108 via 128.152.228.166.",
+            "id": "encor_q_1159"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 205.52.128.126/24:\n1. A OSPF route via 145.122.81.170 with an Administrative Distance of 98.\n2. A OSPF route via 63.28.186.217 with an Administrative Distance of 105.\n3. A default route (0.0.0.0/0) via 164.61.178.170.\nWhich next-hop will the router select for a packet destined to 205.52.128.50?",
+            "options": [
+                "It will drop the packet",
+                "164.61.178.170",
+                "145.122.81.170",
+                "63.28.186.217"
+            ],
+            "answer": [
+                "145.122.81.170"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 98 via 145.122.81.170.",
+            "id": "encor_q_1160"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 26.236.95.91/24:\n1. A Static route via 135.212.251.95 with an Administrative Distance of 103.\n2. A OSPF route via 99.167.166.160 with an Administrative Distance of 109.\n3. A default route (0.0.0.0/0) via 162.19.238.241.\nWhich next-hop will the router select for a packet destined to 26.236.95.50?",
+            "options": [
+                "162.19.238.241",
+                "99.167.166.160",
+                "It will drop the packet",
+                "135.212.251.95"
+            ],
+            "answer": [
+                "135.212.251.95"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 103 via 135.212.251.95.",
+            "id": "encor_q_1161"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 196.131.175.84/24:\n1. A EIGRP route via 91.62.36.187 with an Administrative Distance of 110.\n2. A OSPF route via 153.32.17.139 with an Administrative Distance of 120.\n3. A default route (0.0.0.0/0) via 135.62.89.136.\nWhich next-hop will the router select for a packet destined to 196.131.175.50?",
+            "options": [
+                "91.62.36.187",
+                "It will drop the packet",
+                "135.62.89.136",
+                "153.32.17.139"
+            ],
+            "answer": [
+                "91.62.36.187"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 91.62.36.187.",
+            "id": "encor_q_1162"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 76.69.214.90/24:\n1. A EIGRP route via 14.40.206.22 with an Administrative Distance of 106.\n2. A OSPF route via 15.142.130.40 with an Administrative Distance of 111.\n3. A default route (0.0.0.0/0) via 85.193.9.74.\nWhich next-hop will the router select for a packet destined to 76.69.214.50?",
+            "options": [
+                "It will drop the packet",
+                "85.193.9.74",
+                "15.142.130.40",
+                "14.40.206.22"
+            ],
+            "answer": [
+                "14.40.206.22"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 106 via 14.40.206.22.",
+            "id": "encor_q_1163"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 65.201.253.78/24:\n1. A OSPF route via 60.136.176.146 with an Administrative Distance of 95.\n2. A RIP route via 102.176.65.41 with an Administrative Distance of 104.\n3. A default route (0.0.0.0/0) via 187.9.4.30.\nWhich next-hop will the router select for a packet destined to 65.201.253.50?",
+            "options": [
+                "It will drop the packet",
+                "102.176.65.41",
+                "60.136.176.146",
+                "187.9.4.30"
+            ],
+            "answer": [
+                "60.136.176.146"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 95 via 60.136.176.146.",
+            "id": "encor_q_1164"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 26.20.215.19/24:\n1. A EIGRP route via 181.180.53.104 with an Administrative Distance of 106.\n2. A RIP route via 119.53.216.103 with an Administrative Distance of 108.\n3. A default route (0.0.0.0/0) via 108.51.208.215.\nWhich next-hop will the router select for a packet destined to 26.20.215.50?",
+            "options": [
+                "119.53.216.103",
+                "It will drop the packet",
+                "108.51.208.215",
+                "181.180.53.104"
+            ],
+            "answer": [
+                "181.180.53.104"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 106 via 181.180.53.104.",
+            "id": "encor_q_1165"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 142.16.201.163/24:\n1. A OSPF route via 35.178.203.41 with an Administrative Distance of 110.\n2. A EIGRP route via 102.240.214.47 with an Administrative Distance of 114.\n3. A default route (0.0.0.0/0) via 150.216.171.58.\nWhich next-hop will the router select for a packet destined to 142.16.201.50?",
+            "options": [
+                "It will drop the packet",
+                "35.178.203.41",
+                "150.216.171.58",
+                "102.240.214.47"
+            ],
+            "answer": [
+                "35.178.203.41"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 35.178.203.41.",
+            "id": "encor_q_1166"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 185.112.160.158/24:\n1. A EIGRP route via 18.58.134.193 with an Administrative Distance of 109.\n2. A EIGRP route via 217.21.243.87 with an Administrative Distance of 112.\n3. A default route (0.0.0.0/0) via 173.118.59.143.\nWhich next-hop will the router select for a packet destined to 185.112.160.50?",
+            "options": [
+                "173.118.59.143",
+                "18.58.134.193",
+                "217.21.243.87",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "18.58.134.193"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 109 via 18.58.134.193.",
+            "id": "encor_q_1167"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 134.200.149.241/24:\n1. A OSPF route via 75.232.111.70 with an Administrative Distance of 109.\n2. A RIP route via 160.169.94.233 with an Administrative Distance of 117.\n3. A default route (0.0.0.0/0) via 38.59.90.44.\nWhich next-hop will the router select for a packet destined to 134.200.149.50?",
+            "options": [
+                "160.169.94.233",
+                "75.232.111.70",
+                "It will drop the packet",
+                "38.59.90.44"
+            ],
+            "answer": [
+                "75.232.111.70"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 109 via 75.232.111.70.",
+            "id": "encor_q_1168"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 154.212.241.252/24:\n1. A EIGRP route via 102.207.44.201 with an Administrative Distance of 95.\n2. A OSPF route via 18.66.142.120 with an Administrative Distance of 102.\n3. A default route (0.0.0.0/0) via 73.214.160.48.\nWhich next-hop will the router select for a packet destined to 154.212.241.50?",
+            "options": [
+                "18.66.142.120",
+                "73.214.160.48",
+                "It will drop the packet",
+                "102.207.44.201"
+            ],
+            "answer": [
+                "102.207.44.201"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 95 via 102.207.44.201.",
+            "id": "encor_q_1169"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 116.95.1.250/24:\n1. A Static route via 197.207.215.226 with an Administrative Distance of 100.\n2. A OSPF route via 45.211.251.152 with an Administrative Distance of 103.\n3. A default route (0.0.0.0/0) via 70.150.152.148.\nWhich next-hop will the router select for a packet destined to 116.95.1.50?",
+            "options": [
+                "70.150.152.148",
+                "It will drop the packet",
+                "45.211.251.152",
+                "197.207.215.226"
+            ],
+            "answer": [
+                "197.207.215.226"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 100 via 197.207.215.226.",
+            "id": "encor_q_1170"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 145.45.135.34/24:\n1. A EIGRP route via 94.58.19.123 with an Administrative Distance of 105.\n2. A OSPF route via 53.156.206.208 with an Administrative Distance of 107.\n3. A default route (0.0.0.0/0) via 209.202.29.212.\nWhich next-hop will the router select for a packet destined to 145.45.135.50?",
+            "options": [
+                "53.156.206.208",
+                "94.58.19.123",
+                "209.202.29.212",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "94.58.19.123"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 105 via 94.58.19.123.",
+            "id": "encor_q_1171"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 78.199.166.21/24:\n1. A OSPF route via 177.42.116.65 with an Administrative Distance of 107.\n2. A RIP route via 206.1.223.33 with an Administrative Distance of 109.\n3. A default route (0.0.0.0/0) via 126.8.140.6.\nWhich next-hop will the router select for a packet destined to 78.199.166.50?",
+            "options": [
+                "126.8.140.6",
+                "It will drop the packet",
+                "206.1.223.33",
+                "177.42.116.65"
+            ],
+            "answer": [
+                "177.42.116.65"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 107 via 177.42.116.65.",
+            "id": "encor_q_1172"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 71.44.185.26/24:\n1. A Static route via 23.136.15.41 with an Administrative Distance of 90.\n2. A RIP route via 153.102.33.92 with an Administrative Distance of 94.\n3. A default route (0.0.0.0/0) via 202.227.31.138.\nWhich next-hop will the router select for a packet destined to 71.44.185.50?",
+            "options": [
+                "It will drop the packet",
+                "202.227.31.138",
+                "23.136.15.41",
+                "153.102.33.92"
+            ],
+            "answer": [
+                "23.136.15.41"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 90 via 23.136.15.41.",
+            "id": "encor_q_1173"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 144.173.150.36/24:\n1. A OSPF route via 21.97.141.46 with an Administrative Distance of 100.\n2. A OSPF route via 22.41.100.135 with an Administrative Distance of 105.\n3. A default route (0.0.0.0/0) via 208.18.123.8.\nWhich next-hop will the router select for a packet destined to 144.173.150.50?",
+            "options": [
+                "22.41.100.135",
+                "It will drop the packet",
+                "21.97.141.46",
+                "208.18.123.8"
+            ],
+            "answer": [
+                "21.97.141.46"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 100 via 21.97.141.46.",
+            "id": "encor_q_1174"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 128.42.147.185/24:\n1. A Static route via 120.53.221.251 with an Administrative Distance of 105.\n2. A OSPF route via 58.225.249.146 with an Administrative Distance of 111.\n3. A default route (0.0.0.0/0) via 39.197.102.244.\nWhich next-hop will the router select for a packet destined to 128.42.147.50?",
+            "options": [
+                "120.53.221.251",
+                "39.197.102.244",
+                "58.225.249.146",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "120.53.221.251"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 105 via 120.53.221.251.",
+            "id": "encor_q_1175"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 121.151.87.167/24:\n1. A OSPF route via 200.16.58.219 with an Administrative Distance of 98.\n2. A OSPF route via 179.95.34.32 with an Administrative Distance of 104.\n3. A default route (0.0.0.0/0) via 28.144.82.206.\nWhich next-hop will the router select for a packet destined to 121.151.87.50?",
+            "options": [
+                "179.95.34.32",
+                "200.16.58.219",
+                "It will drop the packet",
+                "28.144.82.206"
+            ],
+            "answer": [
+                "200.16.58.219"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 98 via 200.16.58.219.",
+            "id": "encor_q_1176"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 206.146.39.186/24:\n1. A Static route via 83.250.248.10 with an Administrative Distance of 98.\n2. A OSPF route via 191.22.157.2 with an Administrative Distance of 100.\n3. A default route (0.0.0.0/0) via 30.47.237.38.\nWhich next-hop will the router select for a packet destined to 206.146.39.50?",
+            "options": [
+                "83.250.248.10",
+                "It will drop the packet",
+                "30.47.237.38",
+                "191.22.157.2"
+            ],
+            "answer": [
+                "83.250.248.10"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 98 via 83.250.248.10.",
+            "id": "encor_q_1177"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 183.200.204.39/24:\n1. A EIGRP route via 17.0.107.74 with an Administrative Distance of 97.\n2. A EIGRP route via 115.100.92.123 with an Administrative Distance of 104.\n3. A default route (0.0.0.0/0) via 125.126.111.222.\nWhich next-hop will the router select for a packet destined to 183.200.204.50?",
+            "options": [
+                "It will drop the packet",
+                "115.100.92.123",
+                "17.0.107.74",
+                "125.126.111.222"
+            ],
+            "answer": [
+                "17.0.107.74"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 97 via 17.0.107.74.",
+            "id": "encor_q_1178"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 147.188.172.164/24:\n1. A EIGRP route via 213.125.207.138 with an Administrative Distance of 100.\n2. A RIP route via 147.236.144.137 with an Administrative Distance of 102.\n3. A default route (0.0.0.0/0) via 206.87.76.48.\nWhich next-hop will the router select for a packet destined to 147.188.172.50?",
+            "options": [
+                "206.87.76.48",
+                "147.236.144.137",
+                "213.125.207.138",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "213.125.207.138"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 100 via 213.125.207.138.",
+            "id": "encor_q_1179"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 51.242.47.184/24:\n1. A EIGRP route via 69.27.114.100 with an Administrative Distance of 101.\n2. A EIGRP route via 123.87.212.134 with an Administrative Distance of 110.\n3. A default route (0.0.0.0/0) via 23.113.73.146.\nWhich next-hop will the router select for a packet destined to 51.242.47.50?",
+            "options": [
+                "123.87.212.134",
+                "It will drop the packet",
+                "69.27.114.100",
+                "23.113.73.146"
+            ],
+            "answer": [
+                "69.27.114.100"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 101 via 69.27.114.100.",
+            "id": "encor_q_1180"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 80.45.80.250/24:\n1. A OSPF route via 208.104.30.210 with an Administrative Distance of 96.\n2. A RIP route via 216.252.188.99 with an Administrative Distance of 101.\n3. A default route (0.0.0.0/0) via 185.60.224.194.\nWhich next-hop will the router select for a packet destined to 80.45.80.50?",
+            "options": [
+                "216.252.188.99",
+                "It will drop the packet",
+                "185.60.224.194",
+                "208.104.30.210"
+            ],
+            "answer": [
+                "208.104.30.210"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 96 via 208.104.30.210.",
+            "id": "encor_q_1181"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 161.158.35.205/24:\n1. A EIGRP route via 121.11.33.43 with an Administrative Distance of 94.\n2. A OSPF route via 195.172.255.22 with an Administrative Distance of 99.\n3. A default route (0.0.0.0/0) via 96.178.108.14.\nWhich next-hop will the router select for a packet destined to 161.158.35.50?",
+            "options": [
+                "96.178.108.14",
+                "121.11.33.43",
+                "195.172.255.22",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "121.11.33.43"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 94 via 121.11.33.43.",
+            "id": "encor_q_1182"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 106.226.92.118/24:\n1. A OSPF route via 188.185.54.99 with an Administrative Distance of 107.\n2. A EIGRP route via 192.128.86.229 with an Administrative Distance of 108.\n3. A default route (0.0.0.0/0) via 30.39.165.124.\nWhich next-hop will the router select for a packet destined to 106.226.92.50?",
+            "options": [
+                "30.39.165.124",
+                "It will drop the packet",
+                "192.128.86.229",
+                "188.185.54.99"
+            ],
+            "answer": [
+                "188.185.54.99"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 107 via 188.185.54.99.",
+            "id": "encor_q_1183"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 104.201.101.250/24:\n1. A Static route via 16.133.184.109 with an Administrative Distance of 107.\n2. A OSPF route via 201.78.63.66 with an Administrative Distance of 117.\n3. A default route (0.0.0.0/0) via 205.248.204.58.\nWhich next-hop will the router select for a packet destined to 104.201.101.50?",
+            "options": [
+                "201.78.63.66",
+                "16.133.184.109",
+                "It will drop the packet",
+                "205.248.204.58"
+            ],
+            "answer": [
+                "16.133.184.109"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 107 via 16.133.184.109.",
+            "id": "encor_q_1184"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 92.166.167.251/24:\n1. A Static route via 55.24.72.103 with an Administrative Distance of 109.\n2. A RIP route via 194.141.76.148 with an Administrative Distance of 110.\n3. A default route (0.0.0.0/0) via 220.241.33.19.\nWhich next-hop will the router select for a packet destined to 92.166.167.50?",
+            "options": [
+                "220.241.33.19",
+                "It will drop the packet",
+                "194.141.76.148",
+                "55.24.72.103"
+            ],
+            "answer": [
+                "55.24.72.103"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 109 via 55.24.72.103.",
+            "id": "encor_q_1185"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 159.17.43.147/24:\n1. A Static route via 60.29.221.247 with an Administrative Distance of 103.\n2. A EIGRP route via 54.112.146.161 with an Administrative Distance of 104.\n3. A default route (0.0.0.0/0) via 196.205.124.185.\nWhich next-hop will the router select for a packet destined to 159.17.43.50?",
+            "options": [
+                "60.29.221.247",
+                "It will drop the packet",
+                "196.205.124.185",
+                "54.112.146.161"
+            ],
+            "answer": [
+                "60.29.221.247"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 103 via 60.29.221.247.",
+            "id": "encor_q_1186"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 164.207.38.230/24:\n1. A OSPF route via 173.255.110.211 with an Administrative Distance of 91.\n2. A RIP route via 20.28.2.175 with an Administrative Distance of 99.\n3. A default route (0.0.0.0/0) via 193.89.226.62.\nWhich next-hop will the router select for a packet destined to 164.207.38.50?",
+            "options": [
+                "It will drop the packet",
+                "173.255.110.211",
+                "20.28.2.175",
+                "193.89.226.62"
+            ],
+            "answer": [
+                "173.255.110.211"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 91 via 173.255.110.211.",
+            "id": "encor_q_1187"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 76.221.6.126/24:\n1. A Static route via 13.226.121.192 with an Administrative Distance of 108.\n2. A EIGRP route via 36.162.12.184 with an Administrative Distance of 116.\n3. A default route (0.0.0.0/0) via 75.126.206.198.\nWhich next-hop will the router select for a packet destined to 76.221.6.50?",
+            "options": [
+                "36.162.12.184",
+                "75.126.206.198",
+                "13.226.121.192",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "13.226.121.192"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 108 via 13.226.121.192.",
+            "id": "encor_q_1188"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 204.185.100.249/24:\n1. A Static route via 93.12.184.25 with an Administrative Distance of 104.\n2. A RIP route via 214.9.255.170 with an Administrative Distance of 108.\n3. A default route (0.0.0.0/0) via 207.72.135.195.\nWhich next-hop will the router select for a packet destined to 204.185.100.50?",
+            "options": [
+                "It will drop the packet",
+                "207.72.135.195",
+                "93.12.184.25",
+                "214.9.255.170"
+            ],
+            "answer": [
+                "93.12.184.25"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 104 via 93.12.184.25.",
+            "id": "encor_q_1189"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 20.165.184.216/24:\n1. A OSPF route via 34.48.127.110 with an Administrative Distance of 92.\n2. A OSPF route via 170.230.63.112 with an Administrative Distance of 93.\n3. A default route (0.0.0.0/0) via 91.194.186.253.\nWhich next-hop will the router select for a packet destined to 20.165.184.50?",
+            "options": [
+                "It will drop the packet",
+                "170.230.63.112",
+                "34.48.127.110",
+                "91.194.186.253"
+            ],
+            "answer": [
+                "34.48.127.110"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 92 via 34.48.127.110.",
+            "id": "encor_q_1190"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 17.6.163.144/24:\n1. A Static route via 211.55.91.31 with an Administrative Distance of 95.\n2. A EIGRP route via 34.34.130.214 with an Administrative Distance of 97.\n3. A default route (0.0.0.0/0) via 162.62.186.91.\nWhich next-hop will the router select for a packet destined to 17.6.163.50?",
+            "options": [
+                "211.55.91.31",
+                "34.34.130.214",
+                "It will drop the packet",
+                "162.62.186.91"
+            ],
+            "answer": [
+                "211.55.91.31"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 95 via 211.55.91.31.",
+            "id": "encor_q_1191"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 70.249.72.110/24:\n1. A EIGRP route via 150.173.146.188 with an Administrative Distance of 110.\n2. A EIGRP route via 213.14.117.102 with an Administrative Distance of 111.\n3. A default route (0.0.0.0/0) via 102.87.142.112.\nWhich next-hop will the router select for a packet destined to 70.249.72.50?",
+            "options": [
+                "102.87.142.112",
+                "150.173.146.188",
+                "It will drop the packet",
+                "213.14.117.102"
+            ],
+            "answer": [
+                "150.173.146.188"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 150.173.146.188.",
+            "id": "encor_q_1192"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 26.81.189.134/24:\n1. A EIGRP route via 211.116.71.120 with an Administrative Distance of 92.\n2. A RIP route via 62.32.73.222 with an Administrative Distance of 98.\n3. A default route (0.0.0.0/0) via 17.138.4.28.\nWhich next-hop will the router select for a packet destined to 26.81.189.50?",
+            "options": [
+                "It will drop the packet",
+                "211.116.71.120",
+                "17.138.4.28",
+                "62.32.73.222"
+            ],
+            "answer": [
+                "211.116.71.120"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 92 via 211.116.71.120.",
+            "id": "encor_q_1193"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 48.100.193.190/24:\n1. A EIGRP route via 198.46.53.156 with an Administrative Distance of 102.\n2. A RIP route via 11.62.65.60 with an Administrative Distance of 103.\n3. A default route (0.0.0.0/0) via 88.163.73.174.\nWhich next-hop will the router select for a packet destined to 48.100.193.50?",
+            "options": [
+                "88.163.73.174",
+                "11.62.65.60",
+                "198.46.53.156",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "198.46.53.156"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 102 via 198.46.53.156.",
+            "id": "encor_q_1194"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 105.240.18.72/24:\n1. A EIGRP route via 80.109.138.178 with an Administrative Distance of 94.\n2. A EIGRP route via 159.195.62.23 with an Administrative Distance of 103.\n3. A default route (0.0.0.0/0) via 100.250.205.125.\nWhich next-hop will the router select for a packet destined to 105.240.18.50?",
+            "options": [
+                "It will drop the packet",
+                "80.109.138.178",
+                "159.195.62.23",
+                "100.250.205.125"
+            ],
+            "answer": [
+                "80.109.138.178"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 94 via 80.109.138.178.",
+            "id": "encor_q_1195"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 82.16.66.33/24:\n1. A OSPF route via 68.224.217.194 with an Administrative Distance of 103.\n2. A EIGRP route via 96.99.85.213 with an Administrative Distance of 106.\n3. A default route (0.0.0.0/0) via 112.56.20.27.\nWhich next-hop will the router select for a packet destined to 82.16.66.50?",
+            "options": [
+                "68.224.217.194",
+                "112.56.20.27",
+                "It will drop the packet",
+                "96.99.85.213"
+            ],
+            "answer": [
+                "68.224.217.194"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 103 via 68.224.217.194.",
+            "id": "encor_q_1196"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 208.38.220.156/24:\n1. A Static route via 205.127.86.174 with an Administrative Distance of 92.\n2. A OSPF route via 60.142.56.187 with an Administrative Distance of 95.\n3. A default route (0.0.0.0/0) via 118.38.212.245.\nWhich next-hop will the router select for a packet destined to 208.38.220.50?",
+            "options": [
+                "60.142.56.187",
+                "205.127.86.174",
+                "118.38.212.245",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "205.127.86.174"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 92 via 205.127.86.174.",
+            "id": "encor_q_1197"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 128.72.251.254/24:\n1. A OSPF route via 41.153.96.131 with an Administrative Distance of 93.\n2. A EIGRP route via 45.164.164.73 with an Administrative Distance of 102.\n3. A default route (0.0.0.0/0) via 63.83.191.13.\nWhich next-hop will the router select for a packet destined to 128.72.251.50?",
+            "options": [
+                "It will drop the packet",
+                "45.164.164.73",
+                "41.153.96.131",
+                "63.83.191.13"
+            ],
+            "answer": [
+                "41.153.96.131"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 93 via 41.153.96.131.",
+            "id": "encor_q_1198"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 128.170.209.220/24:\n1. A EIGRP route via 95.152.97.104 with an Administrative Distance of 90.\n2. A OSPF route via 48.45.27.124 with an Administrative Distance of 95.\n3. A default route (0.0.0.0/0) via 56.10.201.214.\nWhich next-hop will the router select for a packet destined to 128.170.209.50?",
+            "options": [
+                "95.152.97.104",
+                "56.10.201.214",
+                "48.45.27.124",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "95.152.97.104"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 90 via 95.152.97.104.",
+            "id": "encor_q_1199"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 129.69.7.58/24:\n1. A OSPF route via 222.42.162.247 with an Administrative Distance of 91.\n2. A EIGRP route via 141.161.115.160 with an Administrative Distance of 99.\n3. A default route (0.0.0.0/0) via 131.186.75.96.\nWhich next-hop will the router select for a packet destined to 129.69.7.50?",
+            "options": [
+                "131.186.75.96",
+                "It will drop the packet",
+                "222.42.162.247",
+                "141.161.115.160"
+            ],
+            "answer": [
+                "222.42.162.247"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 91 via 222.42.162.247.",
+            "id": "encor_q_1200"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 70.33.198.232/24:\n1. A OSPF route via 86.165.86.22 with an Administrative Distance of 93.\n2. A OSPF route via 105.218.88.91 with an Administrative Distance of 103.\n3. A default route (0.0.0.0/0) via 220.103.27.40.\nWhich next-hop will the router select for a packet destined to 70.33.198.50?",
+            "options": [
+                "It will drop the packet",
+                "220.103.27.40",
+                "105.218.88.91",
+                "86.165.86.22"
+            ],
+            "answer": [
+                "86.165.86.22"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 93 via 86.165.86.22.",
+            "id": "encor_q_1201"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 54.43.7.164/24:\n1. A Static route via 35.81.214.94 with an Administrative Distance of 90.\n2. A OSPF route via 217.218.153.114 with an Administrative Distance of 100.\n3. A default route (0.0.0.0/0) via 17.205.135.23.\nWhich next-hop will the router select for a packet destined to 54.43.7.50?",
+            "options": [
+                "17.205.135.23",
+                "35.81.214.94",
+                "It will drop the packet",
+                "217.218.153.114"
+            ],
+            "answer": [
+                "35.81.214.94"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 90 via 35.81.214.94.",
+            "id": "encor_q_1202"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 66.155.6.211/24:\n1. A EIGRP route via 221.68.112.83 with an Administrative Distance of 97.\n2. A RIP route via 56.160.151.210 with an Administrative Distance of 104.\n3. A default route (0.0.0.0/0) via 51.132.167.14.\nWhich next-hop will the router select for a packet destined to 66.155.6.50?",
+            "options": [
+                "221.68.112.83",
+                "56.160.151.210",
+                "It will drop the packet",
+                "51.132.167.14"
+            ],
+            "answer": [
+                "221.68.112.83"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 97 via 221.68.112.83.",
+            "id": "encor_q_1203"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 201.240.47.126/24:\n1. A EIGRP route via 44.224.192.9 with an Administrative Distance of 103.\n2. A RIP route via 30.28.3.57 with an Administrative Distance of 113.\n3. A default route (0.0.0.0/0) via 50.76.248.141.\nWhich next-hop will the router select for a packet destined to 201.240.47.50?",
+            "options": [
+                "30.28.3.57",
+                "It will drop the packet",
+                "50.76.248.141",
+                "44.224.192.9"
+            ],
+            "answer": [
+                "44.224.192.9"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 103 via 44.224.192.9.",
+            "id": "encor_q_1204"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 14.44.67.192/24:\n1. A OSPF route via 162.154.7.69 with an Administrative Distance of 90.\n2. A OSPF route via 83.126.249.116 with an Administrative Distance of 95.\n3. A default route (0.0.0.0/0) via 200.21.206.183.\nWhich next-hop will the router select for a packet destined to 14.44.67.50?",
+            "options": [
+                "162.154.7.69",
+                "200.21.206.183",
+                "It will drop the packet",
+                "83.126.249.116"
+            ],
+            "answer": [
+                "162.154.7.69"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 90 via 162.154.7.69.",
+            "id": "encor_q_1205"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 22.253.91.21/24:\n1. A Static route via 218.7.190.98 with an Administrative Distance of 90.\n2. A EIGRP route via 95.65.201.82 with an Administrative Distance of 97.\n3. A default route (0.0.0.0/0) via 109.133.81.77.\nWhich next-hop will the router select for a packet destined to 22.253.91.50?",
+            "options": [
+                "It will drop the packet",
+                "95.65.201.82",
+                "109.133.81.77",
+                "218.7.190.98"
+            ],
+            "answer": [
+                "218.7.190.98"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 90 via 218.7.190.98.",
+            "id": "encor_q_1206"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 192.110.3.238/24:\n1. A OSPF route via 39.174.49.225 with an Administrative Distance of 100.\n2. A RIP route via 122.252.131.153 with an Administrative Distance of 102.\n3. A default route (0.0.0.0/0) via 91.137.132.117.\nWhich next-hop will the router select for a packet destined to 192.110.3.50?",
+            "options": [
+                "39.174.49.225",
+                "It will drop the packet",
+                "91.137.132.117",
+                "122.252.131.153"
+            ],
+            "answer": [
+                "39.174.49.225"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 100 via 39.174.49.225.",
+            "id": "encor_q_1207"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 60.172.202.7/24:\n1. A OSPF route via 121.139.202.37 with an Administrative Distance of 94.\n2. A RIP route via 125.191.5.24 with an Administrative Distance of 99.\n3. A default route (0.0.0.0/0) via 206.217.122.15.\nWhich next-hop will the router select for a packet destined to 60.172.202.50?",
+            "options": [
+                "206.217.122.15",
+                "121.139.202.37",
+                "It will drop the packet",
+                "125.191.5.24"
+            ],
+            "answer": [
+                "121.139.202.37"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 94 via 121.139.202.37.",
+            "id": "encor_q_1208"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 208.53.76.140/24:\n1. A Static route via 217.18.196.105 with an Administrative Distance of 99.\n2. A RIP route via 183.7.184.82 with an Administrative Distance of 101.\n3. A default route (0.0.0.0/0) via 144.131.166.193.\nWhich next-hop will the router select for a packet destined to 208.53.76.50?",
+            "options": [
+                "217.18.196.105",
+                "It will drop the packet",
+                "183.7.184.82",
+                "144.131.166.193"
+            ],
+            "answer": [
+                "217.18.196.105"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 99 via 217.18.196.105.",
+            "id": "encor_q_1209"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 108.130.207.103/24:\n1. A Static route via 159.216.93.251 with an Administrative Distance of 96.\n2. A OSPF route via 32.214.195.230 with an Administrative Distance of 99.\n3. A default route (0.0.0.0/0) via 153.47.49.178.\nWhich next-hop will the router select for a packet destined to 108.130.207.50?",
+            "options": [
+                "32.214.195.230",
+                "159.216.93.251",
+                "It will drop the packet",
+                "153.47.49.178"
+            ],
+            "answer": [
+                "159.216.93.251"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 96 via 159.216.93.251.",
+            "id": "encor_q_1210"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 54.136.124.90/24:\n1. A EIGRP route via 29.148.120.169 with an Administrative Distance of 94.\n2. A OSPF route via 135.192.237.210 with an Administrative Distance of 97.\n3. A default route (0.0.0.0/0) via 198.224.58.35.\nWhich next-hop will the router select for a packet destined to 54.136.124.50?",
+            "options": [
+                "It will drop the packet",
+                "198.224.58.35",
+                "135.192.237.210",
+                "29.148.120.169"
+            ],
+            "answer": [
+                "29.148.120.169"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 94 via 29.148.120.169.",
+            "id": "encor_q_1211"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 197.246.178.211/24:\n1. A Static route via 133.23.180.238 with an Administrative Distance of 90.\n2. A OSPF route via 162.169.67.131 with an Administrative Distance of 91.\n3. A default route (0.0.0.0/0) via 62.78.170.195.\nWhich next-hop will the router select for a packet destined to 197.246.178.50?",
+            "options": [
+                "62.78.170.195",
+                "162.169.67.131",
+                "It will drop the packet",
+                "133.23.180.238"
+            ],
+            "answer": [
+                "133.23.180.238"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 90 via 133.23.180.238.",
+            "id": "encor_q_1212"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 57.3.53.104/24:\n1. A EIGRP route via 189.176.116.177 with an Administrative Distance of 110.\n2. A EIGRP route via 96.192.197.12 with an Administrative Distance of 120.\n3. A default route (0.0.0.0/0) via 158.240.16.121.\nWhich next-hop will the router select for a packet destined to 57.3.53.50?",
+            "options": [
+                "158.240.16.121",
+                "189.176.116.177",
+                "96.192.197.12",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "189.176.116.177"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 189.176.116.177.",
+            "id": "encor_q_1213"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 193.240.209.153/24:\n1. A OSPF route via 125.200.152.168 with an Administrative Distance of 110.\n2. A RIP route via 213.246.29.248 with an Administrative Distance of 112.\n3. A default route (0.0.0.0/0) via 31.177.92.56.\nWhich next-hop will the router select for a packet destined to 193.240.209.50?",
+            "options": [
+                "125.200.152.168",
+                "31.177.92.56",
+                "It will drop the packet",
+                "213.246.29.248"
+            ],
+            "answer": [
+                "125.200.152.168"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 125.200.152.168.",
+            "id": "encor_q_1214"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 81.109.11.110/24:\n1. A OSPF route via 117.123.133.182 with an Administrative Distance of 107.\n2. A OSPF route via 216.14.49.33 with an Administrative Distance of 112.\n3. A default route (0.0.0.0/0) via 130.4.11.121.\nWhich next-hop will the router select for a packet destined to 81.109.11.50?",
+            "options": [
+                "130.4.11.121",
+                "It will drop the packet",
+                "117.123.133.182",
+                "216.14.49.33"
+            ],
+            "answer": [
+                "117.123.133.182"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 107 via 117.123.133.182.",
+            "id": "encor_q_1215"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 84.181.123.164/24:\n1. A OSPF route via 174.11.104.174 with an Administrative Distance of 101.\n2. A EIGRP route via 204.233.176.71 with an Administrative Distance of 110.\n3. A default route (0.0.0.0/0) via 94.7.88.7.\nWhich next-hop will the router select for a packet destined to 84.181.123.50?",
+            "options": [
+                "94.7.88.7",
+                "It will drop the packet",
+                "204.233.176.71",
+                "174.11.104.174"
+            ],
+            "answer": [
+                "174.11.104.174"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 101 via 174.11.104.174.",
+            "id": "encor_q_1216"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 79.114.39.199/24:\n1. A OSPF route via 11.251.50.239 with an Administrative Distance of 91.\n2. A OSPF route via 77.105.55.170 with an Administrative Distance of 101.\n3. A default route (0.0.0.0/0) via 13.19.75.71.\nWhich next-hop will the router select for a packet destined to 79.114.39.50?",
+            "options": [
+                "77.105.55.170",
+                "It will drop the packet",
+                "11.251.50.239",
+                "13.19.75.71"
+            ],
+            "answer": [
+                "11.251.50.239"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 91 via 11.251.50.239.",
+            "id": "encor_q_1217"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 24.185.135.7/24:\n1. A EIGRP route via 154.30.128.170 with an Administrative Distance of 110.\n2. A EIGRP route via 77.137.125.125 with an Administrative Distance of 113.\n3. A default route (0.0.0.0/0) via 200.192.220.147.\nWhich next-hop will the router select for a packet destined to 24.185.135.50?",
+            "options": [
+                "200.192.220.147",
+                "It will drop the packet",
+                "154.30.128.170",
+                "77.137.125.125"
+            ],
+            "answer": [
+                "154.30.128.170"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 154.30.128.170.",
+            "id": "encor_q_1218"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 141.51.190.226/24:\n1. A EIGRP route via 52.225.231.178 with an Administrative Distance of 93.\n2. A EIGRP route via 44.82.232.19 with an Administrative Distance of 97.\n3. A default route (0.0.0.0/0) via 117.64.122.140.\nWhich next-hop will the router select for a packet destined to 141.51.190.50?",
+            "options": [
+                "52.225.231.178",
+                "117.64.122.140",
+                "It will drop the packet",
+                "44.82.232.19"
+            ],
+            "answer": [
+                "52.225.231.178"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 93 via 52.225.231.178.",
+            "id": "encor_q_1219"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 36.47.215.236/24:\n1. A OSPF route via 222.218.50.77 with an Administrative Distance of 92.\n2. A OSPF route via 181.146.2.148 with an Administrative Distance of 98.\n3. A default route (0.0.0.0/0) via 84.17.32.153.\nWhich next-hop will the router select for a packet destined to 36.47.215.50?",
+            "options": [
+                "It will drop the packet",
+                "222.218.50.77",
+                "84.17.32.153",
+                "181.146.2.148"
+            ],
+            "answer": [
+                "222.218.50.77"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 92 via 222.218.50.77.",
+            "id": "encor_q_1220"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 149.132.45.205/24:\n1. A EIGRP route via 190.40.248.132 with an Administrative Distance of 99.\n2. A RIP route via 204.70.80.132 with an Administrative Distance of 100.\n3. A default route (0.0.0.0/0) via 208.251.139.19.\nWhich next-hop will the router select for a packet destined to 149.132.45.50?",
+            "options": [
+                "204.70.80.132",
+                "208.251.139.19",
+                "It will drop the packet",
+                "190.40.248.132"
+            ],
+            "answer": [
+                "190.40.248.132"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 99 via 190.40.248.132.",
+            "id": "encor_q_1221"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 128.87.213.117/24:\n1. A OSPF route via 62.68.124.32 with an Administrative Distance of 102.\n2. A RIP route via 133.221.166.143 with an Administrative Distance of 110.\n3. A default route (0.0.0.0/0) via 26.31.86.74.\nWhich next-hop will the router select for a packet destined to 128.87.213.50?",
+            "options": [
+                "133.221.166.143",
+                "26.31.86.74",
+                "62.68.124.32",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "62.68.124.32"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 102 via 62.68.124.32.",
+            "id": "encor_q_1222"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 89.49.107.12/24:\n1. A EIGRP route via 153.61.18.8 with an Administrative Distance of 105.\n2. A RIP route via 110.41.45.101 with an Administrative Distance of 109.\n3. A default route (0.0.0.0/0) via 43.36.244.229.\nWhich next-hop will the router select for a packet destined to 89.49.107.50?",
+            "options": [
+                "43.36.244.229",
+                "153.61.18.8",
+                "It will drop the packet",
+                "110.41.45.101"
+            ],
+            "answer": [
+                "153.61.18.8"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 105 via 153.61.18.8.",
+            "id": "encor_q_1223"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 210.22.78.138/24:\n1. A EIGRP route via 102.0.241.204 with an Administrative Distance of 103.\n2. A RIP route via 114.37.43.23 with an Administrative Distance of 109.\n3. A default route (0.0.0.0/0) via 162.85.246.201.\nWhich next-hop will the router select for a packet destined to 210.22.78.50?",
+            "options": [
+                "102.0.241.204",
+                "162.85.246.201",
+                "114.37.43.23",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "102.0.241.204"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 103 via 102.0.241.204.",
+            "id": "encor_q_1224"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 111.6.19.101/24:\n1. A EIGRP route via 187.146.46.108 with an Administrative Distance of 103.\n2. A OSPF route via 11.179.95.34 with an Administrative Distance of 110.\n3. A default route (0.0.0.0/0) via 157.97.80.105.\nWhich next-hop will the router select for a packet destined to 111.6.19.50?",
+            "options": [
+                "It will drop the packet",
+                "11.179.95.34",
+                "157.97.80.105",
+                "187.146.46.108"
+            ],
+            "answer": [
+                "187.146.46.108"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 103 via 187.146.46.108.",
+            "id": "encor_q_1225"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 69.244.94.187/24:\n1. A OSPF route via 149.20.22.71 with an Administrative Distance of 93.\n2. A EIGRP route via 32.202.112.169 with an Administrative Distance of 97.\n3. A default route (0.0.0.0/0) via 118.156.212.60.\nWhich next-hop will the router select for a packet destined to 69.244.94.50?",
+            "options": [
+                "149.20.22.71",
+                "118.156.212.60",
+                "It will drop the packet",
+                "32.202.112.169"
+            ],
+            "answer": [
+                "149.20.22.71"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 93 via 149.20.22.71.",
+            "id": "encor_q_1226"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 65.238.240.50/24:\n1. A OSPF route via 210.137.136.83 with an Administrative Distance of 92.\n2. A EIGRP route via 117.53.41.36 with an Administrative Distance of 93.\n3. A default route (0.0.0.0/0) via 65.57.19.64.\nWhich next-hop will the router select for a packet destined to 65.238.240.50?",
+            "options": [
+                "65.57.19.64",
+                "210.137.136.83",
+                "117.53.41.36",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "210.137.136.83"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 92 via 210.137.136.83.",
+            "id": "encor_q_1227"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 125.41.123.208/24:\n1. A EIGRP route via 27.176.186.81 with an Administrative Distance of 110.\n2. A OSPF route via 11.243.243.141 with an Administrative Distance of 112.\n3. A default route (0.0.0.0/0) via 50.121.172.202.\nWhich next-hop will the router select for a packet destined to 125.41.123.50?",
+            "options": [
+                "It will drop the packet",
+                "50.121.172.202",
+                "11.243.243.141",
+                "27.176.186.81"
+            ],
+            "answer": [
+                "27.176.186.81"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 27.176.186.81.",
+            "id": "encor_q_1228"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 151.68.183.149/24:\n1. A OSPF route via 81.144.83.7 with an Administrative Distance of 102.\n2. A OSPF route via 151.245.151.17 with an Administrative Distance of 106.\n3. A default route (0.0.0.0/0) via 109.245.241.121.\nWhich next-hop will the router select for a packet destined to 151.68.183.50?",
+            "options": [
+                "151.245.151.17",
+                "81.144.83.7",
+                "109.245.241.121",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "81.144.83.7"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 102 via 81.144.83.7.",
+            "id": "encor_q_1229"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 24.160.176.112/24:\n1. A EIGRP route via 183.122.20.147 with an Administrative Distance of 102.\n2. A RIP route via 156.62.9.253 with an Administrative Distance of 107.\n3. A default route (0.0.0.0/0) via 212.152.169.87.\nWhich next-hop will the router select for a packet destined to 24.160.176.50?",
+            "options": [
+                "It will drop the packet",
+                "183.122.20.147",
+                "212.152.169.87",
+                "156.62.9.253"
+            ],
+            "answer": [
+                "183.122.20.147"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 102 via 183.122.20.147.",
+            "id": "encor_q_1230"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.27.1.0/24 [110/2] via 192.168.1.1\nD    10.27.1.0/25 [90/30720] via 192.168.2.1\nS    10.27.0.0/16 [1/0] via 192.168.3.1\nC    10.27.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.27.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "192.168.3.1",
+                "192.168.2.1",
+                "It will be processed locally as it is directly connected",
+                "192.168.1.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.27.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1231"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 146.5.241.196/24:\n1. A EIGRP route via 88.234.37.209 with an Administrative Distance of 106.\n2. A RIP route via 185.169.177.55 with an Administrative Distance of 111.\n3. A default route (0.0.0.0/0) via 58.121.14.69.\nWhich next-hop will the router select for a packet destined to 146.5.241.50?",
+            "options": [
+                "185.169.177.55",
+                "88.234.37.209",
+                "58.121.14.69",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "88.234.37.209"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 106 via 88.234.37.209.",
+            "id": "encor_q_1232"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 138.239.216.165/24:\n1. A OSPF route via 215.159.30.84 with an Administrative Distance of 96.\n2. A RIP route via 125.141.201.57 with an Administrative Distance of 98.\n3. A default route (0.0.0.0/0) via 39.199.127.193.\nWhich next-hop will the router select for a packet destined to 138.239.216.50?",
+            "options": [
+                "215.159.30.84",
+                "125.141.201.57",
+                "39.199.127.193",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "215.159.30.84"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 96 via 215.159.30.84.",
+            "id": "encor_q_1233"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 62.52.187.131/24:\n1. A OSPF route via 165.58.198.46 with an Administrative Distance of 104.\n2. A EIGRP route via 166.43.126.13 with an Administrative Distance of 114.\n3. A default route (0.0.0.0/0) via 22.232.101.118.\nWhich next-hop will the router select for a packet destined to 62.52.187.50?",
+            "options": [
+                "166.43.126.13",
+                "165.58.198.46",
+                "22.232.101.118",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "165.58.198.46"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 104 via 165.58.198.46.",
+            "id": "encor_q_1234"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 175.22.2.105/24:\n1. A Static route via 187.154.79.3 with an Administrative Distance of 92.\n2. A EIGRP route via 123.156.9.139 with an Administrative Distance of 93.\n3. A default route (0.0.0.0/0) via 137.171.32.238.\nWhich next-hop will the router select for a packet destined to 175.22.2.50?",
+            "options": [
+                "137.171.32.238",
+                "187.154.79.3",
+                "It will drop the packet",
+                "123.156.9.139"
+            ],
+            "answer": [
+                "187.154.79.3"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 92 via 187.154.79.3.",
+            "id": "encor_q_1235"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 116.149.55.190/24:\n1. A OSPF route via 172.223.116.155 with an Administrative Distance of 104.\n2. A EIGRP route via 120.158.63.56 with an Administrative Distance of 108.\n3. A default route (0.0.0.0/0) via 95.41.42.138.\nWhich next-hop will the router select for a packet destined to 116.149.55.50?",
+            "options": [
+                "172.223.116.155",
+                "It will drop the packet",
+                "120.158.63.56",
+                "95.41.42.138"
+            ],
+            "answer": [
+                "172.223.116.155"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 104 via 172.223.116.155.",
+            "id": "encor_q_1236"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 116.124.120.23/24:\n1. A OSPF route via 88.102.29.110 with an Administrative Distance of 100.\n2. A RIP route via 183.129.119.166 with an Administrative Distance of 101.\n3. A default route (0.0.0.0/0) via 200.166.82.11.\nWhich next-hop will the router select for a packet destined to 116.124.120.50?",
+            "options": [
+                "200.166.82.11",
+                "It will drop the packet",
+                "88.102.29.110",
+                "183.129.119.166"
+            ],
+            "answer": [
+                "88.102.29.110"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 100 via 88.102.29.110.",
+            "id": "encor_q_1237"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 160.96.95.177/24:\n1. A OSPF route via 55.221.94.154 with an Administrative Distance of 107.\n2. A EIGRP route via 210.123.130.12 with an Administrative Distance of 117.\n3. A default route (0.0.0.0/0) via 115.80.237.150.\nWhich next-hop will the router select for a packet destined to 160.96.95.50?",
+            "options": [
+                "It will drop the packet",
+                "55.221.94.154",
+                "210.123.130.12",
+                "115.80.237.150"
+            ],
+            "answer": [
+                "55.221.94.154"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 107 via 55.221.94.154.",
+            "id": "encor_q_1238"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 79.63.216.54/24:\n1. A OSPF route via 171.216.207.119 with an Administrative Distance of 110.\n2. A RIP route via 123.106.113.114 with an Administrative Distance of 116.\n3. A default route (0.0.0.0/0) via 78.102.68.148.\nWhich next-hop will the router select for a packet destined to 79.63.216.50?",
+            "options": [
+                "171.216.207.119",
+                "It will drop the packet",
+                "78.102.68.148",
+                "123.106.113.114"
+            ],
+            "answer": [
+                "171.216.207.119"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 171.216.207.119.",
+            "id": "encor_q_1239"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 130.141.71.146/24:\n1. A OSPF route via 67.244.189.241 with an Administrative Distance of 98.\n2. A RIP route via 212.46.177.139 with an Administrative Distance of 101.\n3. A default route (0.0.0.0/0) via 112.90.239.253.\nWhich next-hop will the router select for a packet destined to 130.141.71.50?",
+            "options": [
+                "212.46.177.139",
+                "It will drop the packet",
+                "112.90.239.253",
+                "67.244.189.241"
+            ],
+            "answer": [
+                "67.244.189.241"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 98 via 67.244.189.241.",
+            "id": "encor_q_1240"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 139.19.26.218/24:\n1. A EIGRP route via 25.254.211.147 with an Administrative Distance of 93.\n2. A RIP route via 207.156.25.185 with an Administrative Distance of 102.\n3. A default route (0.0.0.0/0) via 10.252.106.46.\nWhich next-hop will the router select for a packet destined to 139.19.26.50?",
+            "options": [
+                "It will drop the packet",
+                "25.254.211.147",
+                "10.252.106.46",
+                "207.156.25.185"
+            ],
+            "answer": [
+                "25.254.211.147"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 93 via 25.254.211.147.",
+            "id": "encor_q_1241"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 64.192.191.52/24:\n1. A OSPF route via 220.128.5.95 with an Administrative Distance of 104.\n2. A OSPF route via 87.9.58.100 with an Administrative Distance of 113.\n3. A default route (0.0.0.0/0) via 168.53.222.119.\nWhich next-hop will the router select for a packet destined to 64.192.191.50?",
+            "options": [
+                "168.53.222.119",
+                "It will drop the packet",
+                "87.9.58.100",
+                "220.128.5.95"
+            ],
+            "answer": [
+                "220.128.5.95"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 104 via 220.128.5.95.",
+            "id": "encor_q_1242"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 42.14.146.99/24:\n1. A OSPF route via 122.180.3.172 with an Administrative Distance of 92.\n2. A EIGRP route via 22.202.73.102 with an Administrative Distance of 102.\n3. A default route (0.0.0.0/0) via 79.92.128.68.\nWhich next-hop will the router select for a packet destined to 42.14.146.50?",
+            "options": [
+                "It will drop the packet",
+                "122.180.3.172",
+                "22.202.73.102",
+                "79.92.128.68"
+            ],
+            "answer": [
+                "122.180.3.172"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 92 via 122.180.3.172.",
+            "id": "encor_q_1243"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 169.119.161.49/24:\n1. A OSPF route via 52.122.212.169 with an Administrative Distance of 91.\n2. A EIGRP route via 11.54.130.20 with an Administrative Distance of 99.\n3. A default route (0.0.0.0/0) via 63.219.243.2.\nWhich next-hop will the router select for a packet destined to 169.119.161.50?",
+            "options": [
+                "11.54.130.20",
+                "63.219.243.2",
+                "It will drop the packet",
+                "52.122.212.169"
+            ],
+            "answer": [
+                "52.122.212.169"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 91 via 52.122.212.169.",
+            "id": "encor_q_1244"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 19.41.69.193/24:\n1. A Static route via 193.57.191.90 with an Administrative Distance of 104.\n2. A RIP route via 119.61.21.29 with an Administrative Distance of 106.\n3. A default route (0.0.0.0/0) via 125.5.19.109.\nWhich next-hop will the router select for a packet destined to 19.41.69.50?",
+            "options": [
+                "125.5.19.109",
+                "193.57.191.90",
+                "It will drop the packet",
+                "119.61.21.29"
+            ],
+            "answer": [
+                "193.57.191.90"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 104 via 193.57.191.90.",
+            "id": "encor_q_1245"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 74.228.131.218/24:\n1. A OSPF route via 130.236.211.58 with an Administrative Distance of 109.\n2. A RIP route via 188.134.166.105 with an Administrative Distance of 114.\n3. A default route (0.0.0.0/0) via 20.173.36.86.\nWhich next-hop will the router select for a packet destined to 74.228.131.50?",
+            "options": [
+                "It will drop the packet",
+                "188.134.166.105",
+                "130.236.211.58",
+                "20.173.36.86"
+            ],
+            "answer": [
+                "130.236.211.58"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 109 via 130.236.211.58.",
+            "id": "encor_q_1246"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 159.150.119.84/24:\n1. A EIGRP route via 204.50.87.172 with an Administrative Distance of 106.\n2. A OSPF route via 220.57.198.212 with an Administrative Distance of 116.\n3. A default route (0.0.0.0/0) via 151.87.217.173.\nWhich next-hop will the router select for a packet destined to 159.150.119.50?",
+            "options": [
+                "151.87.217.173",
+                "It will drop the packet",
+                "204.50.87.172",
+                "220.57.198.212"
+            ],
+            "answer": [
+                "204.50.87.172"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 106 via 204.50.87.172.",
+            "id": "encor_q_1247"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 41.56.218.137/24:\n1. A Static route via 76.187.33.113 with an Administrative Distance of 108.\n2. A OSPF route via 136.70.185.176 with an Administrative Distance of 111.\n3. A default route (0.0.0.0/0) via 119.255.141.31.\nWhich next-hop will the router select for a packet destined to 41.56.218.50?",
+            "options": [
+                "136.70.185.176",
+                "It will drop the packet",
+                "119.255.141.31",
+                "76.187.33.113"
+            ],
+            "answer": [
+                "76.187.33.113"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 108 via 76.187.33.113.",
+            "id": "encor_q_1248"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 103.69.90.221/24:\n1. A EIGRP route via 37.88.245.4 with an Administrative Distance of 105.\n2. A EIGRP route via 131.234.15.17 with an Administrative Distance of 106.\n3. A default route (0.0.0.0/0) via 159.198.163.44.\nWhich next-hop will the router select for a packet destined to 103.69.90.50?",
+            "options": [
+                "37.88.245.4",
+                "It will drop the packet",
+                "159.198.163.44",
+                "131.234.15.17"
+            ],
+            "answer": [
+                "37.88.245.4"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 105 via 37.88.245.4.",
+            "id": "encor_q_1249"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 28.189.187.26/24:\n1. A OSPF route via 72.31.193.195 with an Administrative Distance of 101.\n2. A OSPF route via 126.58.124.138 with an Administrative Distance of 110.\n3. A default route (0.0.0.0/0) via 178.159.211.148.\nWhich next-hop will the router select for a packet destined to 28.189.187.50?",
+            "options": [
+                "126.58.124.138",
+                "178.159.211.148",
+                "It will drop the packet",
+                "72.31.193.195"
+            ],
+            "answer": [
+                "72.31.193.195"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 101 via 72.31.193.195.",
+            "id": "encor_q_1250"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 145.199.39.185/24:\n1. A EIGRP route via 127.164.41.185 with an Administrative Distance of 96.\n2. A OSPF route via 119.123.10.71 with an Administrative Distance of 103.\n3. A default route (0.0.0.0/0) via 211.251.168.104.\nWhich next-hop will the router select for a packet destined to 145.199.39.50?",
+            "options": [
+                "It will drop the packet",
+                "119.123.10.71",
+                "211.251.168.104",
+                "127.164.41.185"
+            ],
+            "answer": [
+                "127.164.41.185"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 96 via 127.164.41.185.",
+            "id": "encor_q_1251"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 178.137.110.11/24:\n1. A Static route via 122.187.2.235 with an Administrative Distance of 91.\n2. A OSPF route via 108.95.53.56 with an Administrative Distance of 101.\n3. A default route (0.0.0.0/0) via 185.135.198.49.\nWhich next-hop will the router select for a packet destined to 178.137.110.50?",
+            "options": [
+                "It will drop the packet",
+                "185.135.198.49",
+                "122.187.2.235",
+                "108.95.53.56"
+            ],
+            "answer": [
+                "122.187.2.235"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 91 via 122.187.2.235.",
+            "id": "encor_q_1252"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 162.85.38.103/24:\n1. A OSPF route via 217.205.61.58 with an Administrative Distance of 101.\n2. A OSPF route via 117.11.108.38 with an Administrative Distance of 103.\n3. A default route (0.0.0.0/0) via 98.244.11.204.\nWhich next-hop will the router select for a packet destined to 162.85.38.50?",
+            "options": [
+                "117.11.108.38",
+                "217.205.61.58",
+                "It will drop the packet",
+                "98.244.11.204"
+            ],
+            "answer": [
+                "217.205.61.58"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 101 via 217.205.61.58.",
+            "id": "encor_q_1253"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "Review the following routing table excerpt:\n\nO    10.28.1.0/24 [110/2] via 192.168.1.1\nD    10.28.1.0/25 [90/30720] via 192.168.2.1\nS    10.28.0.0/16 [1/0] via 192.168.3.1\nC    10.28.1.128/25 is directly connected\n\nIf the router receives a packet destined for 10.28.1.10, which next-hop IP address will it forward the packet to?",
+            "options": [
+                "It will be processed locally as it is directly connected",
+                "192.168.3.1",
+                "192.168.2.1",
+                "192.168.1.1"
+            ],
+            "answer": [
+                "192.168.2.1"
+            ],
+            "explanation": "The router uses Longest Prefix Match first. The destination 10.28.1.10 falls into three routes: /16, /24, and /25. The /25 route via 192.168.2.1 is the longest match, so it is chosen regardless of Administrative Distance.",
+            "id": "encor_q_1254"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 152.114.179.172/24:\n1. A EIGRP route via 77.107.99.49 with an Administrative Distance of 106.\n2. A OSPF route via 62.225.217.46 with an Administrative Distance of 109.\n3. A default route (0.0.0.0/0) via 70.94.85.180.\nWhich next-hop will the router select for a packet destined to 152.114.179.50?",
+            "options": [
+                "77.107.99.49",
+                "70.94.85.180",
+                "It will drop the packet",
+                "62.225.217.46"
+            ],
+            "answer": [
+                "77.107.99.49"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 106 via 77.107.99.49.",
+            "id": "encor_q_1255"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 205.2.148.171/24:\n1. A OSPF route via 181.68.67.236 with an Administrative Distance of 90.\n2. A EIGRP route via 27.39.143.231 with an Administrative Distance of 99.\n3. A default route (0.0.0.0/0) via 153.83.93.56.\nWhich next-hop will the router select for a packet destined to 205.2.148.50?",
+            "options": [
+                "It will drop the packet",
+                "153.83.93.56",
+                "27.39.143.231",
+                "181.68.67.236"
+            ],
+            "answer": [
+                "181.68.67.236"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 90 via 181.68.67.236.",
+            "id": "encor_q_1256"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 217.167.52.220/24:\n1. A OSPF route via 137.78.246.106 with an Administrative Distance of 91.\n2. A RIP route via 35.15.78.139 with an Administrative Distance of 98.\n3. A default route (0.0.0.0/0) via 25.77.119.119.\nWhich next-hop will the router select for a packet destined to 217.167.52.50?",
+            "options": [
+                "25.77.119.119",
+                "137.78.246.106",
+                "35.15.78.139",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "137.78.246.106"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 91 via 137.78.246.106.",
+            "id": "encor_q_1257"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 22.200.28.129/24:\n1. A Static route via 34.77.168.251 with an Administrative Distance of 95.\n2. A OSPF route via 111.105.137.69 with an Administrative Distance of 100.\n3. A default route (0.0.0.0/0) via 133.156.162.232.\nWhich next-hop will the router select for a packet destined to 22.200.28.50?",
+            "options": [
+                "34.77.168.251",
+                "133.156.162.232",
+                "It will drop the packet",
+                "111.105.137.69"
+            ],
+            "answer": [
+                "34.77.168.251"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 95 via 34.77.168.251.",
+            "id": "encor_q_1258"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 35.154.95.221/24:\n1. A Static route via 84.145.140.189 with an Administrative Distance of 103.\n2. A EIGRP route via 93.81.161.25 with an Administrative Distance of 109.\n3. A default route (0.0.0.0/0) via 120.175.31.39.\nWhich next-hop will the router select for a packet destined to 35.154.95.50?",
+            "options": [
+                "93.81.161.25",
+                "It will drop the packet",
+                "84.145.140.189",
+                "120.175.31.39"
+            ],
+            "answer": [
+                "84.145.140.189"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 103 via 84.145.140.189.",
+            "id": "encor_q_1259"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 132.137.80.157/24:\n1. A Static route via 108.166.234.101 with an Administrative Distance of 103.\n2. A EIGRP route via 174.103.174.239 with an Administrative Distance of 113.\n3. A default route (0.0.0.0/0) via 30.239.68.74.\nWhich next-hop will the router select for a packet destined to 132.137.80.50?",
+            "options": [
+                "30.239.68.74",
+                "108.166.234.101",
+                "174.103.174.239",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "108.166.234.101"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 103 via 108.166.234.101.",
+            "id": "encor_q_1260"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 204.220.65.79/24:\n1. A Static route via 166.68.199.124 with an Administrative Distance of 90.\n2. A OSPF route via 179.194.30.206 with an Administrative Distance of 96.\n3. A default route (0.0.0.0/0) via 209.133.50.222.\nWhich next-hop will the router select for a packet destined to 204.220.65.50?",
+            "options": [
+                "166.68.199.124",
+                "It will drop the packet",
+                "179.194.30.206",
+                "209.133.50.222"
+            ],
+            "answer": [
+                "166.68.199.124"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 90 via 166.68.199.124.",
+            "id": "encor_q_1261"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 32.164.93.194/24:\n1. A Static route via 136.47.25.252 with an Administrative Distance of 110.\n2. A EIGRP route via 103.98.199.134 with an Administrative Distance of 111.\n3. A default route (0.0.0.0/0) via 18.143.50.82.\nWhich next-hop will the router select for a packet destined to 32.164.93.50?",
+            "options": [
+                "136.47.25.252",
+                "18.143.50.82",
+                "103.98.199.134",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "136.47.25.252"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 136.47.25.252.",
+            "id": "encor_q_1262"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 130.67.155.146/24:\n1. A Static route via 204.55.151.56 with an Administrative Distance of 101.\n2. A OSPF route via 207.80.25.236 with an Administrative Distance of 106.\n3. A default route (0.0.0.0/0) via 122.114.53.22.\nWhich next-hop will the router select for a packet destined to 130.67.155.50?",
+            "options": [
+                "204.55.151.56",
+                "207.80.25.236",
+                "122.114.53.22",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "204.55.151.56"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 101 via 204.55.151.56.",
+            "id": "encor_q_1263"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 111.43.112.35/24:\n1. A EIGRP route via 143.138.139.216 with an Administrative Distance of 108.\n2. A RIP route via 202.89.69.68 with an Administrative Distance of 111.\n3. A default route (0.0.0.0/0) via 73.65.153.93.\nWhich next-hop will the router select for a packet destined to 111.43.112.50?",
+            "options": [
+                "202.89.69.68",
+                "It will drop the packet",
+                "73.65.153.93",
+                "143.138.139.216"
+            ],
+            "answer": [
+                "143.138.139.216"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 108 via 143.138.139.216.",
+            "id": "encor_q_1264"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 14.67.78.204/24:\n1. A EIGRP route via 153.34.5.152 with an Administrative Distance of 98.\n2. A RIP route via 129.230.92.95 with an Administrative Distance of 99.\n3. A default route (0.0.0.0/0) via 168.164.83.227.\nWhich next-hop will the router select for a packet destined to 14.67.78.50?",
+            "options": [
+                "129.230.92.95",
+                "153.34.5.152",
+                "168.164.83.227",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "153.34.5.152"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 98 via 153.34.5.152.",
+            "id": "encor_q_1265"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 85.248.225.188/24:\n1. A EIGRP route via 159.84.241.22 with an Administrative Distance of 92.\n2. A OSPF route via 180.161.167.195 with an Administrative Distance of 100.\n3. A default route (0.0.0.0/0) via 214.198.58.52.\nWhich next-hop will the router select for a packet destined to 85.248.225.50?",
+            "options": [
+                "180.161.167.195",
+                "159.84.241.22",
+                "214.198.58.52",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "159.84.241.22"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 92 via 159.84.241.22.",
+            "id": "encor_q_1266"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 51.88.91.209/24:\n1. A Static route via 53.200.8.20 with an Administrative Distance of 107.\n2. A RIP route via 189.86.43.103 with an Administrative Distance of 117.\n3. A default route (0.0.0.0/0) via 50.248.182.121.\nWhich next-hop will the router select for a packet destined to 51.88.91.50?",
+            "options": [
+                "53.200.8.20",
+                "It will drop the packet",
+                "189.86.43.103",
+                "50.248.182.121"
+            ],
+            "answer": [
+                "53.200.8.20"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 107 via 53.200.8.20.",
+            "id": "encor_q_1267"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 12.75.33.44/24:\n1. A OSPF route via 121.96.5.164 with an Administrative Distance of 101.\n2. A OSPF route via 176.179.240.230 with an Administrative Distance of 102.\n3. A default route (0.0.0.0/0) via 41.129.153.61.\nWhich next-hop will the router select for a packet destined to 12.75.33.50?",
+            "options": [
+                "121.96.5.164",
+                "176.179.240.230",
+                "It will drop the packet",
+                "41.129.153.61"
+            ],
+            "answer": [
+                "121.96.5.164"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 101 via 121.96.5.164.",
+            "id": "encor_q_1268"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 216.248.98.85/24:\n1. A EIGRP route via 156.188.224.48 with an Administrative Distance of 105.\n2. A OSPF route via 64.56.242.55 with an Administrative Distance of 115.\n3. A default route (0.0.0.0/0) via 41.90.131.183.\nWhich next-hop will the router select for a packet destined to 216.248.98.50?",
+            "options": [
+                "156.188.224.48",
+                "It will drop the packet",
+                "41.90.131.183",
+                "64.56.242.55"
+            ],
+            "answer": [
+                "156.188.224.48"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 105 via 156.188.224.48.",
+            "id": "encor_q_1269"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 13.68.63.14/24:\n1. A EIGRP route via 217.241.215.248 with an Administrative Distance of 101.\n2. A EIGRP route via 12.227.208.58 with an Administrative Distance of 109.\n3. A default route (0.0.0.0/0) via 82.228.198.161.\nWhich next-hop will the router select for a packet destined to 13.68.63.50?",
+            "options": [
+                "217.241.215.248",
+                "12.227.208.58",
+                "82.228.198.161",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "217.241.215.248"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 101 via 217.241.215.248.",
+            "id": "encor_q_1270"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 30.234.182.230/24:\n1. A EIGRP route via 37.166.1.44 with an Administrative Distance of 99.\n2. A RIP route via 183.109.144.89 with an Administrative Distance of 108.\n3. A default route (0.0.0.0/0) via 210.193.33.48.\nWhich next-hop will the router select for a packet destined to 30.234.182.50?",
+            "options": [
+                "It will drop the packet",
+                "37.166.1.44",
+                "183.109.144.89",
+                "210.193.33.48"
+            ],
+            "answer": [
+                "37.166.1.44"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 99 via 37.166.1.44.",
+            "id": "encor_q_1271"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 131.245.160.141/24:\n1. A Static route via 217.163.217.101 with an Administrative Distance of 106.\n2. A EIGRP route via 73.170.30.76 with an Administrative Distance of 114.\n3. A default route (0.0.0.0/0) via 209.6.202.199.\nWhich next-hop will the router select for a packet destined to 131.245.160.50?",
+            "options": [
+                "209.6.202.199",
+                "It will drop the packet",
+                "73.170.30.76",
+                "217.163.217.101"
+            ],
+            "answer": [
+                "217.163.217.101"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 106 via 217.163.217.101.",
+            "id": "encor_q_1272"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 152.17.201.46/24:\n1. A OSPF route via 218.153.90.135 with an Administrative Distance of 90.\n2. A OSPF route via 78.67.151.91 with an Administrative Distance of 91.\n3. A default route (0.0.0.0/0) via 217.191.100.76.\nWhich next-hop will the router select for a packet destined to 152.17.201.50?",
+            "options": [
+                "217.191.100.76",
+                "It will drop the packet",
+                "218.153.90.135",
+                "78.67.151.91"
+            ],
+            "answer": [
+                "218.153.90.135"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 90 via 218.153.90.135.",
+            "id": "encor_q_1273"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 216.194.31.214/24:\n1. A EIGRP route via 221.212.199.144 with an Administrative Distance of 107.\n2. A OSPF route via 129.33.209.179 with an Administrative Distance of 111.\n3. A default route (0.0.0.0/0) via 171.84.188.240.\nWhich next-hop will the router select for a packet destined to 216.194.31.50?",
+            "options": [
+                "221.212.199.144",
+                "171.84.188.240",
+                "129.33.209.179",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "221.212.199.144"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 107 via 221.212.199.144.",
+            "id": "encor_q_1274"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 112.215.22.121/24:\n1. A EIGRP route via 108.214.165.191 with an Administrative Distance of 102.\n2. A EIGRP route via 147.180.111.114 with an Administrative Distance of 109.\n3. A default route (0.0.0.0/0) via 179.208.198.104.\nWhich next-hop will the router select for a packet destined to 112.215.22.50?",
+            "options": [
+                "179.208.198.104",
+                "147.180.111.114",
+                "108.214.165.191",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "108.214.165.191"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 102 via 108.214.165.191.",
+            "id": "encor_q_1275"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 37.40.52.45/24:\n1. A OSPF route via 10.19.54.114 with an Administrative Distance of 104.\n2. A RIP route via 75.53.77.221 with an Administrative Distance of 108.\n3. A default route (0.0.0.0/0) via 200.3.126.152.\nWhich next-hop will the router select for a packet destined to 37.40.52.50?",
+            "options": [
+                "200.3.126.152",
+                "10.19.54.114",
+                "75.53.77.221",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "10.19.54.114"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 104 via 10.19.54.114.",
+            "id": "encor_q_1276"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 86.114.83.124/24:\n1. A OSPF route via 196.23.239.60 with an Administrative Distance of 104.\n2. A EIGRP route via 119.182.223.208 with an Administrative Distance of 109.\n3. A default route (0.0.0.0/0) via 67.99.153.175.\nWhich next-hop will the router select for a packet destined to 86.114.83.50?",
+            "options": [
+                "67.99.153.175",
+                "It will drop the packet",
+                "196.23.239.60",
+                "119.182.223.208"
+            ],
+            "answer": [
+                "196.23.239.60"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 104 via 196.23.239.60.",
+            "id": "encor_q_1277"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 195.185.51.98/24:\n1. A Static route via 90.77.4.114 with an Administrative Distance of 97.\n2. A OSPF route via 192.83.189.9 with an Administrative Distance of 104.\n3. A default route (0.0.0.0/0) via 149.231.166.192.\nWhich next-hop will the router select for a packet destined to 195.185.51.50?",
+            "options": [
+                "192.83.189.9",
+                "149.231.166.192",
+                "90.77.4.114",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "90.77.4.114"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 97 via 90.77.4.114.",
+            "id": "encor_q_1278"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 175.51.192.186/24:\n1. A EIGRP route via 158.80.50.83 with an Administrative Distance of 107.\n2. A RIP route via 109.55.104.167 with an Administrative Distance of 113.\n3. A default route (0.0.0.0/0) via 110.175.209.252.\nWhich next-hop will the router select for a packet destined to 175.51.192.50?",
+            "options": [
+                "It will drop the packet",
+                "110.175.209.252",
+                "109.55.104.167",
+                "158.80.50.83"
+            ],
+            "answer": [
+                "158.80.50.83"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 107 via 158.80.50.83.",
+            "id": "encor_q_1279"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 66.13.33.108/24:\n1. A Static route via 53.24.155.52 with an Administrative Distance of 108.\n2. A RIP route via 20.39.103.53 with an Administrative Distance of 117.\n3. A default route (0.0.0.0/0) via 40.5.11.97.\nWhich next-hop will the router select for a packet destined to 66.13.33.50?",
+            "options": [
+                "40.5.11.97",
+                "It will drop the packet",
+                "53.24.155.52",
+                "20.39.103.53"
+            ],
+            "answer": [
+                "53.24.155.52"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 108 via 53.24.155.52.",
+            "id": "encor_q_1280"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 14.129.81.110/24:\n1. A Static route via 122.208.250.254 with an Administrative Distance of 102.\n2. A RIP route via 212.238.196.165 with an Administrative Distance of 107.\n3. A default route (0.0.0.0/0) via 100.92.76.151.\nWhich next-hop will the router select for a packet destined to 14.129.81.50?",
+            "options": [
+                "100.92.76.151",
+                "122.208.250.254",
+                "212.238.196.165",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "122.208.250.254"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 102 via 122.208.250.254.",
+            "id": "encor_q_1281"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 153.14.54.246/24:\n1. A Static route via 97.225.237.77 with an Administrative Distance of 90.\n2. A OSPF route via 200.93.233.156 with an Administrative Distance of 93.\n3. A default route (0.0.0.0/0) via 186.106.200.11.\nWhich next-hop will the router select for a packet destined to 153.14.54.50?",
+            "options": [
+                "97.225.237.77",
+                "It will drop the packet",
+                "186.106.200.11",
+                "200.93.233.156"
+            ],
+            "answer": [
+                "97.225.237.77"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 90 via 97.225.237.77.",
+            "id": "encor_q_1282"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 78.92.137.253/24:\n1. A Static route via 36.201.18.242 with an Administrative Distance of 92.\n2. A RIP route via 118.211.33.135 with an Administrative Distance of 93.\n3. A default route (0.0.0.0/0) via 200.21.148.6.\nWhich next-hop will the router select for a packet destined to 78.92.137.50?",
+            "options": [
+                "118.211.33.135",
+                "36.201.18.242",
+                "200.21.148.6",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "36.201.18.242"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 92 via 36.201.18.242.",
+            "id": "encor_q_1283"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 17.131.157.25/24:\n1. A EIGRP route via 140.65.206.136 with an Administrative Distance of 91.\n2. A OSPF route via 14.251.227.55 with an Administrative Distance of 97.\n3. A default route (0.0.0.0/0) via 192.71.37.91.\nWhich next-hop will the router select for a packet destined to 17.131.157.50?",
+            "options": [
+                "140.65.206.136",
+                "It will drop the packet",
+                "14.251.227.55",
+                "192.71.37.91"
+            ],
+            "answer": [
+                "140.65.206.136"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 91 via 140.65.206.136.",
+            "id": "encor_q_1284"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 209.207.212.235/24:\n1. A OSPF route via 82.234.172.199 with an Administrative Distance of 90.\n2. A RIP route via 162.105.142.158 with an Administrative Distance of 91.\n3. A default route (0.0.0.0/0) via 222.148.158.33.\nWhich next-hop will the router select for a packet destined to 209.207.212.50?",
+            "options": [
+                "82.234.172.199",
+                "162.105.142.158",
+                "222.148.158.33",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "82.234.172.199"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 90 via 82.234.172.199.",
+            "id": "encor_q_1285"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 67.138.1.200/24:\n1. A Static route via 168.145.61.165 with an Administrative Distance of 91.\n2. A OSPF route via 72.79.178.104 with an Administrative Distance of 100.\n3. A default route (0.0.0.0/0) via 152.131.121.37.\nWhich next-hop will the router select for a packet destined to 67.138.1.50?",
+            "options": [
+                "168.145.61.165",
+                "72.79.178.104",
+                "152.131.121.37",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "168.145.61.165"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 91 via 168.145.61.165.",
+            "id": "encor_q_1286"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 198.164.62.93/24:\n1. A OSPF route via 169.167.123.224 with an Administrative Distance of 103.\n2. A OSPF route via 221.122.120.134 with an Administrative Distance of 113.\n3. A default route (0.0.0.0/0) via 35.207.56.218.\nWhich next-hop will the router select for a packet destined to 198.164.62.50?",
+            "options": [
+                "35.207.56.218",
+                "169.167.123.224",
+                "It will drop the packet",
+                "221.122.120.134"
+            ],
+            "answer": [
+                "169.167.123.224"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 103 via 169.167.123.224.",
+            "id": "encor_q_1287"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 96.141.156.184/24:\n1. A OSPF route via 55.40.58.70 with an Administrative Distance of 103.\n2. A RIP route via 203.202.129.200 with an Administrative Distance of 109.\n3. A default route (0.0.0.0/0) via 30.97.101.59.\nWhich next-hop will the router select for a packet destined to 96.141.156.50?",
+            "options": [
+                "30.97.101.59",
+                "55.40.58.70",
+                "203.202.129.200",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "55.40.58.70"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 103 via 55.40.58.70.",
+            "id": "encor_q_1288"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 157.136.30.77/24:\n1. A Static route via 197.178.163.191 with an Administrative Distance of 108.\n2. A EIGRP route via 141.86.227.154 with an Administrative Distance of 112.\n3. A default route (0.0.0.0/0) via 152.149.38.166.\nWhich next-hop will the router select for a packet destined to 157.136.30.50?",
+            "options": [
+                "It will drop the packet",
+                "141.86.227.154",
+                "197.178.163.191",
+                "152.149.38.166"
+            ],
+            "answer": [
+                "197.178.163.191"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 108 via 197.178.163.191.",
+            "id": "encor_q_1289"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 35.119.22.26/24:\n1. A Static route via 47.172.192.71 with an Administrative Distance of 94.\n2. A EIGRP route via 123.18.73.112 with an Administrative Distance of 102.\n3. A default route (0.0.0.0/0) via 11.212.3.244.\nWhich next-hop will the router select for a packet destined to 35.119.22.50?",
+            "options": [
+                "It will drop the packet",
+                "11.212.3.244",
+                "123.18.73.112",
+                "47.172.192.71"
+            ],
+            "answer": [
+                "47.172.192.71"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 94 via 47.172.192.71.",
+            "id": "encor_q_1290"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 78.15.77.40/24:\n1. A Static route via 120.149.84.110 with an Administrative Distance of 95.\n2. A OSPF route via 163.157.143.232 with an Administrative Distance of 102.\n3. A default route (0.0.0.0/0) via 121.175.87.85.\nWhich next-hop will the router select for a packet destined to 78.15.77.50?",
+            "options": [
+                "It will drop the packet",
+                "121.175.87.85",
+                "120.149.84.110",
+                "163.157.143.232"
+            ],
+            "answer": [
+                "120.149.84.110"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 95 via 120.149.84.110.",
+            "id": "encor_q_1291"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 80.213.61.90/24:\n1. A OSPF route via 188.222.235.220 with an Administrative Distance of 96.\n2. A EIGRP route via 72.224.127.47 with an Administrative Distance of 101.\n3. A default route (0.0.0.0/0) via 57.58.5.10.\nWhich next-hop will the router select for a packet destined to 80.213.61.50?",
+            "options": [
+                "188.222.235.220",
+                "72.224.127.47",
+                "It will drop the packet",
+                "57.58.5.10"
+            ],
+            "answer": [
+                "188.222.235.220"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 96 via 188.222.235.220.",
+            "id": "encor_q_1292"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 55.11.63.206/24:\n1. A OSPF route via 40.89.132.25 with an Administrative Distance of 90.\n2. A RIP route via 219.92.75.135 with an Administrative Distance of 100.\n3. A default route (0.0.0.0/0) via 182.50.74.26.\nWhich next-hop will the router select for a packet destined to 55.11.63.50?",
+            "options": [
+                "182.50.74.26",
+                "219.92.75.135",
+                "It will drop the packet",
+                "40.89.132.25"
+            ],
+            "answer": [
+                "40.89.132.25"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 90 via 40.89.132.25.",
+            "id": "encor_q_1293"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 94.49.40.70/24:\n1. A EIGRP route via 48.175.247.125 with an Administrative Distance of 96.\n2. A RIP route via 148.66.246.34 with an Administrative Distance of 97.\n3. A default route (0.0.0.0/0) via 63.140.69.15.\nWhich next-hop will the router select for a packet destined to 94.49.40.50?",
+            "options": [
+                "It will drop the packet",
+                "63.140.69.15",
+                "148.66.246.34",
+                "48.175.247.125"
+            ],
+            "answer": [
+                "48.175.247.125"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 96 via 48.175.247.125.",
+            "id": "encor_q_1294"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 198.49.16.10/24:\n1. A EIGRP route via 150.26.154.158 with an Administrative Distance of 92.\n2. A EIGRP route via 75.228.124.4 with an Administrative Distance of 102.\n3. A default route (0.0.0.0/0) via 63.100.72.213.\nWhich next-hop will the router select for a packet destined to 198.49.16.50?",
+            "options": [
+                "150.26.154.158",
+                "75.228.124.4",
+                "It will drop the packet",
+                "63.100.72.213"
+            ],
+            "answer": [
+                "150.26.154.158"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 92 via 150.26.154.158.",
+            "id": "encor_q_1295"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 212.232.15.206/24:\n1. A OSPF route via 182.163.190.56 with an Administrative Distance of 100.\n2. A EIGRP route via 54.220.250.206 with an Administrative Distance of 110.\n3. A default route (0.0.0.0/0) via 103.68.112.1.\nWhich next-hop will the router select for a packet destined to 212.232.15.50?",
+            "options": [
+                "182.163.190.56",
+                "It will drop the packet",
+                "54.220.250.206",
+                "103.68.112.1"
+            ],
+            "answer": [
+                "182.163.190.56"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 100 via 182.163.190.56.",
+            "id": "encor_q_1296"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 77.96.180.137/24:\n1. A Static route via 158.191.182.166 with an Administrative Distance of 97.\n2. A OSPF route via 216.97.112.61 with an Administrative Distance of 100.\n3. A default route (0.0.0.0/0) via 215.29.12.95.\nWhich next-hop will the router select for a packet destined to 77.96.180.50?",
+            "options": [
+                "It will drop the packet",
+                "216.97.112.61",
+                "158.191.182.166",
+                "215.29.12.95"
+            ],
+            "answer": [
+                "158.191.182.166"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 97 via 158.191.182.166.",
+            "id": "encor_q_1297"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 44.215.145.42/24:\n1. A EIGRP route via 169.132.253.138 with an Administrative Distance of 101.\n2. A OSPF route via 177.184.180.86 with an Administrative Distance of 110.\n3. A default route (0.0.0.0/0) via 100.153.151.141.\nWhich next-hop will the router select for a packet destined to 44.215.145.50?",
+            "options": [
+                "169.132.253.138",
+                "100.153.151.141",
+                "177.184.180.86",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "169.132.253.138"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 101 via 169.132.253.138.",
+            "id": "encor_q_1298"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 81.251.84.187/24:\n1. A EIGRP route via 181.134.217.148 with an Administrative Distance of 94.\n2. A EIGRP route via 106.254.218.100 with an Administrative Distance of 103.\n3. A default route (0.0.0.0/0) via 90.138.47.84.\nWhich next-hop will the router select for a packet destined to 81.251.84.50?",
+            "options": [
+                "106.254.218.100",
+                "It will drop the packet",
+                "90.138.47.84",
+                "181.134.217.148"
+            ],
+            "answer": [
+                "181.134.217.148"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 94 via 181.134.217.148.",
+            "id": "encor_q_1299"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 205.180.61.122/24:\n1. A OSPF route via 40.227.90.131 with an Administrative Distance of 101.\n2. A EIGRP route via 55.105.135.172 with an Administrative Distance of 107.\n3. A default route (0.0.0.0/0) via 158.246.28.246.\nWhich next-hop will the router select for a packet destined to 205.180.61.50?",
+            "options": [
+                "55.105.135.172",
+                "40.227.90.131",
+                "158.246.28.246",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "40.227.90.131"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 101 via 40.227.90.131.",
+            "id": "encor_q_1300"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 95.119.254.213/24:\n1. A OSPF route via 109.69.41.50 with an Administrative Distance of 98.\n2. A EIGRP route via 219.101.163.168 with an Administrative Distance of 105.\n3. A default route (0.0.0.0/0) via 47.163.62.59.\nWhich next-hop will the router select for a packet destined to 95.119.254.50?",
+            "options": [
+                "109.69.41.50",
+                "47.163.62.59",
+                "It will drop the packet",
+                "219.101.163.168"
+            ],
+            "answer": [
+                "109.69.41.50"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 98 via 109.69.41.50.",
+            "id": "encor_q_1301"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 68.43.82.59/24:\n1. A OSPF route via 72.127.152.80 with an Administrative Distance of 101.\n2. A EIGRP route via 47.252.6.171 with an Administrative Distance of 105.\n3. A default route (0.0.0.0/0) via 180.77.61.15.\nWhich next-hop will the router select for a packet destined to 68.43.82.50?",
+            "options": [
+                "72.127.152.80",
+                "180.77.61.15",
+                "47.252.6.171",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "72.127.152.80"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 101 via 72.127.152.80.",
+            "id": "encor_q_1302"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 105.65.242.189/24:\n1. A Static route via 43.4.125.44 with an Administrative Distance of 94.\n2. A OSPF route via 68.115.39.131 with an Administrative Distance of 95.\n3. A default route (0.0.0.0/0) via 190.207.7.229.\nWhich next-hop will the router select for a packet destined to 105.65.242.50?",
+            "options": [
+                "It will drop the packet",
+                "43.4.125.44",
+                "68.115.39.131",
+                "190.207.7.229"
+            ],
+            "answer": [
+                "43.4.125.44"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 94 via 43.4.125.44.",
+            "id": "encor_q_1303"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 73.49.255.38/24:\n1. A EIGRP route via 30.180.242.253 with an Administrative Distance of 97.\n2. A RIP route via 132.26.178.163 with an Administrative Distance of 98.\n3. A default route (0.0.0.0/0) via 97.112.42.254.\nWhich next-hop will the router select for a packet destined to 73.49.255.50?",
+            "options": [
+                "It will drop the packet",
+                "30.180.242.253",
+                "132.26.178.163",
+                "97.112.42.254"
+            ],
+            "answer": [
+                "30.180.242.253"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 97 via 30.180.242.253.",
+            "id": "encor_q_1304"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 87.23.244.98/24:\n1. A OSPF route via 63.254.81.219 with an Administrative Distance of 91.\n2. A EIGRP route via 172.61.87.184 with an Administrative Distance of 100.\n3. A default route (0.0.0.0/0) via 211.123.255.252.\nWhich next-hop will the router select for a packet destined to 87.23.244.50?",
+            "options": [
+                "63.254.81.219",
+                "211.123.255.252",
+                "172.61.87.184",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "63.254.81.219"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 91 via 63.254.81.219.",
+            "id": "encor_q_1305"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 104.46.233.226/24:\n1. A EIGRP route via 52.209.131.158 with an Administrative Distance of 110.\n2. A EIGRP route via 189.159.51.243 with an Administrative Distance of 111.\n3. A default route (0.0.0.0/0) via 91.123.61.12.\nWhich next-hop will the router select for a packet destined to 104.46.233.50?",
+            "options": [
+                "It will drop the packet",
+                "189.159.51.243",
+                "91.123.61.12",
+                "52.209.131.158"
+            ],
+            "answer": [
+                "52.209.131.158"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 52.209.131.158.",
+            "id": "encor_q_1306"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 212.109.179.199/24:\n1. A OSPF route via 221.139.41.27 with an Administrative Distance of 102.\n2. A RIP route via 134.175.137.155 with an Administrative Distance of 111.\n3. A default route (0.0.0.0/0) via 181.143.0.186.\nWhich next-hop will the router select for a packet destined to 212.109.179.50?",
+            "options": [
+                "181.143.0.186",
+                "It will drop the packet",
+                "134.175.137.155",
+                "221.139.41.27"
+            ],
+            "answer": [
+                "221.139.41.27"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 102 via 221.139.41.27.",
+            "id": "encor_q_1307"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 41.43.229.54/24:\n1. A EIGRP route via 122.163.166.47 with an Administrative Distance of 96.\n2. A OSPF route via 45.159.54.41 with an Administrative Distance of 100.\n3. A default route (0.0.0.0/0) via 13.42.56.185.\nWhich next-hop will the router select for a packet destined to 41.43.229.50?",
+            "options": [
+                "45.159.54.41",
+                "It will drop the packet",
+                "122.163.166.47",
+                "13.42.56.185"
+            ],
+            "answer": [
+                "122.163.166.47"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 96 via 122.163.166.47.",
+            "id": "encor_q_1308"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 167.78.117.186/24:\n1. A Static route via 208.245.163.38 with an Administrative Distance of 93.\n2. A EIGRP route via 114.188.12.61 with an Administrative Distance of 100.\n3. A default route (0.0.0.0/0) via 111.121.221.163.\nWhich next-hop will the router select for a packet destined to 167.78.117.50?",
+            "options": [
+                "It will drop the packet",
+                "111.121.221.163",
+                "208.245.163.38",
+                "114.188.12.61"
+            ],
+            "answer": [
+                "208.245.163.38"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 93 via 208.245.163.38.",
+            "id": "encor_q_1309"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 88.158.36.25/24:\n1. A EIGRP route via 24.83.157.100 with an Administrative Distance of 108.\n2. A RIP route via 172.160.166.126 with an Administrative Distance of 112.\n3. A default route (0.0.0.0/0) via 133.225.167.188.\nWhich next-hop will the router select for a packet destined to 88.158.36.50?",
+            "options": [
+                "24.83.157.100",
+                "133.225.167.188",
+                "172.160.166.126",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "24.83.157.100"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 108 via 24.83.157.100.",
+            "id": "encor_q_1310"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 50.145.152.229/24:\n1. A OSPF route via 91.243.20.161 with an Administrative Distance of 102.\n2. A OSPF route via 202.128.156.84 with an Administrative Distance of 109.\n3. A default route (0.0.0.0/0) via 161.30.196.55.\nWhich next-hop will the router select for a packet destined to 50.145.152.50?",
+            "options": [
+                "161.30.196.55",
+                "91.243.20.161",
+                "It will drop the packet",
+                "202.128.156.84"
+            ],
+            "answer": [
+                "91.243.20.161"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 102 via 91.243.20.161.",
+            "id": "encor_q_1311"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 56.5.9.103/24:\n1. A OSPF route via 23.202.183.37 with an Administrative Distance of 93.\n2. A RIP route via 31.32.227.25 with an Administrative Distance of 100.\n3. A default route (0.0.0.0/0) via 48.115.192.104.\nWhich next-hop will the router select for a packet destined to 56.5.9.50?",
+            "options": [
+                "48.115.192.104",
+                "23.202.183.37",
+                "31.32.227.25",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "23.202.183.37"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 93 via 23.202.183.37.",
+            "id": "encor_q_1312"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 123.9.23.181/24:\n1. A EIGRP route via 136.109.34.185 with an Administrative Distance of 94.\n2. A OSPF route via 45.87.198.127 with an Administrative Distance of 103.\n3. A default route (0.0.0.0/0) via 69.196.117.86.\nWhich next-hop will the router select for a packet destined to 123.9.23.50?",
+            "options": [
+                "136.109.34.185",
+                "It will drop the packet",
+                "45.87.198.127",
+                "69.196.117.86"
+            ],
+            "answer": [
+                "136.109.34.185"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 94 via 136.109.34.185.",
+            "id": "encor_q_1313"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 37.146.103.180/24:\n1. A Static route via 39.194.2.222 with an Administrative Distance of 106.\n2. A EIGRP route via 38.242.29.92 with an Administrative Distance of 116.\n3. A default route (0.0.0.0/0) via 198.209.129.102.\nWhich next-hop will the router select for a packet destined to 37.146.103.50?",
+            "options": [
+                "It will drop the packet",
+                "38.242.29.92",
+                "198.209.129.102",
+                "39.194.2.222"
+            ],
+            "answer": [
+                "39.194.2.222"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 106 via 39.194.2.222.",
+            "id": "encor_q_1314"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 47.244.17.218/24:\n1. A Static route via 32.199.8.205 with an Administrative Distance of 94.\n2. A OSPF route via 16.204.15.182 with an Administrative Distance of 99.\n3. A default route (0.0.0.0/0) via 18.80.65.109.\nWhich next-hop will the router select for a packet destined to 47.244.17.50?",
+            "options": [
+                "32.199.8.205",
+                "16.204.15.182",
+                "It will drop the packet",
+                "18.80.65.109"
+            ],
+            "answer": [
+                "32.199.8.205"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 94 via 32.199.8.205.",
+            "id": "encor_q_1315"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 217.199.136.128/24:\n1. A OSPF route via 222.142.13.126 with an Administrative Distance of 93.\n2. A RIP route via 13.137.106.42 with an Administrative Distance of 102.\n3. A default route (0.0.0.0/0) via 152.185.148.102.\nWhich next-hop will the router select for a packet destined to 217.199.136.50?",
+            "options": [
+                "152.185.148.102",
+                "13.137.106.42",
+                "It will drop the packet",
+                "222.142.13.126"
+            ],
+            "answer": [
+                "222.142.13.126"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 93 via 222.142.13.126.",
+            "id": "encor_q_1316"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 188.159.49.246/24:\n1. A OSPF route via 23.101.193.102 with an Administrative Distance of 94.\n2. A RIP route via 175.81.108.221 with an Administrative Distance of 98.\n3. A default route (0.0.0.0/0) via 15.239.232.196.\nWhich next-hop will the router select for a packet destined to 188.159.49.50?",
+            "options": [
+                "175.81.108.221",
+                "It will drop the packet",
+                "15.239.232.196",
+                "23.101.193.102"
+            ],
+            "answer": [
+                "23.101.193.102"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 94 via 23.101.193.102.",
+            "id": "encor_q_1317"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 27.12.88.197/24:\n1. A Static route via 64.254.226.218 with an Administrative Distance of 104.\n2. A EIGRP route via 49.118.236.6 with an Administrative Distance of 114.\n3. A default route (0.0.0.0/0) via 190.49.252.182.\nWhich next-hop will the router select for a packet destined to 27.12.88.50?",
+            "options": [
+                "190.49.252.182",
+                "64.254.226.218",
+                "It will drop the packet",
+                "49.118.236.6"
+            ],
+            "answer": [
+                "64.254.226.218"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 104 via 64.254.226.218.",
+            "id": "encor_q_1318"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 23.111.129.219/24:\n1. A Static route via 88.223.135.194 with an Administrative Distance of 108.\n2. A EIGRP route via 178.140.168.30 with an Administrative Distance of 112.\n3. A default route (0.0.0.0/0) via 105.147.251.14.\nWhich next-hop will the router select for a packet destined to 23.111.129.50?",
+            "options": [
+                "88.223.135.194",
+                "It will drop the packet",
+                "178.140.168.30",
+                "105.147.251.14"
+            ],
+            "answer": [
+                "88.223.135.194"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 108 via 88.223.135.194.",
+            "id": "encor_q_1319"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 128.37.78.133/24:\n1. A Static route via 72.132.98.123 with an Administrative Distance of 95.\n2. A OSPF route via 120.13.147.113 with an Administrative Distance of 96.\n3. A default route (0.0.0.0/0) via 180.164.251.78.\nWhich next-hop will the router select for a packet destined to 128.37.78.50?",
+            "options": [
+                "It will drop the packet",
+                "120.13.147.113",
+                "180.164.251.78",
+                "72.132.98.123"
+            ],
+            "answer": [
+                "72.132.98.123"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 95 via 72.132.98.123.",
+            "id": "encor_q_1320"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 179.218.7.29/24:\n1. A Static route via 12.58.59.60 with an Administrative Distance of 107.\n2. A EIGRP route via 178.226.134.216 with an Administrative Distance of 115.\n3. A default route (0.0.0.0/0) via 215.211.203.171.\nWhich next-hop will the router select for a packet destined to 179.218.7.50?",
+            "options": [
+                "178.226.134.216",
+                "12.58.59.60",
+                "215.211.203.171",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "12.58.59.60"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 107 via 12.58.59.60.",
+            "id": "encor_q_1321"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 216.252.119.230/24:\n1. A EIGRP route via 24.40.126.37 with an Administrative Distance of 92.\n2. A OSPF route via 46.53.178.84 with an Administrative Distance of 93.\n3. A default route (0.0.0.0/0) via 49.101.234.47.\nWhich next-hop will the router select for a packet destined to 216.252.119.50?",
+            "options": [
+                "24.40.126.37",
+                "It will drop the packet",
+                "46.53.178.84",
+                "49.101.234.47"
+            ],
+            "answer": [
+                "24.40.126.37"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 92 via 24.40.126.37.",
+            "id": "encor_q_1322"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 187.24.163.207/24:\n1. A Static route via 87.219.87.42 with an Administrative Distance of 96.\n2. A EIGRP route via 103.114.21.183 with an Administrative Distance of 104.\n3. A default route (0.0.0.0/0) via 147.130.182.120.\nWhich next-hop will the router select for a packet destined to 187.24.163.50?",
+            "options": [
+                "87.219.87.42",
+                "103.114.21.183",
+                "It will drop the packet",
+                "147.130.182.120"
+            ],
+            "answer": [
+                "87.219.87.42"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 96 via 87.219.87.42.",
+            "id": "encor_q_1323"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 181.87.32.143/24:\n1. A Static route via 109.43.30.231 with an Administrative Distance of 98.\n2. A OSPF route via 15.137.157.47 with an Administrative Distance of 101.\n3. A default route (0.0.0.0/0) via 190.206.164.213.\nWhich next-hop will the router select for a packet destined to 181.87.32.50?",
+            "options": [
+                "15.137.157.47",
+                "190.206.164.213",
+                "109.43.30.231",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "109.43.30.231"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 98 via 109.43.30.231.",
+            "id": "encor_q_1324"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 123.214.80.86/24:\n1. A OSPF route via 156.124.129.77 with an Administrative Distance of 110.\n2. A EIGRP route via 83.179.136.179 with an Administrative Distance of 113.\n3. A default route (0.0.0.0/0) via 199.39.23.197.\nWhich next-hop will the router select for a packet destined to 123.214.80.50?",
+            "options": [
+                "It will drop the packet",
+                "156.124.129.77",
+                "83.179.136.179",
+                "199.39.23.197"
+            ],
+            "answer": [
+                "156.124.129.77"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 156.124.129.77.",
+            "id": "encor_q_1325"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 38.123.128.134/24:\n1. A OSPF route via 213.87.129.57 with an Administrative Distance of 98.\n2. A RIP route via 190.208.205.106 with an Administrative Distance of 104.\n3. A default route (0.0.0.0/0) via 165.47.189.219.\nWhich next-hop will the router select for a packet destined to 38.123.128.50?",
+            "options": [
+                "213.87.129.57",
+                "It will drop the packet",
+                "190.208.205.106",
+                "165.47.189.219"
+            ],
+            "answer": [
+                "213.87.129.57"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 98 via 213.87.129.57.",
+            "id": "encor_q_1326"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 63.171.21.55/24:\n1. A OSPF route via 143.147.195.252 with an Administrative Distance of 97.\n2. A OSPF route via 185.240.32.178 with an Administrative Distance of 105.\n3. A default route (0.0.0.0/0) via 102.162.172.186.\nWhich next-hop will the router select for a packet destined to 63.171.21.50?",
+            "options": [
+                "143.147.195.252",
+                "It will drop the packet",
+                "102.162.172.186",
+                "185.240.32.178"
+            ],
+            "answer": [
+                "143.147.195.252"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 97 via 143.147.195.252.",
+            "id": "encor_q_1327"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 30.219.24.60/24:\n1. A EIGRP route via 145.152.244.162 with an Administrative Distance of 106.\n2. A RIP route via 25.251.221.164 with an Administrative Distance of 115.\n3. A default route (0.0.0.0/0) via 132.155.33.243.\nWhich next-hop will the router select for a packet destined to 30.219.24.50?",
+            "options": [
+                "132.155.33.243",
+                "25.251.221.164",
+                "145.152.244.162",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "145.152.244.162"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 106 via 145.152.244.162.",
+            "id": "encor_q_1328"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 40.7.78.26/24:\n1. A EIGRP route via 197.91.31.162 with an Administrative Distance of 109.\n2. A OSPF route via 159.3.133.250 with an Administrative Distance of 111.\n3. A default route (0.0.0.0/0) via 17.159.172.160.\nWhich next-hop will the router select for a packet destined to 40.7.78.50?",
+            "options": [
+                "159.3.133.250",
+                "17.159.172.160",
+                "It will drop the packet",
+                "197.91.31.162"
+            ],
+            "answer": [
+                "197.91.31.162"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 109 via 197.91.31.162.",
+            "id": "encor_q_1329"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 172.195.228.165/24:\n1. A Static route via 202.115.96.250 with an Administrative Distance of 105.\n2. A RIP route via 158.48.186.240 with an Administrative Distance of 110.\n3. A default route (0.0.0.0/0) via 28.85.124.45.\nWhich next-hop will the router select for a packet destined to 172.195.228.50?",
+            "options": [
+                "It will drop the packet",
+                "158.48.186.240",
+                "202.115.96.250",
+                "28.85.124.45"
+            ],
+            "answer": [
+                "202.115.96.250"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 105 via 202.115.96.250.",
+            "id": "encor_q_1330"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 151.141.83.234/24:\n1. A EIGRP route via 17.107.87.149 with an Administrative Distance of 105.\n2. A OSPF route via 74.172.224.26 with an Administrative Distance of 112.\n3. A default route (0.0.0.0/0) via 82.139.65.194.\nWhich next-hop will the router select for a packet destined to 151.141.83.50?",
+            "options": [
+                "It will drop the packet",
+                "82.139.65.194",
+                "17.107.87.149",
+                "74.172.224.26"
+            ],
+            "answer": [
+                "17.107.87.149"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 105 via 17.107.87.149.",
+            "id": "encor_q_1331"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 13.132.244.35/24:\n1. A EIGRP route via 139.184.153.103 with an Administrative Distance of 101.\n2. A OSPF route via 197.53.184.86 with an Administrative Distance of 110.\n3. A default route (0.0.0.0/0) via 208.54.40.180.\nWhich next-hop will the router select for a packet destined to 13.132.244.50?",
+            "options": [
+                "208.54.40.180",
+                "197.53.184.86",
+                "139.184.153.103",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "139.184.153.103"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 101 via 139.184.153.103.",
+            "id": "encor_q_1332"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 60.175.206.40/24:\n1. A OSPF route via 187.252.5.123 with an Administrative Distance of 96.\n2. A EIGRP route via 70.237.48.9 with an Administrative Distance of 106.\n3. A default route (0.0.0.0/0) via 80.220.242.219.\nWhich next-hop will the router select for a packet destined to 60.175.206.50?",
+            "options": [
+                "70.237.48.9",
+                "187.252.5.123",
+                "80.220.242.219",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "187.252.5.123"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 96 via 187.252.5.123.",
+            "id": "encor_q_1333"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 183.16.167.138/24:\n1. A EIGRP route via 42.103.60.145 with an Administrative Distance of 95.\n2. A OSPF route via 143.229.173.6 with an Administrative Distance of 101.\n3. A default route (0.0.0.0/0) via 61.125.229.235.\nWhich next-hop will the router select for a packet destined to 183.16.167.50?",
+            "options": [
+                "61.125.229.235",
+                "It will drop the packet",
+                "143.229.173.6",
+                "42.103.60.145"
+            ],
+            "answer": [
+                "42.103.60.145"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 95 via 42.103.60.145.",
+            "id": "encor_q_1334"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 132.158.162.85/24:\n1. A Static route via 141.60.1.5 with an Administrative Distance of 100.\n2. A EIGRP route via 118.239.38.144 with an Administrative Distance of 107.\n3. A default route (0.0.0.0/0) via 206.82.246.131.\nWhich next-hop will the router select for a packet destined to 132.158.162.50?",
+            "options": [
+                "206.82.246.131",
+                "141.60.1.5",
+                "It will drop the packet",
+                "118.239.38.144"
+            ],
+            "answer": [
+                "141.60.1.5"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 100 via 141.60.1.5.",
+            "id": "encor_q_1335"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 67.211.115.33/24:\n1. A EIGRP route via 176.30.197.140 with an Administrative Distance of 105.\n2. A EIGRP route via 24.179.5.130 with an Administrative Distance of 111.\n3. A default route (0.0.0.0/0) via 113.149.31.16.\nWhich next-hop will the router select for a packet destined to 67.211.115.50?",
+            "options": [
+                "113.149.31.16",
+                "24.179.5.130",
+                "It will drop the packet",
+                "176.30.197.140"
+            ],
+            "answer": [
+                "176.30.197.140"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 105 via 176.30.197.140.",
+            "id": "encor_q_1336"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 213.86.97.56/24:\n1. A Static route via 85.59.62.113 with an Administrative Distance of 105.\n2. A OSPF route via 207.37.130.11 with an Administrative Distance of 107.\n3. A default route (0.0.0.0/0) via 104.243.71.149.\nWhich next-hop will the router select for a packet destined to 213.86.97.50?",
+            "options": [
+                "85.59.62.113",
+                "It will drop the packet",
+                "104.243.71.149",
+                "207.37.130.11"
+            ],
+            "answer": [
+                "85.59.62.113"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 105 via 85.59.62.113.",
+            "id": "encor_q_1337"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 223.235.130.158/24:\n1. A OSPF route via 139.131.48.189 with an Administrative Distance of 98.\n2. A EIGRP route via 157.170.91.2 with an Administrative Distance of 103.\n3. A default route (0.0.0.0/0) via 139.137.178.176.\nWhich next-hop will the router select for a packet destined to 223.235.130.50?",
+            "options": [
+                "157.170.91.2",
+                "139.131.48.189",
+                "It will drop the packet",
+                "139.137.178.176"
+            ],
+            "answer": [
+                "139.131.48.189"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 98 via 139.131.48.189.",
+            "id": "encor_q_1338"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 128.225.3.245/24:\n1. A Static route via 211.129.53.20 with an Administrative Distance of 96.\n2. A RIP route via 93.132.200.247 with an Administrative Distance of 101.\n3. A default route (0.0.0.0/0) via 174.200.5.90.\nWhich next-hop will the router select for a packet destined to 128.225.3.50?",
+            "options": [
+                "It will drop the packet",
+                "174.200.5.90",
+                "211.129.53.20",
+                "93.132.200.247"
+            ],
+            "answer": [
+                "211.129.53.20"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 96 via 211.129.53.20.",
+            "id": "encor_q_1339"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 163.148.102.29/24:\n1. A OSPF route via 153.183.13.220 with an Administrative Distance of 100.\n2. A RIP route via 85.146.142.117 with an Administrative Distance of 106.\n3. A default route (0.0.0.0/0) via 173.227.17.137.\nWhich next-hop will the router select for a packet destined to 163.148.102.50?",
+            "options": [
+                "It will drop the packet",
+                "153.183.13.220",
+                "173.227.17.137",
+                "85.146.142.117"
+            ],
+            "answer": [
+                "153.183.13.220"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 100 via 153.183.13.220.",
+            "id": "encor_q_1340"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 101.130.87.224/24:\n1. A Static route via 107.53.88.120 with an Administrative Distance of 110.\n2. A OSPF route via 156.135.40.21 with an Administrative Distance of 112.\n3. A default route (0.0.0.0/0) via 56.182.81.155.\nWhich next-hop will the router select for a packet destined to 101.130.87.50?",
+            "options": [
+                "107.53.88.120",
+                "It will drop the packet",
+                "156.135.40.21",
+                "56.182.81.155"
+            ],
+            "answer": [
+                "107.53.88.120"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 107.53.88.120.",
+            "id": "encor_q_1341"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 181.144.39.215/24:\n1. A OSPF route via 140.35.254.141 with an Administrative Distance of 110.\n2. A EIGRP route via 135.106.73.138 with an Administrative Distance of 115.\n3. A default route (0.0.0.0/0) via 186.181.227.145.\nWhich next-hop will the router select for a packet destined to 181.144.39.50?",
+            "options": [
+                "135.106.73.138",
+                "140.35.254.141",
+                "It will drop the packet",
+                "186.181.227.145"
+            ],
+            "answer": [
+                "140.35.254.141"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 140.35.254.141.",
+            "id": "encor_q_1342"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 43.63.140.136/24:\n1. A Static route via 201.63.181.237 with an Administrative Distance of 93.\n2. A RIP route via 196.130.29.88 with an Administrative Distance of 101.\n3. A default route (0.0.0.0/0) via 134.229.223.139.\nWhich next-hop will the router select for a packet destined to 43.63.140.50?",
+            "options": [
+                "It will drop the packet",
+                "201.63.181.237",
+                "196.130.29.88",
+                "134.229.223.139"
+            ],
+            "answer": [
+                "201.63.181.237"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 93 via 201.63.181.237.",
+            "id": "encor_q_1343"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 53.20.36.16/24:\n1. A EIGRP route via 21.135.244.15 with an Administrative Distance of 109.\n2. A RIP route via 212.177.198.55 with an Administrative Distance of 114.\n3. A default route (0.0.0.0/0) via 196.4.183.181.\nWhich next-hop will the router select for a packet destined to 53.20.36.50?",
+            "options": [
+                "21.135.244.15",
+                "212.177.198.55",
+                "196.4.183.181",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "21.135.244.15"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 109 via 21.135.244.15.",
+            "id": "encor_q_1344"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 166.122.29.197/24:\n1. A EIGRP route via 137.49.119.113 with an Administrative Distance of 103.\n2. A OSPF route via 143.231.63.231 with an Administrative Distance of 104.\n3. A default route (0.0.0.0/0) via 41.114.40.12.\nWhich next-hop will the router select for a packet destined to 166.122.29.50?",
+            "options": [
+                "It will drop the packet",
+                "143.231.63.231",
+                "41.114.40.12",
+                "137.49.119.113"
+            ],
+            "answer": [
+                "137.49.119.113"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 103 via 137.49.119.113.",
+            "id": "encor_q_1345"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 180.238.17.137/24:\n1. A EIGRP route via 132.37.192.236 with an Administrative Distance of 90.\n2. A OSPF route via 79.227.205.97 with an Administrative Distance of 93.\n3. A default route (0.0.0.0/0) via 122.229.137.105.\nWhich next-hop will the router select for a packet destined to 180.238.17.50?",
+            "options": [
+                "132.37.192.236",
+                "It will drop the packet",
+                "79.227.205.97",
+                "122.229.137.105"
+            ],
+            "answer": [
+                "132.37.192.236"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 90 via 132.37.192.236.",
+            "id": "encor_q_1346"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 113.254.51.131/24:\n1. A Static route via 153.203.215.71 with an Administrative Distance of 94.\n2. A RIP route via 110.90.192.196 with an Administrative Distance of 101.\n3. A default route (0.0.0.0/0) via 126.18.36.45.\nWhich next-hop will the router select for a packet destined to 113.254.51.50?",
+            "options": [
+                "It will drop the packet",
+                "126.18.36.45",
+                "153.203.215.71",
+                "110.90.192.196"
+            ],
+            "answer": [
+                "153.203.215.71"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 94 via 153.203.215.71.",
+            "id": "encor_q_1347"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 219.126.87.59/24:\n1. A Static route via 81.6.85.20 with an Administrative Distance of 98.\n2. A EIGRP route via 115.200.28.142 with an Administrative Distance of 101.\n3. A default route (0.0.0.0/0) via 106.62.67.146.\nWhich next-hop will the router select for a packet destined to 219.126.87.50?",
+            "options": [
+                "115.200.28.142",
+                "81.6.85.20",
+                "It will drop the packet",
+                "106.62.67.146"
+            ],
+            "answer": [
+                "81.6.85.20"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 98 via 81.6.85.20.",
+            "id": "encor_q_1348"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 27.12.104.35/24:\n1. A Static route via 128.111.230.74 with an Administrative Distance of 91.\n2. A RIP route via 142.27.74.39 with an Administrative Distance of 98.\n3. A default route (0.0.0.0/0) via 46.165.240.130.\nWhich next-hop will the router select for a packet destined to 27.12.104.50?",
+            "options": [
+                "128.111.230.74",
+                "142.27.74.39",
+                "It will drop the packet",
+                "46.165.240.130"
+            ],
+            "answer": [
+                "128.111.230.74"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 91 via 128.111.230.74.",
+            "id": "encor_q_1349"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 46.53.229.226/24:\n1. A OSPF route via 203.189.226.60 with an Administrative Distance of 90.\n2. A EIGRP route via 15.66.253.42 with an Administrative Distance of 98.\n3. A default route (0.0.0.0/0) via 35.17.102.20.\nWhich next-hop will the router select for a packet destined to 46.53.229.50?",
+            "options": [
+                "It will drop the packet",
+                "15.66.253.42",
+                "35.17.102.20",
+                "203.189.226.60"
+            ],
+            "answer": [
+                "203.189.226.60"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 90 via 203.189.226.60.",
+            "id": "encor_q_1350"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 32.251.57.116/24:\n1. A Static route via 143.242.76.213 with an Administrative Distance of 105.\n2. A EIGRP route via 46.97.62.128 with an Administrative Distance of 106.\n3. A default route (0.0.0.0/0) via 173.13.118.178.\nWhich next-hop will the router select for a packet destined to 32.251.57.50?",
+            "options": [
+                "It will drop the packet",
+                "173.13.118.178",
+                "46.97.62.128",
+                "143.242.76.213"
+            ],
+            "answer": [
+                "143.242.76.213"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 105 via 143.242.76.213.",
+            "id": "encor_q_1351"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 191.214.62.136/24:\n1. A EIGRP route via 140.106.58.179 with an Administrative Distance of 110.\n2. A EIGRP route via 82.137.58.190 with an Administrative Distance of 119.\n3. A default route (0.0.0.0/0) via 37.58.168.133.\nWhich next-hop will the router select for a packet destined to 191.214.62.50?",
+            "options": [
+                "82.137.58.190",
+                "It will drop the packet",
+                "140.106.58.179",
+                "37.58.168.133"
+            ],
+            "answer": [
+                "140.106.58.179"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 140.106.58.179.",
+            "id": "encor_q_1352"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 83.20.53.20/24:\n1. A Static route via 144.17.101.37 with an Administrative Distance of 95.\n2. A OSPF route via 89.112.156.95 with an Administrative Distance of 104.\n3. A default route (0.0.0.0/0) via 93.131.154.16.\nWhich next-hop will the router select for a packet destined to 83.20.53.50?",
+            "options": [
+                "93.131.154.16",
+                "It will drop the packet",
+                "89.112.156.95",
+                "144.17.101.37"
+            ],
+            "answer": [
+                "144.17.101.37"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 95 via 144.17.101.37.",
+            "id": "encor_q_1353"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 193.54.61.254/24:\n1. A EIGRP route via 117.197.245.232 with an Administrative Distance of 98.\n2. A RIP route via 93.125.45.27 with an Administrative Distance of 99.\n3. A default route (0.0.0.0/0) via 140.45.44.215.\nWhich next-hop will the router select for a packet destined to 193.54.61.50?",
+            "options": [
+                "It will drop the packet",
+                "140.45.44.215",
+                "117.197.245.232",
+                "93.125.45.27"
+            ],
+            "answer": [
+                "117.197.245.232"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 98 via 117.197.245.232.",
+            "id": "encor_q_1354"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 160.53.246.153/24:\n1. A OSPF route via 174.63.39.212 with an Administrative Distance of 99.\n2. A OSPF route via 10.91.241.204 with an Administrative Distance of 105.\n3. A default route (0.0.0.0/0) via 184.151.135.233.\nWhich next-hop will the router select for a packet destined to 160.53.246.50?",
+            "options": [
+                "It will drop the packet",
+                "10.91.241.204",
+                "174.63.39.212",
+                "184.151.135.233"
+            ],
+            "answer": [
+                "174.63.39.212"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 99 via 174.63.39.212.",
+            "id": "encor_q_1355"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 70.52.61.166/24:\n1. A OSPF route via 99.25.89.114 with an Administrative Distance of 92.\n2. A OSPF route via 133.160.12.221 with an Administrative Distance of 94.\n3. A default route (0.0.0.0/0) via 13.67.76.147.\nWhich next-hop will the router select for a packet destined to 70.52.61.50?",
+            "options": [
+                "It will drop the packet",
+                "99.25.89.114",
+                "133.160.12.221",
+                "13.67.76.147"
+            ],
+            "answer": [
+                "99.25.89.114"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 92 via 99.25.89.114.",
+            "id": "encor_q_1356"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 39.237.211.90/24:\n1. A EIGRP route via 209.61.103.31 with an Administrative Distance of 104.\n2. A OSPF route via 72.157.241.34 with an Administrative Distance of 109.\n3. A default route (0.0.0.0/0) via 20.220.253.192.\nWhich next-hop will the router select for a packet destined to 39.237.211.50?",
+            "options": [
+                "72.157.241.34",
+                "It will drop the packet",
+                "20.220.253.192",
+                "209.61.103.31"
+            ],
+            "answer": [
+                "209.61.103.31"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 104 via 209.61.103.31.",
+            "id": "encor_q_1357"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 83.82.175.200/24:\n1. A EIGRP route via 112.77.38.47 with an Administrative Distance of 106.\n2. A OSPF route via 114.97.184.234 with an Administrative Distance of 110.\n3. A default route (0.0.0.0/0) via 50.219.215.144.\nWhich next-hop will the router select for a packet destined to 83.82.175.50?",
+            "options": [
+                "It will drop the packet",
+                "114.97.184.234",
+                "50.219.215.144",
+                "112.77.38.47"
+            ],
+            "answer": [
+                "112.77.38.47"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 106 via 112.77.38.47.",
+            "id": "encor_q_1358"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 150.54.65.117/24:\n1. A EIGRP route via 170.76.167.71 with an Administrative Distance of 102.\n2. A EIGRP route via 81.95.239.96 with an Administrative Distance of 109.\n3. A default route (0.0.0.0/0) via 109.63.252.189.\nWhich next-hop will the router select for a packet destined to 150.54.65.50?",
+            "options": [
+                "It will drop the packet",
+                "109.63.252.189",
+                "170.76.167.71",
+                "81.95.239.96"
+            ],
+            "answer": [
+                "170.76.167.71"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 102 via 170.76.167.71.",
+            "id": "encor_q_1359"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 43.232.70.157/24:\n1. A OSPF route via 25.86.80.22 with an Administrative Distance of 95.\n2. A RIP route via 119.4.200.5 with an Administrative Distance of 96.\n3. A default route (0.0.0.0/0) via 43.172.230.48.\nWhich next-hop will the router select for a packet destined to 43.232.70.50?",
+            "options": [
+                "25.86.80.22",
+                "119.4.200.5",
+                "It will drop the packet",
+                "43.172.230.48"
+            ],
+            "answer": [
+                "25.86.80.22"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 95 via 25.86.80.22.",
+            "id": "encor_q_1360"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 56.246.193.169/24:\n1. A EIGRP route via 170.185.154.204 with an Administrative Distance of 108.\n2. A RIP route via 130.79.4.24 with an Administrative Distance of 117.\n3. A default route (0.0.0.0/0) via 132.66.6.249.\nWhich next-hop will the router select for a packet destined to 56.246.193.50?",
+            "options": [
+                "130.79.4.24",
+                "132.66.6.249",
+                "170.185.154.204",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "170.185.154.204"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 108 via 170.185.154.204.",
+            "id": "encor_q_1361"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 94.221.106.65/24:\n1. A EIGRP route via 11.43.87.98 with an Administrative Distance of 106.\n2. A OSPF route via 55.41.102.68 with an Administrative Distance of 112.\n3. A default route (0.0.0.0/0) via 180.171.225.166.\nWhich next-hop will the router select for a packet destined to 94.221.106.50?",
+            "options": [
+                "180.171.225.166",
+                "55.41.102.68",
+                "It will drop the packet",
+                "11.43.87.98"
+            ],
+            "answer": [
+                "11.43.87.98"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 106 via 11.43.87.98.",
+            "id": "encor_q_1362"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 183.23.82.171/24:\n1. A Static route via 104.202.66.195 with an Administrative Distance of 92.\n2. A EIGRP route via 116.81.106.226 with an Administrative Distance of 97.\n3. A default route (0.0.0.0/0) via 150.144.223.61.\nWhich next-hop will the router select for a packet destined to 183.23.82.50?",
+            "options": [
+                "It will drop the packet",
+                "104.202.66.195",
+                "150.144.223.61",
+                "116.81.106.226"
+            ],
+            "answer": [
+                "104.202.66.195"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 92 via 104.202.66.195.",
+            "id": "encor_q_1363"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 13.43.30.3/24:\n1. A Static route via 46.111.45.48 with an Administrative Distance of 104.\n2. A RIP route via 97.94.227.121 with an Administrative Distance of 107.\n3. A default route (0.0.0.0/0) via 86.56.212.219.\nWhich next-hop will the router select for a packet destined to 13.43.30.50?",
+            "options": [
+                "86.56.212.219",
+                "97.94.227.121",
+                "It will drop the packet",
+                "46.111.45.48"
+            ],
+            "answer": [
+                "46.111.45.48"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 104 via 46.111.45.48.",
+            "id": "encor_q_1364"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 109.171.86.19/24:\n1. A OSPF route via 35.169.181.56 with an Administrative Distance of 96.\n2. A OSPF route via 121.70.180.211 with an Administrative Distance of 105.\n3. A default route (0.0.0.0/0) via 140.175.108.80.\nWhich next-hop will the router select for a packet destined to 109.171.86.50?",
+            "options": [
+                "121.70.180.211",
+                "140.175.108.80",
+                "35.169.181.56",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "35.169.181.56"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 96 via 35.169.181.56.",
+            "id": "encor_q_1365"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 122.181.33.154/24:\n1. A EIGRP route via 50.145.119.20 with an Administrative Distance of 105.\n2. A EIGRP route via 183.250.138.165 with an Administrative Distance of 106.\n3. A default route (0.0.0.0/0) via 124.222.247.11.\nWhich next-hop will the router select for a packet destined to 122.181.33.50?",
+            "options": [
+                "It will drop the packet",
+                "50.145.119.20",
+                "124.222.247.11",
+                "183.250.138.165"
+            ],
+            "answer": [
+                "50.145.119.20"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 105 via 50.145.119.20.",
+            "id": "encor_q_1366"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 70.10.59.164/24:\n1. A Static route via 181.7.136.222 with an Administrative Distance of 95.\n2. A OSPF route via 36.174.97.166 with an Administrative Distance of 97.\n3. A default route (0.0.0.0/0) via 73.130.206.120.\nWhich next-hop will the router select for a packet destined to 70.10.59.50?",
+            "options": [
+                "It will drop the packet",
+                "181.7.136.222",
+                "36.174.97.166",
+                "73.130.206.120"
+            ],
+            "answer": [
+                "181.7.136.222"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 95 via 181.7.136.222.",
+            "id": "encor_q_1367"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 78.193.224.218/24:\n1. A OSPF route via 202.108.225.220 with an Administrative Distance of 97.\n2. A OSPF route via 171.84.193.245 with an Administrative Distance of 105.\n3. A default route (0.0.0.0/0) via 141.23.23.215.\nWhich next-hop will the router select for a packet destined to 78.193.224.50?",
+            "options": [
+                "It will drop the packet",
+                "141.23.23.215",
+                "171.84.193.245",
+                "202.108.225.220"
+            ],
+            "answer": [
+                "202.108.225.220"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 97 via 202.108.225.220.",
+            "id": "encor_q_1368"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 86.26.254.161/24:\n1. A Static route via 193.166.101.234 with an Administrative Distance of 93.\n2. A OSPF route via 94.91.245.43 with an Administrative Distance of 98.\n3. A default route (0.0.0.0/0) via 196.61.181.88.\nWhich next-hop will the router select for a packet destined to 86.26.254.50?",
+            "options": [
+                "196.61.181.88",
+                "193.166.101.234",
+                "It will drop the packet",
+                "94.91.245.43"
+            ],
+            "answer": [
+                "193.166.101.234"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 93 via 193.166.101.234.",
+            "id": "encor_q_1369"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 29.87.21.128/24:\n1. A EIGRP route via 79.144.128.159 with an Administrative Distance of 90.\n2. A RIP route via 130.187.99.231 with an Administrative Distance of 91.\n3. A default route (0.0.0.0/0) via 205.102.181.40.\nWhich next-hop will the router select for a packet destined to 29.87.21.50?",
+            "options": [
+                "205.102.181.40",
+                "130.187.99.231",
+                "79.144.128.159",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "79.144.128.159"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 90 via 79.144.128.159.",
+            "id": "encor_q_1370"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 131.112.177.223/24:\n1. A Static route via 185.161.32.155 with an Administrative Distance of 90.\n2. A OSPF route via 205.181.182.127 with an Administrative Distance of 97.\n3. A default route (0.0.0.0/0) via 209.42.186.227.\nWhich next-hop will the router select for a packet destined to 131.112.177.50?",
+            "options": [
+                "205.181.182.127",
+                "185.161.32.155",
+                "It will drop the packet",
+                "209.42.186.227"
+            ],
+            "answer": [
+                "185.161.32.155"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 90 via 185.161.32.155.",
+            "id": "encor_q_1371"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 195.207.134.92/24:\n1. A OSPF route via 39.39.210.218 with an Administrative Distance of 107.\n2. A OSPF route via 73.149.3.95 with an Administrative Distance of 110.\n3. A default route (0.0.0.0/0) via 196.243.132.7.\nWhich next-hop will the router select for a packet destined to 195.207.134.50?",
+            "options": [
+                "39.39.210.218",
+                "73.149.3.95",
+                "It will drop the packet",
+                "196.243.132.7"
+            ],
+            "answer": [
+                "39.39.210.218"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 107 via 39.39.210.218.",
+            "id": "encor_q_1372"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 123.110.55.28/24:\n1. A OSPF route via 11.86.41.205 with an Administrative Distance of 110.\n2. A RIP route via 153.212.74.75 with an Administrative Distance of 119.\n3. A default route (0.0.0.0/0) via 223.182.182.61.\nWhich next-hop will the router select for a packet destined to 123.110.55.50?",
+            "options": [
+                "153.212.74.75",
+                "It will drop the packet",
+                "11.86.41.205",
+                "223.182.182.61"
+            ],
+            "answer": [
+                "11.86.41.205"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 11.86.41.205.",
+            "id": "encor_q_1373"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 74.191.211.79/24:\n1. A EIGRP route via 50.57.228.55 with an Administrative Distance of 98.\n2. A EIGRP route via 96.197.98.35 with an Administrative Distance of 102.\n3. A default route (0.0.0.0/0) via 136.150.152.162.\nWhich next-hop will the router select for a packet destined to 74.191.211.50?",
+            "options": [
+                "96.197.98.35",
+                "136.150.152.162",
+                "It will drop the packet",
+                "50.57.228.55"
+            ],
+            "answer": [
+                "50.57.228.55"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 98 via 50.57.228.55.",
+            "id": "encor_q_1374"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 211.225.182.137/24:\n1. A OSPF route via 93.222.196.39 with an Administrative Distance of 95.\n2. A EIGRP route via 137.16.91.1 with an Administrative Distance of 96.\n3. A default route (0.0.0.0/0) via 89.40.219.163.\nWhich next-hop will the router select for a packet destined to 211.225.182.50?",
+            "options": [
+                "93.222.196.39",
+                "89.40.219.163",
+                "137.16.91.1",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "93.222.196.39"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 95 via 93.222.196.39.",
+            "id": "encor_q_1375"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 34.53.181.36/24:\n1. A EIGRP route via 192.74.226.237 with an Administrative Distance of 101.\n2. A EIGRP route via 116.18.22.216 with an Administrative Distance of 103.\n3. A default route (0.0.0.0/0) via 118.51.59.124.\nWhich next-hop will the router select for a packet destined to 34.53.181.50?",
+            "options": [
+                "192.74.226.237",
+                "118.51.59.124",
+                "116.18.22.216",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "192.74.226.237"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 101 via 192.74.226.237.",
+            "id": "encor_q_1376"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 152.117.178.218/24:\n1. A OSPF route via 29.154.67.190 with an Administrative Distance of 94.\n2. A EIGRP route via 49.250.233.119 with an Administrative Distance of 104.\n3. A default route (0.0.0.0/0) via 17.182.57.225.\nWhich next-hop will the router select for a packet destined to 152.117.178.50?",
+            "options": [
+                "It will drop the packet",
+                "49.250.233.119",
+                "29.154.67.190",
+                "17.182.57.225"
+            ],
+            "answer": [
+                "29.154.67.190"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 94 via 29.154.67.190.",
+            "id": "encor_q_1377"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 38.4.151.206/24:\n1. A EIGRP route via 72.46.227.187 with an Administrative Distance of 100.\n2. A OSPF route via 55.121.217.120 with an Administrative Distance of 102.\n3. A default route (0.0.0.0/0) via 201.118.15.79.\nWhich next-hop will the router select for a packet destined to 38.4.151.50?",
+            "options": [
+                "201.118.15.79",
+                "72.46.227.187",
+                "55.121.217.120",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "72.46.227.187"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 100 via 72.46.227.187.",
+            "id": "encor_q_1378"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 166.254.63.13/24:\n1. A OSPF route via 27.193.247.99 with an Administrative Distance of 103.\n2. A EIGRP route via 102.157.170.181 with an Administrative Distance of 109.\n3. A default route (0.0.0.0/0) via 197.40.191.145.\nWhich next-hop will the router select for a packet destined to 166.254.63.50?",
+            "options": [
+                "102.157.170.181",
+                "197.40.191.145",
+                "It will drop the packet",
+                "27.193.247.99"
+            ],
+            "answer": [
+                "27.193.247.99"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 103 via 27.193.247.99.",
+            "id": "encor_q_1379"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 40.25.198.197/24:\n1. A OSPF route via 159.135.60.78 with an Administrative Distance of 110.\n2. A OSPF route via 37.192.253.223 with an Administrative Distance of 116.\n3. A default route (0.0.0.0/0) via 177.111.131.3.\nWhich next-hop will the router select for a packet destined to 40.25.198.50?",
+            "options": [
+                "It will drop the packet",
+                "159.135.60.78",
+                "177.111.131.3",
+                "37.192.253.223"
+            ],
+            "answer": [
+                "159.135.60.78"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 159.135.60.78.",
+            "id": "encor_q_1380"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 89.38.46.165/24:\n1. A EIGRP route via 109.115.26.40 with an Administrative Distance of 100.\n2. A OSPF route via 90.193.84.212 with an Administrative Distance of 103.\n3. A default route (0.0.0.0/0) via 170.52.175.166.\nWhich next-hop will the router select for a packet destined to 89.38.46.50?",
+            "options": [
+                "170.52.175.166",
+                "90.193.84.212",
+                "109.115.26.40",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "109.115.26.40"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 100 via 109.115.26.40.",
+            "id": "encor_q_1381"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 121.133.218.28/24:\n1. A Static route via 81.13.122.53 with an Administrative Distance of 107.\n2. A OSPF route via 196.248.101.212 with an Administrative Distance of 112.\n3. A default route (0.0.0.0/0) via 174.117.80.199.\nWhich next-hop will the router select for a packet destined to 121.133.218.50?",
+            "options": [
+                "81.13.122.53",
+                "174.117.80.199",
+                "It will drop the packet",
+                "196.248.101.212"
+            ],
+            "answer": [
+                "81.13.122.53"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 107 via 81.13.122.53.",
+            "id": "encor_q_1382"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 127.99.105.50/24:\n1. A OSPF route via 145.251.8.145 with an Administrative Distance of 108.\n2. A RIP route via 75.120.56.156 with an Administrative Distance of 111.\n3. A default route (0.0.0.0/0) via 66.122.53.139.\nWhich next-hop will the router select for a packet destined to 127.99.105.50?",
+            "options": [
+                "75.120.56.156",
+                "145.251.8.145",
+                "66.122.53.139",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "145.251.8.145"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 108 via 145.251.8.145.",
+            "id": "encor_q_1383"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 189.40.169.50/24:\n1. A Static route via 60.214.194.3 with an Administrative Distance of 91.\n2. A OSPF route via 112.251.214.2 with an Administrative Distance of 99.\n3. A default route (0.0.0.0/0) via 137.15.51.107.\nWhich next-hop will the router select for a packet destined to 189.40.169.50?",
+            "options": [
+                "112.251.214.2",
+                "It will drop the packet",
+                "137.15.51.107",
+                "60.214.194.3"
+            ],
+            "answer": [
+                "60.214.194.3"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 91 via 60.214.194.3.",
+            "id": "encor_q_1384"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 145.73.46.83/24:\n1. A OSPF route via 58.230.127.12 with an Administrative Distance of 105.\n2. A EIGRP route via 123.7.115.175 with an Administrative Distance of 115.\n3. A default route (0.0.0.0/0) via 188.132.195.254.\nWhich next-hop will the router select for a packet destined to 145.73.46.50?",
+            "options": [
+                "It will drop the packet",
+                "188.132.195.254",
+                "58.230.127.12",
+                "123.7.115.175"
+            ],
+            "answer": [
+                "58.230.127.12"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 105 via 58.230.127.12.",
+            "id": "encor_q_1385"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 184.67.187.183/24:\n1. A OSPF route via 119.20.12.172 with an Administrative Distance of 110.\n2. A EIGRP route via 132.179.252.202 with an Administrative Distance of 115.\n3. A default route (0.0.0.0/0) via 153.168.126.176.\nWhich next-hop will the router select for a packet destined to 184.67.187.50?",
+            "options": [
+                "119.20.12.172",
+                "153.168.126.176",
+                "132.179.252.202",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "119.20.12.172"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 119.20.12.172.",
+            "id": "encor_q_1386"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 177.60.211.148/24:\n1. A Static route via 206.60.139.163 with an Administrative Distance of 103.\n2. A OSPF route via 64.60.251.233 with an Administrative Distance of 104.\n3. A default route (0.0.0.0/0) via 126.104.181.252.\nWhich next-hop will the router select for a packet destined to 177.60.211.50?",
+            "options": [
+                "It will drop the packet",
+                "64.60.251.233",
+                "126.104.181.252",
+                "206.60.139.163"
+            ],
+            "answer": [
+                "206.60.139.163"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 103 via 206.60.139.163.",
+            "id": "encor_q_1387"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 159.45.222.183/24:\n1. A EIGRP route via 124.38.207.232 with an Administrative Distance of 106.\n2. A OSPF route via 167.205.101.178 with an Administrative Distance of 110.\n3. A default route (0.0.0.0/0) via 60.105.239.43.\nWhich next-hop will the router select for a packet destined to 159.45.222.50?",
+            "options": [
+                "60.105.239.43",
+                "167.205.101.178",
+                "It will drop the packet",
+                "124.38.207.232"
+            ],
+            "answer": [
+                "124.38.207.232"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 106 via 124.38.207.232.",
+            "id": "encor_q_1388"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 173.157.71.52/24:\n1. A Static route via 214.202.57.209 with an Administrative Distance of 101.\n2. A OSPF route via 84.115.244.165 with an Administrative Distance of 105.\n3. A default route (0.0.0.0/0) via 208.89.171.85.\nWhich next-hop will the router select for a packet destined to 173.157.71.50?",
+            "options": [
+                "It will drop the packet",
+                "214.202.57.209",
+                "84.115.244.165",
+                "208.89.171.85"
+            ],
+            "answer": [
+                "214.202.57.209"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 101 via 214.202.57.209.",
+            "id": "encor_q_1389"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 176.57.117.197/24:\n1. A EIGRP route via 178.157.133.224 with an Administrative Distance of 102.\n2. A EIGRP route via 175.243.77.91 with an Administrative Distance of 104.\n3. A default route (0.0.0.0/0) via 35.231.174.21.\nWhich next-hop will the router select for a packet destined to 176.57.117.50?",
+            "options": [
+                "35.231.174.21",
+                "It will drop the packet",
+                "178.157.133.224",
+                "175.243.77.91"
+            ],
+            "answer": [
+                "178.157.133.224"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 102 via 178.157.133.224.",
+            "id": "encor_q_1390"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 136.149.15.183/24:\n1. A EIGRP route via 219.10.189.92 with an Administrative Distance of 100.\n2. A EIGRP route via 68.131.148.204 with an Administrative Distance of 105.\n3. A default route (0.0.0.0/0) via 212.126.172.231.\nWhich next-hop will the router select for a packet destined to 136.149.15.50?",
+            "options": [
+                "It will drop the packet",
+                "212.126.172.231",
+                "219.10.189.92",
+                "68.131.148.204"
+            ],
+            "answer": [
+                "219.10.189.92"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 100 via 219.10.189.92.",
+            "id": "encor_q_1391"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 169.240.9.35/24:\n1. A OSPF route via 79.237.216.185 with an Administrative Distance of 93.\n2. A EIGRP route via 178.147.139.111 with an Administrative Distance of 103.\n3. A default route (0.0.0.0/0) via 70.28.160.40.\nWhich next-hop will the router select for a packet destined to 169.240.9.50?",
+            "options": [
+                "70.28.160.40",
+                "79.237.216.185",
+                "It will drop the packet",
+                "178.147.139.111"
+            ],
+            "answer": [
+                "79.237.216.185"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 93 via 79.237.216.185.",
+            "id": "encor_q_1392"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 220.100.139.22/24:\n1. A EIGRP route via 218.105.248.26 with an Administrative Distance of 109.\n2. A EIGRP route via 110.64.52.229 with an Administrative Distance of 112.\n3. A default route (0.0.0.0/0) via 98.113.84.206.\nWhich next-hop will the router select for a packet destined to 220.100.139.50?",
+            "options": [
+                "It will drop the packet",
+                "98.113.84.206",
+                "110.64.52.229",
+                "218.105.248.26"
+            ],
+            "answer": [
+                "218.105.248.26"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 109 via 218.105.248.26.",
+            "id": "encor_q_1393"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 169.59.23.150/24:\n1. A OSPF route via 48.25.132.246 with an Administrative Distance of 91.\n2. A RIP route via 94.75.218.176 with an Administrative Distance of 92.\n3. A default route (0.0.0.0/0) via 89.15.219.242.\nWhich next-hop will the router select for a packet destined to 169.59.23.50?",
+            "options": [
+                "94.75.218.176",
+                "48.25.132.246",
+                "It will drop the packet",
+                "89.15.219.242"
+            ],
+            "answer": [
+                "48.25.132.246"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 91 via 48.25.132.246.",
+            "id": "encor_q_1394"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 49.184.160.25/24:\n1. A Static route via 174.110.9.203 with an Administrative Distance of 110.\n2. A OSPF route via 12.241.203.247 with an Administrative Distance of 115.\n3. A default route (0.0.0.0/0) via 188.148.99.22.\nWhich next-hop will the router select for a packet destined to 49.184.160.50?",
+            "options": [
+                "174.110.9.203",
+                "It will drop the packet",
+                "188.148.99.22",
+                "12.241.203.247"
+            ],
+            "answer": [
+                "174.110.9.203"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 174.110.9.203.",
+            "id": "encor_q_1395"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 115.223.80.35/24:\n1. A OSPF route via 191.72.138.51 with an Administrative Distance of 106.\n2. A RIP route via 158.197.132.58 with an Administrative Distance of 113.\n3. A default route (0.0.0.0/0) via 23.202.89.92.\nWhich next-hop will the router select for a packet destined to 115.223.80.50?",
+            "options": [
+                "191.72.138.51",
+                "23.202.89.92",
+                "158.197.132.58",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "191.72.138.51"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 106 via 191.72.138.51.",
+            "id": "encor_q_1396"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 33.109.198.13/24:\n1. A OSPF route via 216.149.165.4 with an Administrative Distance of 103.\n2. A RIP route via 134.42.36.153 with an Administrative Distance of 108.\n3. A default route (0.0.0.0/0) via 81.223.4.5.\nWhich next-hop will the router select for a packet destined to 33.109.198.50?",
+            "options": [
+                "It will drop the packet",
+                "134.42.36.153",
+                "81.223.4.5",
+                "216.149.165.4"
+            ],
+            "answer": [
+                "216.149.165.4"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 103 via 216.149.165.4.",
+            "id": "encor_q_1397"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 198.152.152.209/24:\n1. A EIGRP route via 96.175.8.226 with an Administrative Distance of 91.\n2. A OSPF route via 199.67.49.74 with an Administrative Distance of 98.\n3. A default route (0.0.0.0/0) via 36.109.25.90.\nWhich next-hop will the router select for a packet destined to 198.152.152.50?",
+            "options": [
+                "36.109.25.90",
+                "96.175.8.226",
+                "199.67.49.74",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "96.175.8.226"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 91 via 96.175.8.226.",
+            "id": "encor_q_1398"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 194.4.23.169/24:\n1. A OSPF route via 216.87.115.122 with an Administrative Distance of 95.\n2. A RIP route via 64.82.228.27 with an Administrative Distance of 103.\n3. A default route (0.0.0.0/0) via 219.177.63.212.\nWhich next-hop will the router select for a packet destined to 194.4.23.50?",
+            "options": [
+                "216.87.115.122",
+                "219.177.63.212",
+                "64.82.228.27",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "216.87.115.122"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 95 via 216.87.115.122.",
+            "id": "encor_q_1399"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 39.79.222.176/24:\n1. A OSPF route via 223.205.85.215 with an Administrative Distance of 92.\n2. A EIGRP route via 15.66.247.93 with an Administrative Distance of 95.\n3. A default route (0.0.0.0/0) via 47.67.243.96.\nWhich next-hop will the router select for a packet destined to 39.79.222.50?",
+            "options": [
+                "It will drop the packet",
+                "223.205.85.215",
+                "15.66.247.93",
+                "47.67.243.96"
+            ],
+            "answer": [
+                "223.205.85.215"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 92 via 223.205.85.215.",
+            "id": "encor_q_1400"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 68.38.174.92/24:\n1. A EIGRP route via 22.127.68.127 with an Administrative Distance of 95.\n2. A OSPF route via 111.120.73.94 with an Administrative Distance of 100.\n3. A default route (0.0.0.0/0) via 132.236.53.18.\nWhich next-hop will the router select for a packet destined to 68.38.174.50?",
+            "options": [
+                "It will drop the packet",
+                "132.236.53.18",
+                "111.120.73.94",
+                "22.127.68.127"
+            ],
+            "answer": [
+                "22.127.68.127"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 95 via 22.127.68.127.",
+            "id": "encor_q_1401"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 93.71.197.198/24:\n1. A OSPF route via 188.236.26.85 with an Administrative Distance of 90.\n2. A OSPF route via 212.17.154.221 with an Administrative Distance of 100.\n3. A default route (0.0.0.0/0) via 67.11.6.155.\nWhich next-hop will the router select for a packet destined to 93.71.197.50?",
+            "options": [
+                "67.11.6.155",
+                "212.17.154.221",
+                "It will drop the packet",
+                "188.236.26.85"
+            ],
+            "answer": [
+                "188.236.26.85"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 90 via 188.236.26.85.",
+            "id": "encor_q_1402"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 71.178.95.189/24:\n1. A EIGRP route via 108.75.137.34 with an Administrative Distance of 91.\n2. A OSPF route via 46.92.247.184 with an Administrative Distance of 92.\n3. A default route (0.0.0.0/0) via 76.127.47.118.\nWhich next-hop will the router select for a packet destined to 71.178.95.50?",
+            "options": [
+                "46.92.247.184",
+                "108.75.137.34",
+                "76.127.47.118",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "108.75.137.34"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 91 via 108.75.137.34.",
+            "id": "encor_q_1403"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 81.214.202.183/24:\n1. A EIGRP route via 170.136.51.95 with an Administrative Distance of 92.\n2. A RIP route via 21.113.193.91 with an Administrative Distance of 102.\n3. A default route (0.0.0.0/0) via 197.94.228.243.\nWhich next-hop will the router select for a packet destined to 81.214.202.50?",
+            "options": [
+                "It will drop the packet",
+                "197.94.228.243",
+                "21.113.193.91",
+                "170.136.51.95"
+            ],
+            "answer": [
+                "170.136.51.95"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 92 via 170.136.51.95.",
+            "id": "encor_q_1404"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 113.249.138.47/24:\n1. A Static route via 199.105.139.95 with an Administrative Distance of 91.\n2. A RIP route via 98.60.149.29 with an Administrative Distance of 100.\n3. A default route (0.0.0.0/0) via 57.55.152.217.\nWhich next-hop will the router select for a packet destined to 113.249.138.50?",
+            "options": [
+                "It will drop the packet",
+                "98.60.149.29",
+                "57.55.152.217",
+                "199.105.139.95"
+            ],
+            "answer": [
+                "199.105.139.95"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 91 via 199.105.139.95.",
+            "id": "encor_q_1405"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 70.13.254.57/24:\n1. A OSPF route via 160.236.98.80 with an Administrative Distance of 99.\n2. A RIP route via 58.200.232.20 with an Administrative Distance of 109.\n3. A default route (0.0.0.0/0) via 161.131.252.146.\nWhich next-hop will the router select for a packet destined to 70.13.254.50?",
+            "options": [
+                "161.131.252.146",
+                "160.236.98.80",
+                "58.200.232.20",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "160.236.98.80"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 99 via 160.236.98.80.",
+            "id": "encor_q_1406"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 184.35.162.115/24:\n1. A Static route via 17.160.160.178 with an Administrative Distance of 108.\n2. A RIP route via 162.190.53.11 with an Administrative Distance of 111.\n3. A default route (0.0.0.0/0) via 88.107.203.233.\nWhich next-hop will the router select for a packet destined to 184.35.162.50?",
+            "options": [
+                "It will drop the packet",
+                "17.160.160.178",
+                "88.107.203.233",
+                "162.190.53.11"
+            ],
+            "answer": [
+                "17.160.160.178"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 108 via 17.160.160.178.",
+            "id": "encor_q_1407"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 97.2.137.148/24:\n1. A Static route via 61.232.198.28 with an Administrative Distance of 90.\n2. A OSPF route via 51.103.73.138 with an Administrative Distance of 98.\n3. A default route (0.0.0.0/0) via 90.82.223.207.\nWhich next-hop will the router select for a packet destined to 97.2.137.50?",
+            "options": [
+                "90.82.223.207",
+                "51.103.73.138",
+                "It will drop the packet",
+                "61.232.198.28"
+            ],
+            "answer": [
+                "61.232.198.28"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 90 via 61.232.198.28.",
+            "id": "encor_q_1408"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 46.45.225.19/24:\n1. A EIGRP route via 91.29.151.3 with an Administrative Distance of 105.\n2. A RIP route via 216.2.78.151 with an Administrative Distance of 111.\n3. A default route (0.0.0.0/0) via 197.167.221.169.\nWhich next-hop will the router select for a packet destined to 46.45.225.50?",
+            "options": [
+                "216.2.78.151",
+                "91.29.151.3",
+                "It will drop the packet",
+                "197.167.221.169"
+            ],
+            "answer": [
+                "91.29.151.3"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 105 via 91.29.151.3.",
+            "id": "encor_q_1409"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 153.217.16.66/24:\n1. A EIGRP route via 178.170.115.146 with an Administrative Distance of 95.\n2. A EIGRP route via 132.149.216.159 with an Administrative Distance of 99.\n3. A default route (0.0.0.0/0) via 215.251.200.136.\nWhich next-hop will the router select for a packet destined to 153.217.16.50?",
+            "options": [
+                "132.149.216.159",
+                "215.251.200.136",
+                "178.170.115.146",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "178.170.115.146"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 95 via 178.170.115.146.",
+            "id": "encor_q_1410"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 117.25.34.16/24:\n1. A OSPF route via 146.197.221.210 with an Administrative Distance of 95.\n2. A RIP route via 216.71.68.90 with an Administrative Distance of 101.\n3. A default route (0.0.0.0/0) via 162.69.133.75.\nWhich next-hop will the router select for a packet destined to 117.25.34.50?",
+            "options": [
+                "It will drop the packet",
+                "216.71.68.90",
+                "146.197.221.210",
+                "162.69.133.75"
+            ],
+            "answer": [
+                "146.197.221.210"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 95 via 146.197.221.210.",
+            "id": "encor_q_1411"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 46.188.174.253/24:\n1. A EIGRP route via 210.90.36.251 with an Administrative Distance of 91.\n2. A EIGRP route via 122.210.212.149 with an Administrative Distance of 95.\n3. A default route (0.0.0.0/0) via 111.12.59.248.\nWhich next-hop will the router select for a packet destined to 46.188.174.50?",
+            "options": [
+                "122.210.212.149",
+                "111.12.59.248",
+                "It will drop the packet",
+                "210.90.36.251"
+            ],
+            "answer": [
+                "210.90.36.251"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 91 via 210.90.36.251.",
+            "id": "encor_q_1412"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 49.50.148.139/24:\n1. A Static route via 44.176.19.116 with an Administrative Distance of 99.\n2. A EIGRP route via 127.210.206.2 with an Administrative Distance of 108.\n3. A default route (0.0.0.0/0) via 50.188.204.31.\nWhich next-hop will the router select for a packet destined to 49.50.148.50?",
+            "options": [
+                "44.176.19.116",
+                "It will drop the packet",
+                "50.188.204.31",
+                "127.210.206.2"
+            ],
+            "answer": [
+                "44.176.19.116"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 99 via 44.176.19.116.",
+            "id": "encor_q_1413"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 10.141.80.24/24:\n1. A EIGRP route via 183.121.192.153 with an Administrative Distance of 103.\n2. A OSPF route via 213.170.139.43 with an Administrative Distance of 110.\n3. A default route (0.0.0.0/0) via 73.113.87.30.\nWhich next-hop will the router select for a packet destined to 10.141.80.50?",
+            "options": [
+                "213.170.139.43",
+                "73.113.87.30",
+                "183.121.192.153",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "183.121.192.153"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 103 via 183.121.192.153.",
+            "id": "encor_q_1414"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 58.2.10.41/24:\n1. A OSPF route via 170.53.89.102 with an Administrative Distance of 104.\n2. A RIP route via 108.206.165.215 with an Administrative Distance of 107.\n3. A default route (0.0.0.0/0) via 159.71.202.27.\nWhich next-hop will the router select for a packet destined to 58.2.10.50?",
+            "options": [
+                "159.71.202.27",
+                "It will drop the packet",
+                "170.53.89.102",
+                "108.206.165.215"
+            ],
+            "answer": [
+                "170.53.89.102"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 104 via 170.53.89.102.",
+            "id": "encor_q_1415"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 50.206.28.148/24:\n1. A OSPF route via 165.204.196.212 with an Administrative Distance of 104.\n2. A EIGRP route via 96.157.68.239 with an Administrative Distance of 109.\n3. A default route (0.0.0.0/0) via 135.173.223.210.\nWhich next-hop will the router select for a packet destined to 50.206.28.50?",
+            "options": [
+                "96.157.68.239",
+                "165.204.196.212",
+                "It will drop the packet",
+                "135.173.223.210"
+            ],
+            "answer": [
+                "165.204.196.212"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 104 via 165.204.196.212.",
+            "id": "encor_q_1416"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 109.237.254.21/24:\n1. A Static route via 122.214.157.184 with an Administrative Distance of 102.\n2. A OSPF route via 85.91.147.86 with an Administrative Distance of 112.\n3. A default route (0.0.0.0/0) via 223.74.211.49.\nWhich next-hop will the router select for a packet destined to 109.237.254.50?",
+            "options": [
+                "122.214.157.184",
+                "85.91.147.86",
+                "It will drop the packet",
+                "223.74.211.49"
+            ],
+            "answer": [
+                "122.214.157.184"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 102 via 122.214.157.184.",
+            "id": "encor_q_1417"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 153.27.88.214/24:\n1. A EIGRP route via 153.29.202.103 with an Administrative Distance of 90.\n2. A EIGRP route via 121.28.14.165 with an Administrative Distance of 100.\n3. A default route (0.0.0.0/0) via 191.241.115.231.\nWhich next-hop will the router select for a packet destined to 153.27.88.50?",
+            "options": [
+                "It will drop the packet",
+                "121.28.14.165",
+                "191.241.115.231",
+                "153.29.202.103"
+            ],
+            "answer": [
+                "153.29.202.103"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 90 via 153.29.202.103.",
+            "id": "encor_q_1418"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 204.121.164.216/24:\n1. A OSPF route via 191.70.94.93 with an Administrative Distance of 101.\n2. A EIGRP route via 184.116.55.232 with an Administrative Distance of 106.\n3. A default route (0.0.0.0/0) via 39.123.184.195.\nWhich next-hop will the router select for a packet destined to 204.121.164.50?",
+            "options": [
+                "184.116.55.232",
+                "191.70.94.93",
+                "39.123.184.195",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "191.70.94.93"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 101 via 191.70.94.93.",
+            "id": "encor_q_1419"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 138.238.65.36/24:\n1. A Static route via 11.205.71.42 with an Administrative Distance of 107.\n2. A OSPF route via 193.133.90.29 with an Administrative Distance of 117.\n3. A default route (0.0.0.0/0) via 138.229.215.15.\nWhich next-hop will the router select for a packet destined to 138.238.65.50?",
+            "options": [
+                "138.229.215.15",
+                "It will drop the packet",
+                "11.205.71.42",
+                "193.133.90.29"
+            ],
+            "answer": [
+                "11.205.71.42"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 107 via 11.205.71.42.",
+            "id": "encor_q_1420"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 223.112.87.121/24:\n1. A EIGRP route via 170.97.208.188 with an Administrative Distance of 99.\n2. A RIP route via 131.74.231.202 with an Administrative Distance of 106.\n3. A default route (0.0.0.0/0) via 16.33.159.140.\nWhich next-hop will the router select for a packet destined to 223.112.87.50?",
+            "options": [
+                "16.33.159.140",
+                "170.97.208.188",
+                "131.74.231.202",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "170.97.208.188"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 99 via 170.97.208.188.",
+            "id": "encor_q_1421"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 60.13.215.95/24:\n1. A OSPF route via 148.231.42.207 with an Administrative Distance of 98.\n2. A RIP route via 102.110.82.67 with an Administrative Distance of 105.\n3. A default route (0.0.0.0/0) via 116.222.28.25.\nWhich next-hop will the router select for a packet destined to 60.13.215.50?",
+            "options": [
+                "116.222.28.25",
+                "148.231.42.207",
+                "It will drop the packet",
+                "102.110.82.67"
+            ],
+            "answer": [
+                "148.231.42.207"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 98 via 148.231.42.207.",
+            "id": "encor_q_1422"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 89.50.15.120/24:\n1. A Static route via 166.20.224.54 with an Administrative Distance of 104.\n2. A OSPF route via 104.102.62.141 with an Administrative Distance of 114.\n3. A default route (0.0.0.0/0) via 126.72.94.217.\nWhich next-hop will the router select for a packet destined to 89.50.15.50?",
+            "options": [
+                "126.72.94.217",
+                "166.20.224.54",
+                "It will drop the packet",
+                "104.102.62.141"
+            ],
+            "answer": [
+                "166.20.224.54"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 104 via 166.20.224.54.",
+            "id": "encor_q_1423"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 158.107.246.137/24:\n1. A Static route via 57.115.126.105 with an Administrative Distance of 91.\n2. A EIGRP route via 36.0.253.134 with an Administrative Distance of 100.\n3. A default route (0.0.0.0/0) via 205.82.223.75.\nWhich next-hop will the router select for a packet destined to 158.107.246.50?",
+            "options": [
+                "It will drop the packet",
+                "205.82.223.75",
+                "36.0.253.134",
+                "57.115.126.105"
+            ],
+            "answer": [
+                "57.115.126.105"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 91 via 57.115.126.105.",
+            "id": "encor_q_1424"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 90.124.135.73/24:\n1. A Static route via 185.238.62.89 with an Administrative Distance of 95.\n2. A RIP route via 51.247.31.228 with an Administrative Distance of 102.\n3. A default route (0.0.0.0/0) via 82.10.231.199.\nWhich next-hop will the router select for a packet destined to 90.124.135.50?",
+            "options": [
+                "82.10.231.199",
+                "It will drop the packet",
+                "185.238.62.89",
+                "51.247.31.228"
+            ],
+            "answer": [
+                "185.238.62.89"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 95 via 185.238.62.89.",
+            "id": "encor_q_1425"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 64.202.228.167/24:\n1. A OSPF route via 114.175.246.159 with an Administrative Distance of 91.\n2. A OSPF route via 147.227.11.229 with an Administrative Distance of 98.\n3. A default route (0.0.0.0/0) via 111.104.146.163.\nWhich next-hop will the router select for a packet destined to 64.202.228.50?",
+            "options": [
+                "114.175.246.159",
+                "111.104.146.163",
+                "147.227.11.229",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "114.175.246.159"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 91 via 114.175.246.159.",
+            "id": "encor_q_1426"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 204.235.153.189/24:\n1. A EIGRP route via 96.172.5.247 with an Administrative Distance of 101.\n2. A OSPF route via 194.253.237.3 with an Administrative Distance of 111.\n3. A default route (0.0.0.0/0) via 136.13.135.225.\nWhich next-hop will the router select for a packet destined to 204.235.153.50?",
+            "options": [
+                "It will drop the packet",
+                "194.253.237.3",
+                "96.172.5.247",
+                "136.13.135.225"
+            ],
+            "answer": [
+                "96.172.5.247"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 101 via 96.172.5.247.",
+            "id": "encor_q_1427"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 195.97.33.8/24:\n1. A Static route via 193.213.183.169 with an Administrative Distance of 106.\n2. A OSPF route via 16.0.93.172 with an Administrative Distance of 107.\n3. A default route (0.0.0.0/0) via 19.245.244.44.\nWhich next-hop will the router select for a packet destined to 195.97.33.50?",
+            "options": [
+                "193.213.183.169",
+                "16.0.93.172",
+                "19.245.244.44",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "193.213.183.169"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 106 via 193.213.183.169.",
+            "id": "encor_q_1428"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 79.170.180.195/24:\n1. A Static route via 123.132.251.83 with an Administrative Distance of 102.\n2. A RIP route via 115.60.53.228 with an Administrative Distance of 110.\n3. A default route (0.0.0.0/0) via 222.106.104.187.\nWhich next-hop will the router select for a packet destined to 79.170.180.50?",
+            "options": [
+                "123.132.251.83",
+                "It will drop the packet",
+                "222.106.104.187",
+                "115.60.53.228"
+            ],
+            "answer": [
+                "123.132.251.83"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 102 via 123.132.251.83.",
+            "id": "encor_q_1429"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 47.212.13.192/24:\n1. A Static route via 100.126.100.65 with an Administrative Distance of 110.\n2. A RIP route via 98.59.154.201 with an Administrative Distance of 119.\n3. A default route (0.0.0.0/0) via 210.69.72.35.\nWhich next-hop will the router select for a packet destined to 47.212.13.50?",
+            "options": [
+                "It will drop the packet",
+                "100.126.100.65",
+                "98.59.154.201",
+                "210.69.72.35"
+            ],
+            "answer": [
+                "100.126.100.65"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 100.126.100.65.",
+            "id": "encor_q_1430"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 219.150.107.73/24:\n1. A Static route via 201.174.120.106 with an Administrative Distance of 102.\n2. A OSPF route via 98.210.91.114 with an Administrative Distance of 109.\n3. A default route (0.0.0.0/0) via 84.112.237.220.\nWhich next-hop will the router select for a packet destined to 219.150.107.50?",
+            "options": [
+                "84.112.237.220",
+                "It will drop the packet",
+                "98.210.91.114",
+                "201.174.120.106"
+            ],
+            "answer": [
+                "201.174.120.106"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 102 via 201.174.120.106.",
+            "id": "encor_q_1431"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 177.28.49.46/24:\n1. A EIGRP route via 170.77.95.84 with an Administrative Distance of 92.\n2. A OSPF route via 167.41.159.66 with an Administrative Distance of 99.\n3. A default route (0.0.0.0/0) via 59.21.103.221.\nWhich next-hop will the router select for a packet destined to 177.28.49.50?",
+            "options": [
+                "It will drop the packet",
+                "167.41.159.66",
+                "170.77.95.84",
+                "59.21.103.221"
+            ],
+            "answer": [
+                "170.77.95.84"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 92 via 170.77.95.84.",
+            "id": "encor_q_1432"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 188.221.142.242/24:\n1. A OSPF route via 179.168.97.221 with an Administrative Distance of 98.\n2. A EIGRP route via 72.136.65.119 with an Administrative Distance of 100.\n3. A default route (0.0.0.0/0) via 198.121.94.77.\nWhich next-hop will the router select for a packet destined to 188.221.142.50?",
+            "options": [
+                "198.121.94.77",
+                "72.136.65.119",
+                "179.168.97.221",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "179.168.97.221"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 98 via 179.168.97.221.",
+            "id": "encor_q_1433"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 10.216.217.168/24:\n1. A EIGRP route via 222.22.62.60 with an Administrative Distance of 92.\n2. A OSPF route via 136.53.60.88 with an Administrative Distance of 94.\n3. A default route (0.0.0.0/0) via 85.27.134.229.\nWhich next-hop will the router select for a packet destined to 10.216.217.50?",
+            "options": [
+                "It will drop the packet",
+                "85.27.134.229",
+                "222.22.62.60",
+                "136.53.60.88"
+            ],
+            "answer": [
+                "222.22.62.60"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 92 via 222.22.62.60.",
+            "id": "encor_q_1434"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 103.98.160.202/24:\n1. A EIGRP route via 35.43.239.145 with an Administrative Distance of 107.\n2. A RIP route via 147.202.202.30 with an Administrative Distance of 111.\n3. A default route (0.0.0.0/0) via 84.203.222.94.\nWhich next-hop will the router select for a packet destined to 103.98.160.50?",
+            "options": [
+                "147.202.202.30",
+                "84.203.222.94",
+                "35.43.239.145",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "35.43.239.145"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 107 via 35.43.239.145.",
+            "id": "encor_q_1435"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 113.3.193.133/24:\n1. A EIGRP route via 195.92.16.6 with an Administrative Distance of 92.\n2. A OSPF route via 221.184.85.83 with an Administrative Distance of 101.\n3. A default route (0.0.0.0/0) via 99.217.223.169.\nWhich next-hop will the router select for a packet destined to 113.3.193.50?",
+            "options": [
+                "99.217.223.169",
+                "221.184.85.83",
+                "195.92.16.6",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "195.92.16.6"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 92 via 195.92.16.6.",
+            "id": "encor_q_1436"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 88.230.111.96/24:\n1. A EIGRP route via 133.176.112.108 with an Administrative Distance of 102.\n2. A OSPF route via 107.37.255.251 with an Administrative Distance of 112.\n3. A default route (0.0.0.0/0) via 197.196.5.56.\nWhich next-hop will the router select for a packet destined to 88.230.111.50?",
+            "options": [
+                "107.37.255.251",
+                "133.176.112.108",
+                "197.196.5.56",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "133.176.112.108"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 102 via 133.176.112.108.",
+            "id": "encor_q_1437"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 154.134.155.123/24:\n1. A EIGRP route via 10.241.19.103 with an Administrative Distance of 108.\n2. A RIP route via 33.169.216.183 with an Administrative Distance of 116.\n3. A default route (0.0.0.0/0) via 98.8.78.162.\nWhich next-hop will the router select for a packet destined to 154.134.155.50?",
+            "options": [
+                "It will drop the packet",
+                "10.241.19.103",
+                "98.8.78.162",
+                "33.169.216.183"
+            ],
+            "answer": [
+                "10.241.19.103"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 108 via 10.241.19.103.",
+            "id": "encor_q_1438"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 218.230.137.211/24:\n1. A Static route via 138.173.133.230 with an Administrative Distance of 107.\n2. A RIP route via 20.203.147.111 with an Administrative Distance of 114.\n3. A default route (0.0.0.0/0) via 85.36.115.124.\nWhich next-hop will the router select for a packet destined to 218.230.137.50?",
+            "options": [
+                "85.36.115.124",
+                "20.203.147.111",
+                "It will drop the packet",
+                "138.173.133.230"
+            ],
+            "answer": [
+                "138.173.133.230"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 107 via 138.173.133.230.",
+            "id": "encor_q_1439"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 45.175.95.130/24:\n1. A Static route via 107.63.168.55 with an Administrative Distance of 94.\n2. A RIP route via 170.232.27.194 with an Administrative Distance of 95.\n3. A default route (0.0.0.0/0) via 208.253.143.184.\nWhich next-hop will the router select for a packet destined to 45.175.95.50?",
+            "options": [
+                "208.253.143.184",
+                "107.63.168.55",
+                "170.232.27.194",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "107.63.168.55"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 94 via 107.63.168.55.",
+            "id": "encor_q_1440"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 189.146.137.154/24:\n1. A OSPF route via 49.243.237.46 with an Administrative Distance of 110.\n2. A OSPF route via 71.63.161.191 with an Administrative Distance of 113.\n3. A default route (0.0.0.0/0) via 26.243.2.145.\nWhich next-hop will the router select for a packet destined to 189.146.137.50?",
+            "options": [
+                "49.243.237.46",
+                "71.63.161.191",
+                "It will drop the packet",
+                "26.243.2.145"
+            ],
+            "answer": [
+                "49.243.237.46"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 49.243.237.46.",
+            "id": "encor_q_1441"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 100.18.225.56/24:\n1. A OSPF route via 187.30.166.27 with an Administrative Distance of 94.\n2. A OSPF route via 34.4.166.204 with an Administrative Distance of 96.\n3. A default route (0.0.0.0/0) via 219.21.51.85.\nWhich next-hop will the router select for a packet destined to 100.18.225.50?",
+            "options": [
+                "187.30.166.27",
+                "34.4.166.204",
+                "It will drop the packet",
+                "219.21.51.85"
+            ],
+            "answer": [
+                "187.30.166.27"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 94 via 187.30.166.27.",
+            "id": "encor_q_1442"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 206.125.208.232/24:\n1. A EIGRP route via 107.52.172.24 with an Administrative Distance of 104.\n2. A RIP route via 98.148.1.51 with an Administrative Distance of 106.\n3. A default route (0.0.0.0/0) via 156.23.7.28.\nWhich next-hop will the router select for a packet destined to 206.125.208.50?",
+            "options": [
+                "156.23.7.28",
+                "It will drop the packet",
+                "98.148.1.51",
+                "107.52.172.24"
+            ],
+            "answer": [
+                "107.52.172.24"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 104 via 107.52.172.24.",
+            "id": "encor_q_1443"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 147.217.31.207/24:\n1. A Static route via 74.182.226.85 with an Administrative Distance of 99.\n2. A OSPF route via 32.79.181.217 with an Administrative Distance of 105.\n3. A default route (0.0.0.0/0) via 90.51.166.100.\nWhich next-hop will the router select for a packet destined to 147.217.31.50?",
+            "options": [
+                "It will drop the packet",
+                "90.51.166.100",
+                "32.79.181.217",
+                "74.182.226.85"
+            ],
+            "answer": [
+                "74.182.226.85"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 99 via 74.182.226.85.",
+            "id": "encor_q_1444"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 36.156.106.189/24:\n1. A OSPF route via 36.89.132.228 with an Administrative Distance of 110.\n2. A EIGRP route via 122.8.166.35 with an Administrative Distance of 112.\n3. A default route (0.0.0.0/0) via 85.168.74.99.\nWhich next-hop will the router select for a packet destined to 36.156.106.50?",
+            "options": [
+                "85.168.74.99",
+                "122.8.166.35",
+                "36.89.132.228",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "36.89.132.228"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 36.89.132.228.",
+            "id": "encor_q_1445"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 116.226.137.101/24:\n1. A OSPF route via 130.110.90.50 with an Administrative Distance of 90.\n2. A EIGRP route via 69.125.113.66 with an Administrative Distance of 97.\n3. A default route (0.0.0.0/0) via 73.56.98.112.\nWhich next-hop will the router select for a packet destined to 116.226.137.50?",
+            "options": [
+                "69.125.113.66",
+                "73.56.98.112",
+                "It will drop the packet",
+                "130.110.90.50"
+            ],
+            "answer": [
+                "130.110.90.50"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 90 via 130.110.90.50.",
+            "id": "encor_q_1446"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 95.141.211.230/24:\n1. A OSPF route via 92.220.250.82 with an Administrative Distance of 92.\n2. A RIP route via 31.120.252.57 with an Administrative Distance of 102.\n3. A default route (0.0.0.0/0) via 84.25.43.196.\nWhich next-hop will the router select for a packet destined to 95.141.211.50?",
+            "options": [
+                "92.220.250.82",
+                "It will drop the packet",
+                "84.25.43.196",
+                "31.120.252.57"
+            ],
+            "answer": [
+                "92.220.250.82"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 92 via 92.220.250.82.",
+            "id": "encor_q_1447"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 32.136.7.90/24:\n1. A OSPF route via 154.41.245.40 with an Administrative Distance of 90.\n2. A EIGRP route via 41.103.224.177 with an Administrative Distance of 93.\n3. A default route (0.0.0.0/0) via 146.49.158.178.\nWhich next-hop will the router select for a packet destined to 32.136.7.50?",
+            "options": [
+                "154.41.245.40",
+                "146.49.158.178",
+                "41.103.224.177",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "154.41.245.40"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 90 via 154.41.245.40.",
+            "id": "encor_q_1448"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 166.175.101.156/24:\n1. A OSPF route via 62.79.35.194 with an Administrative Distance of 109.\n2. A RIP route via 148.181.229.144 with an Administrative Distance of 110.\n3. A default route (0.0.0.0/0) via 217.86.15.216.\nWhich next-hop will the router select for a packet destined to 166.175.101.50?",
+            "options": [
+                "It will drop the packet",
+                "217.86.15.216",
+                "148.181.229.144",
+                "62.79.35.194"
+            ],
+            "answer": [
+                "62.79.35.194"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 109 via 62.79.35.194.",
+            "id": "encor_q_1449"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 160.55.250.237/24:\n1. A OSPF route via 173.22.221.247 with an Administrative Distance of 110.\n2. A RIP route via 45.121.52.101 with an Administrative Distance of 114.\n3. A default route (0.0.0.0/0) via 17.24.215.176.\nWhich next-hop will the router select for a packet destined to 160.55.250.50?",
+            "options": [
+                "173.22.221.247",
+                "It will drop the packet",
+                "17.24.215.176",
+                "45.121.52.101"
+            ],
+            "answer": [
+                "173.22.221.247"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 173.22.221.247.",
+            "id": "encor_q_1450"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 12.88.57.68/24:\n1. A EIGRP route via 162.114.145.184 with an Administrative Distance of 98.\n2. A OSPF route via 66.54.252.79 with an Administrative Distance of 103.\n3. A default route (0.0.0.0/0) via 200.105.73.115.\nWhich next-hop will the router select for a packet destined to 12.88.57.50?",
+            "options": [
+                "It will drop the packet",
+                "162.114.145.184",
+                "66.54.252.79",
+                "200.105.73.115"
+            ],
+            "answer": [
+                "162.114.145.184"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 98 via 162.114.145.184.",
+            "id": "encor_q_1451"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 99.250.77.230/24:\n1. A Static route via 158.62.204.116 with an Administrative Distance of 91.\n2. A OSPF route via 218.42.204.91 with an Administrative Distance of 93.\n3. A default route (0.0.0.0/0) via 135.117.3.228.\nWhich next-hop will the router select for a packet destined to 99.250.77.50?",
+            "options": [
+                "It will drop the packet",
+                "158.62.204.116",
+                "218.42.204.91",
+                "135.117.3.228"
+            ],
+            "answer": [
+                "158.62.204.116"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 91 via 158.62.204.116.",
+            "id": "encor_q_1452"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 47.24.177.104/24:\n1. A OSPF route via 76.0.160.176 with an Administrative Distance of 92.\n2. A EIGRP route via 62.183.106.223 with an Administrative Distance of 93.\n3. A default route (0.0.0.0/0) via 60.127.51.163.\nWhich next-hop will the router select for a packet destined to 47.24.177.50?",
+            "options": [
+                "76.0.160.176",
+                "62.183.106.223",
+                "60.127.51.163",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "76.0.160.176"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 92 via 76.0.160.176.",
+            "id": "encor_q_1453"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 123.233.177.34/24:\n1. A Static route via 198.62.122.112 with an Administrative Distance of 97.\n2. A OSPF route via 128.244.145.212 with an Administrative Distance of 101.\n3. A default route (0.0.0.0/0) via 32.182.147.107.\nWhich next-hop will the router select for a packet destined to 123.233.177.50?",
+            "options": [
+                "198.62.122.112",
+                "128.244.145.212",
+                "It will drop the packet",
+                "32.182.147.107"
+            ],
+            "answer": [
+                "198.62.122.112"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 97 via 198.62.122.112.",
+            "id": "encor_q_1454"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 141.26.170.42/24:\n1. A OSPF route via 23.176.11.161 with an Administrative Distance of 94.\n2. A OSPF route via 136.96.5.223 with an Administrative Distance of 97.\n3. A default route (0.0.0.0/0) via 10.47.43.228.\nWhich next-hop will the router select for a packet destined to 141.26.170.50?",
+            "options": [
+                "23.176.11.161",
+                "10.47.43.228",
+                "It will drop the packet",
+                "136.96.5.223"
+            ],
+            "answer": [
+                "23.176.11.161"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 94 via 23.176.11.161.",
+            "id": "encor_q_1455"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 177.119.246.96/24:\n1. A EIGRP route via 52.170.67.235 with an Administrative Distance of 110.\n2. A RIP route via 47.121.58.139 with an Administrative Distance of 118.\n3. A default route (0.0.0.0/0) via 37.141.21.159.\nWhich next-hop will the router select for a packet destined to 177.119.246.50?",
+            "options": [
+                "47.121.58.139",
+                "It will drop the packet",
+                "37.141.21.159",
+                "52.170.67.235"
+            ],
+            "answer": [
+                "52.170.67.235"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 52.170.67.235.",
+            "id": "encor_q_1456"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 37.47.139.149/24:\n1. A OSPF route via 83.240.198.227 with an Administrative Distance of 107.\n2. A RIP route via 49.102.209.106 with an Administrative Distance of 110.\n3. A default route (0.0.0.0/0) via 87.48.53.112.\nWhich next-hop will the router select for a packet destined to 37.47.139.50?",
+            "options": [
+                "49.102.209.106",
+                "83.240.198.227",
+                "87.48.53.112",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "83.240.198.227"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 107 via 83.240.198.227.",
+            "id": "encor_q_1457"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 179.77.255.153/24:\n1. A OSPF route via 22.248.40.245 with an Administrative Distance of 101.\n2. A RIP route via 139.198.186.153 with an Administrative Distance of 105.\n3. A default route (0.0.0.0/0) via 161.203.140.104.\nWhich next-hop will the router select for a packet destined to 179.77.255.50?",
+            "options": [
+                "It will drop the packet",
+                "139.198.186.153",
+                "161.203.140.104",
+                "22.248.40.245"
+            ],
+            "answer": [
+                "22.248.40.245"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 101 via 22.248.40.245.",
+            "id": "encor_q_1458"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 98.54.156.105/24:\n1. A OSPF route via 136.143.234.74 with an Administrative Distance of 94.\n2. A EIGRP route via 84.250.87.136 with an Administrative Distance of 102.\n3. A default route (0.0.0.0/0) via 119.137.7.138.\nWhich next-hop will the router select for a packet destined to 98.54.156.50?",
+            "options": [
+                "119.137.7.138",
+                "136.143.234.74",
+                "It will drop the packet",
+                "84.250.87.136"
+            ],
+            "answer": [
+                "136.143.234.74"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 94 via 136.143.234.74.",
+            "id": "encor_q_1459"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 42.74.195.208/24:\n1. A OSPF route via 80.101.0.143 with an Administrative Distance of 92.\n2. A EIGRP route via 72.80.115.42 with an Administrative Distance of 102.\n3. A default route (0.0.0.0/0) via 25.36.240.31.\nWhich next-hop will the router select for a packet destined to 42.74.195.50?",
+            "options": [
+                "80.101.0.143",
+                "It will drop the packet",
+                "72.80.115.42",
+                "25.36.240.31"
+            ],
+            "answer": [
+                "80.101.0.143"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 92 via 80.101.0.143.",
+            "id": "encor_q_1460"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 35.3.47.210/24:\n1. A EIGRP route via 21.101.216.251 with an Administrative Distance of 91.\n2. A RIP route via 109.210.102.185 with an Administrative Distance of 101.\n3. A default route (0.0.0.0/0) via 80.20.199.27.\nWhich next-hop will the router select for a packet destined to 35.3.47.50?",
+            "options": [
+                "21.101.216.251",
+                "80.20.199.27",
+                "It will drop the packet",
+                "109.210.102.185"
+            ],
+            "answer": [
+                "21.101.216.251"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 91 via 21.101.216.251.",
+            "id": "encor_q_1461"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 201.15.83.30/24:\n1. A EIGRP route via 181.217.56.102 with an Administrative Distance of 91.\n2. A RIP route via 16.41.168.74 with an Administrative Distance of 92.\n3. A default route (0.0.0.0/0) via 138.47.127.236.\nWhich next-hop will the router select for a packet destined to 201.15.83.50?",
+            "options": [
+                "181.217.56.102",
+                "16.41.168.74",
+                "It will drop the packet",
+                "138.47.127.236"
+            ],
+            "answer": [
+                "181.217.56.102"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 91 via 181.217.56.102.",
+            "id": "encor_q_1462"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 151.208.143.40/24:\n1. A Static route via 119.126.88.203 with an Administrative Distance of 104.\n2. A RIP route via 199.206.7.126 with an Administrative Distance of 108.\n3. A default route (0.0.0.0/0) via 191.27.125.161.\nWhich next-hop will the router select for a packet destined to 151.208.143.50?",
+            "options": [
+                "It will drop the packet",
+                "199.206.7.126",
+                "191.27.125.161",
+                "119.126.88.203"
+            ],
+            "answer": [
+                "119.126.88.203"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 104 via 119.126.88.203.",
+            "id": "encor_q_1463"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 207.169.59.253/24:\n1. A Static route via 200.241.161.145 with an Administrative Distance of 93.\n2. A RIP route via 146.34.83.88 with an Administrative Distance of 97.\n3. A default route (0.0.0.0/0) via 102.68.12.105.\nWhich next-hop will the router select for a packet destined to 207.169.59.50?",
+            "options": [
+                "146.34.83.88",
+                "It will drop the packet",
+                "200.241.161.145",
+                "102.68.12.105"
+            ],
+            "answer": [
+                "200.241.161.145"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 93 via 200.241.161.145.",
+            "id": "encor_q_1464"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 185.94.85.164/24:\n1. A Static route via 81.54.94.81 with an Administrative Distance of 96.\n2. A OSPF route via 13.152.156.6 with an Administrative Distance of 102.\n3. A default route (0.0.0.0/0) via 143.184.246.89.\nWhich next-hop will the router select for a packet destined to 185.94.85.50?",
+            "options": [
+                "143.184.246.89",
+                "It will drop the packet",
+                "13.152.156.6",
+                "81.54.94.81"
+            ],
+            "answer": [
+                "81.54.94.81"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 96 via 81.54.94.81.",
+            "id": "encor_q_1465"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 103.230.172.23/24:\n1. A Static route via 112.96.126.189 with an Administrative Distance of 107.\n2. A OSPF route via 203.33.121.201 with an Administrative Distance of 110.\n3. A default route (0.0.0.0/0) via 78.59.169.50.\nWhich next-hop will the router select for a packet destined to 103.230.172.50?",
+            "options": [
+                "203.33.121.201",
+                "It will drop the packet",
+                "78.59.169.50",
+                "112.96.126.189"
+            ],
+            "answer": [
+                "112.96.126.189"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 107 via 112.96.126.189.",
+            "id": "encor_q_1466"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 122.170.200.88/24:\n1. A EIGRP route via 98.48.47.82 with an Administrative Distance of 109.\n2. A EIGRP route via 110.149.105.149 with an Administrative Distance of 113.\n3. A default route (0.0.0.0/0) via 85.169.102.1.\nWhich next-hop will the router select for a packet destined to 122.170.200.50?",
+            "options": [
+                "85.169.102.1",
+                "110.149.105.149",
+                "It will drop the packet",
+                "98.48.47.82"
+            ],
+            "answer": [
+                "98.48.47.82"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 109 via 98.48.47.82.",
+            "id": "encor_q_1467"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 167.131.64.234/24:\n1. A OSPF route via 84.225.102.67 with an Administrative Distance of 102.\n2. A OSPF route via 154.34.63.47 with an Administrative Distance of 105.\n3. A default route (0.0.0.0/0) via 136.191.218.172.\nWhich next-hop will the router select for a packet destined to 167.131.64.50?",
+            "options": [
+                "136.191.218.172",
+                "It will drop the packet",
+                "154.34.63.47",
+                "84.225.102.67"
+            ],
+            "answer": [
+                "84.225.102.67"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 102 via 84.225.102.67.",
+            "id": "encor_q_1468"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 123.231.186.139/24:\n1. A Static route via 33.114.40.10 with an Administrative Distance of 109.\n2. A OSPF route via 191.87.183.46 with an Administrative Distance of 113.\n3. A default route (0.0.0.0/0) via 33.59.240.128.\nWhich next-hop will the router select for a packet destined to 123.231.186.50?",
+            "options": [
+                "33.59.240.128",
+                "33.114.40.10",
+                "It will drop the packet",
+                "191.87.183.46"
+            ],
+            "answer": [
+                "33.114.40.10"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 109 via 33.114.40.10.",
+            "id": "encor_q_1469"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 155.100.231.64/24:\n1. A OSPF route via 92.163.149.77 with an Administrative Distance of 105.\n2. A OSPF route via 50.40.104.165 with an Administrative Distance of 112.\n3. A default route (0.0.0.0/0) via 182.154.182.169.\nWhich next-hop will the router select for a packet destined to 155.100.231.50?",
+            "options": [
+                "92.163.149.77",
+                "182.154.182.169",
+                "50.40.104.165",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "92.163.149.77"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 105 via 92.163.149.77.",
+            "id": "encor_q_1470"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 68.80.250.58/24:\n1. A EIGRP route via 152.246.142.26 with an Administrative Distance of 102.\n2. A RIP route via 20.41.239.176 with an Administrative Distance of 104.\n3. A default route (0.0.0.0/0) via 76.236.183.208.\nWhich next-hop will the router select for a packet destined to 68.80.250.50?",
+            "options": [
+                "152.246.142.26",
+                "It will drop the packet",
+                "20.41.239.176",
+                "76.236.183.208"
+            ],
+            "answer": [
+                "152.246.142.26"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 102 via 152.246.142.26.",
+            "id": "encor_q_1471"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 94.85.209.146/24:\n1. A Static route via 105.165.34.227 with an Administrative Distance of 106.\n2. A RIP route via 209.227.26.61 with an Administrative Distance of 113.\n3. A default route (0.0.0.0/0) via 77.249.225.248.\nWhich next-hop will the router select for a packet destined to 94.85.209.50?",
+            "options": [
+                "209.227.26.61",
+                "105.165.34.227",
+                "It will drop the packet",
+                "77.249.225.248"
+            ],
+            "answer": [
+                "105.165.34.227"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 106 via 105.165.34.227.",
+            "id": "encor_q_1472"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 25.33.169.190/24:\n1. A Static route via 98.242.114.37 with an Administrative Distance of 105.\n2. A EIGRP route via 84.222.80.91 with an Administrative Distance of 107.\n3. A default route (0.0.0.0/0) via 37.111.208.106.\nWhich next-hop will the router select for a packet destined to 25.33.169.50?",
+            "options": [
+                "It will drop the packet",
+                "98.242.114.37",
+                "37.111.208.106",
+                "84.222.80.91"
+            ],
+            "answer": [
+                "98.242.114.37"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 105 via 98.242.114.37.",
+            "id": "encor_q_1473"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 93.230.137.159/24:\n1. A OSPF route via 40.110.24.154 with an Administrative Distance of 102.\n2. A RIP route via 34.52.126.115 with an Administrative Distance of 104.\n3. A default route (0.0.0.0/0) via 131.148.63.183.\nWhich next-hop will the router select for a packet destined to 93.230.137.50?",
+            "options": [
+                "40.110.24.154",
+                "It will drop the packet",
+                "34.52.126.115",
+                "131.148.63.183"
+            ],
+            "answer": [
+                "40.110.24.154"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 102 via 40.110.24.154.",
+            "id": "encor_q_1474"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 95.40.241.234/24:\n1. A OSPF route via 29.125.38.219 with an Administrative Distance of 108.\n2. A RIP route via 115.231.245.37 with an Administrative Distance of 115.\n3. A default route (0.0.0.0/0) via 85.86.223.46.\nWhich next-hop will the router select for a packet destined to 95.40.241.50?",
+            "options": [
+                "29.125.38.219",
+                "It will drop the packet",
+                "115.231.245.37",
+                "85.86.223.46"
+            ],
+            "answer": [
+                "29.125.38.219"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 108 via 29.125.38.219.",
+            "id": "encor_q_1475"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 12.15.99.160/24:\n1. A OSPF route via 80.70.76.140 with an Administrative Distance of 93.\n2. A EIGRP route via 137.99.5.89 with an Administrative Distance of 101.\n3. A default route (0.0.0.0/0) via 154.226.140.166.\nWhich next-hop will the router select for a packet destined to 12.15.99.50?",
+            "options": [
+                "It will drop the packet",
+                "137.99.5.89",
+                "80.70.76.140",
+                "154.226.140.166"
+            ],
+            "answer": [
+                "80.70.76.140"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 93 via 80.70.76.140.",
+            "id": "encor_q_1476"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 46.33.236.76/24:\n1. A EIGRP route via 197.35.187.208 with an Administrative Distance of 109.\n2. A OSPF route via 52.210.188.171 with an Administrative Distance of 113.\n3. A default route (0.0.0.0/0) via 24.9.191.143.\nWhich next-hop will the router select for a packet destined to 46.33.236.50?",
+            "options": [
+                "197.35.187.208",
+                "52.210.188.171",
+                "24.9.191.143",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "197.35.187.208"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 109 via 197.35.187.208.",
+            "id": "encor_q_1477"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 162.244.101.90/24:\n1. A Static route via 119.51.112.99 with an Administrative Distance of 97.\n2. A EIGRP route via 209.36.252.133 with an Administrative Distance of 106.\n3. A default route (0.0.0.0/0) via 169.37.186.196.\nWhich next-hop will the router select for a packet destined to 162.244.101.50?",
+            "options": [
+                "119.51.112.99",
+                "169.37.186.196",
+                "209.36.252.133",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "119.51.112.99"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 97 via 119.51.112.99.",
+            "id": "encor_q_1478"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 170.188.80.28/24:\n1. A EIGRP route via 14.241.64.62 with an Administrative Distance of 110.\n2. A EIGRP route via 70.170.232.195 with an Administrative Distance of 120.\n3. A default route (0.0.0.0/0) via 172.78.174.70.\nWhich next-hop will the router select for a packet destined to 170.188.80.50?",
+            "options": [
+                "14.241.64.62",
+                "It will drop the packet",
+                "70.170.232.195",
+                "172.78.174.70"
+            ],
+            "answer": [
+                "14.241.64.62"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 14.241.64.62.",
+            "id": "encor_q_1479"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 106.71.10.169/24:\n1. A Static route via 132.181.201.67 with an Administrative Distance of 102.\n2. A OSPF route via 60.61.117.63 with an Administrative Distance of 112.\n3. A default route (0.0.0.0/0) via 181.101.130.243.\nWhich next-hop will the router select for a packet destined to 106.71.10.50?",
+            "options": [
+                "181.101.130.243",
+                "132.181.201.67",
+                "It will drop the packet",
+                "60.61.117.63"
+            ],
+            "answer": [
+                "132.181.201.67"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 102 via 132.181.201.67.",
+            "id": "encor_q_1480"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 179.235.227.115/24:\n1. A OSPF route via 181.157.35.156 with an Administrative Distance of 93.\n2. A EIGRP route via 86.0.172.188 with an Administrative Distance of 96.\n3. A default route (0.0.0.0/0) via 201.235.124.251.\nWhich next-hop will the router select for a packet destined to 179.235.227.50?",
+            "options": [
+                "It will drop the packet",
+                "201.235.124.251",
+                "181.157.35.156",
+                "86.0.172.188"
+            ],
+            "answer": [
+                "181.157.35.156"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 93 via 181.157.35.156.",
+            "id": "encor_q_1481"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 184.191.179.208/24:\n1. A OSPF route via 167.42.45.169 with an Administrative Distance of 92.\n2. A EIGRP route via 189.162.229.122 with an Administrative Distance of 99.\n3. A default route (0.0.0.0/0) via 182.191.216.129.\nWhich next-hop will the router select for a packet destined to 184.191.179.50?",
+            "options": [
+                "167.42.45.169",
+                "189.162.229.122",
+                "182.191.216.129",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "167.42.45.169"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 92 via 167.42.45.169.",
+            "id": "encor_q_1482"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 47.18.199.134/24:\n1. A EIGRP route via 95.205.99.7 with an Administrative Distance of 109.\n2. A RIP route via 107.102.77.40 with an Administrative Distance of 117.\n3. A default route (0.0.0.0/0) via 168.141.68.111.\nWhich next-hop will the router select for a packet destined to 47.18.199.50?",
+            "options": [
+                "95.205.99.7",
+                "It will drop the packet",
+                "107.102.77.40",
+                "168.141.68.111"
+            ],
+            "answer": [
+                "95.205.99.7"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 109 via 95.205.99.7.",
+            "id": "encor_q_1483"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 169.104.67.187/24:\n1. A Static route via 163.44.41.61 with an Administrative Distance of 103.\n2. A OSPF route via 51.241.74.33 with an Administrative Distance of 108.\n3. A default route (0.0.0.0/0) via 212.44.194.243.\nWhich next-hop will the router select for a packet destined to 169.104.67.50?",
+            "options": [
+                "212.44.194.243",
+                "It will drop the packet",
+                "163.44.41.61",
+                "51.241.74.33"
+            ],
+            "answer": [
+                "163.44.41.61"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 103 via 163.44.41.61.",
+            "id": "encor_q_1484"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 129.170.231.128/24:\n1. A Static route via 119.121.232.8 with an Administrative Distance of 97.\n2. A RIP route via 144.26.87.148 with an Administrative Distance of 106.\n3. A default route (0.0.0.0/0) via 14.128.108.208.\nWhich next-hop will the router select for a packet destined to 129.170.231.50?",
+            "options": [
+                "14.128.108.208",
+                "144.26.87.148",
+                "119.121.232.8",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "119.121.232.8"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 97 via 119.121.232.8.",
+            "id": "encor_q_1485"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 159.24.215.138/24:\n1. A EIGRP route via 89.118.177.184 with an Administrative Distance of 103.\n2. A RIP route via 136.204.231.108 with an Administrative Distance of 104.\n3. A default route (0.0.0.0/0) via 218.221.233.4.\nWhich next-hop will the router select for a packet destined to 159.24.215.50?",
+            "options": [
+                "218.221.233.4",
+                "136.204.231.108",
+                "It will drop the packet",
+                "89.118.177.184"
+            ],
+            "answer": [
+                "89.118.177.184"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 103 via 89.118.177.184.",
+            "id": "encor_q_1486"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 182.95.145.98/24:\n1. A Static route via 153.29.25.2 with an Administrative Distance of 90.\n2. A OSPF route via 61.193.91.229 with an Administrative Distance of 94.\n3. A default route (0.0.0.0/0) via 209.188.124.54.\nWhich next-hop will the router select for a packet destined to 182.95.145.50?",
+            "options": [
+                "It will drop the packet",
+                "209.188.124.54",
+                "153.29.25.2",
+                "61.193.91.229"
+            ],
+            "answer": [
+                "153.29.25.2"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 90 via 153.29.25.2.",
+            "id": "encor_q_1487"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 117.79.65.125/24:\n1. A EIGRP route via 184.253.108.39 with an Administrative Distance of 94.\n2. A RIP route via 135.180.227.120 with an Administrative Distance of 97.\n3. A default route (0.0.0.0/0) via 114.217.225.43.\nWhich next-hop will the router select for a packet destined to 117.79.65.50?",
+            "options": [
+                "It will drop the packet",
+                "184.253.108.39",
+                "114.217.225.43",
+                "135.180.227.120"
+            ],
+            "answer": [
+                "184.253.108.39"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 94 via 184.253.108.39.",
+            "id": "encor_q_1488"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 176.83.127.32/24:\n1. A EIGRP route via 38.149.176.120 with an Administrative Distance of 107.\n2. A RIP route via 23.153.61.167 with an Administrative Distance of 116.\n3. A default route (0.0.0.0/0) via 183.111.110.155.\nWhich next-hop will the router select for a packet destined to 176.83.127.50?",
+            "options": [
+                "It will drop the packet",
+                "23.153.61.167",
+                "183.111.110.155",
+                "38.149.176.120"
+            ],
+            "answer": [
+                "38.149.176.120"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 107 via 38.149.176.120.",
+            "id": "encor_q_1489"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 209.158.237.230/24:\n1. A Static route via 55.0.208.44 with an Administrative Distance of 100.\n2. A EIGRP route via 107.1.70.227 with an Administrative Distance of 108.\n3. A default route (0.0.0.0/0) via 18.134.64.177.\nWhich next-hop will the router select for a packet destined to 209.158.237.50?",
+            "options": [
+                "55.0.208.44",
+                "It will drop the packet",
+                "18.134.64.177",
+                "107.1.70.227"
+            ],
+            "answer": [
+                "55.0.208.44"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 100 via 55.0.208.44.",
+            "id": "encor_q_1490"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 170.170.65.80/24:\n1. A OSPF route via 125.203.46.212 with an Administrative Distance of 108.\n2. A RIP route via 207.78.190.143 with an Administrative Distance of 113.\n3. A default route (0.0.0.0/0) via 87.187.82.93.\nWhich next-hop will the router select for a packet destined to 170.170.65.50?",
+            "options": [
+                "207.78.190.143",
+                "125.203.46.212",
+                "87.187.82.93",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "125.203.46.212"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 108 via 125.203.46.212.",
+            "id": "encor_q_1491"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 212.163.183.87/24:\n1. A OSPF route via 17.10.163.239 with an Administrative Distance of 106.\n2. A EIGRP route via 130.59.8.134 with an Administrative Distance of 112.\n3. A default route (0.0.0.0/0) via 203.249.49.211.\nWhich next-hop will the router select for a packet destined to 212.163.183.50?",
+            "options": [
+                "203.249.49.211",
+                "17.10.163.239",
+                "It will drop the packet",
+                "130.59.8.134"
+            ],
+            "answer": [
+                "17.10.163.239"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 106 via 17.10.163.239.",
+            "id": "encor_q_1492"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 201.143.84.253/24:\n1. A Static route via 95.15.196.42 with an Administrative Distance of 109.\n2. A OSPF route via 64.1.19.133 with an Administrative Distance of 112.\n3. A default route (0.0.0.0/0) via 218.41.253.125.\nWhich next-hop will the router select for a packet destined to 201.143.84.50?",
+            "options": [
+                "It will drop the packet",
+                "95.15.196.42",
+                "64.1.19.133",
+                "218.41.253.125"
+            ],
+            "answer": [
+                "95.15.196.42"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 109 via 95.15.196.42.",
+            "id": "encor_q_1493"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 103.31.70.21/24:\n1. A OSPF route via 174.1.180.27 with an Administrative Distance of 109.\n2. A OSPF route via 112.230.84.134 with an Administrative Distance of 116.\n3. A default route (0.0.0.0/0) via 80.46.213.170.\nWhich next-hop will the router select for a packet destined to 103.31.70.50?",
+            "options": [
+                "It will drop the packet",
+                "112.230.84.134",
+                "80.46.213.170",
+                "174.1.180.27"
+            ],
+            "answer": [
+                "174.1.180.27"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 109 via 174.1.180.27.",
+            "id": "encor_q_1494"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 44.233.246.253/24:\n1. A OSPF route via 47.231.34.95 with an Administrative Distance of 110.\n2. A RIP route via 180.243.197.224 with an Administrative Distance of 118.\n3. A default route (0.0.0.0/0) via 36.156.152.43.\nWhich next-hop will the router select for a packet destined to 44.233.246.50?",
+            "options": [
+                "36.156.152.43",
+                "180.243.197.224",
+                "47.231.34.95",
+                "It will drop the packet"
+            ],
+            "answer": [
+                "47.231.34.95"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 110 via 47.231.34.95.",
+            "id": "encor_q_1495"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 83.215.210.180/24:\n1. A EIGRP route via 129.172.98.138 with an Administrative Distance of 90.\n2. A EIGRP route via 172.212.123.102 with an Administrative Distance of 94.\n3. A default route (0.0.0.0/0) via 202.206.35.27.\nWhich next-hop will the router select for a packet destined to 83.215.210.50?",
+            "options": [
+                "172.212.123.102",
+                "129.172.98.138",
+                "It will drop the packet",
+                "202.206.35.27"
+            ],
+            "answer": [
+                "129.172.98.138"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 90 via 129.172.98.138.",
+            "id": "encor_q_1496"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 125.67.199.253/24:\n1. A Static route via 157.161.85.223 with an Administrative Distance of 90.\n2. A OSPF route via 65.85.203.236 with an Administrative Distance of 99.\n3. A default route (0.0.0.0/0) via 132.233.155.64.\nWhich next-hop will the router select for a packet destined to 125.67.199.50?",
+            "options": [
+                "65.85.203.236",
+                "It will drop the packet",
+                "132.233.155.64",
+                "157.161.85.223"
+            ],
+            "answer": [
+                "157.161.85.223"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 90 via 157.161.85.223.",
+            "id": "encor_q_1497"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 177.19.251.132/24:\n1. A EIGRP route via 193.57.40.32 with an Administrative Distance of 100.\n2. A EIGRP route via 42.34.86.170 with an Administrative Distance of 101.\n3. A default route (0.0.0.0/0) via 92.84.130.30.\nWhich next-hop will the router select for a packet destined to 177.19.251.50?",
+            "options": [
+                "It will drop the packet",
+                "42.34.86.170",
+                "193.57.40.32",
+                "92.84.130.30"
+            ],
+            "answer": [
+                "193.57.40.32"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 100 via 193.57.40.32.",
+            "id": "encor_q_1498"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A Cisco router has three routes to the destination network 215.68.204.46/24:\n1. A Static route via 210.56.106.149 with an Administrative Distance of 102.\n2. A OSPF route via 14.220.73.242 with an Administrative Distance of 103.\n3. A default route (0.0.0.0/0) via 213.251.91.130.\nWhich next-hop will the router select for a packet destined to 215.68.204.50?",
+            "options": [
+                "213.251.91.130",
+                "It will drop the packet",
+                "210.56.106.149",
+                "14.220.73.242"
+            ],
+            "answer": [
+                "210.56.106.149"
+            ],
+            "explanation": "The router first checks for longest prefix match. Both routes 1 and 2 are /24, which is more specific than the default route. Between the two, the router prefers the lowest Administrative Distance (AD), which is 102 via 210.56.106.149.",
+            "id": "encor_q_1499"
+        }
+    ]
 };

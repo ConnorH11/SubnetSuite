@@ -213,8 +213,19 @@ export default {
         }
 
         filteredQs = filteredQs.sort(() => Math.random() - 0.5);
+        
+        // Deduplicate to ensure no repeating questions
+        const uniqueQs = [];
+        const seenTexts = new Set();
+        for (const q of filteredQs) {
+            if (!seenTexts.has(q.text)) {
+                seenTexts.add(q.text);
+                uniqueQs.push(q);
+            }
+        }
+        
         const count = parseInt(document.getElementById('pt-q-count').value) || 10;
-        testQuestions = filteredQs.slice(0, count);
+        testQuestions = uniqueQs.slice(0, count);
         
         gradingMode = document.getElementById('pt-mode-select').value;
         userAnswers = {};
