@@ -173,7 +173,7 @@ export class LabUI {
             });
             window.addEventListener('mouseup', () => isResizing = false);
 
-            this.container.appendChild(this.taskPanel);
+            document.body.appendChild(this.taskPanel);
         }
 
         let toggleBtn = document.getElementById('btn-toggle-tasks');

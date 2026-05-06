@@ -31,6 +31,13 @@ export class LinuxCLI {
             SHELL: '/bin/bash',
             PATH: '/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin',
         };
+        // Package management state
+        if (!this.node._installedPackages) {
+            this.node._installedPackages = new Set(['bash', 'coreutils', 'net-tools', 'iproute2', 'openssh-server', 'curl', 'wget', 'iputils-ping', 'dnsutils', 'traceroute', 'nano', 'vim-tiny']);
+        }
+        if (!this.node._services) {
+            this.node._services = { ssh: 'active', networking: 'active', cron: 'active' };
+        }
     }
 
     getPrompt() {
@@ -49,7 +56,8 @@ export class LinuxCLI {
         const cmds = ['ping', 'traceroute', 'ifconfig', 'ip', 'route', 'arp', 'netstat', 'nslookup', 'dig', 'curl', 'wget',
                        'ssh', 'telnet', 'ftp', 'cat', 'ls', 'cd', 'pwd', 'mkdir', 'rm', 'echo', 'touch', 'clear', 'man',
                        'hostname', 'whoami', 'uname', 'date', 'uptime', 'free', 'df', 'ps', 'kill', 'history', 'export',
-                       'iptables', 'tcpdump', 'nmap', 'ss', 'grep', 'find', 'chmod', 'chown', 'nano', 'vi', 'exit', 'help'];
+                       'iptables', 'tcpdump', 'nmap', 'ss', 'grep', 'find', 'chmod', 'chown', 'nano', 'vi',
+                       'sudo', 'apt', 'apt-get', 'dpkg', 'systemctl', 'service', 'useradd', 'passwd', 'exit', 'help'];
         return cmds.filter(c => c.startsWith(partial.toLowerCase()));
     }
 
@@ -71,6 +79,13 @@ export class LinuxCLI {
         const cmd = args[0].toLowerCase();
 
         switch (cmd) {
+            case 'sudo': return this._sudo(args);
+            case 'apt': case 'apt-get': return this._apt(args);
+            case 'dpkg': return this._dpkg(args);
+            case 'systemctl': return this._systemctl(args);
+            case 'service': return this._service(args);
+            case 'useradd': return args[1] ? `useradd: user '${args[1]}' created` : 'Usage: useradd <username>';
+            case 'passwd': return args[1] ? `passwd: password for '${args[1]}' updated successfully` : 'Usage: passwd <username>';
             case 'ping': return this._ping(args);
             case 'traceroute': case 'tracert': return this._traceroute(args);
             case 'ifconfig': return this._ifconfig(args);
@@ -89,7 +104,7 @@ export class LinuxCLI {
             case 'uptime': return ` ${new Date().toLocaleTimeString()} up ${Math.floor(Math.random() * 24)}:${String(Math.floor(Math.random() * 60)).padStart(2, '0')}, 1 user, load average: 0.00, 0.01, 0.05`;
             case 'free': return '              total        used        free      shared  buff/cache   available\nMem:        8167740     1523456     4891284      167892     1753000     6184000\nSwap:       2097148           0     2097148';
             case 'df': return 'Filesystem     1K-blocks    Used Available Use% Mounted on\n/dev/sda1       51475068 4923456  43912820  11% /\ntmpfs            4083868       0   4083868   0% /dev/shm';
-            case 'ps': return '  PID TTY          TIME CMD\n    1 ?        00:00:01 systemd\n  234 tty1     00:00:00 bash\n  567 tty1     00:00:00 ps';
+            case 'ps': return args[1] === 'aux' ? this._psAux() : '  PID TTY          TIME CMD\n    1 ?        00:00:01 systemd\n  234 tty1     00:00:00 bash\n  567 tty1     00:00:00 ps';
             case 'cat': return this._cat(args);
             case 'ls': return this._ls(args);
             case 'cd': return this._cd(args);
@@ -107,7 +122,7 @@ export class LinuxCLI {
             case 'nmap': return args[1] ? `Starting Nmap scan of ${args[1]}...\n22/tcp   open  ssh\n80/tcp   open  http\n443/tcp  open  https\nNmap done: 1 IP address (1 host up) scanned in 0.03 seconds` : 'Usage: nmap <target>';
             case 'man': return args[1] ? `Manual page for ${args[1]}\n\nNAME\n    ${args[1]} - simulated command\n\nDESCRIPTION\n    This is a simulated environment. Type the command for usage info.` : 'What manual page do you want?';
             case 'exit': case 'logout': return '__EXIT__';
-            case 'help': return 'Available commands:\n  ping, traceroute, ifconfig, ip, route, arp, netstat, nslookup, dig,\n  curl, wget, ssh, telnet, cat, ls, cd, pwd, mkdir, rm, echo, touch,\n  hostname, whoami, uname, date, uptime, free, df, ps, history,\n  iptables, tcpdump, nmap, clear, exit, help';
+            case 'help': return 'Available commands:\n  ping, traceroute, ifconfig, ip, route, arp, netstat, nslookup, dig,\n  curl, wget, ssh, telnet, cat, ls, cd, pwd, mkdir, rm, echo, touch,\n  hostname, whoami, uname, date, uptime, free, df, ps, history,\n  sudo, apt, dpkg, systemctl, service, useradd, passwd,\n  iptables, tcpdump, nmap, clear, exit, help';
             default: return `bash: ${cmd}: command not found`;
         }
     }
@@ -355,6 +370,181 @@ export class LinuxCLI {
         return 'Usage: iptables [-L]';
     }
 
+    _sudo(args) {
+        if (args.length < 2) return 'usage: sudo <command>';
+        // sudo just re-executes the rest of the command as-is
+        const subCommand = args.slice(1).join(' ');
+        return this.execute(subCommand);
+    }
+
+    _apt(args) {
+        if (args.length < 2) return 'Usage: apt <install|remove|update|upgrade|list|search|show> [package]';
+        const sub = args[1].toLowerCase();
+        const pkg = args[2];
+
+        const AVAILABLE_PACKAGES = {
+            'python3': { ver: '3.10.12-1', size: '5,124 kB', desc: 'Interactive high-level object-oriented language' },
+            'nginx': { ver: '1.18.0-6', size: '2,048 kB', desc: 'Small, powerful, scalable web/reverse proxy server' },
+            'apache2': { ver: '2.4.52-1', size: '3,456 kB', desc: 'Apache HTTP Server' },
+            'docker.io': { ver: '20.10.21-0', size: '48,128 kB', desc: 'Linux container runtime' },
+            'nmap': { ver: '7.93+dfsg-1', size: '4,256 kB', desc: 'The Network Mapper' },
+            'git': { ver: '2.34.1-1', size: '3,840 kB', desc: 'Fast, scalable, distributed revision control system' },
+            'htop': { ver: '3.2.1-1', size: '256 kB', desc: 'Interactive process viewer' },
+            'vim': { ver: '8.2.3995-1', size: '1,536 kB', desc: 'Vi IMproved - enhanced vi editor' },
+            'tmux': { ver: '3.2a-4', size: '512 kB', desc: 'Terminal multiplexer' },
+            'mysql-server': { ver: '8.0.32-0', size: '24,576 kB', desc: 'MySQL database server' },
+            'postgresql': { ver: '14+238', size: '18,432 kB', desc: 'Object-relational SQL database' },
+            'nodejs': { ver: '18.13.0+dfsg1-1', size: '12,288 kB', desc: 'Event-based server-side javascript engine' },
+            'openssh-client': { ver: '1:8.9p1-3', size: '1,024 kB', desc: 'Secure shell (SSH) client' },
+            'iptables': { ver: '1.8.7-1', size: '384 kB', desc: 'Administration tools for packet filtering' },
+            'tcpdump': { ver: '4.99.1-3', size: '512 kB', desc: 'Command-line network traffic analyzer' },
+            'net-tools': { ver: '1.60+git-5', size: '384 kB', desc: 'NET-3 networking toolkit' },
+            'snmpd': { ver: '5.9.1+dfsg-1', size: '768 kB', desc: 'SNMP daemon for network management' },
+            'fail2ban': { ver: '0.11.2-6', size: '1,280 kB', desc: 'Ban hosts that cause multiple auth errors' },
+            'ufw': { ver: '0.36.1-4', size: '384 kB', desc: 'Program for managing a firewall' },
+            'wireshark': { ver: '3.6.12-1', size: '6,144 kB', desc: 'Network traffic analyzer (CLI tools)' },
+        };
+
+        switch (sub) {
+            case 'update':
+                return `Hit:1 http://archive.ubuntu.com/ubuntu jammy InRelease\nGet:2 http://archive.ubuntu.com/ubuntu jammy-updates InRelease [119 kB]\nGet:3 http://security.ubuntu.com/ubuntu jammy-security InRelease [110 kB]\nGet:4 http://archive.ubuntu.com/ubuntu jammy-backports InRelease [108 kB]\nFetched 337 kB in 2s (169 kB/s)\nReading package lists... Done\nBuilding dependency tree... Done\nReading state information... Done\n${Object.keys(AVAILABLE_PACKAGES).length} packages can be upgraded. Run 'apt upgrade' to see them.`;
+
+            case 'upgrade':
+                return 'Reading package lists... Done\nBuilding dependency tree... Done\nCalculating upgrade... Done\n0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.';
+
+            case 'install':
+                if (!pkg) return 'E: You must specify at least one package to install.';
+                if (this.node._installedPackages.has(pkg)) {
+                    return `Reading package lists... Done\nBuilding dependency tree... Done\n${pkg} is already the newest version.\n0 upgraded, 0 newly installed, 0 to remove and 0 not upgraded.`;
+                }
+                if (!AVAILABLE_PACKAGES[pkg]) {
+                    return `Reading package lists... Done\nBuilding dependency tree... Done\nE: Unable to locate package ${pkg}`;
+                }
+                const pkgInfo = AVAILABLE_PACKAGES[pkg];
+                this.node._installedPackages.add(pkg);
+                return `Reading package lists... Done\nBuilding dependency tree... Done\nThe following NEW packages will be installed:\n  ${pkg}\n0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.\nNeed to get ${pkgInfo.size} of archives.\nAfter this operation, ${parseInt(pkgInfo.size) * 3} kB of additional disk space will be used.\nGet:1 http://archive.ubuntu.com/ubuntu jammy/main amd64 ${pkg} amd64 ${pkgInfo.ver} [${pkgInfo.size}]\nFetched ${pkgInfo.size} in 1s (${parseInt(pkgInfo.size)} kB/s)\nSelecting previously unselected package ${pkg}.\n(Reading database ... 64218 files and directories currently installed.)\nPreparing to unpack .../${pkg}_${pkgInfo.ver}_amd64.deb ...\nUnpacking ${pkg} (${pkgInfo.ver}) ...\nSetting up ${pkg} (${pkgInfo.ver}) ...\nProcessing triggers for man-db (2.10.2-1) ...`;
+
+            case 'remove': case 'purge':
+                if (!pkg) return 'E: You must specify at least one package to remove.';
+                if (!this.node._installedPackages.has(pkg)) {
+                    return `Package '${pkg}' is not installed, so not removed`;
+                }
+                this.node._installedPackages.delete(pkg);
+                return `Reading package lists... Done\nBuilding dependency tree... Done\nThe following packages will be REMOVED:\n  ${pkg}\n0 upgraded, 0 newly installed, 1 to remove and 0 not upgraded.\n(Reading database ... 64218 files and directories currently installed.)\nRemoving ${pkg} ...\nProcessing triggers for man-db (2.10.2-1) ...`;
+
+            case 'list':
+                if (args[2] === '--installed') {
+                    return Array.from(this.node._installedPackages).sort().map(p => {
+                        const info = AVAILABLE_PACKAGES[p];
+                        return `${p}/${info ? info.ver : 'now'} [installed]`;
+                    }).join('\n');
+                }
+                return Object.entries(AVAILABLE_PACKAGES).map(([name, info]) => {
+                    const installed = this.node._installedPackages.has(name);
+                    return `${name}/${info.ver} amd64 ${installed ? '[installed]' : ''}`;
+                }).join('\n');
+
+            case 'search':
+                if (!pkg) return 'E: You must give at least one search pattern';
+                const results = Object.entries(AVAILABLE_PACKAGES).filter(([name, info]) =>
+                    name.includes(pkg.toLowerCase()) || info.desc.toLowerCase().includes(pkg.toLowerCase())
+                );
+                return results.length > 0
+                    ? results.map(([name, info]) => `${name} - ${info.desc}`).join('\n')
+                    : `No packages found matching '${pkg}'.`;
+
+            case 'show':
+                if (!pkg) return 'E: You must specify a package name';
+                const si = AVAILABLE_PACKAGES[pkg];
+                if (!si) return `E: No packages found for ${pkg}`;
+                return `Package: ${pkg}\nVersion: ${si.ver}\nPriority: optional\nSection: net\nInstalled-Size: ${parseInt(si.size) * 3} kB\nMaintainer: Ubuntu Developers\nArchitecture: amd64\nDescription: ${si.desc}\nHomepage: https://packages.ubuntu.com/${pkg}`;
+
+            default:
+                return 'Usage: apt <install|remove|update|upgrade|list|search|show> [package]';
+        }
+    }
+
+    _dpkg(args) {
+        if (args.includes('-l') || args.includes('--list')) {
+            let out = 'Desired=Unknown/Install/Remove/Purge/Hold\n| Status=Not/Inst/Conf-files/Unpacked/halF-conf/Half-inst/trig-aWait/Trig-pend\n||/ Name                    Version          Architecture Description\n+++-=======================-================-============-==================================\n';
+            for (const pkg of Array.from(this.node._installedPackages).sort()) {
+                out += `ii  ${pkg.padEnd(24)}0.0.0            amd64        Installed package\n`;
+            }
+            return out;
+        }
+        return 'Usage: dpkg [-l | --list]';
+    }
+
+    _systemctl(args) {
+        if (args.length < 2) return 'Usage: systemctl <start|stop|restart|status|enable|disable|list-units> [service]';
+        const action = args[1].toLowerCase();
+        const svcName = args[2]?.replace('.service', '');
+
+        if (action === 'list-units' || action === 'list') {
+            let out = 'UNIT                        LOAD   ACTIVE SUB     DESCRIPTION\n';
+            for (const [name, status] of Object.entries(this.node._services)) {
+                const sub = status === 'active' ? 'running' : 'dead';
+                out += `${(name + '.service').padEnd(28)}loaded ${status.padEnd(7)}${sub.padEnd(8)}${name} service\n`;
+            }
+            out += `\n${Object.keys(this.node._services).length} loaded units listed.`;
+            return out;
+        }
+
+        if (!svcName) return `Usage: systemctl ${action} <service>`;
+
+        switch (action) {
+            case 'status':
+                const st = this.node._services[svcName];
+                if (!st) return `Unit ${svcName}.service could not be found.`;
+                const dot = st === 'active' ? '●' : '○';
+                return `${dot} ${svcName}.service - ${svcName} daemon\n     Loaded: loaded (/lib/systemd/system/${svcName}.service; enabled)\n     Active: ${st} (${st === 'active' ? 'running' : 'dead'}) since ${new Date().toUTCString()}\n   Main PID: ${Math.floor(Math.random() * 9000) + 1000} (${svcName})\n      Tasks: ${Math.floor(Math.random() * 8) + 1}\n     Memory: ${Math.floor(Math.random() * 128) + 4}.${Math.floor(Math.random() * 9)}M\n        CPU: ${Math.floor(Math.random() * 500)}ms`;
+            case 'start':
+                this.node._services[svcName] = 'active';
+                return '';
+            case 'stop':
+                if (this.node._services[svcName]) this.node._services[svcName] = 'inactive';
+                else return `Failed to stop ${svcName}.service: Unit ${svcName}.service not found.`;
+                return '';
+            case 'restart':
+                this.node._services[svcName] = 'active';
+                return '';
+            case 'enable':
+                if (!this.node._services[svcName]) this.node._services[svcName] = 'inactive';
+                return `Created symlink /etc/systemd/system/multi-user.target.wants/${svcName}.service → /lib/systemd/system/${svcName}.service.`;
+            case 'disable':
+                return `Removed /etc/systemd/system/multi-user.target.wants/${svcName}.service.`;
+            default:
+                return `Unknown command: ${action}`;
+        }
+    }
+
+    _service(args) {
+        if (args.length < 3) return 'Usage: service <name> <start|stop|restart|status>';
+        const svcName = args[1];
+        const action = args[2].toLowerCase();
+        // Delegate to systemctl
+        return this._systemctl(['systemctl', action, svcName]);
+    }
+
+    _psAux() {
+        const procs = [
+            { user: 'root', pid: 1, cpu: '0.0', mem: '0.1', vsz: 167936, rss: 11584, cmd: '/sbin/init' },
+            { user: 'root', pid: 2, cpu: '0.0', mem: '0.0', vsz: 0, rss: 0, cmd: '[kthreadd]' },
+            { user: 'root', pid: 234, cpu: '0.0', mem: '0.1', vsz: 21448, rss: 5312, cmd: '/lib/systemd/systemd-journald' },
+            { user: 'root', pid: 267, cpu: '0.0', mem: '0.1', vsz: 21944, rss: 5848, cmd: '/lib/systemd/systemd-udevd' },
+            { user: 'systemd+', pid: 312, cpu: '0.0', mem: '0.1', vsz: 89968, rss: 6196, cmd: '/lib/systemd/systemd-resolved' },
+            { user: 'root', pid: 480, cpu: '0.0', mem: '0.2', vsz: 15420, rss: 7360, cmd: 'sshd: /usr/sbin/sshd -D' },
+            { user: 'root', pid: 567, cpu: '0.0', mem: '0.0', vsz: 6112, rss: 2216, cmd: '/usr/sbin/cron -f' },
+            { user: 'root', pid: Math.floor(Math.random() * 9000) + 1000, cpu: '0.0', mem: '0.2', vsz: 8940, rss: 5372, cmd: '-bash' },
+            { user: 'root', pid: Math.floor(Math.random() * 9000) + 1000, cpu: '0.0', mem: '0.1', vsz: 10656, rss: 3340, cmd: 'ps aux' },
+        ];
+        let out = 'USER       PID %CPU %MEM    VSZ   RSS TTY      STAT START   TIME COMMAND\n';
+        for (const p of procs) {
+            out += `${p.user.padEnd(10)}${String(p.pid).padEnd(6)}${p.cpu.padEnd(5)}${p.mem.padEnd(5)}${String(p.vsz).padEnd(8)}${String(p.rss).padEnd(6)}?        Ss   ${new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'})}   0:00 ${p.cmd}\n`;
+        }
+        return out;
+    }
+
     _pipeFilter(input, filterCmd) {
         const parts = filterCmd.split(/\s+/);
         if (parts[0] === 'grep' && parts[1]) {
@@ -574,7 +764,7 @@ export class WindowsCLI {
     _systeminfo() {
         const iface = Object.values(this.node.interfaces)[0] || {};
         return `\nHost Name:                 ${this.hostname}` +
-            `\nOS Name:                   Microsoft Windows 10 Pro` +
+            `\nOS Name:                   Microsoft Windows` +
             `\nOS Version:                10.0.19045 N/A Build 19045` +
             `\nOS Manufacturer:           Microsoft Corporation` +
             `\nSystem Type:               x64-based PC` +
@@ -694,7 +884,7 @@ export class WindowsCLI {
     _wmic(args) {
         if (args.length < 2) return 'Usage: wmic [os|cpu|memorychip|diskdrive|nic] get [properties]';
         const sub = args[1].toLowerCase();
-        if (sub === 'os') return `Caption                  Version       BuildNumber  OSArchitecture\nMicrosoft Windows 10 Pro 10.0.19045    19045        64-bit`;
+        if (sub === 'os') return `Caption                  Version       BuildNumber  OSArchitecture\nMicrosoft Windows        10.0.19045    19045        64-bit`;
         if (sub === 'cpu') return `Name                                      NumberOfCores  MaxClockSpeed\nIntel(R) Core(TM) i7-8550U @ 1.80GHz     4              1800`;
         if (sub === 'memorychip') return `Capacity         Speed  Manufacturer\n8589934592       2400   Samsung`;
         if (sub === 'diskdrive') return `Model                    Size\nSamsung SSD 860 EVO      256060514304`;

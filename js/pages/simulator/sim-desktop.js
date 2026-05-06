@@ -58,17 +58,7 @@ export class SimDesktop {
                             </div>
                         `).join('')}
                     </div>
-                    ${isLinux ? `
-                        <div class="wm-wallpaper-watermark">
-                            <i class="bi bi-ubuntu"></i>
-                            <span>Ubuntu 22.04 LTS</span>
-                        </div>
-                    ` : `
-                        <div class="wm-wallpaper-watermark">
-                            <i class="bi bi-windows"></i>
-                            <span>Windows 10 Pro</span>
-                        </div>
-                    `}
+
                 </div>
                 <div class="wm-taskbar ${isLinux ? 'wm-taskbar-linux' : 'wm-taskbar-windows'}">
                     <button class="wm-start-btn" title="Applications">
@@ -141,6 +131,7 @@ export class SimDesktop {
             { id: 'sysinfo', icon: 'bi-info-circle-fill', label: 'System Info' },
             { id: 'netmon', icon: 'bi-activity', label: 'Net Monitor' },
             { id: 'pktgen', icon: 'bi-send-fill', label: 'Packet Gen' },
+            { id: 'appstore', icon: 'bi-bag-fill', label: isLinux ? 'Software Center' : 'Store' },
         ];
 
         if (isServer) {
@@ -170,6 +161,7 @@ export class SimDesktop {
             'logviewer': () => this._openLogViewer(),
             'dhcpserver': () => this._openDHCPServer(),
             'dnsserver': () => this._openDNSServer(),
+            'appstore': () => this._openAppStore(),
         };
         const launcher = appMap[appId];
         if (launcher) launcher();
@@ -193,6 +185,7 @@ export class SimDesktop {
             { id: 'pktgen', icon: 'bi-send-fill', label: 'Packet Generator', action: () => this._openPacketGen() },
             { id: 'netmon', icon: 'bi-activity', label: 'Network Monitor', action: () => this._openNetMonitor() },
             { id: 'logviewer', icon: 'bi-journal-text', label: 'Log Viewer', action: () => this._openLogViewer() },
+            { id: 'appstore', icon: 'bi-bag-fill', label: 'Software Center', action: () => this._openAppStore() },
         ];
 
         if (isServer) {
@@ -574,6 +567,7 @@ export class SimDesktop {
                         <div class="webui-info-row"><span>Model</span><span>${device.model}</span></div>
                         <div class="webui-info-row"><span>Vendor</span><span>${device.vendor}</span></div>
                         <div class="webui-info-row"><span>Type</span><span>${device.type}</span></div>
+                        <div class="webui-info-row"><span>OS</span><span>${device.os === 'linux' ? 'Linux' : 'Windows'}</span></div>
                         <div class="webui-info-row"><span>Interfaces</span><span>${ifaceCount}</span></div>
                         <div class="webui-info-row"><span>Uptime</span><span>${Math.floor(Math.random()*24)}h ${Math.floor(Math.random()*60)}m</span></div>
                     </div>
@@ -972,6 +966,120 @@ export class SimDesktop {
             });
         };
         renderRecords();
+    }
+
+    // ═══════════════════════════════════════════════
+    // ═══════════════════════════════════════════════
+    _openAppStore() {
+        const id = this._appId('appstore');
+        const isLinux = this.node.os === 'linux';
+        const content = this.wm.createWindow(id, isLinux ? 'Software Center' : 'App Store', 'bi-bag-fill', { width: 640, height: 500 });
+
+        const STORE_APPS = [
+            { id: 'python3', name: 'Python 3', icon: 'bi-filetype-py', category: 'Development', desc: 'Interactive high-level programming language', size: '5.1 MB' },
+            { id: 'nodejs', name: 'Node.js', icon: 'bi-filetype-js', category: 'Development', desc: 'Event-based server-side JavaScript engine', size: '12.3 MB' },
+            { id: 'git', name: 'Git', icon: 'bi-git', category: 'Development', desc: 'Distributed version control system', size: '3.8 MB' },
+            { id: 'vim', name: 'Vim', icon: 'bi-braces', category: 'Development', desc: 'Advanced text editor', size: '1.5 MB' },
+            { id: 'nginx', name: 'Nginx', icon: 'bi-hdd-network-fill', category: 'Networking', desc: 'High-performance web server', size: '2.0 MB' },
+            { id: 'apache2', name: 'Apache2', icon: 'bi-hdd-network-fill', category: 'Networking', desc: 'Apache HTTP web server', size: '3.5 MB' },
+            { id: 'nmap', name: 'Nmap', icon: 'bi-radar', category: 'Networking', desc: 'Network exploration and security scanner', size: '4.3 MB' },
+            { id: 'wireshark', name: 'Wireshark CLI', icon: 'bi-reception-4', category: 'Networking', desc: 'Network traffic analyzer (CLI tools)', size: '6.1 MB' },
+            { id: 'snmpd', name: 'SNMP Daemon', icon: 'bi-broadcast-pin', category: 'Networking', desc: 'SNMP agent for monitoring', size: '768 KB' },
+            { id: 'docker.io', name: 'Docker', icon: 'bi-box-seam-fill', category: 'System', desc: 'Linux container runtime', size: '48.1 MB' },
+            { id: 'htop', name: 'htop', icon: 'bi-speedometer2', category: 'System', desc: 'Interactive process viewer', size: '256 KB' },
+            { id: 'tmux', name: 'tmux', icon: 'bi-layout-split', category: 'System', desc: 'Terminal multiplexer', size: '512 KB' },
+            { id: 'fail2ban', name: 'Fail2Ban', icon: 'bi-shield-lock-fill', category: 'Security', desc: 'Intrusion prevention framework', size: '1.3 MB' },
+            { id: 'ufw', name: 'UFW', icon: 'bi-bricks', category: 'Security', desc: 'Uncomplicated Firewall', size: '384 KB' },
+            { id: 'mysql-server', name: 'MySQL', icon: 'bi-database-fill', category: 'Databases', desc: 'MySQL relational database server', size: '24.6 MB' },
+            { id: 'postgresql', name: 'PostgreSQL', icon: 'bi-database-fill-gear', category: 'Databases', desc: 'Object-relational SQL database', size: '18.4 MB' },
+        ];
+
+        const hasConnectivity = () => {
+            const iface = Object.values(this.node.interfaces)[0];
+            return iface && iface.ip && iface.state === 'up' && this.node.gateway;
+        };
+
+        // Initialize installed packages on node if not present
+        if (!this.node._installedPackages) {
+            this.node._installedPackages = new Set(['bash', 'coreutils', 'net-tools', 'iproute2', 'openssh-server', 'curl', 'wget', 'iputils-ping', 'dnsutils', 'traceroute', 'nano', 'vim-tiny']);
+        }
+
+        const renderStore = (filter = 'All') => {
+            const connected = hasConnectivity();
+
+            const categories = ['All', ...new Set(STORE_APPS.map(a => a.category))];
+            const filtered = filter === 'All' ? STORE_APPS : STORE_APPS.filter(a => a.category === filter);
+
+            content.innerHTML = `
+                <div style="display:flex;flex-direction:column;height:100%">
+                    <div style="padding:12px 16px;background:var(--sim-bg-card);border-bottom:1px solid var(--sim-border);display:flex;align-items:center;justify-content:space-between;gap:12px">
+                        <div style="display:flex;align-items:center;gap:8px">
+                            <i class="bi bi-bag-fill" style="font-size:18px;color:var(--sim-accent)"></i>
+                            <strong style="font-size:14px">${isLinux ? 'Software Center' : 'Store'}</strong>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:6px">
+                            <span style="width:8px;height:8px;border-radius:50%;background:${connected ? '#4caf50' : '#ef5350'};box-shadow:0 0 6px ${connected ? '#4caf5088' : '#ef535088'}"></span>
+                            <span style="font-size:11px;color:var(--sim-text-secondary)">${connected ? 'Connected' : 'No Internet'}</span>
+                        </div>
+                    </div>
+                    <div style="padding:8px 16px;display:flex;gap:6px;flex-wrap:wrap;border-bottom:1px solid var(--sim-border)">
+                        ${categories.map(c => `<button class="store-cat-btn ${c === filter ? 'active' : ''}" data-cat="${c}" style="padding:4px 12px;border-radius:12px;border:1px solid var(--sim-border);background:${c === filter ? 'var(--sim-accent)' : 'var(--sim-bg-input)'};color:${c === filter ? '#fff' : 'var(--sim-text-secondary)'};font-size:11px;cursor:pointer">${c}</button>`).join('')}
+                    </div>
+                    ${!connected ? `
+                        <div style="flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:40px;color:var(--sim-text-muted)">
+                            <i class="bi bi-wifi-off" style="font-size:48px;margin-bottom:16px;opacity:0.4"></i>
+                            <h3 style="margin:0 0 8px;font-weight:600">No Internet Connection</h3>
+                            <p style="margin:0;font-size:13px;text-align:center;max-width:300px">This device needs a valid IP address and default gateway to download applications. Configure your network settings first.</p>
+                        </div>
+                    ` : `
+                        <div style="flex:1;overflow-y:auto;padding:12px 16px">
+                            <div style="display:grid;grid-template-columns:repeat(auto-fill, minmax(260px, 1fr));gap:10px">
+                                ${filtered.map(app => {
+                                    const installed = this.node._installedPackages.has(app.id);
+                                    return `
+                                        <div class="store-app-card" style="background:var(--sim-bg-card);border:1px solid var(--sim-border);border-radius:8px;padding:12px;display:flex;gap:12px;align-items:flex-start;transition:border-color 0.2s" onmouseover="this.style.borderColor='var(--sim-accent)'" onmouseout="this.style.borderColor='var(--sim-border)'">
+                                            <div style="width:40px;height:40px;border-radius:10px;background:${installed ? 'linear-gradient(135deg,#4caf50,#2e7d32)' : 'linear-gradient(135deg,var(--sim-accent),#1565c0)'};display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                                                <i class="bi ${app.icon}" style="font-size:18px;color:#fff"></i>
+                                            </div>
+                                            <div style="flex:1;min-width:0">
+                                                <div style="font-weight:600;font-size:13px;color:var(--sim-text)">${app.name}</div>
+                                                <div style="font-size:11px;color:var(--sim-text-secondary);margin:2px 0 6px">${app.desc}</div>
+                                                <div style="display:flex;justify-content:space-between;align-items:center">
+                                                    <span style="font-size:10px;color:var(--sim-text-muted)">${app.size}</span>
+                                                    <button class="store-install-btn" data-app="${app.id}" style="padding:3px 14px;border-radius:6px;border:none;font-size:11px;font-weight:600;cursor:pointer;background:${installed ? '#ef5350' : 'var(--sim-accent)'};color:#fff">
+                                                        ${installed ? 'Remove' : 'Install'}
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    `;
+                                }).join('')}
+                            </div>
+                        </div>
+                    `}
+                </div>
+            `;
+
+            // Bind category buttons
+            content.querySelectorAll('.store-cat-btn').forEach(btn => {
+                btn.addEventListener('click', () => renderStore(btn.dataset.cat));
+            });
+
+            // Bind install/remove buttons
+            content.querySelectorAll('.store-install-btn').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const appId = btn.dataset.app;
+                    if (this.node._installedPackages.has(appId)) {
+                        this.node._installedPackages.delete(appId);
+                    } else {
+                        this.node._installedPackages.add(appId);
+                    }
+                    renderStore(filter);
+                });
+            });
+        };
+
+        renderStore();
     }
 }
 
