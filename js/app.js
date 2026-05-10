@@ -45,7 +45,7 @@ async function navigateTo(path) {
     const app = document.getElementById('app');
     if (!app) return;
 
-    let route = path.replace(/^\/+/, '');
+    let route = path.replace(/^\/+/, '').replace(/\/index\.html$/, '').replace(/\/+$/, '');
     if (route === 'index.html') route = '';
 
     const loader = routes[route];
