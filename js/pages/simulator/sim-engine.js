@@ -492,7 +492,7 @@ export class SimEngine {
         const node = this.graph.getNode(nodeId);
         if (!node) return;
 
-        const cli = createCLI(node, () => this.graph.notify());
+        const cli = createCLI(node, () => this.graph.notify(), this);
         const vendorInfo = VENDORS[node.vendor] || VENDORS.generic;
 
         const modal = document.createElement('div');
@@ -601,13 +601,15 @@ export class SimEngine {
                 e.preventDefault();
                 const partial = input.value;
                 const result = cli.tabComplete(partial);
-                if (typeof result === 'string') {
-                    input.value = result + ' ';
-                } else if (Array.isArray(result) && result.length > 0) {
-                    const resDiv = document.createElement('div');
-                    resDiv.className = 'cli-response';
-                    resDiv.textContent = result.join('  ');
-                    outDiv.appendChild(resDiv);
+                if (Array.isArray(result)) {
+                    if (result.length === 1) {
+                        input.value = result[0] + ' ';
+                    } else if (result.length > 1) {
+                        const resDiv = document.createElement('div');
+                        resDiv.className = 'cli-response';
+                        resDiv.textContent = result.join('  ');
+                        outDiv.appendChild(resDiv);
+                    }
                 }
             } else if (e.key === 'l' && e.ctrlKey) {
                 e.preventDefault();
@@ -759,5 +761,23 @@ export class SimEngine {
         if (!node) return;
         const desktop = new SimDesktop(node, this);
         desktop.render();
+    }
+
+    handlePackageChange(nodeId, appId, isInstall) {
+        const node = this.graph.getNode(nodeId);
+        if (!node) return;
+        if (!node._services) node._services = {};
+        
+        if (appId === 'nginx' || appId === 'apache2') {
+            node.services = node.services || {};
+            node.services.http = isInstall;
+            node.httpEnabled = isInstall;
+            if (isInstall) node._services[appId] = 'active';
+            else delete node._services[appId];
+        } else if (['mysql-server', 'postgresql', 'snmpd', 'docker.io'].includes(appId)) {
+            if (isInstall) node._services[appId] = 'active';
+            else delete node._services[appId];
+        }
+        this.graph.notify();
     }
 }

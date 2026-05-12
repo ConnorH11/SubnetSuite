@@ -149,8 +149,8 @@ export class SimulatorUI {
         const node = this.graph.getNode(nodeId);
         if (!node) return;
 
-        const isEndDevice = ['pc', 'server'].includes(node.type);
-        const isNetDevice = ['router', 'switch', 'l3switch', 'firewall'].includes(node.type);
+        const isDesktopDevice = node.type === 'pc' || (node.type === 'server' && node.os !== 'linux');
+        const isCliDevice = ['router', 'switch', 'l3switch', 'firewall'].includes(node.type) || (node.type === 'server' && node.os === 'linux');
 
         const menu = document.createElement('div');
         menu.id = 'sim-context-menu';
@@ -160,10 +160,10 @@ export class SimulatorUI {
 
         let html = `<div class="ctx-header">${node.name} <span class="ctx-model">${node.model}</span></div>`;
 
-        if (isEndDevice && node.powered) {
+        if (isDesktopDevice && node.powered) {
             html += `<div class="ctx-item" data-action="desktop"><i class="bi bi-window-desktop"></i> Open Desktop</div>`;
         }
-        if (isNetDevice && node.powered) {
+        if (isCliDevice && node.powered) {
             html += `<div class="ctx-item" data-action="cli"><i class="bi bi-terminal"></i> Open CLI</div>`;
         }
         if (node.powered) {
@@ -265,9 +265,9 @@ export class SimulatorUI {
         el.addEventListener('dblclick', (e) => {
             e.stopPropagation();
             if (!node.powered) return; // Cannot access if powered off
-            if (['pc', 'server'].includes(node.type)) {
+            if (node.type === 'pc' || (node.type === 'server' && node.os !== 'linux')) {
                 this.engine.openDesktop(node.id);
-            } else if (['router', 'switch', 'l3switch', 'firewall'].includes(node.type)) {
+            } else if (['router', 'switch', 'l3switch', 'firewall'].includes(node.type) || (node.type === 'server' && node.os === 'linux')) {
                 this.engine.openCLI(node.id);
             }
         });
@@ -452,8 +452,8 @@ export class SimulatorUI {
         if (!node) { this.selectNode(null); return; }
 
         const vendor = VENDORS[node.vendor] || VENDORS.generic;
-        const isEndDevice = ['pc', 'server'].includes(node.type);
-        const isNetDevice = ['router', 'switch', 'l3switch', 'firewall'].includes(node.type);
+        const isDesktopDevice = node.type === 'pc' || (node.type === 'server' && node.os !== 'linux');
+        const isCliDevice = ['router', 'switch', 'l3switch', 'firewall'].includes(node.type) || (node.type === 'server' && node.os === 'linux');
 
         let html = `
             <div class="insp-section">
@@ -469,7 +469,7 @@ export class SimulatorUI {
         `;
 
         const disabledAttr = !node.powered ? 'disabled style="opacity:0.5; cursor:not-allowed;"' : '';
-        if (isEndDevice) {
+        if (isDesktopDevice) {
             html += `
                 <div class="insp-section">
                     <button class="sim-action-btn sim-btn-play" style="width:100%; justify-content:center" id="btn-open-desktop" ${disabledAttr}>
@@ -479,13 +479,13 @@ export class SimulatorUI {
                 </div>
             `;
         }
-        if (isNetDevice) {
+        if (isCliDevice) {
             html += `
                 <div class="insp-section">
                     <button class="sim-action-btn sim-btn-play" style="width:100%; justify-content:center" id="btn-open-cli" ${disabledAttr}>
-                        <i class="bi bi-terminal"></i> Open ${node.cliType === 'juniper' ? 'JunOS' : 'IOS'} CLI
+                        <i class="bi bi-terminal"></i> Open ${node.cliType === 'juniper' ? 'JunOS' : node.cliType === 'linux' ? 'Linux' : 'IOS'} CLI
                     </button>
-                    <p class="insp-hint">${!node.powered ? 'Device must be powered on to access CLI.' : (node.cliType === 'juniper' ? 'Juniper JunOS CLI with set/commit model.' : 'Cisco IOS CLI with full routing, switching, and security config.')}</p>
+                    <p class="insp-hint">${!node.powered ? 'Device must be powered on to access CLI.' : (node.cliType === 'juniper' ? 'Juniper JunOS CLI with set/commit model.' : node.cliType === 'linux' ? 'Standard Linux Terminal with bash and systemctl.' : 'Cisco IOS CLI with full routing, switching, and security config.')}</p>
                 </div>
             `;
         }

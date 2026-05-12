@@ -122,7 +122,7 @@ export class SimDesktop {
     _getDesktopIcons(isLinux, isServer) {
         const icons = [
             { id: 'terminal', icon: 'bi-terminal-fill', label: isLinux ? 'Terminal' : 'CMD' },
-            { id: 'browser', icon: 'bi-globe2', label: isLinux ? 'Firefox' : 'Edge' },
+            { id: 'browser', icon: 'bi-globe2', label: 'Browser' },
             { id: 'files', icon: 'bi-folder-fill', label: isLinux ? 'Files' : 'Explorer' },
             { id: 'ipconfig', icon: 'bi-diagram-3-fill', label: 'IP Config' },
             { id: 'editor', icon: 'bi-file-earmark-text', label: isLinux ? 'Text Editor' : 'Notepad' },
@@ -274,10 +274,13 @@ export class SimDesktop {
             else if (e.key === 'Tab') {
                 e.preventDefault();
                 const result = cli.tabComplete(input.value);
-                if (typeof result === 'string') input.value = result + ' ';
-                else if (Array.isArray(result) && result.length > 0) {
-                    const d = document.createElement('div'); d.className = 'cli-response'; d.textContent = result.join('  ');
-                    outDiv.appendChild(d);
+                if (Array.isArray(result)) {
+                    if (result.length === 1) {
+                        input.value = result[0] + ' ';
+                    } else if (result.length > 1) {
+                        const d = document.createElement('div'); d.className = 'cli-response'; d.textContent = result.join('  ');
+                        outDiv.appendChild(d);
+                    }
                 }
             }
         });
@@ -613,15 +616,67 @@ export class SimDesktop {
     _openTextEditor(initialFile = '', initialContent = '') {
         const id = this._appId('editor');
         const content = this.wm.createWindow(id, initialFile ? `Editor — ${initialFile}` : 'Text Editor', 'bi-file-earmark-text', { width: 550, height: 400 });
+        content.classList.add('wm-editor-container');
 
         content.innerHTML = `
             <div class="editor-toolbar">
                 <input class="editor-filename" value="${initialFile}" placeholder="filename.txt">
+                <span class="editor-unsaved" style="display:none; color: var(--sim-warning); margin-right: auto; font-weight: bold; font-size: 11px;">* Unsaved</span>
                 <button class="app-btn app-btn-primary app-btn-sm" id="btn-save-file"><i class="bi bi-save"></i> Save</button>
                 <button class="app-btn app-btn-secondary app-btn-sm" id="btn-new-file"><i class="bi bi-file-earmark-plus"></i> New</button>
             </div>
-            <textarea class="editor-textarea" spellcheck="false" placeholder="Type or paste text here...">${initialContent}</textarea>
+            <div class="editor-main" style="display: flex; flex: 1; overflow: hidden; background: #fff;">
+                <div class="editor-gutter" style="width: 40px; background: #f0f0f0; border-right: 1px solid #ccc; text-align: right; padding: 12px 8px; color: #888; font-family: var(--sim-mono); font-size: 14px; user-select: none; overflow: hidden; line-height: 1.6;">1</div>
+                <textarea class="editor-textarea" wrap="off" spellcheck="false" placeholder="Type or paste text here...">${initialContent}</textarea>
+            </div>
         `;
+
+        const textarea = content.querySelector('.editor-textarea');
+        const gutter = content.querySelector('.editor-gutter');
+        const unsavedIndicator = content.querySelector('.editor-unsaved');
+        const titleText = content.parentElement.querySelector('.wm-title-text');
+        
+        let savedContent = initialContent;
+        let isUnsaved = false;
+
+        const updateGutter = () => {
+            const lines = textarea.value.split('\n').length;
+            let gutterHTML = '';
+            for (let i = 1; i <= lines; i++) gutterHTML += i + '<br>';
+            gutter.innerHTML = gutterHTML;
+            if (textarea.value !== savedContent && !isUnsaved) {
+                isUnsaved = true;
+                unsavedIndicator.style.display = 'block';
+                if (!titleText.textContent.startsWith('* ')) titleText.textContent = '* ' + titleText.textContent;
+            } else if (textarea.value === savedContent && isUnsaved) {
+                isUnsaved = false;
+                unsavedIndicator.style.display = 'none';
+                if (titleText.textContent.startsWith('* ')) titleText.textContent = titleText.textContent.substring(2);
+            }
+        };
+
+        textarea.addEventListener('input', updateGutter);
+        textarea.addEventListener('scroll', () => {
+            gutter.scrollTop = textarea.scrollTop;
+        });
+
+        // Keyboard shortcuts
+        textarea.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                e.preventDefault();
+                const start = textarea.selectionStart;
+                const end = textarea.selectionEnd;
+                textarea.value = textarea.value.substring(0, start) + '    ' + textarea.value.substring(end);
+                textarea.selectionStart = textarea.selectionEnd = start + 4;
+                updateGutter();
+            } else if (e.ctrlKey && e.key === 's') {
+                e.preventDefault();
+                content.querySelector('#btn-save-file').click();
+            }
+        });
+
+        // Initialize gutter
+        updateGutter();
 
         content.querySelector('#btn-save-file').addEventListener('click', () => {
             const filename = content.querySelector('.editor-filename').value;
@@ -635,6 +690,13 @@ export class SimDesktop {
                 dir = dir.children[p];
             }
             dir.children[name] = { type: 'file', content: text };
+            
+            savedContent = text;
+            updateGutter();
+        });
+        
+        content.querySelector('#btn-new-file').addEventListener('click', () => {
+            this._openTextEditor();
         });
     }
 
@@ -1071,8 +1133,10 @@ export class SimDesktop {
                     const appId = btn.dataset.app;
                     if (this.node._installedPackages.has(appId)) {
                         this.node._installedPackages.delete(appId);
+                        if (this.engine.handlePackageChange) this.engine.handlePackageChange(this.node.id, appId, false);
                     } else {
                         this.node._installedPackages.add(appId);
+                        if (this.engine.handlePackageChange) this.engine.handlePackageChange(this.node.id, appId, true);
                     }
                     renderStore(filter);
                 });

@@ -4,12 +4,12 @@ import { CiscoCLI } from './sim-cli-cisco.js';
 import { JuniperCLI } from './sim-cli-juniper.js';
 import { isValidIP, getNetAddr } from './sim-math.js';
 
-export function createCLI(node, notifyGraph) {
+export function createCLI(node, notifyGraph, engine) {
     switch (node.cliType) {
         case 'cisco': return new CiscoCLI(node, notifyGraph);
         case 'juniper': return new JuniperCLI(node, notifyGraph);
-        case 'linux': return new LinuxCLI(node, notifyGraph);
-        case 'windows': return new WindowsCLI(node, notifyGraph);
+        case 'linux': return new LinuxCLI(node, notifyGraph, engine);
+        case 'windows': return new WindowsCLI(node, notifyGraph, engine);
         default: return new CiscoCLI(node, notifyGraph); // fallback
     }
 }
@@ -17,9 +17,10 @@ export function createCLI(node, notifyGraph) {
 // ═══════════════════════════════════════════════════
 // ═══════════════════════════════════════════════════
 export class LinuxCLI {
-    constructor(node, notifyGraph) {
+    constructor(node, notifyGraph, engine) {
         this.node = node;
         this.notifyGraph = notifyGraph;
+        this.engine = engine;
         this.hostname = node.hostname || node.name;
         this.user = 'root';
         this.cwd = '/home/user';
@@ -57,7 +58,7 @@ export class LinuxCLI {
                        'ssh', 'telnet', 'ftp', 'cat', 'ls', 'cd', 'pwd', 'mkdir', 'rm', 'echo', 'touch', 'clear', 'man',
                        'hostname', 'whoami', 'uname', 'date', 'uptime', 'free', 'df', 'ps', 'kill', 'history', 'export',
                        'iptables', 'tcpdump', 'nmap', 'ss', 'grep', 'find', 'chmod', 'chown', 'nano', 'vi',
-                       'sudo', 'apt', 'apt-get', 'dpkg', 'systemctl', 'service', 'useradd', 'passwd', 'exit', 'help'];
+                       'sudo', 'apt', 'apt-get', 'dpkg', 'systemctl', 'service', 'useradd', 'passwd', 'exit', 'help', 'python3', 'node'];
         return cmds.filter(c => c.startsWith(partial.toLowerCase()));
     }
 
@@ -117,13 +118,75 @@ export class LinuxCLI {
             case 'history': return this.history.map((h, i) => `  ${i + 1}  ${h}`).join('\n');
             case 'export': if (args[1]) { const [k, v] = args[1].split('='); this.env[k] = v; } return '';
             case 'env': case 'printenv': return Object.entries(this.env).map(([k, v]) => `${k}=${v}`).join('\n');
-            case 'iptables': return this._iptables(args);
-            case 'tcpdump': return 'tcpdump: listening on eth0 (simulated)\n^C\n0 packets captured';
-            case 'nmap': return args[1] ? `Starting Nmap scan of ${args[1]}...\n22/tcp   open  ssh\n80/tcp   open  http\n443/tcp  open  https\nNmap done: 1 IP address (1 host up) scanned in 0.03 seconds` : 'Usage: nmap <target>';
+            case 'iptables': 
+                if (!this.node._installedPackages.has('iptables')) return 'bash: iptables: command not found';
+                return this._iptables(args);
+            case 'tcpdump': 
+                if (!this.node._installedPackages.has('tcpdump')) return 'bash: tcpdump: command not found';
+                return 'tcpdump: listening on eth0 (simulated)\n^C\n0 packets captured';
+            case 'nmap': 
+                if (!this.node._installedPackages.has('nmap')) return 'bash: nmap: command not found';
+                return args[1] ? `Starting Nmap scan of ${args[1]}...\n22/tcp   open  ssh\n80/tcp   open  http\n443/tcp  open  https\nNmap done: 1 IP address (1 host up) scanned in 0.03 seconds` : 'Usage: nmap <target>';
+            case 'git':
+                if (!this.node._installedPackages.has('git')) return 'bash: git: command not found';
+                if (args[1] === 'status') return 'On branch main\nYour branch is up to date with \'origin/main\'.\n\nnothing to commit, working tree clean';
+                if (args[1] === 'clone') return `Cloning into '${args[2] || 'repo'}'...\nremote: Enumerating objects: 12, done.\nremote: Counting objects: 100% (12/12), done.\nremote: Total 12 (delta 0), reused 0 (delta 0)\nUnpacking objects: 100% (12/12), done.`;
+                if (args[1] === 'add') return '';
+                if (args[1] === 'commit') return '[main ed48a12] Simulated commit\n 1 file changed, 1 insertion(+)';
+                if (args[1] === 'push') return 'Enumerating objects: 5, done.\nWriting objects: 100% (5/5), 412 bytes | 412.00 KiB/s, done.\nTotal 5 (delta 2), reused 0 (delta 0)\nTo https://github.com/sim/repo.git\n   main..main';
+                return 'Usage: git <clone|status|add|commit|push>';
+            case 'docker':
+                if (!this.node._installedPackages.has('docker.io')) return 'bash: docker: command not found';
+                if (args[1] === 'ps') return 'CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES\na1b2c3d4e5f6   nginx     "nginx"   2 hours ago   Up 2 hours   80/tcp    web-server';
+                if (args[1] === 'run') return `Unable to find image '${args[2] || 'hello-world'}:latest' locally\nlatest: Pulling from library/${args[2] || 'hello-world'}\nDigest: sha256:7e9b6e7ba284\nStatus: Downloaded newer image for ${args[2] || 'hello-world'}:latest\n\nHello from Docker!\nThis message shows that your installation appears to be working correctly.`;
+                return 'Usage: docker <ps|run>';
+            case 'ufw':
+                if (!this.node._installedPackages.has('ufw')) return 'bash: ufw: command not found';
+                if (args[1] === 'status') return 'Status: active\n\nTo                         Action      From\n--                         ------      ----\n22/tcp                     ALLOW       Anywhere\n80/tcp                     ALLOW       Anywhere';
+                if (args[1] === 'enable') return 'Firewall is active and enabled on system startup';
+                if (args[1] === 'disable') return 'Firewall stopped and disabled on system startup';
+                return 'Usage: ufw <status|enable|disable>';
+            case 'fail2ban-client': case 'fail2ban':
+                if (!this.node._installedPackages.has('fail2ban')) return `bash: ${cmd}: command not found`;
+                if (args[1] === 'status') return 'Status\n|- Number of jail:\t1\n`- Jail list:\tsshd';
+                return 'Usage: fail2ban-client <status>';
+            case 'tmux':
+                if (!this.node._installedPackages.has('tmux')) return 'bash: tmux: command not found';
+                return '[detached (from session 0)]';
+            case 'nginx':
+                if (!this.node._installedPackages.has('nginx')) return 'bash: nginx: command not found';
+                if (args[1] === '-t') return 'nginx: the configuration file /etc/nginx/nginx.conf syntax is ok\nnginx: configuration file /etc/nginx/nginx.conf test is successful';
+                return 'nginx is a background service. Use "systemctl status nginx" to manage it.';
+            case 'apache2':
+                if (!this.node._installedPackages.has('apache2')) return 'bash: apache2: command not found';
+                return 'apache2 is a background service. Use "systemctl status apache2" to manage it.';
+            case 'snmpd': case 'snmp':
+                if (!this.node._installedPackages.has('snmpd')) return `bash: ${cmd}: command not found`;
+                return 'snmpd is a background daemon. Use "systemctl status snmpd" to manage it.';
+            case 'mysql':
+                if (!this.node._installedPackages.has('mysql-server')) return 'bash: mysql: command not found';
+                return 'Welcome to the MySQL monitor.  Commands end with ; or \\g.\nYour MySQL connection id is 8\nServer version: 8.0.32-0ubuntu0.22.04.2 (Ubuntu)\n\nmysql> exit\nBye';
+            case 'psql': case 'postgresql':
+                if (!this.node._installedPackages.has('postgresql')) return `bash: ${cmd}: command not found`;
+                return 'psql (14.7 (Ubuntu 14.7-0ubuntu0.22.04.1))\nType "help" for help.\n\npostgres=# \\q';
+            case 'wireshark': case 'wireshark-cli': case 'tshark':
+                if (!this.node._installedPackages.has('wireshark')) return `bash: ${cmd}: command not found`;
+                if (cmd === 'wireshark') return 'wireshark: cannot open display: :0\nUse wireshark-cli or tshark for CLI captures.';
+                return 'Capturing on eth0\n1  0.000000   10.0.0.1 → 10.0.0.2   TCP 74 54321 → 80 [SYN] Seq=0 Win=64240 Len=0\n2  0.001200   10.0.0.2 → 10.0.0.1   TCP 74 80 → 54321 [SYN, ACK] Seq=0 Ack=1 Win=65535 Len=0\n^C\n2 packets captured';
+            case 'node': case 'nodejs':
+                if (!this.node._installedPackages.has('nodejs')) return `bash: ${cmd}: command not found`;
+                if (args[1]) return `Executing ${args[1]}...\nServer running at http://localhost:3000/`;
+                return 'Welcome to Node.js v18.13.0.\nType ".help" for more information.\n> .exit\n';
             case 'man': return args[1] ? `Manual page for ${args[1]}\n\nNAME\n    ${args[1]} - simulated command\n\nDESCRIPTION\n    This is a simulated environment. Type the command for usage info.` : 'What manual page do you want?';
             case 'exit': case 'logout': return '__EXIT__';
-            case 'help': return 'Available commands:\n  ping, traceroute, ifconfig, ip, route, arp, netstat, nslookup, dig,\n  curl, wget, ssh, telnet, cat, ls, cd, pwd, mkdir, rm, echo, touch,\n  hostname, whoami, uname, date, uptime, free, df, ps, history,\n  sudo, apt, dpkg, systemctl, service, useradd, passwd,\n  iptables, tcpdump, nmap, clear, exit, help';
-            default: return `bash: ${cmd}: command not found`;
+            case 'help': return 'Available commands:\n  ping, traceroute, ifconfig, ip, route, arp, netstat, nslookup, dig,\n  curl, wget, ssh, telnet, cat, ls, cd, pwd, mkdir, rm, echo, touch,\n  hostname, whoami, uname, date, uptime, free, df, ps, history,\n  sudo, apt, dpkg, systemctl, service, useradd, passwd,\n  iptables, tcpdump, nmap, git, docker, ufw, tmux, mysql, psql, node,\n  clear, exit, help';
+            default: 
+                if (cmd === 'python3' && this.node._installedPackages.has('python3')) return 'Python 3.10.12 (main, Nov 20 2023, 15:14:05) [GCC 11.4.0] on linux\nType "help", "copyright", "credits" or "license" for more information.\n>>> exit()\n';
+                if ((cmd === 'nano' || cmd === 'vim' || cmd === 'vi') && (this.node._installedPackages.has('nano') || this.node._installedPackages.has('vim'))) {
+                    return 'Terminal UI not supported in simulation. Please use the Desktop Text Editor application.';
+                }
+                if (cmd === 'htop' && this.node._installedPackages.has('htop')) return 'Terminal UI not supported in simulation. Please use the Desktop System Info application.';
+                return `bash: ${cmd}: command not found`;
         }
     }
 
@@ -309,7 +372,7 @@ export class LinuxCLI {
             }
             return out;
         }
-        return entries.map(([name, child]) => child.type === 'dir' ? `\x1b[34m${name}\x1b[0m` : name).join('  ');
+        return entries.map(([name, child]) => child.type === 'dir' ? `${name}/` : name).join('  ');
     }
 
     _cd(args) {
@@ -422,6 +485,7 @@ export class LinuxCLI {
                 }
                 const pkgInfo = AVAILABLE_PACKAGES[pkg];
                 this.node._installedPackages.add(pkg);
+                if (this.engine && this.engine.handlePackageChange) this.engine.handlePackageChange(this.node.id, pkg, true);
                 return `Reading package lists... Done\nBuilding dependency tree... Done\nThe following NEW packages will be installed:\n  ${pkg}\n0 upgraded, 1 newly installed, 0 to remove and 0 not upgraded.\nNeed to get ${pkgInfo.size} of archives.\nAfter this operation, ${parseInt(pkgInfo.size) * 3} kB of additional disk space will be used.\nGet:1 http://archive.ubuntu.com/ubuntu jammy/main amd64 ${pkg} amd64 ${pkgInfo.ver} [${pkgInfo.size}]\nFetched ${pkgInfo.size} in 1s (${parseInt(pkgInfo.size)} kB/s)\nSelecting previously unselected package ${pkg}.\n(Reading database ... 64218 files and directories currently installed.)\nPreparing to unpack .../${pkg}_${pkgInfo.ver}_amd64.deb ...\nUnpacking ${pkg} (${pkgInfo.ver}) ...\nSetting up ${pkg} (${pkgInfo.ver}) ...\nProcessing triggers for man-db (2.10.2-1) ...`;
 
             case 'remove': case 'purge':
@@ -430,6 +494,7 @@ export class LinuxCLI {
                     return `Package '${pkg}' is not installed, so not removed`;
                 }
                 this.node._installedPackages.delete(pkg);
+                if (this.engine && this.engine.handlePackageChange) this.engine.handlePackageChange(this.node.id, pkg, false);
                 return `Reading package lists... Done\nBuilding dependency tree... Done\nThe following packages will be REMOVED:\n  ${pkg}\n0 upgraded, 0 newly installed, 1 to remove and 0 not upgraded.\n(Reading database ... 64218 files and directories currently installed.)\nRemoving ${pkg} ...\nProcessing triggers for man-db (2.10.2-1) ...`;
 
             case 'list':
@@ -500,13 +565,31 @@ export class LinuxCLI {
                 return `${dot} ${svcName}.service - ${svcName} daemon\n     Loaded: loaded (/lib/systemd/system/${svcName}.service; enabled)\n     Active: ${st} (${st === 'active' ? 'running' : 'dead'}) since ${new Date().toUTCString()}\n   Main PID: ${Math.floor(Math.random() * 9000) + 1000} (${svcName})\n      Tasks: ${Math.floor(Math.random() * 8) + 1}\n     Memory: ${Math.floor(Math.random() * 128) + 4}.${Math.floor(Math.random() * 9)}M\n        CPU: ${Math.floor(Math.random() * 500)}ms`;
             case 'start':
                 this.node._services[svcName] = 'active';
+                if (svcName === 'nginx' || svcName === 'apache2') {
+                    this.node.services = this.node.services || {};
+                    this.node.services.http = true;
+                    this.node.httpEnabled = true;
+                }
                 return '';
             case 'stop':
-                if (this.node._services[svcName]) this.node._services[svcName] = 'inactive';
-                else return `Failed to stop ${svcName}.service: Unit ${svcName}.service not found.`;
+                if (this.node._services[svcName]) {
+                    this.node._services[svcName] = 'inactive';
+                    if (svcName === 'nginx' || svcName === 'apache2') {
+                        this.node.services = this.node.services || {};
+                        this.node.services.http = false;
+                        this.node.httpEnabled = false;
+                    }
+                } else {
+                    return `Failed to stop ${svcName}.service: Unit ${svcName}.service not found.`;
+                }
                 return '';
             case 'restart':
                 this.node._services[svcName] = 'active';
+                if (svcName === 'nginx' || svcName === 'apache2') {
+                    this.node.services = this.node.services || {};
+                    this.node.services.http = true;
+                    this.node.httpEnabled = true;
+                }
                 return '';
             case 'enable':
                 if (!this.node._services[svcName]) this.node._services[svcName] = 'inactive';

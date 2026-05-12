@@ -575,7 +575,7 @@ g:hover .sim-edge-label { opacity: 1; }
 
 .sim-cli-body {
   flex: 1; padding: 12px; overflow-y: auto;
-  color: #00ff41; font-size: 13px; line-height: 1.6;
+  color: #cccccc; font-size: 13px; line-height: 1.6;
   background: #0c0c0c;
 }
 .sim-cli-body::-webkit-scrollbar { width: 8px; }
@@ -583,14 +583,14 @@ g:hover .sim-edge-label { opacity: 1; }
 
 .cli-welcome { color: #888; margin-bottom: 8px; white-space: pre-wrap; }
 .cli-echo { color: #999; }
-.cli-response { color: #00ff41; white-space: pre-wrap; margin: 2px 0; }
+.cli-response { color: #cccccc; white-space: pre-wrap; margin: 2px 0; }
 
 .sim-cli-input-line { display: flex; align-items: center; }
-.cli-prompt { color: #00ff41; white-space: nowrap; }
+.cli-prompt { color: #4ade80; white-space: nowrap; font-weight: bold; }
 .sim-cli-input {
-  background: transparent; border: none; color: #00ff41;
+  background: transparent; border: none; color: #cccccc;
   font-family: var(--sim-mono); font-size: 13px; flex: 1;
-  outline: none; margin-left: 6px; caret-color: #00ff41;
+  outline: none; margin-left: 6px; caret-color: #cccccc;
 }
 .sim-cli-close { background: transparent; color: #fff; border: none; cursor: pointer; }
 
@@ -756,14 +756,20 @@ g:hover .sim-edge-label { opacity: 1; }
 .wm-start-app-item i { font-size: 16px; color: var(--sim-accent); width: 20px; text-align: center; }
 
 /* ── Windows ── */
+@keyframes windowOpen {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to { opacity: 1; transform: scale(1) translateY(0); }
+}
+
 .wm-window {
   position: absolute; background: var(--sim-bg-card);
   border: 1px solid var(--sim-border); border-radius: var(--sim-radius);
   box-shadow: var(--sim-shadow-lg); display: flex; flex-direction: column;
   overflow: hidden; min-width: 300px; min-height: 200px;
+  animation: windowOpen 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
 }
 .wm-window.wm-focused { border-color: var(--sim-accent); box-shadow: 0 10px 40px rgba(0,0,0,0.5), 0 0 0 1px var(--sim-accent-glow); }
-.wm-window.wm-maximized { border-radius: 0; }
+.wm-window.wm-maximized { border-radius: 0; animation: none; }
 
 .wm-titlebar {
   height: 34px; background: var(--sim-bg-panel);
@@ -797,12 +803,12 @@ g:hover .sim-edge-label { opacity: 1; }
 
 /* ── Terminal in Desktop ── */
 .wm-terminal {
-  background: #0c0c0c; color: #00ff41; font-family: var(--sim-mono);
+  background: #0c0c0c; color: #cccccc; font-family: var(--sim-mono);
   font-size: 13px; line-height: 1.5; padding: 10px;
-  display: flex; flex-direction: column;
+  display: block;
 }
-.wm-terminal .cli-output { flex: 1; overflow-y: auto; }
-.wm-terminal .sim-cli-input-line { flex-shrink: 0; }
+.wm-terminal .cli-output { overflow: visible; }
+.wm-terminal .sim-cli-input-line { margin-top: 2px; }
 
 /* ═══════════════════════════════════════════════
    APP COMPONENTS (shared across desktop apps)
@@ -977,6 +983,11 @@ g:hover .sim-edge-label { opacity: 1; }
 .service-dot.active { background: var(--sim-success); box-shadow: 0 0 6px var(--sim-success); }
 
 /* ── Text Editor ── */
+.wm-editor-container {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
 .editor-toolbar {
   display: flex; align-items: center; gap: 8px;
   padding: 8px; background: var(--sim-bg-panel); border-bottom: 1px solid var(--sim-border);
@@ -991,6 +1002,7 @@ g:hover .sim-edge-label { opacity: 1; }
   color: #000000; font-family: var(--sim-mono); font-size: 14px;
   padding: 12px; resize: none; outline: none; line-height: 1.6;
   box-sizing: border-box;
+  white-space: pre;
 }
 
 /* ── File Manager ── */
