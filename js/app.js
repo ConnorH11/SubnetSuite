@@ -33,10 +33,19 @@ const seoMetadata = {
     'acl': { title: 'Cisco ACL Generator | SubnetSuite', desc: 'Generate standard and extended Cisco Access Control Lists (ACLs) quickly and easily.' },
     'route': { title: 'Cisco Route Generator | SubnetSuite', desc: 'Generate static routes, OSPF, and EIGRP configurations for Cisco routers.' },
     'binary': { title: 'Binary to Decimal Calculator | SubnetSuite', desc: 'Convert between binary, decimal, and hexadecimal networking values.' },
+    'converter': { title: 'Base Converter | SubnetSuite', desc: 'Convert numbers between binary, octal, decimal, and hexadecimal bases for networking and computer science.' },
     'visualizer': { title: 'Network Topology Visualizer | SubnetSuite', desc: 'Build and visualize network topologies interactively.' },
     'simulator': { title: 'Network Simulator | SubnetSuite', desc: 'Practice Cisco and Juniper CLI commands in a virtual network simulation environment.' },
     'flashcards': { title: 'IT Certification Flashcards | SubnetSuite', desc: 'Study for CCNA, Network+, Security+, and JNCIA with spaced-repetition flashcards.' },
-    'practice-test': { title: 'IT Certification Practice Tests | SubnetSuite', desc: 'Take realistic practice exams and PBQs for Cisco CCNA, CompTIA Network+, and more.' }
+    'practice-test': { title: 'IT Certification Practice Tests | SubnetSuite', desc: 'Take realistic practice exams and PBQs for Cisco CCNA, CompTIA Network+, and more.' },
+    'publicip': { title: 'Public IP Checker | SubnetSuite', desc: 'Check your current public IPv4 and IPv6 address, ISP, location, and network details instantly.' },
+    'maclookup': { title: 'MAC Vendor Lookup | SubnetSuite', desc: 'Lookup MAC address vendor, OUI, and manufacturer details instantly using our comprehensive database.' },
+    'cheatsheet': { title: 'Subnetting Cheat Sheet | SubnetSuite', desc: 'Quick reference subnetting cheat sheet for IPv4 CIDR block sizes, wildcard masks, and usable host counts.' },
+    'overlap': { title: 'CIDR Overlap Checker | SubnetSuite', desc: 'Check for overlapping IP subnets and CIDR blocks to prevent routing conflicts in your network design.' },
+    'headers': { title: 'Packet Headers Reference | SubnetSuite', desc: 'Interactive reference diagrams for IPv4, IPv6, TCP, UDP, and Ethernet packet headers and fields.' },
+    'bandwidth': { title: 'Bandwidth Calculator | SubnetSuite', desc: 'Calculate network bandwidth, file download/upload times, and data transfer rates across different connection speeds.' },
+    'ports': { title: 'Common Network Ports Reference | SubnetSuite', desc: 'Searchable directory of common TCP and UDP network ports, protocols, and services for IT networking.' },
+    'about': { title: 'About SubnetSuite | Free Network Toolkit', desc: 'Learn about SubnetSuite, our mission to provide high-quality free networking tools, calculators, and simulators.' }
 };
 
 let currentCleanup = null;
@@ -108,7 +117,8 @@ function updateSEO(route) {
     
     const canonical = document.getElementById('canonical-link');
     if (canonical) {
-        canonical.setAttribute('href', 'https://subnetsuite.com/' + route);
+        const canonicalUrl = route ? `https://subnetsuite.com/${route}/` : 'https://subnetsuite.com/';
+        canonical.setAttribute('href', canonicalUrl);
     }
 }
 
