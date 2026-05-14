@@ -57,6 +57,22 @@ async function navigateTo(path) {
     let route = path.replace(/^\/+/, '').replace(/\/index\.html$/, '').replace(/\/+$/, '');
     if (route === 'index.html') route = '';
 
+    route = route.toLowerCase();
+    const legacyMap = {
+        'ipsubnet': 'subnet',
+        'routegenerator': 'route',
+        'maclookup': 'maclookup',
+        'binarycalc': 'binary',
+        'publicip': 'publicip',
+        'supernetting': 'supernet',
+        'aclgenerator': 'acl',
+        'pingtraceroute': 'publicip'
+    };
+    if (legacyMap[route]) {
+        route = legacyMap[route];
+        history.replaceState(null, '', '/' + route + '/');
+    }
+
     const loader = routes[route];
 
     if (!loader) {

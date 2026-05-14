@@ -124,4 +124,47 @@ foreach ($key in $routesData.Keys) {
     Set-Content -Path "$routeDir\index.html" -Value $pageContent
 }
 
+$legacyRedirects = [ordered]@{
+    "IPSubnet" = "subnet"
+    "RouteGenerator" = "route"
+    "MacLookup" = "maclookup"
+    "BinaryCalc" = "binary"
+    "VLSM" = "vlsm"
+    "PublicIP" = "publicip"
+    "supernetting" = "supernet"
+    "ACLGenerator" = "acl"
+    "IPv6" = "ipv6"
+    "Visualizer" = "visualizer"
+    "PingTraceroute" = "publicip"
+    "Converter" = "converter"
+    "About" = "about"
+}
+
+foreach ($oldDir in $legacyRedirects.Keys) {
+    $newRoute = $legacyRedirects[$oldDir]
+    if (-Not (Test-Path -Path $oldDir)) {
+        New-Item -ItemType Directory -Path $oldDir | Out-Null
+    }
+    
+    $targetUrl = "https://subnetsuite.com/$newRoute/"
+    $redirectHtml = @"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url=$targetUrl">
+  <link rel="canonical" href="$targetUrl">
+  <title>Redirecting...</title>
+  <script>
+    window.location.replace("$targetUrl");
+  </script>
+</head>
+<body>
+  <p>Redirecting to <a href="$targetUrl">$targetUrl</a>...</p>
+</body>
+</html>
+"@
+    Set-Content -Path "$oldDir\index.html" -Value $redirectHtml
+}
+
 Write-Host "SEO pages generated successfully with individual metadata and trailing-slash canonical URLs!"
