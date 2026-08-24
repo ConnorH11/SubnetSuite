@@ -330,5 +330,77 @@ export const COMPTIA_LINUX_LABS = [
                 checks: [{ type: 'command_run', node: 'SRV1', command: 'passwd jdoe' }]
             }
         ]
+    },
+    {
+        id: 'comptia-linux-11',
+        certification: 'Linux+',
+        category: 'Troubleshooting',
+        difficulty: 'Easy',
+        timeEstimate: '15 mins',
+        title: 'Scenario: Web Service Is Down',
+        description: 'Diagnose a Linux web server that responds to ping but refuses HTTP because the web service is stopped.',
+        topology: {
+            nodes: [
+                { id: 'PC1', template: 'linux_pc', x: 160, y: 280, name: 'Admin-PC' },
+                { id: 'SRV1', template: 'linux_server', x: 480, y: 280, name: 'Ubuntu-Web' }
+            ],
+            edges: [
+                { source: 'PC1', sourcePort: 'eth0', target: 'SRV1', targetPort: 'eth0', cableType: 'copper_straight' }
+            ],
+            preConfig: {
+                'PC1': {
+                    interfaces: { 'eth0': { ip: '192.168.60.10', subnet: '24', state: 'up' } },
+                    dnsServer: '192.168.60.80'
+                },
+                'SRV1': {
+                    interfaces: { 'eth0': { ip: '192.168.60.80', subnet: '24', state: 'up' } },
+                    installedPackages: ['bash', 'coreutils', 'net-tools', 'iproute2', 'iputils-ping', 'dnsutils', 'nginx'],
+                    services: { nginx: 'inactive' },
+                    nodeServices: { http: false },
+                    httpEnabled: false,
+                    syslogMessages: [
+                        '11:42 systemd[1]: nginx.service: Deactivated successfully.',
+                        '11:43 monitor[2201]: HTTP check failed for 192.168.60.80:80',
+                        '11:44 kernel: eth0 link is up'
+                    ],
+                    filesystem: {
+                        '/': { children: {
+                            'var': { children: {
+                                'www': { type: 'dir', children: {
+                                    'html': { type: 'dir', children: {
+                                        'index.html': { type: 'file', content: '<!doctype html><html><body style="font-family:sans-serif;padding:32px"><h1>Ubuntu Web Service</h1><p>nginx is running.</p></body></html>' }
+                                    }}
+                                }}
+                            }}
+                        }}
+                    }
+                }
+            }
+        },
+        tasks: [
+            {
+                description: 'Confirm the server is reachable at Layer 3',
+                hints: ['From Admin-PC, run "ping 192.168.60.80".', 'If ping works, focus on the application service.'],
+                checks: [
+                    { type: 'command_ran', node: 'PC1', command: 'ping 192.168.60.80', exact: false },
+                    { type: 'can_reach', source: 'PC1', destination: 'SRV1' }
+                ]
+            },
+            {
+                description: 'Check nginx service status on Ubuntu-Web',
+                hints: ['Open Terminal on Ubuntu-Web and run "systemctl status nginx".', 'For more evidence, run "journalctl -u nginx" or open Log Viewer.'],
+                checks: [{ type: 'command_ran', node: 'SRV1', command: 'systemctl status nginx', exact: false }]
+            },
+            {
+                description: 'Start the nginx service',
+                hints: ['Run "systemctl start nginx".', 'You can also run "systemctl status nginx" again to confirm it is active.'],
+                checks: [{ type: 'service_state', node: 'SRV1', service: 'nginx', expected: 'active' }]
+            },
+            {
+                description: 'Verify HTTP access to Ubuntu-Web',
+                hints: ['From Admin-PC, open Browser and visit 192.168.60.80.'],
+                checks: [{ type: 'http_success', source: 'PC1', destination: 'SRV1', targetIp: '192.168.60.80' }]
+            }
+        ]
     }
 ];

@@ -329,6 +329,14 @@ export class CiscoCLI {
         if (cmd.match(/^sh(ow)?\s+int(erfaces)?$/)) {
             return this._showInterfaces();
         }
+        // show interfaces status
+        if (cmd.match(/^sh(ow)?\s+int(erfaces)?\s+status$/)) {
+            return this._showInterfacesStatus();
+        }
+        // show interfaces switchport
+        if (cmd.match(/^sh(ow)?\s+int(erfaces)?\s+switchport$/)) {
+            return this._showInterfacesSwitchport();
+        }
         // show running-config
         if (cmd.match(/^sh(ow)?\s+run(ning-config)?$/)) {
             return this._showRunningConfig();
@@ -422,6 +430,36 @@ export class CiscoCLI {
             out += '\n';
         }
         return out;
+    }
+
+    _showInterfacesStatus() {
+        let out = 'Port          Name               Status       Vlan       Duplex  Speed Type\n';
+        for (const [name, iface] of Object.entries(this.node.interfaces)) {
+            const port = getPortDisplayName(name).padEnd(13);
+            const desc = (iface.description || '').slice(0, 18).padEnd(18);
+            const status = (iface.state === 'up' ? 'connected' : 'notconnect').padEnd(12);
+            const vlan = (iface.switchportMode === 'trunk' ? 'trunk' : String(iface.accessVlan || 1)).padEnd(10);
+            const duplex = (iface.duplex || 'auto').padEnd(8);
+            const speed = String(iface.speed || 'auto').padEnd(6);
+            out += `${port} ${desc} ${status} ${vlan} ${duplex}${speed} 10/100/1000BaseTX\n`;
+        }
+        return out;
+    }
+
+    _showInterfacesSwitchport() {
+        let out = '';
+        for (const [name, iface] of Object.entries(this.node.interfaces)) {
+            if (!iface.switchportMode) continue;
+            const mode = iface.switchportMode || 'access';
+            out += `Name: ${getPortDisplayName(name)}\n`;
+            out += `Switchport: Enabled\n`;
+            out += `Administrative Mode: ${mode === 'trunk' ? 'trunk' : 'static access'}\n`;
+            out += `Operational Mode: ${mode === 'trunk' ? 'trunk' : 'static access'}\n`;
+            out += `Access Mode VLAN: ${iface.accessVlan || 1} (${this.node.vlans[iface.accessVlan || 1]?.name || 'default'})\n`;
+            out += `Trunking Native Mode VLAN: ${iface.nativeVlan || 1} (${this.node.vlans[iface.nativeVlan || 1]?.name || 'default'})\n`;
+            out += `Trunking VLANs Enabled: ${iface.trunkAllowed || 'all'}\n\n`;
+        }
+        return out || '% No switchport interfaces found.';
     }
 
     _showRunningConfig() {
@@ -1022,7 +1060,7 @@ export class CiscoCLI {
 
         // switchport trunk allowed vlan
         if (cmd.startsWith('switchport trunk allowed vlan ')) {
-            iface.trunkAllowed = rawArgs.slice(4).join(' ');
+            iface.trunkAllowed = rawArgs.slice(5).join(' ');
             return '';
         }
 

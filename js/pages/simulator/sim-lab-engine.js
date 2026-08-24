@@ -1,6 +1,7 @@
 // sim-lab-engine.js
 
 import { LABS } from './sim-labs.js';
+import { getNetAddr } from './sim-math.js';
 
 export class LabEngine {
     constructor(graph, engine) {
@@ -136,11 +137,32 @@ export class LabEngine {
                     if (ifConfig.state !== undefined) iface.state = ifConfig.state;
                     if (ifConfig.switchportMode !== undefined) iface.switchportMode = ifConfig.switchportMode;
                     if (ifConfig.accessVlan !== undefined) iface.accessVlan = ifConfig.accessVlan;
+                    if (ifConfig.trunkAllowed !== undefined) iface.trunkAllowed = ifConfig.trunkAllowed;
+                    if (ifConfig.nativeVlan !== undefined) iface.nativeVlan = ifConfig.nativeVlan;
                     if (ifConfig.description !== undefined) iface.description = ifConfig.description;
                 }
             }
         }
         if (config.gateway !== undefined) node.gateway = config.gateway;
+        if (config.dnsServer !== undefined) node.dnsServer = config.dnsServer;
+        if (config.httpEnabled !== undefined) node.httpEnabled = config.httpEnabled;
+        if (config.nodeServices) {
+            node.services = { ...(node.services || {}), ...config.nodeServices };
+        }
+        if (config.scenarioState) {
+            node.scenarioState = { ...(node.scenarioState || {}), ...config.scenarioState };
+        }
+        if (config.syslogMessages) {
+            node.syslogMessages = [...(node.syslogMessages || []), ...config.syslogMessages];
+            const syslog = this._getFileNode(node, '/var/log/syslog');
+            if (syslog?.type === 'file') {
+                const existing = syslog.content ? syslog.content + '\n' : '';
+                syslog.content = existing + config.syslogMessages.join('\n');
+            }
+        }
+        if (config.eventLogs) {
+            node.eventLogs = [...(node.eventLogs || []), ...config.eventLogs.map(event => ({ ...event }))];
+        }
         if (config.hostname !== undefined) { node.hostname = config.hostname; node.name = config.hostname; }
         if (config.vlans) {
             for (const [vid, vlan] of Object.entries(config.vlans)) {
@@ -174,6 +196,7 @@ export class LabEngine {
         if (config.firewallRules) {
             node.firewallRules = config.firewallRules.map(rule => ({ ...rule }));
         }
+        if (config.firewallEnabled !== undefined) node.firewallEnabled = config.firewallEnabled;
         if (config.labAnswers) {
             node.labAnswers = { ...config.labAnswers };
         }
@@ -269,7 +292,7 @@ export class LabEngine {
 
     _runCheck(check) {
         const nodeId = this._resolveNodeRef(check.node);
-        if (!nodeId && check.type !== 'ping_success' && check.type !== 'can_reach') {
+        if (!nodeId && check.type !== 'ping_success' && check.type !== 'can_reach' && check.type !== 'http_success' && check.type !== 'dns_resolves') {
             return { passed: false, message: `Device "${check.node}" not found in topology` };
         }
 
@@ -297,6 +320,8 @@ export class LabEngine {
                 return this._checkVlanPort(node, check);
             case 'trunk_mode':
                 return this._checkTrunkMode(node, check);
+            case 'trunk_allows_vlan':
+                return this._checkTrunkAllowsVlan(node, check);
             case 'ospf_enabled':
                 return this._checkOspfEnabled(node, check);
             case 'ospf_network':
@@ -321,6 +346,8 @@ export class LabEngine {
                 return this._checkAclApplied(node, check);
             case 'dhcp_pool':
                 return this._checkDhcpPool(node, check);
+            case 'dhcp_assigned':
+                return this._checkDhcpAssigned(node, check);
             case 'nat_inside':
                 return this._checkNatInside(node, check);
             case 'nat_outside':
@@ -333,6 +360,10 @@ export class LabEngine {
                 return this._checkPing(check);
             case 'can_reach':
                 return this._checkCanReach(check);
+            case 'http_success':
+                return this._checkHttpSuccess(check);
+            case 'dns_resolves':
+                return this._checkDnsResolves(check);
             case 'static_route':
                 return this._checkStaticRoute(node, check);
             case 'switchport_mode':
@@ -352,8 +383,12 @@ export class LabEngine {
                 return this._checkFileContains(node, check);
             case 'pcap_protocol_identified':
                 return this._checkPcapProtocol(node, check);
+            case 'pcap_packet_info_contains':
+                return this._checkPcapPacketInfo(node, check);
             case 'firewall_rule':
                 return this._checkFirewallRule(node, check);
+            case 'firewall_allows':
+                return this._checkFirewallAllows(node, check);
             case 'aaa_enabled':
             case 'aaa_auth_login':
             case 'cdp_disabled':
@@ -526,6 +561,33 @@ export class LabEngine {
         };
     }
 
+    _checkTrunkAllowsVlan(node, check) {
+        const iface = node.interfaces[check.interface];
+        if (!iface) return { passed: false, message: `Interface ${check.interface} not found` };
+        const allowed = iface.trunkAllowed || 'all';
+        const passed = iface.switchportMode === 'trunk' && this._trunkAllowsVlan(allowed, check.vlanId);
+        return {
+            passed,
+            message: passed
+                ? `${check.interface} trunk carries VLAN ${check.vlanId}`
+                : `${check.interface} should be trunk and allow VLAN ${check.vlanId}`
+        };
+    }
+
+    _trunkAllowsVlan(allowed, vlanId) {
+        if (!allowed || String(allowed).toLowerCase() === 'all') return true;
+        const vlan = Number(vlanId);
+        return String(allowed).split(',').some(part => {
+            const token = part.trim();
+            if (!token) return false;
+            if (token.includes('-')) {
+                const [start, end] = token.split('-').map(Number);
+                return vlan >= start && vlan <= end;
+            }
+            return String(Number(token)) === String(vlan);
+        });
+    }
+
     _checkSpanningTreeRoot(node, check) {
         const vlanPriority = node.stpConfig?.vlanPriorities?.[check.vlan];
         const priority = vlanPriority ?? node.stpConfig?.priority;
@@ -539,12 +601,12 @@ export class LabEngine {
     }
 
     _checkCommandRan(node, check) {
-        const needle = (check.command || '').toLowerCase();
+        const needles = (check.commands || [check.command || '']).map(cmd => cmd.toLowerCase());
         const history = (node.commandHistory || []).map(cmd => cmd.toLowerCase());
-        const found = history.some(cmd => check.exact ? cmd === needle : cmd.includes(needle));
+        const found = history.some(cmd => needles.some(needle => check.exact ? cmd === needle : cmd.includes(needle)));
         return {
             passed: found,
-            message: found ? `Command "${check.command}" was run` : `Run command: ${check.command}`
+            message: found ? `Diagnostic command was run` : `Run command: ${check.command || needles[0]}`
         };
     }
 
@@ -600,6 +662,18 @@ export class LabEngine {
         };
     }
 
+    _checkPcapPacketInfo(node, check) {
+        const info = node.labAnswers?.pcapPacketInfo || '';
+        const needles = Array.isArray(check.contains) ? check.contains : [check.contains];
+        const passed = needles.every(needle => info.toLowerCase().includes(String(needle || '').toLowerCase()));
+        return {
+            passed,
+            message: passed
+                ? `Marked packet contains expected evidence`
+                : `Mark the packet whose Info field contains: ${needles.join(', ')}`
+        };
+    }
+
     _checkFirewallRule(node, check) {
         const rules = node.firewallRules || [];
         const found = rules.some(rule =>
@@ -613,6 +687,16 @@ export class LabEngine {
             message: found
                 ? `Firewall has ${check.action} ${check.protocol || 'tcp'} ${check.port} rule`
                 : `Add firewall rule: ${check.action} ${check.port}/${check.protocol || 'tcp'}`
+        };
+    }
+
+    _checkFirewallAllows(node, check) {
+        const decision = this.engine._hostFirewallDecision(node, String(check.port), check.protocol || 'tcp');
+        return {
+            passed: decision === 'allow',
+            message: decision === 'allow'
+                ? `Firewall allows ${check.protocol || 'tcp'}/${check.port}`
+                : `Firewall should allow ${check.protocol || 'tcp'}/${check.port}`
         };
     }
 
@@ -787,6 +871,31 @@ export class LabEngine {
         };
     }
 
+    _checkDhcpAssigned(node, check) {
+        const ifaceName = check.interface || Object.keys(node.interfaces || {})[0];
+        const iface = node.interfaces?.[ifaceName];
+        if (!iface) return { passed: false, message: `Interface ${ifaceName || 'default'} not found` };
+
+        const issues = [];
+        if (!iface.ip) issues.push('no DHCP address assigned');
+        if (check.subnet && String(iface.subnet) !== String(check.subnet)) issues.push(`subnet should be /${check.subnet}`);
+        if (check.gateway && node.gateway !== check.gateway) issues.push(`gateway should be ${check.gateway}`);
+        if (check.dns && node.dnsServer !== check.dns) issues.push(`DNS should be ${check.dns}`);
+        if (check.network && iface.ip) {
+            const cidr = parseInt(check.subnet || iface.subnet, 10) || 24;
+            const actualNetwork = getNetAddr(iface.ip, cidr);
+            if (actualNetwork !== check.network) issues.push(`lease should be in ${check.network}/${cidr}`);
+        }
+
+        const passed = issues.length === 0 && !!node.services?.dhcpClient;
+        return {
+            passed,
+            message: passed
+                ? `${ifaceName} has DHCP lease ${iface.ip}/${iface.subnet}`
+                : `DHCP lease check failed: ${issues.join('; ') || 'client is not marked as DHCP-assigned'}`
+        };
+    }
+
     _checkNatInside(node, check) {
         const found = node.natConfig.insideIfaces.includes(check.interface);
         return {
@@ -873,6 +982,40 @@ export class LabEngine {
             message: result.ok
                 ? `${check.source} can reach ${check.destination}`
                 : `${check.source} cannot reach ${check.destination}: ${result.reason}`
+        };
+    }
+
+    _checkHttpSuccess(check) {
+        const srcId = this._resolveNodeRef(check.source);
+        const dstId = this._resolveNodeRef(check.destination);
+        if (!srcId) return { passed: false, message: `Source "${check.source}" not found` };
+        if (!dstId) return { passed: false, message: `Destination "${check.destination}" not found` };
+
+        const dstIp = check.targetIp || this.graph.getPrimaryIP(dstId);
+        if (!dstIp) return { passed: false, message: `Destination "${check.destination}" has no IP configured` };
+
+        const result = this.engine.httpRequest(srcId, dstIp);
+        return {
+            passed: result.ok,
+            message: result.ok
+                ? `${check.source} can load HTTP from ${check.destination}`
+                : `${check.source} cannot load HTTP from ${check.destination}: ${result.reason}`
+        };
+    }
+
+    _checkDnsResolves(check) {
+        const srcId = this._resolveNodeRef(check.source);
+        if (!srcId) return { passed: false, message: `Source "${check.source}" not found` };
+
+        const result = this.engine.resolveDNS(srcId, check.hostname);
+        const passed = result.ok && (!check.expected || result.ip === check.expected);
+        return {
+            passed,
+            message: passed
+                ? `${check.hostname} resolves to ${result.ip}`
+                : result.ok
+                    ? `${check.hostname} resolves to ${result.ip}, expected ${check.expected}`
+                    : `${check.hostname} does not resolve: ${result.reason}`
         };
     }
 

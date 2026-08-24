@@ -81,13 +81,34 @@ export class SimEngine {
     requestDHCP(clientNodeId) {
         const client = this.graph.getNode(clientNodeId);
         if (!client) return { ok: false, reason: 'Client not found' };
+        if (client.services?.dhcpClientService === false) {
+            this._logPacket({
+                type: 'DHCP',
+                src: clientNodeId,
+                dst: 'broadcast',
+                info: 'DHCP Discover not sent: DHCP Client service stopped',
+                details: {
+                    bootpOp: 'Client service stopped',
+                    srcPort: 68,
+                    dstPort: 67,
+                    messageType: 'Local failure',
+                    clientMac: Object.values(client.interfaces || {})[0]?.mac || '',
+                    notes: 'The client service must be running before DHCP Discover packets leave the host.'
+                }
+            });
+            return { ok: false, reason: 'DHCP Client service is stopped' };
+        }
+
+        const clientIfaceName = Object.keys(client.interfaces || {})[0];
+        const clientVlan = clientIfaceName ? this._getEndpointAccessVlan(clientNodeId, clientIfaceName) : null;
 
         for (const [id, node] of this.graph.nodes.entries()) {
             if (node.dhcpPools && node.dhcpPools.length > 0) {
+                if (node.services?.dhcpServer === false) continue;
                 for (const pool of node.dhcpPools) {
                     if (!pool.network || !pool.mask) continue;
 
-                    const path = this._bfsPath(clientNodeId, id);
+                    const path = this._bfsPath(clientNodeId, id, clientVlan ? String(clientVlan) : null);
                     if (!path) continue;
 
                     const cidr = maskToCidr(pool.mask);
@@ -109,6 +130,8 @@ export class SimEngine {
                     clientIface.ip = newIP;
                     clientIface.subnet = String(cidr);
                     client.gateway = pool.defaultRouter || '';
+                    client.dnsServer = pool.dns || client.dnsServer || '';
+                    if (!client.services) client.services = {};
                     client.services.dhcpClient = true;
                     client.services.dhcpAssignedIp = newIP;
 
@@ -119,7 +142,25 @@ export class SimEngine {
                         timestamp: Date.now()
                     });
 
-                    this._logPacket({ type: 'DHCP', src: clientNodeId, dst: id, info: `DHCP Discover → Offer → Request → ACK: ${newIP}/${cidr}` });
+                    this._logPacket({
+                        type: 'DHCP',
+                        src: clientNodeId,
+                        dst: id,
+                        info: `DHCP Discover -> Offer -> Request -> ACK: ${newIP}/${cidr}`,
+                        path,
+                        details: {
+                            bootpOp: 'ACK',
+                            srcPort: 67,
+                            dstPort: 68,
+                            messageType: 'DHCP ACK',
+                            offeredIp: newIP,
+                            subnetMask: pool.mask,
+                            router: pool.defaultRouter || '',
+                            dnsServer: pool.dns || '',
+                            leaseTime: 'infinite',
+                            clientMac: clientIface.mac || ''
+                        }
+                    });
 
                     this.graph.notify();
                     return { ok: true, ip: newIP, subnet: cidr, gateway: pool.defaultRouter, dns: pool.dns };
@@ -127,23 +168,92 @@ export class SimEngine {
             }
         }
 
+        this._logPacket({
+            type: 'DHCP',
+            src: clientNodeId,
+            dst: 'broadcast',
+            info: 'DHCP Discover -> no Offer received',
+            details: {
+                bootpOp: 'Discover',
+                srcPort: 68,
+                dstPort: 67,
+                messageType: 'DHCP Discover',
+                clientVlan: clientVlan || 'unknown',
+                clientMac: Object.values(client.interfaces || {})[0]?.mac || '',
+                notes: 'No reachable DHCP server answered on this Layer 2 segment.'
+            }
+        });
         return { ok: false, reason: 'No DHCP server found on the network' };
     }
 
     // ─── DNS Resolution ────────────────────────────
 
     resolveDNS(clientNodeId, hostname) {
+        const clientNode = this.graph.getNode(clientNodeId);
+        if (clientNode?.services?.dnsClient === false) return { ok: false, reason: 'DNS Client service is stopped' };
+        const configuredDns = clientNode?.dnsServer || clientNode?.dns || clientNode?.resolver || '';
+
+        if (configuredDns) {
+            const dnsNode = this.graph.findNodeByIP(configuredDns);
+            if (!dnsNode) {
+                this._logDnsPacket(clientNodeId, configuredDns, hostname, 'Timeout', `Query: ${hostname} -> timeout (${configuredDns} not found)`);
+                return { ok: false, reason: `DNS server ${configuredDns} is not reachable` };
+            }
+            if (dnsNode.services?.dnsServer === false) {
+                this._logDnsPacket(clientNodeId, dnsNode.id, hostname, 'Server stopped', `Query: ${hostname} -> no response (DNS service stopped)`);
+                return { ok: false, reason: `DNS server ${configuredDns} service is stopped` };
+            }
+
+            const reachability = this.ping(clientNodeId, configuredDns);
+            if (!reachability.ok) {
+                this._logDnsPacket(clientNodeId, dnsNode.id, hostname, 'Timeout', `Query: ${hostname} -> timeout (${reachability.reason})`);
+                return { ok: false, reason: `DNS server ${configuredDns} unreachable: ${reachability.reason}` };
+            }
+
+            const match = this._findDnsRecord(dnsNode, hostname);
+            if (match) {
+                this._logDnsPacket(clientNodeId, dnsNode.id, hostname, 'NoError', `Query: ${hostname} -> ${match.value}`, match.value);
+                return { ok: true, ip: match.value, server: dnsNode.id };
+            }
+            this._logDnsPacket(clientNodeId, dnsNode.id, hostname, 'NXDOMAIN', `Query: ${hostname} -> NXDOMAIN`);
+            return { ok: false, reason: `DNS server ${configuredDns} has no A record for ${hostname}` };
+        }
+
         for (const [id, node] of this.graph.nodes.entries()) {
-            if (node.dnsRecords && node.dnsRecords.length > 0) {
-                for (const record of node.dnsRecords) {
-                    if (record.name.toLowerCase() === hostname.toLowerCase() && record.type === 'A') {
-                        this._logPacket({ type: 'DNS', src: clientNodeId, dst: id, info: `Query: ${hostname} → ${record.value}` });
-                        return { ok: true, ip: record.value, server: id };
-                    }
-                }
+            if (node.services?.dnsServer === false) continue;
+            const match = this._findDnsRecord(node, hostname);
+            if (match) {
+                this._logDnsPacket(clientNodeId, id, hostname, 'NoError', `Query: ${hostname} -> ${match.value}`, match.value);
+                return { ok: true, ip: match.value, server: id };
             }
         }
+        this._logDnsPacket(clientNodeId, 'broadcast', hostname, 'NXDOMAIN', `Query: ${hostname} -> NXDOMAIN`);
         return { ok: false, reason: `Cannot resolve ${hostname}` };
+    }
+
+    _logDnsPacket(src, dst, hostname, responseCode, info, answer = '') {
+        this._logPacket({
+            type: 'DNS',
+            src,
+            dst,
+            info,
+            details: {
+                transport: 'UDP',
+                srcPort: 53000 + Math.floor(Math.random() * 1000),
+                dstPort: 53,
+                queryName: hostname,
+                queryType: 'A',
+                responseCode,
+                answer
+            }
+        });
+    }
+
+    _findDnsRecord(node, hostname) {
+        if (!node?.dnsRecords?.length) return null;
+        return node.dnsRecords.find(record =>
+            (record.name || '').toLowerCase() === hostname.toLowerCase() && record.type === 'A'
+        ) || null;
     }
 
     // ─── Ping Simulation (Full) ────────────────────
@@ -162,7 +272,8 @@ export class SimEngine {
         if (!srcNode.powered) return { ok: false, reason: 'Source device is powered off' };
         if (!destNode.powered) return { ok: false, reason: 'Destination device is powered off' };
 
-        const path = this._bfsPath(sourceId, destNode.id);
+        const sameSubnetVlan = this._getSameSubnetAccessVlan(sourceId, destNode.id, targetIp);
+        const path = this._bfsPath(sourceId, destNode.id, sameSubnetVlan);
         if (!path) return { ok: false, reason: 'Destination host unreachable (no physical path)' };
 
         const srcCidr = parseInt(srcIf.iface.subnet) || 24;
@@ -177,6 +288,9 @@ export class SimEngine {
         if (srcNet !== dstNet) {
             if (!srcNode.gateway && !this._hasRouteFor(sourceId, targetIp)) {
                 return { ok: false, reason: `Destination host unreachable. No default gateway configured.` };
+            }
+            if (srcNode.gateway && !this._hasUsableDefaultGateway(sourceId)) {
+                return { ok: false, reason: `Destination host unreachable. Default gateway ${srcNode.gateway} is not reachable from this subnet.` };
             }
             const hasRouter = path.some(id => {
                 const n = this.graph.getNode(id);
@@ -213,7 +327,15 @@ export class SimEngine {
             src: sourceId,
             dst: destNode.id,
             info: `Echo Request/Reply: ${srcIf.iface.ip} → ${targetIp} (${ms}ms, TTL=128, ${path.length} hops)`,
-            path
+            path,
+            details: {
+                icmpType: 'Echo request/reply',
+                sourceIp: srcIf.iface.ip,
+                destinationIp: targetIp,
+                ttl: 128 - path.length + 1,
+                bytes: 32,
+                roundTripMs: ms
+            }
         });
 
         srcNode.packetsSent++;
@@ -269,17 +391,23 @@ export class SimEngine {
         }
 
         if (targetNode.type !== 'server' && targetNode.type !== 'cloud') {
+            this._logTcpPacket(sourceId, targetNode.id, targetIp, 'RST', 'TCP SYN -> RST: target is not listening as a server', pingResult.path);
             return { ok: false, status: 403, reason: 'Connection Refused: Target is not a server' };
         }
 
         if (!targetNode.services || !targetNode.services.http) {
+            this._logTcpPacket(sourceId, targetNode.id, targetIp, 'RST', 'TCP SYN -> RST: HTTP service not running', pingResult.path);
             return { ok: false, status: 403, reason: 'Connection Refused: HTTP service not running' };
         }
 
+        const firewallDecision = this._hostFirewallDecision(targetNode, '80', 'tcp');
+        if (firewallDecision === 'deny') {
+            this._logTcpPacket(sourceId, targetNode.id, targetIp, 'Timeout', 'TCP SYN retransmission -> no response: host firewall denied tcp/80', pingResult.path);
+            return { ok: false, status: 403, reason: 'Connection timed out: host firewall denied tcp/80' };
+        }
+
         // 3. Get content from server's file system or fallback
-        const fs = targetNode.fileSystem || {};
-        const wwwDir = fs['/var/www/html'] || {};
-        let content = wwwDir['index.html'];
+        let content = this._readFile(targetNode, '/var/www/html/index.html');
 
         if (!content) {
             content = `
@@ -302,10 +430,58 @@ export class SimEngine {
             src: sourceId,
             dst: targetNode.id,
             info: `HTTP GET / (200 OK)`,
-            path: pingResult.path
+            path: pingResult.path,
+            details: {
+                protocol: 'HTTP',
+                method: 'GET',
+                path: '/',
+                status: '200 OK',
+                srcPort: 49152 + Math.floor(Math.random() * 1000),
+                dstPort: 80,
+                host: targetNode.hostname || targetNode.name
+            }
         });
 
         return { ok: true, status: 200, content, ms: pingResult.ms * 2 };
+    }
+
+    _logTcpPacket(sourceId, destId, destIp, state, info, path = []) {
+        this._logPacket({
+            type: 'TCP',
+            src: sourceId,
+            dst: destId,
+            info,
+            path,
+            details: {
+                srcPort: 49152 + Math.floor(Math.random() * 1000),
+                dstPort: 80,
+                destinationIp: destIp,
+                flags: state === 'RST' ? 'SYN, RST' : 'SYN retransmission',
+                state
+            }
+        });
+    }
+
+    _hostFirewallDecision(node, port, protocol = 'tcp') {
+        if (!node?.firewallEnabled) return 'allow';
+        const rules = node.firewallRules || [];
+        for (let i = rules.length - 1; i >= 0; i--) {
+            const rule = rules[i];
+            const portMatches = String(rule.port) === String(port);
+            const protocolMatches = !rule.protocol || rule.protocol === protocol;
+            if (portMatches && protocolMatches) return rule.action === 'deny' ? 'deny' : 'allow';
+        }
+        return 'allow';
+    }
+
+    _readFile(node, path) {
+        const parts = String(path || '').split('/').filter(Boolean);
+        let current = node.filesystem?.['/'];
+        for (const part of parts) {
+            if (!current?.children?.[part]) return '';
+            current = current.children[part];
+        }
+        return current?.type === 'file' ? current.content || '' : '';
     }
 
     // ─── ACL Check ─────────────────────────────────
@@ -331,7 +507,7 @@ export class SimEngine {
 
     // ─── Path Finding ──────────────────────────────
 
-    _bfsPath(startId, endId) {
+    _bfsPath(startId, endId, vlanId = null) {
         const queue = [{ id: startId, path: [startId] }];
         const visited = new Set([startId]);
 
@@ -343,13 +519,88 @@ export class SimEngine {
                 if (!visited.has(neighbor)) {
                     visited.add(neighbor);
                     const edge = this._getEdgeBetween(current.id, neighbor);
-                    if (edge && edge.status === 'up') {
+                    if (edge && edge.status === 'up' && this._edgeAllowsVlan(edge, current.id, neighbor, vlanId)) {
                         queue.push({ id: neighbor, path: [...current.path, neighbor] });
                     }
                 }
             }
         }
         return null;
+    }
+
+    _getSameSubnetAccessVlan(sourceId, destId, targetIp) {
+        const srcIf = this._getFirstConfiguredInterface(sourceId);
+        const destIf = this._findInterfaceWithIP(destId, targetIp);
+        if (!srcIf || !destIf) return null;
+
+        const srcCidr = parseInt(srcIf.iface.subnet) || 24;
+        const destCidr = parseInt(destIf.iface.subnet) || 24;
+        if (getNetAddr(srcIf.iface.ip, srcCidr) !== getNetAddr(destIf.iface.ip, destCidr)) return null;
+
+        const srcVlan = this._getEndpointAccessVlan(sourceId, srcIf.name);
+        const dstVlan = this._getEndpointAccessVlan(destId, destIf.name);
+        if (srcVlan == null || dstVlan == null) return null;
+        if (String(srcVlan) !== String(dstVlan)) return '__VLAN_MISMATCH__';
+        return String(srcVlan);
+    }
+
+    _getEndpointAccessVlan(nodeId, ifaceName) {
+        const neighbor = this.graph.getNeighborOnPort(nodeId, ifaceName);
+        if (!neighbor) return null;
+        const neighborNode = this.graph.getNode(neighbor.nodeId);
+        const neighborIface = neighborNode?.interfaces?.[neighbor.port];
+        if (neighborNode && (neighborNode.type === 'switch' || neighborNode.type === 'l3switch') && neighborIface) {
+            return neighborIface.accessVlan || 1;
+        }
+        const node = this.graph.getNode(nodeId);
+        const iface = node?.interfaces?.[ifaceName];
+        return iface?.accessVlan || 1;
+    }
+
+    _edgeAllowsVlan(edge, currentId, neighborId, vlanId) {
+        if (!vlanId) return true;
+        if (vlanId === '__VLAN_MISMATCH__') return false;
+
+        const current = this.graph.getNode(currentId);
+        const neighbor = this.graph.getNode(neighborId);
+        if (!current || !neighbor) return false;
+
+        const currentPort = edge.source === currentId ? edge.sourcePort : edge.targetPort;
+        const neighborPort = edge.source === neighborId ? edge.sourcePort : edge.targetPort;
+        const currentIface = current.interfaces?.[currentPort];
+        const neighborIface = neighbor.interfaces?.[neighborPort];
+
+        const currentIsSwitch = current.type === 'switch' || current.type === 'l3switch';
+        const neighborIsSwitch = neighbor.type === 'switch' || neighbor.type === 'l3switch';
+
+        if (currentIsSwitch && neighborIsSwitch) {
+            return this._switchportCarriesVlan(currentIface, vlanId) && this._switchportCarriesVlan(neighborIface, vlanId);
+        }
+        if (currentIsSwitch) return this._switchportCarriesVlan(currentIface, vlanId);
+        if (neighborIsSwitch) return this._switchportCarriesVlan(neighborIface, vlanId);
+        return true;
+    }
+
+    _switchportCarriesVlan(iface, vlanId) {
+        if (!iface || iface.state !== 'up') return false;
+        if (iface.switchportMode === 'trunk') {
+            return this._trunkAllowsVlan(iface.trunkAllowed || 'all', vlanId);
+        }
+        return String(iface.accessVlan || 1) === String(vlanId);
+    }
+
+    _trunkAllowsVlan(allowed, vlanId) {
+        if (!allowed || String(allowed).toLowerCase() === 'all') return true;
+        const vlan = Number(vlanId);
+        return String(allowed).split(',').some(part => {
+            const token = part.trim();
+            if (!token) return false;
+            if (token.includes('-')) {
+                const [start, end] = token.split('-').map(Number);
+                return vlan >= start && vlan <= end;
+            }
+            return String(Number(token)) === String(vlan);
+        });
     }
 
     _getEdgeBetween(a, b) {
@@ -405,6 +656,28 @@ export class SimEngine {
         return node.routingTable.some(r => r.network === '0.0.0.0' && r.cidr === 0);
     }
 
+    _hasUsableDefaultGateway(nodeId) {
+        const node = this.graph.getNode(nodeId);
+        if (!node?.gateway || !isValidIP(node.gateway)) return false;
+
+        const srcIf = this._getFirstConfiguredInterface(nodeId);
+        if (!srcIf) return false;
+
+        const cidr = parseInt(srcIf.iface.subnet) || 24;
+        if (!isSameSubnet(srcIf.iface.ip, cidr, node.gateway)) return false;
+
+        const gatewayNode = this.graph.findNodeByIP(node.gateway);
+        if (!gatewayNode?.powered) return false;
+
+        const path = this._bfsPath(nodeId, gatewayNode.id);
+        if (!path) return false;
+
+        return path.some(id => {
+            const pathNode = this.graph.getNode(id);
+            return pathNode && (pathNode.type === 'router' || pathNode.type === 'l3switch' || pathNode.type === 'firewall');
+        });
+    }
+
     _learnMACsAlongPath(path) {
         for (const nodeId of path) {
             const node = this.graph.getNode(nodeId);
@@ -429,10 +702,28 @@ export class SimEngine {
     _logPacket(entry) {
         entry.id = this.packetLog.length;
         entry.timestamp = entry.timestamp || Date.now();
+        entry.details = entry.details || this._inferPacketDetails(entry);
         this.packetLog.push(entry);
         if (this.packetLog.length > this.maxLogEntries) {
             this.packetLog.shift();
         }
+    }
+
+    _inferPacketDetails(entry) {
+        if (entry.type === 'ARP') return { opcode: 'request/reply', summary: entry.info || '' };
+        if (entry.type === 'DHCP') return { srcPort: 68, dstPort: 67, messageType: this._inferDhcpMessage(entry.info), summary: entry.info || '' };
+        if (entry.type === 'DNS') return { srcPort: 53000, dstPort: 53, queryType: 'A', responseCode: entry.info?.includes('NXDOMAIN') ? 'NXDOMAIN' : 'NoError', summary: entry.info || '' };
+        if (entry.type === 'ICMP') return { icmpType: 'Echo', summary: entry.info || '' };
+        if (entry.type === 'TCP/HTTP') return { protocol: 'HTTP', dstPort: 80, summary: entry.info || '' };
+        return { summary: entry.info || '' };
+    }
+
+    _inferDhcpMessage(info = '') {
+        if (/ack/i.test(info)) return 'DHCP ACK';
+        if (/offer/i.test(info)) return 'DHCP Offer';
+        if (/request/i.test(info)) return 'DHCP Request';
+        if (/discover/i.test(info)) return 'DHCP Discover';
+        return 'DHCP';
     }
 
     clearPacketLog() {

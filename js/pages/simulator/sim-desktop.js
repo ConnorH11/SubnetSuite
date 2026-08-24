@@ -131,6 +131,8 @@ export class SimDesktop {
             { id: 'sysinfo', icon: 'bi-info-circle-fill', label: 'System Info' },
             { id: 'netmon', icon: 'bi-activity', label: 'Net Monitor' },
             { id: 'pktgen', icon: 'bi-send-fill', label: 'Packet Gen' },
+            { id: 'services', icon: 'bi-sliders', label: 'Services' },
+            { id: 'logviewer', icon: 'bi-journal-text', label: isLinux ? 'Logs' : 'Event Viewer' },
             { id: 'appstore', icon: 'bi-bag-fill', label: isLinux ? 'Software Center' : 'Store' },
         ];
 
@@ -158,6 +160,7 @@ export class SimDesktop {
             'sysinfo': () => this._openSystemInfo(),
             'pktgen': () => this._openPacketGen(),
             'netmon': () => this._openNetMonitor(),
+            'services': () => this._openServicesManager(),
             'logviewer': () => this._openLogViewer(),
             'dhcpserver': () => this._openDHCPServer(),
             'dnsserver': () => this._openDNSServer(),
@@ -184,6 +187,7 @@ export class SimDesktop {
             { id: 'sysinfo', icon: 'bi-info-circle-fill', label: 'System Info', action: () => this._openSystemInfo() },
             { id: 'pktgen', icon: 'bi-send-fill', label: 'Packet Generator', action: () => this._openPacketGen() },
             { id: 'netmon', icon: 'bi-activity', label: 'Network Monitor', action: () => this._openNetMonitor() },
+            { id: 'services', icon: 'bi-sliders', label: 'Services', action: () => this._openServicesManager() },
             { id: 'logviewer', icon: 'bi-journal-text', label: 'Log Viewer', action: () => this._openLogViewer() },
             { id: 'appstore', icon: 'bi-bag-fill', label: 'Software Center', action: () => this._openAppStore() },
         ];
@@ -324,6 +328,10 @@ export class SimDesktop {
                         <input class="sim-input" id="cfg-gw" value="${this.node.gateway || ''}" placeholder="192.168.1.1">
                     </div>
                     <div class="sim-form-group">
+                        <label>DNS Server</label>
+                        <input class="sim-input" id="cfg-dns" value="${this.node.dnsServer || ''}" placeholder="8.8.8.8">
+                    </div>
+                    <div class="sim-form-group">
                         <label>MAC Address</label>
                         <input class="sim-input" value="${iface.mac || ''}" readonly style="opacity:0.6">
                     </div>
@@ -345,6 +353,7 @@ export class SimDesktop {
                 iface.ip = content.querySelector('#cfg-ip').value;
                 iface.subnet = content.querySelector('#cfg-subnet').value;
                 this.node.gateway = content.querySelector('#cfg-gw').value;
+                this.node.dnsServer = content.querySelector('#cfg-dns').value;
                 this.engine.graph.notify();
                 this._renderIfaceTable(content.querySelector('#if-status-table'));
                 content.querySelector('#dhcp-status').textContent = '✓ IP configuration applied.';
@@ -362,6 +371,7 @@ export class SimDesktop {
                     content.querySelector('#cfg-ip').value = result.ip;
                     content.querySelector('#cfg-subnet').value = result.subnet;
                     if (result.gateway) content.querySelector('#cfg-gw').value = result.gateway;
+                    if (result.dns) content.querySelector('#cfg-dns').value = result.dns;
                     statusEl.textContent = `✓ DHCP: Received ${result.ip}/${result.subnet}`;
                     statusEl.className = 'app-status-msg success';
                     this._renderIfaceTable(content.querySelector('#if-status-table'));
@@ -583,42 +593,107 @@ export class SimDesktop {
     // ═══════════════════════════════════════════════
     _openWireshark() {
         const id = this._appId('wireshark');
-        const content = this.wm.createWindow(id, 'Packet Capture', 'bi-reception-4', { width: 700, height: 420 });
+        const content = this.wm.createWindow(id, 'Packet Capture', 'bi-reception-4', { width: 820, height: 560 });
+        let selectedPacketId = null;
+        let protocolFilter = 'all';
         
         const renderCapture = () => {
-            const packets = this.engine.packetLog.filter(p => p.src === this.node.id || p.dst === this.node.id || p.observer === this.node.id);
+            const capturedPackets = this.engine.packetLog.filter(p => p.src === this.node.id || p.dst === this.node.id || p.observer === this.node.id);
+            const protocols = Array.from(new Set(capturedPackets.map(p => p.type))).sort();
+            const packets = protocolFilter === 'all' ? capturedPackets : capturedPackets.filter(p => p.type === protocolFilter);
             const selectedProtocol = this.node.labAnswers?.pcapProtocol || '';
+            const selectedPacket = packets.find(p => String(p.id) === String(selectedPacketId)) || packets[0] || null;
+            if (selectedPacket && selectedPacketId == null) selectedPacketId = selectedPacket.id;
+            if (!selectedPacket) selectedPacketId = null;
             content.innerHTML = `
                 <div class="app-padded">
                     <div class="app-btn-row" style="margin-bottom:12px">
                         <button class="app-btn app-btn-primary" id="btn-refresh-capture"><i class="bi bi-arrow-clockwise"></i> Refresh</button>
                         <button class="app-btn app-btn-secondary" id="btn-clear-capture"><i class="bi bi-trash"></i> Clear</button>
-                        <span class="app-badge">${packets.length} packets</span>
+                        <span class="app-badge">${packets.length}/${capturedPackets.length} packets</span>
                         ${selectedProtocol ? `<span class="app-badge">Marked: ${selectedProtocol}</span>` : ''}
                     </div>
-                    <table class="app-table app-table-compact">
-                        <thead><tr><th>#</th><th>Time</th><th>Protocol</th><th>Source</th><th>Destination</th><th>Info</th><th></th></tr></thead>
-                        <tbody>${packets.length > 0 ? packets.map(p => {
-                            const srcName = this.engine.graph.getNode(p.src)?.name || p.src;
-                            const dstName = this.engine.graph.getNode(p.dst)?.name || p.dst;
-                            const typeClass = p.type === 'ICMP' ? 'proto-icmp' : p.type === 'ARP' ? 'proto-arp' : p.type === 'DHCP' ? 'proto-dhcp' : p.type === 'DNS' ? 'proto-dns' : '';
-                            return `<tr class="${typeClass}"><td>${p.id}</td><td>${new Date(p.timestamp).toLocaleTimeString()}</td><td><span class="proto-badge">${p.type}</span></td><td>${srcName}</td><td>${dstName}</td><td class="mono" style="font-size:11px">${p.info || ''}</td><td><button class="app-btn app-btn-secondary app-btn-sm btn-mark-packet" data-protocol="${p.type}">Mark</button></td></tr>`;
-                        }).join('') : '<tr><td colspan="7" style="text-align:center;opacity:0.5">No packets captured. Send a ping to see traffic.</td></tr>'}</tbody>
-                    </table>
+                    <div class="app-btn-row" style="margin-bottom:12px; flex-wrap:wrap">
+                        <button class="app-btn app-btn-secondary app-btn-sm pcap-filter ${protocolFilter === 'all' ? 'active' : ''}" data-protocol-filter="all">All</button>
+                        ${protocols.map(protocol => `<button class="app-btn app-btn-secondary app-btn-sm pcap-filter ${protocolFilter === protocol ? 'active' : ''}" data-protocol-filter="${this._esc(protocol)}">${this._esc(protocol)}</button>`).join('')}
+                    </div>
+                    <div class="pcap-layout">
+                        <div class="pcap-table-pane">
+                            <table class="app-table app-table-compact">
+                                <thead><tr><th>#</th><th>Time</th><th>Protocol</th><th>Source</th><th>Destination</th><th>Info</th></tr></thead>
+                                <tbody>${packets.length > 0 ? packets.map(p => {
+                                    const srcName = this._packetEndpointName(p.src);
+                                    const dstName = this._packetEndpointName(p.dst);
+                                    const typeClass = p.type === 'ICMP' ? 'proto-icmp' : p.type === 'ARP' ? 'proto-arp' : p.type === 'DHCP' ? 'proto-dhcp' : p.type === 'DNS' ? 'proto-dns' : p.type === 'TCP/HTTP' ? 'proto-http' : p.type === 'TCP' ? 'proto-tcp' : '';
+                                    return `<tr class="${typeClass} ${String(p.id) === String(selectedPacketId) ? 'pcap-row-selected' : ''}" data-packet-id="${p.id}"><td>${p.id}</td><td>${new Date(p.timestamp).toLocaleTimeString()}</td><td><span class="proto-badge">${p.type}</span></td><td>${srcName}</td><td>${dstName}</td><td class="mono" style="font-size:11px">${this._esc(p.info || '')}</td></tr>`;
+                                }).join('') : '<tr><td colspan="6" style="text-align:center;opacity:0.5">No packets captured. Send ping, DHCP, DNS, or browser traffic to see packets.</td></tr>'}</tbody>
+                            </table>
+                        </div>
+                        <div class="pcap-detail-pane">
+                            ${selectedPacket ? this._renderPacketDetails(selectedPacket) : '<div class="webui-empty">Select a packet to inspect details.</div>'}
+                        </div>
+                    </div>
                 </div>
             `;
             content.querySelector('#btn-refresh-capture').addEventListener('click', renderCapture);
-            content.querySelector('#btn-clear-capture').addEventListener('click', () => { this.engine.clearPacketLog(); renderCapture(); });
+            content.querySelector('#btn-clear-capture').addEventListener('click', () => { this.engine.clearPacketLog(); selectedPacketId = null; renderCapture(); });
+            content.querySelectorAll('[data-protocol-filter]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    protocolFilter = btn.dataset.protocolFilter;
+                    selectedPacketId = null;
+                    renderCapture();
+                });
+            });
+            content.querySelectorAll('[data-packet-id]').forEach(row => {
+                row.addEventListener('click', () => {
+                    selectedPacketId = row.dataset.packetId;
+                    renderCapture();
+                });
+            });
             content.querySelectorAll('.btn-mark-packet').forEach(btn => {
                 btn.addEventListener('click', () => {
                     this.node.labAnswers = this.node.labAnswers || {};
                     this.node.labAnswers.pcapProtocol = btn.dataset.protocol;
+                    this.node.labAnswers.pcapPacketInfo = btn.dataset.info || '';
                     this.engine.graph.notify();
                     renderCapture();
                 });
             });
         };
         renderCapture();
+    }
+
+    _renderPacketDetails(packet) {
+        const details = packet.details || {};
+        const rows = Object.entries(details).map(([key, value]) => `
+            <div class="webui-info-row"><span>${this._formatDetailKey(key)}</span><span>${this._esc(value)}</span></div>
+        `).join('');
+        const path = Array.isArray(packet.path)
+            ? packet.path.map(id => this.engine.graph.getNode(id)?.name || id).join(' -> ')
+            : '';
+        return `
+            <h3 class="app-section-title">Packet ${packet.id}</h3>
+            <div class="pcap-detail-card">
+                <div class="webui-info-row"><span>Protocol</span><span>${this._esc(packet.type)}</span></div>
+                <div class="webui-info-row"><span>Source</span><span>${this._packetEndpointName(packet.src)}</span></div>
+                <div class="webui-info-row"><span>Destination</span><span>${this._packetEndpointName(packet.dst)}</span></div>
+                <div class="webui-info-row"><span>Info</span><span>${this._esc(packet.info || '')}</span></div>
+                ${path ? `<div class="webui-info-row"><span>Path</span><span>${this._esc(path)}</span></div>` : ''}
+                ${rows}
+            </div>
+            <button class="app-btn app-btn-primary app-btn-sm btn-mark-packet" data-protocol="${this._esc(packet.type)}" data-info="${this._esc(packet.info || '')}" style="margin-top:12px">
+                <i class="bi bi-bookmark-check"></i> Mark as Evidence
+            </button>
+        `;
+    }
+
+    _packetEndpointName(id) {
+        if (id === 'broadcast') return 'Broadcast';
+        return this.engine.graph.getNode(id)?.name || id;
+    }
+
+    _formatDetailKey(key) {
+        return String(key).replace(/([A-Z])/g, ' $1').replace(/^./, c => c.toUpperCase());
     }
 
     // ═══════════════════════════════════════════════
@@ -938,52 +1013,356 @@ export class SimDesktop {
 
     // ═══════════════════════════════════════════════
     // ═══════════════════════════════════════════════
+    _openServicesManager() {
+        const id = this._appId('services');
+        const content = this.wm.createWindow(id, 'Services', 'bi-sliders', { width: 640, height: 440 });
+        if (!this.node.services) this.node.services = {};
+        if (!this.node._services) this.node._services = {};
+
+        const render = () => {
+            const services = this._serviceCatalog();
+            content.innerHTML = `
+                <div class="app-padded">
+                    <div class="app-header-row">
+                        <h3 class="app-section-title">Services</h3>
+                        <span class="app-badge">${services.length} services</span>
+                    </div>
+                    <table class="app-table">
+                        <thead><tr><th>Name</th><th>Description</th><th>Status</th><th>Action</th></tr></thead>
+                        <tbody>
+                        ${services.map(service => {
+                            const running = this._getDesktopServiceState(service);
+                            return `
+                                <tr>
+                                    <td>${service.name}</td>
+                                    <td>${service.description}</td>
+                                    <td><span class="${running ? 'status-up' : 'status-down'}">${running ? 'Running' : 'Stopped'}</span></td>
+                                    <td>
+                                        <button class="app-btn ${running ? 'app-btn-danger' : 'app-btn-primary'} app-btn-sm" data-service="${service.id}" data-state="${running ? 'stop' : 'start'}">
+                                            <i class="bi ${running ? 'bi-stop-fill' : 'bi-play-fill'}"></i> ${running ? 'Stop' : 'Start'}
+                                        </button>
+                                    </td>
+                                </tr>
+                            `;
+                        }).join('')}
+                        </tbody>
+                    </table>
+                    <div id="services-status" class="app-status-msg info">Service changes apply immediately to simulator connectivity and troubleshooting tools.</div>
+                </div>
+            `;
+
+            content.querySelectorAll('[data-service]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const service = services.find(item => item.id === btn.dataset.service);
+                    if (!service) return;
+                    this._setDesktopServiceState(service, btn.dataset.state === 'start');
+                    this._appendServiceEvent(service, btn.dataset.state === 'start');
+                    this.engine.graph.notify();
+                    render();
+                });
+            });
+        };
+        render();
+    }
+
+    _serviceCatalog() {
+        const isLinux = this.node.os === 'linux';
+        const services = isLinux
+            ? [
+                { id: 'networking', name: 'networking', description: 'Interface and route initialization' },
+                { id: 'ssh', name: 'ssh', description: 'Remote shell access' },
+                { id: 'ufw', name: 'ufw', description: 'Host firewall policy' },
+                { id: 'http', name: 'nginx/apache2', description: 'HTTP web service' },
+            ]
+            : [
+                { id: 'dhcpClientService', name: 'DHCP Client', description: 'Obtains automatic IPv4 configuration' },
+                { id: 'dnsClient', name: 'DNS Client', description: 'Resolves hostnames for local apps' },
+                { id: 'firewall', name: 'Windows Defender Firewall', description: 'Applies host firewall rules' },
+                { id: 'http', name: 'World Wide Web Publishing', description: 'HTTP web service' },
+            ];
+
+        if (this.node.type === 'server') {
+            services.push(
+                { id: 'dhcpServer', name: 'DHCP Server', description: 'Offers IPv4 leases to clients' },
+                { id: 'dnsServer', name: 'DNS Server', description: 'Answers local zone lookups' },
+            );
+        }
+
+        return services;
+    }
+
+    _getDesktopServiceState(service) {
+        switch (service.id) {
+            case 'networking':
+                return Object.values(this.node.interfaces || {}).some(iface => iface.state === 'up');
+            case 'ssh':
+                return (this.node._services?.ssh || this.node._services?.sshd || 'active') === 'active';
+            case 'ufw':
+            case 'firewall':
+                return !!this.node.firewallEnabled;
+            case 'http':
+                return !!this.node.httpEnabled;
+            case 'dhcpServer':
+                return this.node.services?.dhcpServer === undefined ? (this.node.dhcpPools || []).length > 0 : this.node.services.dhcpServer !== false;
+            case 'dnsServer':
+                return this.node.services?.dnsServer === undefined ? (this.node.dnsRecords || []).length > 0 : this.node.services.dnsServer !== false;
+            case 'dhcpClientService':
+                return this.node.services?.dhcpClientService !== false;
+            case 'dnsClient':
+                return this.node.services?.dnsClient !== false;
+            default:
+                return true;
+        }
+    }
+
+    _setDesktopServiceState(service, running) {
+        if (!this.node.services) this.node.services = {};
+        if (!this.node._services) this.node._services = {};
+        switch (service.id) {
+            case 'networking':
+                Object.values(this.node.interfaces || {}).forEach(iface => { iface.state = running ? 'up' : 'down'; });
+                this.node._services.networking = running ? 'active' : 'inactive';
+                break;
+            case 'ssh':
+                this.node._services.ssh = running ? 'active' : 'inactive';
+                this.node._services.sshd = running ? 'active' : 'inactive';
+                break;
+            case 'ufw':
+            case 'firewall':
+                this.node.firewallEnabled = running;
+                break;
+            case 'http':
+                this.node.httpEnabled = running;
+                this.node._services.w3svc = running ? 'active' : 'inactive';
+                this.node._services.nginx = running ? 'active' : 'inactive';
+                this.node._services.apache2 = running ? 'active' : 'inactive';
+                this.node._services.httpd = running ? 'active' : 'inactive';
+                break;
+            case 'dhcpServer':
+                this.node.services.dhcpServer = running;
+                break;
+            case 'dnsServer':
+                this.node.services.dnsServer = running;
+                break;
+            case 'dhcpClientService':
+                this.node.services.dhcpClientService = running;
+                break;
+            case 'dnsClient':
+                this.node.services.dnsClient = running;
+                break;
+        }
+    }
+
+    _appendServiceEvent(service, running) {
+        const name = service.name || service.id;
+        if (this.node.os === 'linux') {
+            if (!this.node.syslogMessages) this.node.syslogMessages = [];
+            this.node.syslogMessages.push(`${new Date().toISOString()} ${this.node.name} systemd[1]: ${running ? 'Started' : 'Stopped'} ${name}.`);
+            return;
+        }
+
+        if (!this.node.eventLogs) this.node.eventLogs = [];
+        this.node.eventLogs.push({
+            time: new Date().toLocaleString(),
+            level: 'Information',
+            source: 'Service Control Manager',
+            id: running ? '7036' : '7035',
+            message: `The ${name} service entered the ${running ? 'running' : 'stopped'} state.`
+        });
+    }
+
+    // ═══════════════════════════════════════════════
+    // ═══════════════════════════════════════════════
     _openLogViewer() {
         const id = this._appId('log');
-        const content = this.wm.createWindow(id, 'Log Viewer', 'bi-journal-text', { width: 600, height: 380 });
-        const msgs = this.node.syslogMessages || [];
-        content.innerHTML = `
-            <div class="app-padded">
-                <h3 class="app-section-title">Syslog Messages</h3>
-                <div class="log-viewer-box">${msgs.length > 0 ? msgs.map(m => `<div class="log-entry">${m}</div>`).join('') : '<div class="log-empty">No syslog messages.</div>'}</div>
-            </div>
-        `;
+        const isWindows = this.node.os !== 'linux';
+        const content = this.wm.createWindow(id, isWindows ? 'Event Viewer' : 'Log Viewer', 'bi-journal-text', { width: 720, height: 470 });
+
+        const render = (filter = 'all') => {
+            const events = isWindows ? this._windowsEventRows() : this._linuxLogRows();
+            const filtered = filter === 'all' ? events : events.filter(event => event.level === filter || event.source === filter);
+            const levels = Array.from(new Set(events.map(event => event.level))).filter(Boolean);
+            const sources = Array.from(new Set(events.map(event => event.source))).filter(Boolean);
+
+            content.innerHTML = `
+                <div class="app-padded">
+                    <div class="app-header-row">
+                        <h3 class="app-section-title">${isWindows ? 'Event Viewer' : 'System Logs'}</h3>
+                        <span class="app-badge">${filtered.length} events</span>
+                    </div>
+                    <div class="app-btn-row" style="margin-bottom:12px; flex-wrap:wrap">
+                        <button class="app-btn app-btn-secondary app-btn-sm log-filter ${filter === 'all' ? 'active' : ''}" data-filter="all">All</button>
+                        ${levels.map(level => `<button class="app-btn app-btn-secondary app-btn-sm log-filter ${filter === level ? 'active' : ''}" data-filter="${this._esc(level)}">${this._esc(level)}</button>`).join('')}
+                        ${sources.map(source => `<button class="app-btn app-btn-secondary app-btn-sm log-filter ${filter === source ? 'active' : ''}" data-filter="${this._esc(source)}">${this._esc(source)}</button>`).join('')}
+                    </div>
+                    <table class="app-table app-table-compact">
+                        <thead><tr><th>Time</th><th>Level</th><th>Source</th><th>Event ID</th><th>Message</th></tr></thead>
+                        <tbody>
+                            ${filtered.map(event => `
+                                <tr class="log-row-${event.level.toLowerCase()}">
+                                    <td class="mono">${this._esc(event.time)}</td>
+                                    <td><span class="log-level log-level-${event.level.toLowerCase()}">${this._esc(event.level)}</span></td>
+                                    <td>${this._esc(event.source)}</td>
+                                    <td class="mono">${this._esc(event.id || '-')}</td>
+                                    <td>${this._esc(event.message)}</td>
+                                </tr>
+                            `).join('') || '<tr><td colspan="5">No log entries.</td></tr>'}
+                        </tbody>
+                    </table>
+                </div>
+            `;
+
+            content.querySelectorAll('.log-filter').forEach(btn => {
+                btn.addEventListener('click', () => render(btn.dataset.filter));
+            });
+        };
+
+        render();
+    }
+
+    _windowsEventRows() {
+        const seeded = (this.node.eventLogs || []).map(event => ({
+            time: event.time || new Date().toLocaleString(),
+            level: event.level || 'Information',
+            source: event.source || 'System',
+            id: event.id || event.eventId || '',
+            message: event.message || ''
+        }));
+
+        const generated = [
+            { level: this.node.services?.dhcpClientService === false ? 'Error' : 'Information', source: 'Dhcp-Client', id: '1001', message: this.node.services?.dhcpClientService === false ? 'The DHCP Client service is stopped. Address renewal requests will not be sent.' : 'The DHCP Client service is running.' },
+            { level: this.node.services?.dnsClient === false ? 'Warning' : 'Information', source: 'DNS Client Events', id: '1014', message: this.node.services?.dnsClient === false ? 'Name resolution is unavailable because the DNS Client service is stopped.' : 'DNS Client service is running.' },
+            { level: this.node.firewallEnabled ? 'Information' : 'Warning', source: 'Windows Firewall', id: '2004', message: this.node.firewallEnabled ? 'Windows Defender Firewall is enabled.' : 'Windows Defender Firewall is disabled.' },
+        ].map(event => ({ time: 'Now', ...event }));
+
+        return [...seeded, ...generated];
+    }
+
+    _linuxLogRows() {
+        const seeded = (this.node.eventLogs || []).map(event => ({
+            time: event.time || new Date().toLocaleString(),
+            level: event.level || 'info',
+            source: event.source || 'systemd',
+            id: event.id || '',
+            message: event.message || ''
+        }));
+        const syslog = (this.node.syslogMessages || []).map(message => {
+            const level = /fail|error|denied|timeout/i.test(message) ? 'error' : /warn/i.test(message) ? 'warning' : 'info';
+            return { time: 'syslog', level, source: this._extractLogSource(message), id: '', message };
+        });
+        const services = Object.entries(this.node._services || {}).map(([name, state]) => ({
+            time: 'Now',
+            level: state === 'active' ? 'info' : 'warning',
+            source: 'systemd',
+            id: '',
+            message: `${name}.service is ${state || 'unknown'}`
+        }));
+        return [...seeded, ...syslog, ...services];
+    }
+
+    _extractLogSource(message) {
+        const match = String(message).match(/\s([a-zA-Z0-9_.-]+)(?:\[\d+\])?:/);
+        return match ? match[1] : 'syslog';
     }
 
     // ═══════════════════════════════════════════════
     // ═══════════════════════════════════════════════
     _openDHCPServer() {
         const id = this._appId('dhcpsrv');
-        const content = this.wm.createWindow(id, 'DHCP Server', 'bi-hdd-rack-fill', { width: 520, height: 450 });
+        const content = this.wm.createWindow(id, 'DHCP Server', 'bi-hdd-rack-fill', { width: 720, height: 520 });
+        if (!this.node.services) this.node.services = {};
+        if (this.node.services.dhcpServer === undefined) this.node.services.dhcpServer = (this.node.dhcpPools || []).length > 0;
+        if (!this.node.dhcpPools) this.node.dhcpPools = [];
 
         const renderPools = () => {
+            const serviceActive = this.node.services.dhcpServer !== false;
+            const totalLeases = this.node.dhcpPools.reduce((sum, pool) => sum + this._normalizeLeaseMap(pool).size, 0);
             content.innerHTML = `
                 <div class="app-padded">
-                    <h3 class="app-section-title">DHCP Pools</h3>
-                    <button class="app-btn app-btn-primary app-btn-sm" id="btn-add-pool" style="margin-bottom:12px"><i class="bi bi-plus-lg"></i> Add Pool</button>
-                    ${this.node.dhcpPools.map((pool, idx) => `
+                    <div class="app-header-row">
+                        <h3 class="app-section-title">DHCP Server</h3>
+                        <span class="app-badge ${serviceActive ? 'badge-success' : 'badge-danger'}">${serviceActive ? 'Running' : 'Stopped'}</span>
+                    </div>
+                    <div class="app-btn-row" style="margin-bottom:12px">
+                        <button class="app-btn ${serviceActive ? 'app-btn-danger' : 'app-btn-primary'} app-btn-sm" id="btn-toggle-dhcp">
+                            <i class="bi ${serviceActive ? 'bi-stop-fill' : 'bi-play-fill'}"></i> ${serviceActive ? 'Stop Service' : 'Start Service'}
+                        </button>
+                        <button class="app-btn app-btn-primary app-btn-sm" id="btn-add-pool"><i class="bi bi-plus-lg"></i> Add Pool</button>
+                        <button class="app-btn app-btn-secondary app-btn-sm" id="btn-clear-leases"><i class="bi bi-x-circle"></i> Clear Leases</button>
+                        <span class="app-badge">${this.node.dhcpPools.length} pools</span>
+                        <span class="app-badge">${totalLeases} leases</span>
+                    </div>
+                    ${this.node.dhcpPools.map((pool, idx) => {
+                        const validation = this._validateDhcpPool(pool);
+                        const leaseRows = Array.from(this._normalizeLeaseMap(pool).entries());
+                        return `
                         <div class="dhcp-pool-card">
-                            <div class="pool-header">${pool.name} <button class="app-btn app-btn-sm app-btn-danger" data-del="${idx}"><i class="bi bi-trash"></i></button></div>
-                            <div class="app-form-grid">
-                                <div class="sim-form-group"><label>Network</label><input class="sim-input pool-field" data-idx="${idx}" data-field="network" value="${pool.network}"></div>
-                                <div class="sim-form-group"><label>Mask</label><input class="sim-input pool-field" data-idx="${idx}" data-field="mask" value="${pool.mask}"></div>
-                                <div class="sim-form-group"><label>Default Router</label><input class="sim-input pool-field" data-idx="${idx}" data-field="defaultRouter" value="${pool.defaultRouter}"></div>
-                                <div class="sim-form-group"><label>DNS Server</label><input class="sim-input pool-field" data-idx="${idx}" data-field="dns" value="${pool.dns}"></div>
+                            <div class="pool-header">
+                                <span>${this._esc(pool.name || `Pool${idx + 1}`)}</span>
+                                <span class="app-badge ${validation.ok ? 'badge-success' : 'badge-warning'}">${validation.ok ? 'Scope valid' : 'Needs attention'}</span>
+                                <button class="app-btn app-btn-sm app-btn-danger" data-del="${idx}"><i class="bi bi-trash"></i></button>
                             </div>
-                            <div class="pool-leases">Leases: ${pool.leases ? pool.leases.size : 0}</div>
+                            <div class="app-form-grid">
+                                <div class="sim-form-group"><label>Pool Name</label><input class="sim-input pool-field" data-idx="${idx}" data-field="name" value="${this._esc(pool.name || '')}"></div>
+                                <div class="sim-form-group"><label>Network</label><input class="sim-input pool-field" data-idx="${idx}" data-field="network" value="${this._esc(pool.network || '')}"></div>
+                                <div class="sim-form-group"><label>Mask</label><input class="sim-input pool-field" data-idx="${idx}" data-field="mask" value="${this._esc(pool.mask || '')}"></div>
+                                <div class="sim-form-group"><label>Default Router</label><input class="sim-input pool-field" data-idx="${idx}" data-field="defaultRouter" value="${this._esc(pool.defaultRouter || '')}"></div>
+                                <div class="sim-form-group"><label>DNS Server</label><input class="sim-input pool-field" data-idx="${idx}" data-field="dns" value="${this._esc(pool.dns || '')}"></div>
+                            </div>
+                            <div class="pool-leases">${validation.messages.join(' | ')}</div>
+                            <table class="app-table app-table-compact" style="margin-top:8px">
+                                <thead><tr><th>Lease IP</th><th>Hostname</th><th>MAC</th><th>Age</th><th></th></tr></thead>
+                                <tbody>
+                                ${leaseRows.map(([ip, lease]) => `
+                                    <tr>
+                                        <td class="mono">${ip}</td>
+                                        <td>${this._esc(lease.hostname || 'unknown')}</td>
+                                        <td class="mono">${lease.mac || '-'}</td>
+                                        <td>${this._leaseAge(lease.timestamp)}</td>
+                                        <td><button class="app-btn app-btn-sm app-btn-secondary" data-release="${idx}:${ip}">Release</button></td>
+                                    </tr>
+                                `).join('') || '<tr><td colspan="5">No active leases.</td></tr>'}
+                                </tbody>
+                            </table>
                         </div>
-                    `).join('') || '<p>No DHCP pools configured.</p>'}
+                    `; }).join('') || '<p>No DHCP pools configured.</p>'}
+                    <div id="dhcp-manager-status" class="app-status-msg ${serviceActive ? 'info' : 'error'}">
+                        ${serviceActive ? 'DHCP service will answer requests reachable on the correct VLAN/path.' : 'DHCP service is stopped; clients will time out on renew.'}
+                    </div>
                 </div>
             `;
 
+            content.querySelector('#btn-toggle-dhcp')?.addEventListener('click', () => {
+                this.node.services.dhcpServer = !serviceActive;
+                this.engine.graph.notify();
+                renderPools();
+            });
+
             content.querySelector('#btn-add-pool')?.addEventListener('click', () => {
-                this.node.dhcpPools.push({ name: `Pool${this.node.dhcpPools.length + 1}`, network: '', mask: '', defaultRouter: '', dns: '', leases: new Map() });
+                this.node.dhcpPools.push({ name: `Pool${this.node.dhcpPools.length + 1}`, network: '', mask: '255.255.255.0', defaultRouter: '', dns: '', leases: new Map() });
+                this.node.services.dhcpServer = true;
+                renderPools();
+            });
+
+            content.querySelector('#btn-clear-leases')?.addEventListener('click', () => {
+                this.node.dhcpPools.forEach(pool => this._normalizeLeaseMap(pool).clear());
+                this.engine.graph.notify();
                 renderPools();
             });
 
             content.querySelectorAll('[data-del]').forEach(btn => {
                 btn.addEventListener('click', () => {
                     this.node.dhcpPools.splice(parseInt(btn.dataset.del), 1);
+                    renderPools();
+                });
+            });
+
+            content.querySelectorAll('[data-release]').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    const [poolIdx, ip] = btn.dataset.release.split(':');
+                    const pool = this.node.dhcpPools[parseInt(poolIdx, 10)];
+                    if (pool) this._normalizeLeaseMap(pool).delete(ip);
+                    this.engine.graph.notify();
                     renderPools();
                 });
             });
@@ -1003,28 +1382,72 @@ export class SimDesktop {
     // ═══════════════════════════════════════════════
     _openDNSServer() {
         const id = this._appId('dnssrv');
-        const content = this.wm.createWindow(id, 'DNS Server', 'bi-server', { width: 500, height: 400 });
+        const content = this.wm.createWindow(id, 'DNS Server', 'bi-server', { width: 680, height: 500 });
+        if (!this.node.services) this.node.services = {};
+        if (this.node.services.dnsServer === undefined) this.node.services.dnsServer = (this.node.dnsRecords || []).length > 0;
+        if (!this.node.dnsRecords) this.node.dnsRecords = [];
 
         const renderRecords = () => {
+            const serviceActive = this.node.services.dnsServer !== false;
+            const duplicates = this._getDuplicateDnsRecordKeys();
             content.innerHTML = `
                 <div class="app-padded">
-                    <h3 class="app-section-title">DNS Records</h3>
-                    <button class="app-btn app-btn-primary app-btn-sm" id="btn-add-record" style="margin-bottom:12px"><i class="bi bi-plus-lg"></i> Add Record</button>
-                    <table class="app-table"><thead><tr><th>Name</th><th>Type</th><th>Value</th><th></th></tr></thead><tbody>
-                    ${this.node.dnsRecords.map((rec, idx) => `
-                        <tr>
-                            <td><input class="sim-input dns-field" data-idx="${idx}" data-field="name" value="${rec.name}" style="width:140px"></td>
+                    <div class="app-header-row">
+                        <h3 class="app-section-title">DNS Server</h3>
+                        <span class="app-badge ${serviceActive ? 'badge-success' : 'badge-danger'}">${serviceActive ? 'Running' : 'Stopped'}</span>
+                    </div>
+                    <div class="app-btn-row" style="margin-bottom:12px">
+                        <button class="app-btn ${serviceActive ? 'app-btn-danger' : 'app-btn-primary'} app-btn-sm" id="btn-toggle-dns">
+                            <i class="bi ${serviceActive ? 'bi-stop-fill' : 'bi-play-fill'}"></i> ${serviceActive ? 'Stop Service' : 'Start Service'}
+                        </button>
+                        <button class="app-btn app-btn-primary app-btn-sm" id="btn-add-record"><i class="bi bi-plus-lg"></i> Add Record</button>
+                        <span class="app-badge">${this.node.dnsRecords.length} records</span>
+                    </div>
+                    <div class="app-form-grid" style="margin-bottom:12px">
+                        <div class="sim-form-group"><label>Test Name</label><input class="sim-input" id="dns-test-name" placeholder="portal.local"></div>
+                        <div class="sim-form-group"><label>Result</label><div id="dns-test-result" class="app-inline-result">Not queried</div></div>
+                    </div>
+                    <button class="app-btn app-btn-secondary app-btn-sm" id="btn-test-dns" style="margin-bottom:12px"><i class="bi bi-search"></i> Query Local Zone</button>
+                    <table class="app-table"><thead><tr><th>Name</th><th>Type</th><th>Value</th><th>Status</th><th></th></tr></thead><tbody>
+                    ${this.node.dnsRecords.map((rec, idx) => {
+                        const key = `${(rec.name || '').toLowerCase()}|${rec.type || 'A'}`;
+                        const validation = this._validateDnsRecord(rec, duplicates.has(key));
+                        return `
+                        <tr class="${validation.ok ? '' : 'app-row-warning'}">
+                            <td><input class="sim-input dns-field" data-idx="${idx}" data-field="name" value="${this._esc(rec.name || '')}" style="width:140px"></td>
                             <td><select class="sim-input dns-field" data-idx="${idx}" data-field="type" style="width:80px"><option ${rec.type === 'A' ? 'selected' : ''}>A</option><option ${rec.type === 'CNAME' ? 'selected' : ''}>CNAME</option><option ${rec.type === 'MX' ? 'selected' : ''}>MX</option></select></td>
-                            <td><input class="sim-input dns-field" data-idx="${idx}" data-field="value" value="${rec.value}" style="width:140px"></td>
+                            <td><input class="sim-input dns-field" data-idx="${idx}" data-field="value" value="${this._esc(rec.value || '')}" style="width:140px"></td>
+                            <td>${validation.message}</td>
                             <td><button class="app-btn app-btn-sm app-btn-danger" data-del="${idx}"><i class="bi bi-trash"></i></button></td>
                         </tr>
-                    `).join('') || '<tr><td colspan="4">No records. Click Add to create one.</td></tr>'}
+                    `; }).join('') || '<tr><td colspan="5">No records. Click Add to create one.</td></tr>'}
                     </tbody></table>
+                    <div class="app-status-msg ${serviceActive ? 'info' : 'error'}">
+                        ${serviceActive ? 'DNS service answers A-record lookups from reachable clients configured to use this server.' : 'DNS service is stopped; configured clients will fail name resolution.'}
+                    </div>
                 </div>
             `;
+            content.querySelector('#btn-toggle-dns')?.addEventListener('click', () => {
+                this.node.services.dnsServer = !serviceActive;
+                this.engine.graph.notify();
+                renderRecords();
+            });
             content.querySelector('#btn-add-record')?.addEventListener('click', () => {
                 this.node.dnsRecords.push({ name: '', type: 'A', value: '' });
+                this.node.services.dnsServer = true;
                 renderRecords();
+            });
+            content.querySelector('#btn-test-dns')?.addEventListener('click', () => {
+                const name = content.querySelector('#dns-test-name').value.trim();
+                const result = content.querySelector('#dns-test-result');
+                if (!serviceActive) {
+                    result.textContent = 'SERVFAIL: DNS service stopped';
+                    result.className = 'app-inline-result error';
+                    return;
+                }
+                const match = this.node.dnsRecords.find(record => record.type === 'A' && (record.name || '').toLowerCase() === name.toLowerCase());
+                result.textContent = match ? `${match.name} -> ${match.value}` : `NXDOMAIN: ${name || '(blank)'}`;
+                result.className = `app-inline-result ${match ? 'success' : 'error'}`;
             });
             content.querySelectorAll('[data-del]').forEach(btn => {
                 btn.addEventListener('click', () => { this.node.dnsRecords.splice(parseInt(btn.dataset.del), 1); renderRecords(); });
@@ -1038,6 +1461,62 @@ export class SimDesktop {
             });
         };
         renderRecords();
+    }
+
+    _normalizeLeaseMap(pool) {
+        if (!pool.leases) pool.leases = new Map();
+        if (!(pool.leases instanceof Map)) pool.leases = new Map(Object.entries(pool.leases));
+        return pool.leases;
+    }
+
+    _validateDhcpPool(pool) {
+        const messages = [];
+        const cidr = maskToCidr(pool.mask || '24');
+        if (!pool.name) messages.push('missing name');
+        if (!isValidIP(pool.network)) messages.push('invalid network');
+        if (!isValidIP(pool.defaultRouter)) messages.push('invalid default router');
+        if (pool.dns && !isValidIP(pool.dns)) messages.push('invalid DNS option');
+        if (isValidIP(pool.network) && isValidIP(pool.defaultRouter) && getNetAddr(pool.defaultRouter, cidr) !== getNetAddr(pool.network, cidr)) {
+            messages.push('router outside scope');
+        }
+        return {
+            ok: messages.length === 0,
+            messages: messages.length ? messages : [`${pool.network || '0.0.0.0'}/${cidr}`, `${this._normalizeLeaseMap(pool).size} active lease(s)`]
+        };
+    }
+
+    _validateDnsRecord(record, duplicate) {
+        if (!record.name) return { ok: false, message: 'Missing name' };
+        if (!record.value) return { ok: false, message: 'Missing value' };
+        if (duplicate) return { ok: false, message: 'Duplicate name/type' };
+        if (record.type === 'A' && !isValidIP(record.value)) return { ok: false, message: 'A value must be IPv4' };
+        return { ok: true, message: 'OK' };
+    }
+
+    _getDuplicateDnsRecordKeys() {
+        const counts = new Map();
+        for (const record of this.node.dnsRecords || []) {
+            const key = `${(record.name || '').toLowerCase()}|${record.type || 'A'}`;
+            counts.set(key, (counts.get(key) || 0) + 1);
+        }
+        return new Set(Array.from(counts.entries()).filter(([, count]) => count > 1).map(([key]) => key));
+    }
+
+    _leaseAge(timestamp) {
+        if (!timestamp) return '-';
+        const seconds = Math.max(0, Math.floor((Date.now() - timestamp) / 1000));
+        if (seconds < 60) return `${seconds}s`;
+        const minutes = Math.floor(seconds / 60);
+        if (minutes < 60) return `${minutes}m`;
+        return `${Math.floor(minutes / 60)}h`;
+    }
+
+    _esc(value) {
+        return String(value ?? '')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
     }
 
     // ═══════════════════════════════════════════════

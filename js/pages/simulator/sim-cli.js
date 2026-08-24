@@ -61,7 +61,7 @@ export class LinuxCLI {
                        'ssh', 'telnet', 'ftp', 'cat', 'ls', 'cd', 'pwd', 'mkdir', 'rm', 'echo', 'touch', 'clear', 'man',
                        'hostname', 'whoami', 'uname', 'date', 'uptime', 'free', 'df', 'ps', 'kill', 'history', 'export',
                        'iptables', 'tcpdump', 'nmap', 'ss', 'grep', 'find', 'chmod', 'chown', 'nano', 'vi',
-                       'sudo', 'apt', 'apt-get', 'dpkg', 'systemctl', 'service', 'useradd', 'passwd', 'exit', 'help', 'python3', 'node'];
+                       'sudo', 'dhclient', 'apt', 'apt-get', 'dpkg', 'systemctl', 'journalctl', 'service', 'useradd', 'passwd', 'exit', 'help', 'python3', 'node'];
         return cmds.filter(c => c.startsWith(partial.toLowerCase()));
     }
 
@@ -89,7 +89,9 @@ export class LinuxCLI {
             case 'apt': case 'apt-get': return this._apt(args);
             case 'dpkg': return this._dpkg(args);
             case 'systemctl': return this._systemctl(args);
+            case 'journalctl': return this._journalctl(args);
             case 'service': return this._service(args);
+            case 'dhclient': return this._dhclient(args);
             case 'useradd': return args[1] ? `useradd: user '${args[1]}' created` : 'Usage: useradd <username>';
             case 'passwd': return args[1] ? `passwd: password for '${args[1]}' updated successfully` : 'Usage: passwd <username>';
             case 'ping': return this._ping(args);
@@ -181,7 +183,7 @@ export class LinuxCLI {
                 return 'Welcome to Node.js v18.13.0.\nType ".help" for more information.\n> .exit\n';
             case 'man': return args[1] ? `Manual page for ${args[1]}\n\nNAME\n    ${args[1]} - simulated command\n\nDESCRIPTION\n    This is a simulated environment. Type the command for usage info.` : 'What manual page do you want?';
             case 'exit': case 'logout': return '__EXIT__';
-            case 'help': return 'Available commands:\n  ping, traceroute, ifconfig, ip, route, arp, netstat, nslookup, dig,\n  curl, wget, ssh, telnet, cat, ls, cd, pwd, mkdir, rm, echo, touch,\n  hostname, whoami, uname, date, uptime, free, df, ps, history,\n  sudo, apt, dpkg, systemctl, service, useradd, passwd,\n  iptables, tcpdump, nmap, git, docker, ufw, tmux, mysql, psql, node,\n  clear, exit, help';
+            case 'help': return 'Available commands:\n  ping, traceroute, ifconfig, ip, route, arp, netstat, nslookup, dig,\n  curl, wget, ssh, telnet, cat, ls, cd, pwd, mkdir, rm, echo, touch,\n  hostname, whoami, uname, date, uptime, free, df, ps, history,\n  sudo, dhclient, apt, dpkg, systemctl, service, useradd, passwd,\n  iptables, tcpdump, nmap, git, docker, ufw, tmux, mysql, psql, node,\n  clear, exit, help';
             default: 
                 if (cmd === 'python3' && this.node._installedPackages.has('python3')) return 'Python 3.10.12 (main, Nov 20 2023, 15:14:05) [GCC 11.4.0] on linux\nType "help", "copyright", "credits" or "license" for more information.\n>>> exit()\n';
                 if ((cmd === 'nano' || cmd === 'vim' || cmd === 'vi') && (this.node._installedPackages.has('nano') || this.node._installedPackages.has('vim'))) {
@@ -217,7 +219,7 @@ export class LinuxCLI {
     }
 
     _generalHelp() {
-        return 'Available commands:\n  ping, traceroute, ifconfig, ip, route, arp, netstat, nslookup, dig,\n  curl, wget, ssh, telnet, cat, ls, cd, pwd, mkdir, rm, echo, touch,\n  hostname, whoami, uname, date, uptime, free, df, ps, history,\n  sudo, apt, dpkg, systemctl, service, useradd, passwd,\n  iptables, tcpdump, nmap, git, docker, ufw, tmux, mysql, psql, node,\n  clear, exit, help';
+        return 'Available commands:\n  ping, traceroute, ifconfig, ip, route, arp, netstat, nslookup, dig,\n  curl, wget, ssh, telnet, cat, ls, cd, pwd, mkdir, rm, echo, touch,\n  hostname, whoami, uname, date, uptime, free, df, ps, history,\n  sudo, dhclient, apt, dpkg, systemctl, service, useradd, passwd,\n  iptables, tcpdump, nmap, git, docker, ufw, tmux, mysql, psql, node,\n  clear, exit, help';
     }
 
     _helpFor(cmd) {
@@ -233,7 +235,9 @@ export class LinuxCLI {
             dig: 'Usage: dig <hostname>\nQuery DNS for a hostname.',
             curl: 'Usage: curl <url>\nTransfer a URL from a simulated remote service.',
             systemctl: 'Usage: systemctl <status|start|stop|restart|enable|disable|list-units> [service]\nInspect or manage simulated services.',
+            journalctl: 'Usage: journalctl [-u service]\nDisplay simulated system journal messages.',
             service: 'Usage: service <name> <start|stop|restart|status>\nCompatibility wrapper for systemctl.',
+            dhclient: 'Usage: dhclient [interface]\nRequest an IPv4 lease from a simulated DHCP server.',
             ufw: 'Usage: ufw <enable|disable|status|allow|deny|delete> [rule]\nManage the simulated host firewall.',
             iptables: 'Usage: iptables -L\nDisplay or manage simulated packet filtering rules.',
             ls: 'Usage: ls [path]\nList directory contents.',
@@ -248,6 +252,14 @@ export class LinuxCLI {
     _traceroute(args) {
         if (args.length < 2) return 'Usage: traceroute <destination>';
         return `__TRACEROUTE__${args[1]}`;
+    }
+
+    _dhclient(args) {
+        if (!this.engine?.requestDHCP) return 'dhclient: DHCP service unavailable in this simulation';
+        const ifaceName = args.find(arg => !arg.startsWith('-') && arg !== 'dhclient') || Object.keys(this.node.interfaces)[0] || 'eth0';
+        const result = this.engine.requestDHCP(this.node.id);
+        if (!result.ok) return `No DHCPOFFERS received on ${ifaceName}.\nNo working leases in persistent database - sleeping.`;
+        return `DHCPDISCOVER on ${ifaceName} to 255.255.255.255 port 67 interval 3\nDHCPOFFER of ${result.ip} from ${result.gateway || 'DHCP server'}\nDHCPREQUEST for ${result.ip} on ${ifaceName} to 255.255.255.255 port 67\nDHCPACK of ${result.ip} from ${result.gateway || 'DHCP server'}\nbound to ${result.ip} -- renewal in 3600 seconds.`;
     }
 
     _ifconfig(args) {
@@ -526,6 +538,21 @@ export class LinuxCLI {
             this.notifyGraph();
             return `Rule added\nRule added (v6)`;
         }
+        if (action === 'delete') {
+            if (!this.node.firewallRules?.length) return 'Could not delete non-existent rule';
+            const ruleAction = args[2];
+            const spec = args[3] || '';
+            const [port, protocol = 'tcp'] = spec.split('/');
+            const idx = this.node.firewallRules.findIndex(rule =>
+                rule.action === ruleAction &&
+                String(rule.port) === String(port) &&
+                (rule.protocol || 'tcp') === protocol
+            );
+            if (idx === -1) return 'Could not delete non-existent rule';
+            this.node.firewallRules.splice(idx, 1);
+            this.notifyGraph();
+            return 'Rule deleted';
+        }
         return 'Usage: ufw <status|enable|disable|allow|deny>';
     }
 
@@ -668,7 +695,7 @@ export class LinuxCLI {
                 return `${dot} ${svcName}.service - ${svcName} daemon\n     Loaded: loaded (/lib/systemd/system/${svcName}.service; enabled)\n     Active: ${st} (${st === 'active' ? 'running' : 'dead'}) since ${new Date().toUTCString()}\n   Main PID: ${Math.floor(Math.random() * 9000) + 1000} (${svcName})\n      Tasks: ${Math.floor(Math.random() * 8) + 1}\n     Memory: ${Math.floor(Math.random() * 128) + 4}.${Math.floor(Math.random() * 9)}M\n        CPU: ${Math.floor(Math.random() * 500)}ms`;
             case 'start':
                 this.node._services[svcName] = 'active';
-                if (svcName === 'nginx' || svcName === 'apache2') {
+                if (svcName === 'nginx' || svcName === 'apache2' || svcName === 'httpd') {
                     this.node.services = this.node.services || {};
                     this.node.services.http = true;
                     this.node.httpEnabled = true;
@@ -677,7 +704,7 @@ export class LinuxCLI {
             case 'stop':
                 if (this.node._services[svcName]) {
                     this.node._services[svcName] = 'inactive';
-                    if (svcName === 'nginx' || svcName === 'apache2') {
+                    if (svcName === 'nginx' || svcName === 'apache2' || svcName === 'httpd') {
                         this.node.services = this.node.services || {};
                         this.node.services.http = false;
                         this.node.httpEnabled = false;
@@ -688,7 +715,7 @@ export class LinuxCLI {
                 return '';
             case 'restart':
                 this.node._services[svcName] = 'active';
-                if (svcName === 'nginx' || svcName === 'apache2') {
+                if (svcName === 'nginx' || svcName === 'apache2' || svcName === 'httpd') {
                     this.node.services = this.node.services || {};
                     this.node.services.http = true;
                     this.node.httpEnabled = true;
@@ -710,6 +737,26 @@ export class LinuxCLI {
         const action = args[2].toLowerCase();
         // Delegate to systemctl
         return this._systemctl(['systemctl', action, svcName]);
+    }
+
+    _journalctl(args) {
+        const unitIdx = args.indexOf('-u');
+        const unit = unitIdx !== -1 && args[unitIdx + 1] ? args[unitIdx + 1].replace('.service', '') : '';
+        const messages = this.node.syslogMessages || [];
+        const filtered = unit
+            ? messages.filter(msg => msg.toLowerCase().includes(unit.toLowerCase()))
+            : messages;
+
+        if (filtered.length === 0) {
+            return unit
+                ? `-- No entries for unit ${unit}.service --`
+                : '-- No journal entries --';
+        }
+
+        return filtered.map((msg, idx) => {
+            const ts = new Date(Date.now() - (filtered.length - idx) * 60000).toLocaleString();
+            return `${ts} ${this.hostname} ${msg}`;
+        }).join('\n');
     }
 
     _psAux() {
@@ -759,9 +806,10 @@ export class LinuxCLI {
 // ═══════════════════════════════════════════════════
 // ═══════════════════════════════════════════════════
 export class WindowsCLI {
-    constructor(node, notifyGraph) {
+    constructor(node, notifyGraph, engine) {
         this.node = node;
         this.notifyGraph = notifyGraph;
+        this.engine = engine;
         this.hostname = node.hostname || node.name;
         this.cwd = 'C:\\Users\\Admin';
         this.history = [];
@@ -781,7 +829,16 @@ export class WindowsCLI {
 
     getPrompt() { return `${this.cwd}>`; }
 
-    addHistory(cmd) { if (cmd && cmd.trim()) { this.history.push(cmd); if (this.history.length > 100) this.history.shift(); } this.historyIndex = this.history.length; }
+    addHistory(cmd) {
+        if (cmd && cmd.trim()) {
+            this.history.push(cmd);
+            if (this.history.length > 100) this.history.shift();
+            if (!this.node.commandHistory) this.node.commandHistory = [];
+            this.node.commandHistory.push(cmd);
+            if (this.node.commandHistory.length > 200) this.node.commandHistory.shift();
+        }
+        this.historyIndex = this.history.length;
+    }
     getPrevHistory() { if (this.historyIndex > 0) { this.historyIndex--; return this.history[this.historyIndex]; } return this.history[0] || ''; }
     getNextHistory() { if (this.historyIndex < this.history.length - 1) { this.historyIndex++; return this.history[this.historyIndex]; } this.historyIndex = this.history.length; return ''; }
 
@@ -893,12 +950,13 @@ export class WindowsCLI {
             ping: 'Usage: ping [-t] [-n count] target_name\nOptions:\n  -t          Ping the specified host until stopped.\n  -n count    Number of echo requests to send.',
             tracert: 'Usage: tracert target_name\nTrace the route to a remote host.',
             pathping: 'Usage: pathping target_name\nTrace route and report packet loss.',
-            ipconfig: 'Usage: ipconfig [/all]\nDisplay Windows IP configuration.',
+            ipconfig: 'Usage: ipconfig [/all] [/release] [/renew]\nDisplay or refresh Windows IP configuration.',
             netstat: 'Usage: netstat\nDisplay active TCP connections and listening ports.',
             arp: 'Usage: arp -a\nDisplay ARP cache entries.',
             nslookup: 'Usage: nslookup hostname\nQuery DNS for a hostname.',
             route: 'Usage: route print\nDisplay the local routing table.',
             netsh: 'Usage: netsh interface ip show config\n       netsh wlan show interfaces\n       netsh firewall show state',
+            net: 'Usage: net start [service]\n       net stop [service]\nStart or stop simulated Windows services.',
             dir: 'Usage: dir\nList files and folders in the current directory.',
             cd: 'Usage: cd [path]\nChange or display the current directory.',
             type: 'Usage: type filename\nDisplay a text file.',
@@ -921,7 +979,34 @@ export class WindowsCLI {
     }
 
     _ipconfig(args) {
-        const detailed = args.includes('/all');
+        const lowerArgs = args.map(a => a.toLowerCase());
+        if (lowerArgs.includes('/release')) {
+            const iface = Object.values(this.node.interfaces)[0];
+            if (!iface) return 'No operation can be performed because there are no adapters.';
+            const adapterName = Object.keys(this.node.interfaces)[0];
+            iface.ip = '';
+            iface.subnet = '';
+            this.node.gateway = '';
+            this.node.dnsServer = '';
+            if (this.node.services) {
+                this.node.services.dhcpClient = false;
+                this.node.services.dhcpAssignedIp = '';
+            }
+            this.notifyGraph();
+            return `\nWindows IP Configuration\n\nEthernet adapter ${adapterName}:\n\n   Connection-specific DNS Suffix  . :\n   IPv4 Address. . . . . . . . . . . : 0.0.0.0\n   Default Gateway . . . . . . . . . :\n`;
+        }
+
+        if (lowerArgs.includes('/renew')) {
+            const adapterName = Object.keys(this.node.interfaces)[0] || 'Ethernet';
+            if (!this.engine?.requestDHCP) return 'An error occurred while renewing interface Ethernet : unable to contact your DHCP server.';
+            const result = this.engine.requestDHCP(this.node.id);
+            if (!result.ok) {
+                return `\nWindows IP Configuration\n\nAn error occurred while renewing interface ${adapterName} : unable to contact your DHCP server. Request has timed out.`;
+            }
+            return `\nWindows IP Configuration\n\nEthernet adapter ${adapterName}:\n\n   Connection-specific DNS Suffix  . :\n   IPv4 Address. . . . . . . . . . . : ${result.ip}\n   Subnet Mask . . . . . . . . . . . : ${_cidrToMaskLocal(result.subnet || 24)}\n   Default Gateway . . . . . . . . . : ${result.gateway || ''}\n`;
+        }
+
+        const detailed = lowerArgs.includes('/all');
         let out = '\nWindows IP Configuration\n\n';
         for (const [name, iface] of Object.entries(this.node.interfaces)) {
             out += `Ethernet adapter ${name}:\n\n`;
@@ -934,12 +1019,22 @@ export class WindowsCLI {
                 out += `   IPv4 Address. . . . . . . . . . . : ${iface.ip}\n`;
                 out += `   Subnet Mask . . . . . . . . . . . : ${_cidrToMaskLocal(parseInt(iface.subnet) || 24)}\n`;
                 out += `   Default Gateway . . . . . . . . . : ${this.node.gateway || ''}\n`;
+                if (detailed) out += `   DNS Servers . . . . . . . . . . . : ${this.node.dnsServer || ''}\n`;
+            } else if (iface.state === 'up') {
+                out += `   Autoconfiguration IPv4 Address. . : ${this._apipaAddress(iface)}\n`;
+                out += `   Subnet Mask . . . . . . . . . . . : 255.255.0.0\n`;
+                out += `   Default Gateway . . . . . . . . . :\n`;
             } else {
                 out += `   Media State . . . . . . . . . . . : Media disconnected\n`;
             }
             out += '\n';
         }
         return out;
+    }
+
+    _apipaAddress(iface) {
+        const seed = String(iface.mac || this.hostname || 'sim').split('').reduce((sum, ch) => sum + ch.charCodeAt(0), 0);
+        return `169.254.${(seed % 250) + 1}.${((seed * 7) % 250) + 1}`;
     }
 
     _arp(args) {
@@ -1118,8 +1213,69 @@ export class WindowsCLI {
         if (sub === 'user') return `\nUser accounts for \\\\${this.hostname}\n\n-------------------------------------------------------------------------------\nAdmin                    Guest\nThe command completed successfully.`;
         if (sub === 'view') return `Server Name            Remark\n-------------------------------------------------------------------------------\n\\\\${this.hostname}`;
         if (sub === 'share') return `\nShare name   Resource                        Remark\n-------------------------------------------------------------------------------\nC$           C:\\                              Default share\nIPC$                                          Remote IPC\nADMIN$       C:\\Windows                       Remote Admin`;
-        if (sub === 'start') return 'These Windows services are started:\n   DHCP Client\n   DNS Client\n   Server\n   Workstation';
+        if (sub === 'start' || sub === 'stop') {
+            const serviceArg = args.slice(2).join(' ').toLowerCase();
+            if (!serviceArg) return this._windowsServicesList();
+            const service = this._windowsServiceKey(serviceArg);
+            if (!service) return `The service name is invalid.\n\nMore help is available by typing NET HELPMSG 2185.`;
+            const running = sub === 'start';
+            this._setWindowsService(service.key, running);
+            this._appendWindowsServiceEvent(service.name, running);
+            this.notifyGraph();
+            return `The ${service.name} service is ${running ? 'starting' : 'stopping'}.\nThe ${service.name} service was ${running ? 'started' : 'stopped'} successfully.`;
+        }
         return `The syntax of this command is:\n  NET ${args[1]} [options]`;
+    }
+
+    _windowsServicesList() {
+        const services = [
+            ['DHCP Client', this.node.services?.dhcpClientService !== false],
+            ['DNS Client', this.node.services?.dnsClient !== false],
+            ['Windows Defender Firewall', !!this.node.firewallEnabled],
+            ['World Wide Web Publishing Service', !!this.node.httpEnabled],
+            ['Server', true],
+            ['Workstation', true],
+        ].filter(([, running]) => running).map(([name]) => `   ${name}`).join('\n');
+        return `These Windows services are started:\n${services || '   No services are started.'}`;
+    }
+
+    _windowsServiceKey(name) {
+        const normalized = name.replace(/\s+/g, ' ').trim();
+        const map = {
+            dhcp: { key: 'dhcpClientService', name: 'DHCP Client' },
+            'dhcp client': { key: 'dhcpClientService', name: 'DHCP Client' },
+            dnscache: { key: 'dnsClient', name: 'DNS Client' },
+            dns: { key: 'dnsClient', name: 'DNS Client' },
+            'dns client': { key: 'dnsClient', name: 'DNS Client' },
+            mpssvc: { key: 'firewall', name: 'Windows Defender Firewall' },
+            firewall: { key: 'firewall', name: 'Windows Defender Firewall' },
+            w3svc: { key: 'http', name: 'World Wide Web Publishing Service' },
+            http: { key: 'http', name: 'World Wide Web Publishing Service' },
+        };
+        return map[normalized] || null;
+    }
+
+    _setWindowsService(key, running) {
+        if (!this.node.services) this.node.services = {};
+        if (!this.node._services) this.node._services = {};
+        if (key === 'dhcpClientService') this.node.services.dhcpClientService = running;
+        if (key === 'dnsClient') this.node.services.dnsClient = running;
+        if (key === 'firewall') this.node.firewallEnabled = running;
+        if (key === 'http') {
+            this.node.httpEnabled = running;
+            this.node._services.w3svc = running ? 'active' : 'inactive';
+        }
+    }
+
+    _appendWindowsServiceEvent(name, running) {
+        if (!this.node.eventLogs) this.node.eventLogs = [];
+        this.node.eventLogs.push({
+            time: new Date().toLocaleString(),
+            level: 'Information',
+            source: 'Service Control Manager',
+            id: running ? '7036' : '7035',
+            message: `The ${name} service entered the ${running ? 'running' : 'stopped'} state.`
+        });
     }
 
     _wmic(args) {

@@ -470,5 +470,136 @@ export const COMPTIA_SEC_LABS = [
                 checks: [{ type: 'firewall_rule', node: 'SRV1', action: 'deny', port: '23', protocol: 'tcp' }]
             }
         ]
+    },
+    {
+        id: 'comptia-sec-14',
+        certification: 'Security+',
+        category: 'Host Firewall',
+        difficulty: 'Medium',
+        timeEstimate: '15 mins',
+        title: 'Scenario: Host Firewall Blocks Web Access',
+        description: 'Troubleshoot a Linux server where ping succeeds and the web service is running, but UFW blocks inbound HTTP.',
+        topology: {
+            nodes: [
+                { id: 'CLIENT', template: 'linux_pc', x: 140, y: 280, name: 'Analyst-PC' },
+                { id: 'SRV1', template: 'linux_server', x: 500, y: 280, name: 'DMZ-Web' }
+            ],
+            edges: [
+                { source: 'CLIENT', sourcePort: 'eth0', target: 'SRV1', targetPort: 'eth0', cableType: 'copper_straight' }
+            ],
+            preConfig: {
+                'CLIENT': {
+                    interfaces: { 'eth0': { ip: '172.20.5.25', subnet: '24', state: 'up' } }
+                },
+                'SRV1': {
+                    interfaces: { 'eth0': { ip: '172.20.5.80', subnet: '24', state: 'up' } },
+                    installedPackages: ['bash', 'coreutils', 'net-tools', 'iproute2', 'iputils-ping', 'dnsutils', 'ufw', 'nginx'],
+                    services: { nginx: 'active' },
+                    nodeServices: { http: true },
+                    httpEnabled: true,
+                    firewallEnabled: true,
+                    firewallRules: [{ action: 'deny', port: '80', protocol: 'tcp', from: 'Anywhere' }],
+                    syslogMessages: [
+                        '13:20 nginx[908]: service started successfully',
+                        '13:21 ufw[912]: BLOCK IN=eth0 TCP DPT=80 SRC=172.20.5.25',
+                        '13:22 monitor[1440]: TCP/80 health check failed from Analyst-PC'
+                    ],
+                    filesystem: {
+                        '/': { children: {
+                            'var': { children: {
+                                'www': { type: 'dir', children: {
+                                    'html': { type: 'dir', children: {
+                                        'index.html': { type: 'file', content: '<!doctype html><html><body style="font-family:sans-serif;padding:32px"><h1>DMZ Web</h1><p>Firewall policy now permits HTTP.</p></body></html>' }
+                                    }}
+                                }}
+                            }}
+                        }}
+                    }
+                }
+            }
+        },
+        tasks: [
+            {
+                description: 'Confirm DMZ-Web is reachable by ICMP from Analyst-PC',
+                hints: ['Run "ping 172.20.5.80" from Analyst-PC.', 'Ping working means this is not a cable or IP addressing issue.'],
+                checks: [
+                    { type: 'command_ran', node: 'CLIENT', command: 'ping 172.20.5.80', exact: false },
+                    { type: 'can_reach', source: 'CLIENT', destination: 'SRV1' }
+                ]
+            },
+            {
+                description: 'Verify nginx is active on DMZ-Web',
+                hints: ['Run "systemctl status nginx" on DMZ-Web.'],
+                checks: [
+                    { type: 'command_ran', node: 'SRV1', command: 'systemctl status nginx', exact: false },
+                    { type: 'service_state', node: 'SRV1', service: 'nginx', expected: 'active' }
+                ]
+            },
+            {
+                description: 'Inspect UFW rules and allow HTTP on tcp/80',
+                hints: ['Run "ufw status" to see the deny rule.', 'Log Viewer or "journalctl" shows the blocked tcp/80 attempts.', 'Run "ufw allow 80/tcp" to permit web access, or remove the deny with "ufw delete deny 80/tcp".'],
+                checks: [
+                    { type: 'command_ran', node: 'SRV1', command: 'ufw status', exact: false },
+                    { type: 'firewall_allows', node: 'SRV1', port: '80', protocol: 'tcp' }
+                ]
+            },
+            {
+                description: 'Verify HTTP access to DMZ-Web',
+                hints: ['Open Browser on Analyst-PC and visit 172.20.5.80.'],
+                checks: [{ type: 'http_success', source: 'CLIENT', destination: 'SRV1', targetIp: '172.20.5.80' }]
+            }
+        ]
+    },
+    {
+        id: 'comptia-sec-15',
+        certification: 'Security+',
+        category: 'Packet Analysis',
+        difficulty: 'Medium',
+        timeEstimate: '15 mins',
+        title: 'Wireshark Firewall Timeout Analysis',
+        description: 'Analyze a packet capture and identify evidence that HTTP traffic is being silently dropped by a firewall rather than refused by a stopped service.',
+        topology: {
+            nodes: [
+                { id: 'ANALYST', template: 'linux_pc', x: 180, y: 220, name: 'Analyst-PC' },
+                { id: 'SW1', template: 'cisco_switch_2960', x: 360, y: 220, name: 'Capture-SW' },
+                { id: 'CLIENT', template: 'linux_pc', x: 520, y: 300, name: 'Client' },
+                { id: 'WEB', template: 'linux_server', x: 520, y: 120, name: 'DMZ-Web' }
+            ],
+            edges: [
+                { source: 'ANALYST', sourcePort: 'eth0', target: 'SW1', targetPort: 'FastEthernet0/1', cableType: 'copper_straight' },
+                { source: 'CLIENT', sourcePort: 'eth0', target: 'SW1', targetPort: 'FastEthernet0/2', cableType: 'copper_straight' },
+                { source: 'WEB', sourcePort: 'eth0', target: 'SW1', targetPort: 'FastEthernet0/3', cableType: 'copper_straight' }
+            ],
+            packetLog: [
+                { type: 'ARP', src: 'CLIENT', dst: 'WEB', observer: 'ANALYST', info: 'Who has 172.20.5.80? Tell 172.20.5.25' },
+                { type: 'ICMP', src: 'CLIENT', dst: 'WEB', observer: 'ANALYST', info: 'Echo Request/Reply: 172.20.5.25 -> 172.20.5.80' },
+                { type: 'TCP', src: 'CLIENT', dst: 'WEB', observer: 'ANALYST', info: 'TCP SYN retransmission -> no response: host firewall denied tcp/80', details: { srcPort: 49210, dstPort: 80, destinationIp: '172.20.5.80', flags: 'SYN retransmission', state: 'Timeout' } },
+                { type: 'TCP', src: 'CLIENT', dst: 'WEB', observer: 'ANALYST', info: 'TCP SYN retransmission -> no response: host firewall denied tcp/80', details: { srcPort: 49210, dstPort: 80, destinationIp: '172.20.5.80', flags: 'SYN retransmission', state: 'Timeout' } },
+                { type: 'DNS', src: 'CLIENT', dst: 'WEB', observer: 'ANALYST', info: 'Query: dmz-web.local -> 172.20.5.80' }
+            ],
+            preConfig: {
+                'ANALYST': { interfaces: { 'eth0': { ip: '172.20.5.100', subnet: '24', state: 'up' } } },
+                'CLIENT': { interfaces: { 'eth0': { ip: '172.20.5.25', subnet: '24', state: 'up' } } },
+                'WEB': {
+                    interfaces: { 'eth0': { ip: '172.20.5.80', subnet: '24', state: 'up' } },
+                    httpEnabled: true,
+                    nodeServices: { http: true },
+                    firewallEnabled: true,
+                    firewallRules: [{ action: 'deny', port: '80', protocol: 'tcp', from: 'Anywhere' }]
+                }
+            }
+        },
+        tasks: [
+            {
+                description: 'Open Packet Capture on Analyst-PC and identify the TCP traffic to port 80',
+                hints: ['Look for TCP packets with destination port 80.', 'Mark a TCP packet as evidence.'],
+                checks: [{ type: 'pcap_protocol_identified', node: 'ANALYST', protocol: 'TCP' }]
+            },
+            {
+                description: 'Mark the packet showing a timeout rather than a connection refused response',
+                hints: ['A firewall drop often appears as repeated SYN retransmissions with no response.', 'A stopped service is more likely to return RST.'],
+                checks: [{ type: 'pcap_packet_info_contains', node: 'ANALYST', contains: ['SYN retransmission', 'no response'] }]
+            }
+        ]
     }
 ];

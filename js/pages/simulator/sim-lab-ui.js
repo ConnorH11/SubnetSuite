@@ -221,6 +221,7 @@ export class LabUI {
             </div>
             <div class="task-panel-body">
                 <p class="task-panel-desc">${lab.description}</p>
+                ${this._scenarioBriefingHtml(lab)}
                 <div class="task-list">
                     ${lab.tasks.map((task, idx) => {
                         const res = results[idx];
@@ -284,6 +285,19 @@ export class LabUI {
                 this.engine.getHint(parseInt(btn.dataset.idx));
             });
         });
+    }
+
+    _scenarioBriefingHtml(lab) {
+        const configs = Object.values(lab.topology?.preConfig || {});
+        const scenario = configs.map(config => config.scenarioState).find(Boolean);
+        if (!scenario?.ticket) return '';
+
+        return `
+            <div class="task-hint" style="margin:0 0 14px 0;">
+                <i class="bi bi-ticket-detailed-fill"></i>
+                <strong>Ticket:</strong> ${scenario.ticket}
+            </div>
+        `;
     }
 
     _showSuccessConfetti() {
