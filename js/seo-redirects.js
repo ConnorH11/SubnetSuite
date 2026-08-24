@@ -20,15 +20,20 @@
   const canonicalForRoute = route => route ? `/${route}/` : '/';
 
   const url = new URL(window.location.href);
+  if (url.protocol !== 'http:' && url.protocol !== 'https:') return;
+
+  const productionHosts = new Set(['subnetsuite.com', 'www.subnetsuite.com']);
+  const isProductionHost = productionHosts.has(url.hostname.toLowerCase());
   const segments = url.pathname.split('/').filter(Boolean);
   const first = cleanToken(segments[0]);
   const canonicalRoute = routes.includes(first) ? first : legacyRoutes[first];
 
   let targetPath = null;
 
-  if (url.protocol === 'http:' || url.hostname.startsWith('www.')) {
+  if (isProductionHost && (url.protocol === 'http:' || url.hostname.startsWith('www.') || url.port)) {
     url.protocol = 'https:';
     url.hostname = 'subnetsuite.com';
+    url.port = '';
     targetPath = url.pathname;
   }
 
@@ -54,7 +59,8 @@
   if (!targetPath) return;
 
   url.pathname = targetPath;
-  if (targetPath !== window.location.pathname || url.search !== window.location.search || url.hostname !== window.location.hostname || url.protocol !== window.location.protocol) {
-    window.location.replace(url.toString());
+  const targetHref = url.toString();
+  if (targetHref !== window.location.href) {
+    window.location.replace(targetHref);
   }
 })();

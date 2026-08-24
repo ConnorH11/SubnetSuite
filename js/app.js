@@ -159,21 +159,31 @@ function onPopState() {
 function handleLinkClicks(e) {
     const link = e.target.closest('a');
     if (!link || !link.href) return;
-    
-    // Check if it's an internal route link
-    if (link.hasAttribute('data-route') || link.href.startsWith(window.location.origin)) {
-        // Exclude external links, new tabs, or anchor links that don't match the SPA pattern
-        if (link.getAttribute('target') === '_blank' || link.getAttribute('rel') === 'external') return;
-        
-        e.preventDefault();
-        const url = new URL(link.href);
-        const route = (link.getAttribute('data-route') || '').replace(/^\/+|\/+$/g, '');
-        const nextPath = route ? `/${route}/` : '/';
-        if (window.location.pathname !== nextPath) {
-            history.pushState(null, '', nextPath);
-            navigateTo(nextPath);
-        }
+
+    if (
+        link.getAttribute('target') === '_blank' ||
+        link.getAttribute('rel') === 'external' ||
+        link.getAttribute('href') === '#' ||
+        link.dataset.bsToggle
+    ) {
+        return;
     }
+
+    const url = new URL(link.href);
+    if (url.origin !== window.location.origin) return;
+
+    let route = url.pathname.replace(/^\/+/, '').replace(/\/index\.html$/, '').replace(/\/+$/, '');
+    if (route === 'index.html') route = '';
+    route = route.toLowerCase();
+
+    if (!routes[route]) return;
+
+    e.preventDefault();
+    const nextPath = route ? `/${route}/` : '/';
+    if (window.location.pathname !== nextPath) {
+        history.pushState(null, '', nextPath);
+    }
+    navigateTo(nextPath);
 }
 
 function init() {
