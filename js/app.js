@@ -71,6 +71,8 @@ async function navigateTo(path) {
     if (legacyMap[route]) {
         route = legacyMap[route];
         history.replaceState(null, '', '/' + route + '/');
+    } else if (route && routes[route] && !window.location.pathname.endsWith('/')) {
+        history.replaceState(null, '', '/' + route + '/');
     }
 
     const loader = routes[route];
@@ -136,6 +138,8 @@ function updateSEO(route) {
         const canonicalUrl = route ? `https://subnetsuite.com/${route}/` : 'https://subnetsuite.com/';
         canonical.setAttribute('href', canonicalUrl);
     }
+    document.querySelector('meta[property="og:url"]')?.setAttribute('content', route ? `https://subnetsuite.com/${route}/` : 'https://subnetsuite.com/');
+    document.querySelector('meta[property="twitter:url"]')?.setAttribute('content', route ? `https://subnetsuite.com/${route}/` : 'https://subnetsuite.com/');
 }
 
 function updateActiveNav(route) {
@@ -163,9 +167,11 @@ function handleLinkClicks(e) {
         
         e.preventDefault();
         const url = new URL(link.href);
-        if (window.location.pathname !== url.pathname) {
-            history.pushState(null, '', url.pathname);
-            navigateTo(url.pathname);
+        const route = (link.getAttribute('data-route') || '').replace(/^\/+|\/+$/g, '');
+        const nextPath = route ? `/${route}/` : '/';
+        if (window.location.pathname !== nextPath) {
+            history.pushState(null, '', nextPath);
+            navigateTo(nextPath);
         }
     }
 }

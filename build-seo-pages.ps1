@@ -117,6 +117,14 @@ foreach ($key in $routesData.Keys) {
         "<meta property=`"twitter:description`" content=`"$($data.Desc)`">"
     )
     $pageContent = $pageContent.Replace(
+        '<meta property="og:url" content="https://subnetsuite.com/">',
+        "<meta property=`"og:url`" content=`"https://subnetsuite.com/$routeDir/`">"
+    )
+    $pageContent = $pageContent.Replace(
+        '<meta property="twitter:url" content="https://subnetsuite.com/">',
+        "<meta property=`"twitter:url`" content=`"https://subnetsuite.com/$routeDir/`">"
+    )
+    $pageContent = $pageContent.Replace(
         '<link rel="canonical" href="https://subnetsuite.com/" id="canonical-link">',
         "<link rel=`"canonical`" href=`"https://subnetsuite.com/$routeDir/`" id=`"canonical-link`">"
     )
@@ -142,6 +150,9 @@ $legacyRedirects = [ordered]@{
 
 foreach ($oldDir in $legacyRedirects.Keys) {
     $newRoute = $legacyRedirects[$oldDir]
+    if ($oldDir.ToLowerInvariant() -eq $newRoute.ToLowerInvariant()) {
+        continue
+    }
     if (-Not (Test-Path -Path $oldDir)) {
         New-Item -ItemType Directory -Path $oldDir | Out-Null
     }
@@ -152,6 +163,7 @@ foreach ($oldDir in $legacyRedirects.Keys) {
 <html lang="en">
 <head>
   <meta charset="UTF-8">
+  <meta name="robots" content="noindex, follow">
   <meta http-equiv="refresh" content="0; url=$targetUrl">
   <link rel="canonical" href="$targetUrl">
   <title>Redirecting...</title>
