@@ -102,6 +102,8 @@ export class CiscoCLI {
         if (cmd === 'exit') return this._exit();
         if (cmd === 'end') { this.mode = 'priv'; return ''; }
         if (cmd === '?' || cmd === 'help') return this._help();
+        if (cmd.endsWith('?')) return this._contextHelp(raw);
+        if (cmd.endsWith(' help')) return this._contextHelp(raw.replace(/\s+help$/i, ' ?'));
 
         // 'do' command in config modes
         if (cmd.startsWith('do ') && this.mode !== 'user' && this.mode !== 'priv') {
@@ -232,6 +234,89 @@ export class CiscoCLI {
             out += `  ${c.padEnd(22)} ${helpMap[c] || ''}\n`;
         }
         return out;
+    }
+
+    _contextHelp(raw) {
+        const beforeQuestion = raw.replace(/\?$/, '').trim().toLowerCase();
+        const tokens = beforeQuestion.split(/\s+/).filter(Boolean);
+        const commandLine = tokens.join(' ');
+
+        if (tokens.length === 0) return this._help();
+
+        const format = entries => entries
+            .map(([cmd, desc]) => `  ${cmd.padEnd(24)} ${desc}`)
+            .join('\n');
+
+        const tables = {
+            user: {
+                'show': [['arp', 'ARP table'], ['cdp', 'CDP information'], ['clock', 'Display the system clock'], ['history', 'Display command history'], ['interfaces', 'Interface status and configuration'], ['ip', 'IP information'], ['version', 'System hardware and software status']],
+                'ping': [['A.B.C.D', 'Ping destination address'], ['WORD', 'Ping destination hostname']],
+                'traceroute': [['A.B.C.D', 'Trace route to destination address']]
+            },
+            priv: {
+                'configure': [['terminal', 'Configure from the terminal']],
+                'show': [['access-lists', 'List access lists'], ['arp', 'ARP table'], ['cdp', 'CDP information'], ['clock', 'Display the system clock'], ['history', 'Display command history'], ['interfaces', 'Interface status and configuration'], ['ip', 'IP information'], ['mac', 'MAC address table'], ['running-config', 'Current operating configuration'], ['vlan', 'VLAN status'], ['version', 'System hardware and software status']],
+                'show ip': [['bgp', 'BGP information'], ['dhcp', 'DHCP information'], ['interface', 'IP interface status'], ['nat', 'NAT information'], ['ospf', 'OSPF information'], ['protocols', 'Routing protocol status'], ['route', 'IP routing table']],
+                'show mac': [['address-table', 'MAC forwarding table']],
+                'show vlan': [['brief', 'VLAN summary']],
+                'copy': [['running-config startup-config', 'Copy running configuration to startup configuration']],
+                'clear': [['arp', 'Clear ARP cache'], ['ip route', 'Clear routing table'], ['mac address-table', 'Clear MAC table']],
+                'terminal': [['length', 'Set terminal page length'], ['monitor', 'Copy debug output to terminal']]
+            },
+            config: {
+                'interface': [['FastEthernet0/1', 'FastEthernet interface'], ['GigabitEthernet0/0/0', 'GigabitEthernet interface'], ['Serial0/0/0', 'Serial interface'], ['Vlan1', 'VLAN interface']],
+                'ip': [['access-list', 'Named access-list'], ['dhcp', 'DHCP server configuration'], ['domain-name', 'Define default domain name'], ['name-server', 'Specify DNS servers'], ['nat', 'NAT configuration commands'], ['route', 'Establish static routes'], ['routing', 'Enable IP routing']],
+                'ip dhcp': [['excluded-address', 'Prevent DHCP from assigning addresses'], ['pool', 'Configure a DHCP address pool']],
+                'ip nat': [['inside', 'Inside NAT translation'], ['pool', 'Define NAT pool'], ['source', 'Source address translation']],
+                'router': [['bgp', 'Border Gateway Protocol'], ['eigrp', 'Enhanced Interior Gateway Routing Protocol'], ['ospf', 'Open Shortest Path First']],
+                'spanning-tree': [['vlan', 'VLAN spanning-tree configuration']],
+                'vlan': [['<1-4094>', 'VLAN ID']],
+                'line': [['console', 'Primary terminal line'], ['vty', 'Virtual terminal']]
+            },
+            iface: {
+                'ip': [['access-group', 'Apply an access list'], ['address', 'Set the IP address of an interface'], ['helper-address', 'Specify a DHCP relay address'], ['nat', 'NAT interface commands'], ['ospf', 'OSPF interface commands']],
+                'ip address': [['A.B.C.D', 'IP address'], ['dhcp', 'IP address negotiated via DHCP']],
+                'ip nat': [['inside', 'Inside interface for NAT'], ['outside', 'Outside interface for NAT']],
+                'switchport': [['access', 'Set access mode characteristics'], ['mode', 'Set trunking mode'], ['trunk', 'Set trunking characteristics'], ['voice', 'Voice appliance attributes']],
+                'switchport mode': [['access', 'Set trunking mode to ACCESS'], ['trunk', 'Set trunking mode to TRUNK']],
+                'switchport access': [['vlan', 'Set VLAN when interface is in access mode']],
+                'switchport trunk': [['allowed', 'Set allowed VLAN characteristics'], ['native', 'Set trunking native characteristics']],
+                'no': [['ip', 'Interface IP commands'], ['shutdown', 'Enable selected interface']],
+                'duplex': [['auto', 'Enable AUTO duplex configuration'], ['full', 'Force full duplex'], ['half', 'Force half duplex']],
+                'speed': [['10', 'Force 10 Mbps operation'], ['100', 'Force 100 Mbps operation'], ['1000', 'Force 1000 Mbps operation'], ['auto', 'Enable AUTO speed configuration']]
+            },
+            router_ospf: {
+                'network': [['A.B.C.D', 'Network number'], ['area', 'Set OSPF area ID']],
+                'passive-interface': [['default', 'Suppress routing updates on all interfaces'], ['INTERFACE', 'Suppress routing updates on one interface']],
+                'router-id': [['A.B.C.D', 'Manually configured router ID']]
+            },
+            router_eigrp: {
+                'network': [['A.B.C.D', 'Network number']],
+                'passive-interface': [['default', 'Suppress routing updates on all interfaces'], ['INTERFACE', 'Suppress routing updates on one interface']]
+            },
+            router_bgp: {
+                'neighbor': [['A.B.C.D', 'Neighbor address']],
+                'network': [['A.B.C.D', 'Network number']]
+            },
+            vlan: {
+                'name': [['WORD', 'ASCII name for the VLAN']]
+            },
+            dhcp: {
+                'network': [['A.B.C.D', 'Network number'], ['A.B.C.D', 'Network mask']],
+                'default-router': [['A.B.C.D', 'Router address for DHCP clients']],
+                'dns-server': [['A.B.C.D', 'DNS server address']]
+            }
+        };
+
+        const modeTable = tables[this.mode] || {};
+        if (modeTable[commandLine]) return format(modeTable[commandLine]);
+
+        const topMatches = this.getAvailableCommands().filter(c => c.startsWith(tokens[0]));
+        if (tokens.length === 1 && topMatches.length) {
+            return topMatches.map(c => `  ${c}`).join('\n');
+        }
+
+        return '% Unrecognized command';
     }
 
     // ─── SHOW COMMANDS ─────────────────────────────
@@ -624,7 +709,7 @@ export class CiscoCLI {
         if (args.length < 2) return '% Incomplete command.';
         const target = args[1];
         if (!isValidIP(target)) return `% Invalid IP address: ${target}`;
-        return `__PING__${target}`;
+        return `__PING__${JSON.stringify({ target, count: 5 })}`;
     }
 
     _traceroute(args) {

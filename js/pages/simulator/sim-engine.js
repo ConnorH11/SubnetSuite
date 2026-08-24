@@ -647,40 +647,79 @@ export class SimEngine {
     }
 
     _handlePingOutput(outDiv, input, promptSpan, cli, targetIp, sourceId) {
-        const result = this.ping(sourceId, targetIp);
+        const request = this._parsePingRequest(targetIp, cli);
+        const result = this.ping(sourceId, request.target);
         
         const headerDiv = document.createElement('div');
         headerDiv.className = 'cli-response';
         headerDiv.style.whiteSpace = 'pre-wrap';
 
         if (cli instanceof Object && cli.constructor.name === 'WindowsCLI') {
-            headerDiv.textContent = `\nPinging ${targetIp} with 32 bytes of data:\n`;
+            headerDiv.textContent = `\nPinging ${request.target} with 32 bytes of data:${request.continuous ? '\nControl-C to stop.' : ''}\n`;
         } else if (cli.constructor.name === 'LinuxCLI') {
-            headerDiv.textContent = `PING ${targetIp} (${targetIp}) 56(84) bytes of data.`;
+            headerDiv.textContent = `PING ${request.target} (${request.target}) 56(84) bytes of data.`;
         } else {
-            headerDiv.textContent = `Type escape sequence to abort.\nSending 5, 100-byte ICMP Echos to ${targetIp}, timeout is 2 seconds:`;
+            headerDiv.textContent = `Type escape sequence to abort.\nSending ${request.count}, 100-byte ICMP Echos to ${request.target}, timeout is 2 seconds:`;
         }
         outDiv.appendChild(headerDiv);
 
         let count = 0;
-        const total = 4;
+        const total = request.continuous ? 100 : request.count;
+        let stopped = false;
+        input.readOnly = true;
+
+        const stopPing = (e) => {
+            if (e.ctrlKey && e.key.toLowerCase() === 'c') {
+                e.preventDefault();
+                stopped = true;
+            }
+        };
+        input.addEventListener('keydown', stopPing);
+
+        const finish = () => {
+            clearInterval(interval);
+            input.removeEventListener('keydown', stopPing);
+            input.readOnly = false;
+            const statsDiv = document.createElement('div');
+            statsDiv.className = 'cli-response';
+            statsDiv.style.whiteSpace = 'pre-wrap';
+            if (result.ok) {
+                if (cli.constructor.name === 'LinuxCLI') {
+                    statsDiv.textContent = `\n--- ${request.target} ping statistics ---\n${count} packets transmitted, ${count} received, 0% packet loss\nrtt min/avg/max = ${result.ms}/${result.ms+1}/${result.ms+3} ms`;
+                } else if (cli.constructor.name === 'WindowsCLI') {
+                    statsDiv.textContent = `${stopped ? '\n^C' : ''}\nPing statistics for ${request.target}:\n    Packets: Sent = ${count}, Received = ${count}, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = ${result.ms}ms, Maximum = ${result.ms+3}ms, Average = ${result.ms+1}ms`;
+                } else {
+                    statsDiv.textContent = `\nSuccess rate is 100 percent (${count}/${count}), round-trip min/avg/max = ${result.ms}/${result.ms+1}/${result.ms+3} ms`;
+                }
+            } else {
+                statsDiv.textContent = `\n${result.reason}`;
+            }
+            outDiv.appendChild(statsDiv);
+            promptSpan.textContent = cli.getPrompt();
+            outDiv.parentElement.scrollTop = outDiv.parentElement.scrollHeight;
+        };
+
         const interval = setInterval(() => {
+            if (stopped) {
+                finish();
+                return;
+            }
             count++;
             const replyDiv = document.createElement('div');
             replyDiv.className = 'cli-response';
             if (result.ok) {
                 const ms = result.ms + Math.floor(Math.random() * 3);
                 if (cli.constructor.name === 'LinuxCLI') {
-                    replyDiv.textContent = `64 bytes from ${targetIp}: icmp_seq=${count} ttl=${result.ttl || 64} time=${ms} ms`;
+                    replyDiv.textContent = `64 bytes from ${request.target}: icmp_seq=${count} ttl=${result.ttl || 64} time=${ms} ms`;
                 } else if (cli.constructor.name === 'WindowsCLI') {
-                    replyDiv.textContent = `Reply from ${targetIp}: bytes=${result.bytes || 32} time=${ms}ms TTL=${result.ttl || 128}`;
+                    replyDiv.textContent = `Reply from ${request.target}: bytes=${result.bytes || 32} time=${ms}ms TTL=${result.ttl || 128}`;
                 } else {
                     replyDiv.textContent = `!`; // Cisco style
                     replyDiv.style.display = 'inline';
                 }
             } else {
                 if (cli.constructor.name === 'LinuxCLI') {
-                    replyDiv.textContent = `From ${targetIp}: Destination Host Unreachable`;
+                    replyDiv.textContent = `From ${request.target}: Destination Host Unreachable`;
                 } else if (cli.constructor.name === 'WindowsCLI') {
                     replyDiv.textContent = `Request timed out.`;
                 } else {
@@ -692,26 +731,26 @@ export class SimEngine {
             outDiv.parentElement.scrollTop = outDiv.parentElement.scrollHeight;
 
             if (count >= total) {
-                clearInterval(interval);
-                const statsDiv = document.createElement('div');
-                statsDiv.className = 'cli-response';
-                statsDiv.style.whiteSpace = 'pre-wrap';
-                if (result.ok) {
-                    if (cli.constructor.name === 'LinuxCLI') {
-                        statsDiv.textContent = `\n--- ${targetIp} ping statistics ---\n${total} packets transmitted, ${total} received, 0% packet loss\nrtt min/avg/max = ${result.ms}/${result.ms+1}/${result.ms+3} ms`;
-                    } else if (cli.constructor.name === 'WindowsCLI') {
-                        statsDiv.textContent = `\nPing statistics for ${targetIp}:\n    Packets: Sent = ${total}, Received = ${total}, Lost = 0 (0% loss),\nApproximate round trip times in milli-seconds:\n    Minimum = ${result.ms}ms, Maximum = ${result.ms+3}ms, Average = ${result.ms+1}ms`;
-                    } else {
-                        statsDiv.textContent = `\nSuccess rate is 100 percent (${total}/${total}), round-trip min/avg/max = ${result.ms}/${result.ms+1}/${result.ms+3} ms`;
-                    }
-                } else {
-                    statsDiv.textContent = `\n${result.reason}`;
-                }
-                outDiv.appendChild(statsDiv);
-                promptSpan.textContent = cli.getPrompt();
-                outDiv.parentElement.scrollTop = outDiv.parentElement.scrollHeight;
+                finish();
             }
         }, 500);
+    }
+
+    _parsePingRequest(payload, cli) {
+        try {
+            const parsed = JSON.parse(payload);
+            return {
+                target: parsed.target,
+                count: parsed.count || (cli.constructor.name === 'CiscoCLI' ? 5 : 4),
+                continuous: !!parsed.continuous
+            };
+        } catch {
+            return {
+                target: payload,
+                count: cli.constructor.name === 'CiscoCLI' ? 5 : 4,
+                continuous: false
+            };
+        }
     }
 
     _handleTracerouteOutput(outDiv, input, promptSpan, cli, targetIp, sourceId) {

@@ -81,6 +81,8 @@ export class LinuxCLI {
 
         const args = raw.split(/\s+/);
         const cmd = args[0].toLowerCase();
+        const help = this._commandHelp(args);
+        if (help) return help;
 
         switch (cmd) {
             case 'sudo': return this._sudo(args);
@@ -192,7 +194,55 @@ export class LinuxCLI {
 
     _ping(args) {
         if (args.length < 2) return 'Usage: ping <destination>';
-        return `__PING__${args[1]}`;
+        let count = null;
+        let target = '';
+        for (let i = 1; i < args.length; i++) {
+            if ((args[i] === '-c' || args[i] === '-n') && args[i + 1]) {
+                count = Math.max(1, parseInt(args[++i], 10) || 4);
+            } else if (!args[i].startsWith('-')) {
+                target = args[i];
+            }
+        }
+        if (!target) return 'Usage: ping [-c count] <destination>';
+        return `__PING__${JSON.stringify({ target, count: count || 4 })}`;
+    }
+
+    _commandHelp(args) {
+        const cmd = args[0]?.toLowerCase();
+        if (!cmd || cmd === '?') return this._generalHelp();
+        if (cmd === 'help' && args[1]) return this._helpFor(args[1].toLowerCase());
+        if (cmd === 'help') return this._generalHelp();
+        if (args.includes('--help') || args.includes('-h') || args.includes('?')) return this._helpFor(cmd);
+        return '';
+    }
+
+    _generalHelp() {
+        return 'Available commands:\n  ping, traceroute, ifconfig, ip, route, arp, netstat, nslookup, dig,\n  curl, wget, ssh, telnet, cat, ls, cd, pwd, mkdir, rm, echo, touch,\n  hostname, whoami, uname, date, uptime, free, df, ps, history,\n  sudo, apt, dpkg, systemctl, service, useradd, passwd,\n  iptables, tcpdump, nmap, git, docker, ufw, tmux, mysql, psql, node,\n  clear, exit, help';
+    }
+
+    _helpFor(cmd) {
+        const help = {
+            ping: 'Usage: ping [-c count] <destination>\nSend ICMP echo requests. Example: ping -c 4 192.168.1.1',
+            traceroute: 'Usage: traceroute <destination>\nPrint the route packets take to a network host.',
+            ip: 'Usage: ip <addr|route|link|neigh>\nShow Linux network address, route, link, or neighbor information.',
+            ifconfig: 'Usage: ifconfig\nDisplay interface addressing and packet counters.',
+            route: 'Usage: route [-n]\nShow the kernel routing table.',
+            arp: 'Usage: arp [-a]\nDisplay ARP cache entries.',
+            netstat: 'Usage: netstat\nDisplay active sockets and listening services.',
+            nslookup: 'Usage: nslookup <hostname>\nQuery DNS for a hostname.',
+            dig: 'Usage: dig <hostname>\nQuery DNS for a hostname.',
+            curl: 'Usage: curl <url>\nTransfer a URL from a simulated remote service.',
+            systemctl: 'Usage: systemctl <status|start|stop|restart|enable|disable|list-units> [service]\nInspect or manage simulated services.',
+            service: 'Usage: service <name> <start|stop|restart|status>\nCompatibility wrapper for systemctl.',
+            ufw: 'Usage: ufw <enable|disable|status|allow|deny|delete> [rule]\nManage the simulated host firewall.',
+            iptables: 'Usage: iptables -L\nDisplay or manage simulated packet filtering rules.',
+            ls: 'Usage: ls [path]\nList directory contents.',
+            cd: 'Usage: cd [path]\nChange the current working directory.',
+            cat: 'Usage: cat <file>\nPrint file contents.',
+            chmod: 'Usage: chmod <mode> <file>\nChange file permissions.',
+            chown: 'Usage: chown <owner>[:group] <file>\nChange file ownership.'
+        };
+        return help[cmd] || `No help entry for ${cmd}. Try "help" to list available commands.`;
     }
 
     _traceroute(args) {
@@ -760,9 +810,11 @@ export class WindowsCLI {
 
         const args = raw.split(/\s+/);
         const cmd = args[0].toLowerCase();
+        const help = this._commandHelp(args);
+        if (help) return help;
 
         switch (cmd) {
-            case 'ping': return args.length < 2 ? 'Usage: ping <destination>' : `__PING__${args[1]}`;
+            case 'ping': return this._ping(args);
             case 'tracert': return args.length < 2 ? 'Usage: tracert <destination>' : `__TRACEROUTE__${args[1]}`;
             case 'pathping': return args.length < 2 ? 'Usage: pathping <destination>' : `__TRACEROUTE__${args[1]}`;
             case 'ipconfig': return this._ipconfig(args);
@@ -802,6 +854,59 @@ export class WindowsCLI {
             case 'help': return 'Available commands:\n  ping         tracert      ipconfig     netstat      arp\n  nslookup     route        hostname     systeminfo   cls\n  dir          cd           type         mkdir        rmdir\n  del          copy         echo         set          ver\n  getmac       whoami       tasklist     taskkill     net\n  wmic         netsh        pathping     findstr      tree\n  chkdsk       sfc          gpresult     nbtstat      shutdown\n  powershell   exit         help';
             default: return `'${cmd}' is not recognized as an internal or external command,\noperable program or batch file.`;
         }
+    }
+
+    _ping(args) {
+        if (args.length < 2) return 'Usage: ping [-t] [-n count] <destination>';
+        let continuous = false;
+        let count = 4;
+        let target = '';
+        for (let i = 1; i < args.length; i++) {
+            const token = args[i].toLowerCase();
+            if (token === '-t') {
+                continuous = true;
+            } else if (token === '-n' && args[i + 1]) {
+                count = Math.max(1, parseInt(args[++i], 10) || 4);
+            } else if (!token.startsWith('-')) {
+                target = args[i];
+            }
+        }
+        if (!target) return 'Usage: ping [-t] [-n count] <destination>';
+        return `__PING__${JSON.stringify({ target, count, continuous })}`;
+    }
+
+    _commandHelp(args) {
+        const cmd = args[0]?.toLowerCase();
+        if (!cmd || cmd === '?') return this._generalHelp();
+        if (cmd === 'help' && args[1]) return this._helpFor(args[1].toLowerCase());
+        if (cmd === 'help') return this._generalHelp();
+        if (args.includes('/?') || args.includes('?') || args.includes('-?')) return this._helpFor(cmd);
+        return '';
+    }
+
+    _generalHelp() {
+        return 'Available commands:\n  ping         tracert      ipconfig     netstat      arp\n  nslookup     route        hostname     systeminfo   cls\n  dir          cd           type         mkdir        rmdir\n  del          copy         echo         set          ver\n  getmac       whoami       tasklist     taskkill     net\n  wmic         netsh        pathping     findstr      tree\n  chkdsk       sfc          gpresult     nbtstat      shutdown\n  powershell   exit         help';
+    }
+
+    _helpFor(cmd) {
+        const help = {
+            ping: 'Usage: ping [-t] [-n count] target_name\nOptions:\n  -t          Ping the specified host until stopped.\n  -n count    Number of echo requests to send.',
+            tracert: 'Usage: tracert target_name\nTrace the route to a remote host.',
+            pathping: 'Usage: pathping target_name\nTrace route and report packet loss.',
+            ipconfig: 'Usage: ipconfig [/all]\nDisplay Windows IP configuration.',
+            netstat: 'Usage: netstat\nDisplay active TCP connections and listening ports.',
+            arp: 'Usage: arp -a\nDisplay ARP cache entries.',
+            nslookup: 'Usage: nslookup hostname\nQuery DNS for a hostname.',
+            route: 'Usage: route print\nDisplay the local routing table.',
+            netsh: 'Usage: netsh interface ip show config\n       netsh wlan show interfaces\n       netsh firewall show state',
+            dir: 'Usage: dir\nList files and folders in the current directory.',
+            cd: 'Usage: cd [path]\nChange or display the current directory.',
+            type: 'Usage: type filename\nDisplay a text file.',
+            tasklist: 'Usage: tasklist\nDisplay running processes.',
+            taskkill: 'Usage: taskkill /PID process_id\nTerminate a simulated process.',
+            sfc: 'Usage: sfc /scannow\nScan protected system files.'
+        };
+        return help[cmd] || `No help entry for ${cmd}. Type help to list available commands.`;
     }
 
     _pipeFilter(input, filterCmd) {
