@@ -2,6 +2,8 @@
 
 export function makeDraggable(modal, header) {
     let isDragging = false, startX, startY, initialX, initialY;
+    const doc = modal.ownerDocument || document;
+    const win = doc.defaultView || window;
 
     header.addEventListener('mousedown', (e) => {
         if (e.target.closest('button')) return; // Prevent drag logic if clicking a button (like close/minimize)
@@ -11,7 +13,7 @@ export function makeDraggable(modal, header) {
         startY = e.clientY;
         
         const rect = modal.getBoundingClientRect();
-        const isFixed = window.getComputedStyle(modal).position === 'fixed';
+        const isFixed = win.getComputedStyle(modal).position === 'fixed';
         
         if (isFixed) {
             initialX = rect.left;
@@ -28,10 +30,10 @@ export function makeDraggable(modal, header) {
         modal.style.left = `${initialX}px`;
         modal.style.top = `${initialY}px`;
         
-        document.body.style.userSelect = 'none';
+        doc.body.style.userSelect = 'none';
     });
 
-    window.addEventListener('mousemove', (e) => {
+    win.addEventListener('mousemove', (e) => {
         if (!isDragging) return;
         const dx = e.clientX - startX;
         const dy = e.clientY - startY;
@@ -39,8 +41,8 @@ export function makeDraggable(modal, header) {
         modal.style.top = `${initialY + dy}px`;
     });
 
-    window.addEventListener('mouseup', () => {
+    win.addEventListener('mouseup', () => {
         isDragging = false;
-        document.body.style.userSelect = '';
+        doc.body.style.userSelect = '';
     });
 }

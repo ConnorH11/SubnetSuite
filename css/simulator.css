@@ -606,6 +606,17 @@ g:hover .sim-edge-label { opacity: 1; }
   box-shadow: 0 20px 60px rgba(0,0,0,0.8);
   overflow: hidden;
 }
+.sim-popout-body {
+  margin: 0; overflow: hidden; background: var(--sim-bg);
+}
+.sim-desktop-modal.sim-desktop-popped-out {
+  top: 0; left: 0; transform: none;
+  width: 100vw; height: 100vh;
+  border: none; border-radius: 0; box-shadow: none;
+}
+.sim-desktop-modal.sim-desktop-popped-out .sim-desktop-titlebar {
+  border-radius: 0;
+}
 .sim-desktop-titlebar {
   flex-shrink: 0; border-radius: var(--sim-radius-lg) var(--sim-radius-lg) 0 0;
 }

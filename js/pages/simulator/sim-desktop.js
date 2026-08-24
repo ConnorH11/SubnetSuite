@@ -12,6 +12,7 @@ export class SimDesktop {
         this.modal = null;
         this.wm = null;
         this.appIdCounter = 0;
+        this.popoutWindow = null;
     }
 
     render() {
@@ -36,6 +37,7 @@ export class SimDesktop {
                     <span>Desktop — ${this.node.name} (${this.node.model})</span>
                 </div>
                 <div class="sim-cli-header-btns">
+                    <button class="sim-desktop-popout" title="Pop out to separate window"><i class="bi bi-box-arrow-up-right"></i></button>
                     <button class="sim-cli-close"><i class="bi bi-x"></i></button>
                 </div>
             </div>
@@ -93,7 +95,11 @@ export class SimDesktop {
             });
         }
 
-        this.modal.querySelector('.sim-cli-close').addEventListener('click', () => this.modal.remove());
+        this.modal.querySelector('.sim-desktop-popout').addEventListener('click', () => this._popOutDesktop());
+        this.modal.querySelector('.sim-cli-close').addEventListener('click', () => {
+            this.modal.remove();
+            if (this.popoutWindow && !this.popoutWindow.closed) this.popoutWindow.close();
+        });
 
         this._buildStartMenu();
 
@@ -213,6 +219,58 @@ export class SimDesktop {
     }
 
     _appId(prefix) { return `${prefix}_${++this.appIdCounter}`; }
+
+    _popOutDesktop() {
+        if (this.popoutWindow && !this.popoutWindow.closed) {
+            this.popoutWindow.focus();
+            return;
+        }
+
+        const pop = window.open('', `subnetsuite_device_${this.node.id}`, 'popup=yes,width=1100,height=760,resizable=yes,scrollbars=no');
+        if (!pop) {
+            alert('Pop-up blocked. Allow pop-ups for this site to open device desktops on another monitor.');
+            return;
+        }
+
+        this.popoutWindow = pop;
+        pop.document.open();
+        pop.document.write(`<!doctype html><html><head><title>${this._esc(this.node.name)} - SubnetSuite Device</title></head><body></body></html>`);
+        pop.document.close();
+        this._copyStylesToPopout(pop.document);
+
+        pop.document.body.className = 'sim-popout-body';
+        pop.document.body.appendChild(this.modal);
+        this.modal.classList.add('sim-desktop-popped-out');
+        this.modal.style.transform = 'none';
+        this.modal.style.left = '0';
+        this.modal.style.top = '0';
+        this.modal.style.right = 'auto';
+        this.modal.style.bottom = 'auto';
+
+        if (this.wm?.refreshContext) this.wm.refreshContext();
+        pop.addEventListener('beforeunload', () => {
+            if (this.modal?.parentElement === pop.document.body) this.modal.remove();
+            this.popoutWindow = null;
+        });
+        pop.focus();
+    }
+
+    _copyStylesToPopout(targetDoc) {
+        const base = targetDoc.createElement('base');
+        base.href = document.baseURI;
+        targetDoc.head.appendChild(base);
+
+        document.querySelectorAll('link[rel="stylesheet"], style').forEach(node => {
+            const clone = targetDoc.createElement(node.tagName.toLowerCase());
+            if (node.tagName.toLowerCase() === 'link') {
+                clone.rel = 'stylesheet';
+                clone.href = node.href;
+            } else {
+                clone.textContent = node.textContent;
+            }
+            targetDoc.head.appendChild(clone);
+        });
+    }
 
     // ═══════════════════════════════════════════════
     // ═══════════════════════════════════════════════

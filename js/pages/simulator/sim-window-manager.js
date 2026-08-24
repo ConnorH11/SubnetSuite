@@ -3,14 +3,21 @@
 export class WindowManager {
     constructor(container) {
         this.container = container;
+        this.doc = container.ownerDocument || document;
+        this.win = this.doc.defaultView || window;
         this.windows = new Map();
         this.zCounter = 100;
         this.taskbarItems = [];
         this.activeWindowId = null;
     }
 
+    refreshContext() {
+        this.doc = this.container.ownerDocument || document;
+        this.win = this.doc.defaultView || window;
+    }
+
     createWindow(id, title, icon, options = {}) {
-        const win = document.createElement('div');
+        const win = this.doc.createElement('div');
         win.className = 'wm-window';
         win.dataset.windowId = id;
         win.style.width = (options.width || 600) + 'px';
@@ -147,7 +154,7 @@ export class WindowManager {
         taskbar.innerHTML = '';
 
         this.windows.forEach((win, id) => {
-            const btn = document.createElement('button');
+            const btn = this.doc.createElement('button');
             btn.className = `wm-taskbar-btn ${id === this.activeWindowId && !win.minimized ? 'active' : ''} ${win.minimized ? 'minimized' : ''}`;
             btn.innerHTML = `<i class="bi ${win.icon}"></i><span>${win.title}</span>`;
             btn.addEventListener('click', () => {
@@ -175,11 +182,11 @@ export class WindowManager {
             const parentRect = win.parentElement.getBoundingClientRect();
             initialX = rect.left - parentRect.left;
             initialY = rect.top - parentRect.top;
-            document.body.style.userSelect = 'none';
+            this.doc.body.style.userSelect = 'none';
             e.preventDefault();
         });
 
-        window.addEventListener('mousemove', (e) => {
+        this.win.addEventListener('mousemove', (e) => {
             if (!isDragging) return;
             const dx = e.clientX - startX;
             const dy = e.clientY - startY;
@@ -187,14 +194,14 @@ export class WindowManager {
             win.style.top = `${initialY + dy}px`;
         });
 
-        window.addEventListener('mouseup', () => {
+        this.win.addEventListener('mouseup', () => {
             isDragging = false;
-            document.body.style.userSelect = '';
+            this.doc.body.style.userSelect = '';
         });
     }
 
     _makeResizable(win) {
-        const handle = document.createElement('div');
+        const handle = this.doc.createElement('div');
         handle.className = 'wm-resize-handle';
         win.appendChild(handle);
 
@@ -206,12 +213,12 @@ export class WindowManager {
             startY = e.clientY;
             startW = win.offsetWidth;
             startH = win.offsetHeight;
-            document.body.style.userSelect = 'none';
+            this.doc.body.style.userSelect = 'none';
             e.preventDefault();
             e.stopPropagation();
         });
 
-        window.addEventListener('mousemove', (e) => {
+        this.win.addEventListener('mousemove', (e) => {
             if (!isResizing) return;
             const newW = Math.max(300, startW + (e.clientX - startX));
             const newH = Math.max(200, startH + (e.clientY - startY));
@@ -219,9 +226,9 @@ export class WindowManager {
             win.style.height = newH + 'px';
         });
 
-        window.addEventListener('mouseup', () => {
+        this.win.addEventListener('mouseup', () => {
             isResizing = false;
-            document.body.style.userSelect = '';
+            this.doc.body.style.userSelect = '';
         });
     }
 }
