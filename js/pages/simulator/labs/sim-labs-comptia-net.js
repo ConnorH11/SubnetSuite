@@ -456,5 +456,100 @@ export const COMPTIA_NET_LABS = [
                 checks: [{ type: 'spanning_tree_root', node: 'Core1', vlan: '1' }] // Soft check
             }
         ]
+    },
+    {
+        id: 'comptia-net-14',
+        certification: 'Network+',
+        category: 'Packet Analysis',
+        difficulty: 'Medium',
+        timeEstimate: '15 mins',
+        title: 'Wireshark DHCP Packet Analysis',
+        description: 'Analyze a packet capture and identify the DHCP packet that confirms a client successfully received an address.',
+        topology: {
+            nodes: [
+                { id: 'ANALYST', template: 'linux_pc', x: 220, y: 220, name: 'Analyst-PC' },
+                { id: 'SW1', template: 'cisco_switch_2960', x: 360, y: 220, name: 'Capture-SW' },
+                { id: 'CLIENT', template: 'windows_pc', x: 460, y: 300, name: 'Client-01' },
+                { id: 'DHCP', template: 'linux_server', x: 460, y: 120, name: 'DHCP-Server' }
+            ],
+            edges: [
+                { source: 'ANALYST', sourcePort: 'eth0', target: 'SW1', targetPort: 'FastEthernet0/1', cableType: 'copper_straight' },
+                { source: 'CLIENT', sourcePort: 'Ethernet0', target: 'SW1', targetPort: 'FastEthernet0/2', cableType: 'copper_straight' },
+                { source: 'DHCP', sourcePort: 'eth0', target: 'SW1', targetPort: 'FastEthernet0/3', cableType: 'copper_straight' }
+            ],
+            packetLog: [
+                { type: 'ARP', src: 'CLIENT', dst: 'DHCP', observer: 'ANALYST', info: 'Who has 192.168.20.1? Tell 0.0.0.0' },
+                { type: 'DHCP', src: 'CLIENT', dst: 'DHCP', observer: 'ANALYST', info: 'DHCP Discover xid 0x42a1' },
+                { type: 'DHCP', src: 'DHCP', dst: 'CLIENT', observer: 'ANALYST', info: 'DHCP Offer 192.168.20.55/24 router 192.168.20.1' },
+                { type: 'DHCP', src: 'CLIENT', dst: 'DHCP', observer: 'ANALYST', info: 'DHCP Request 192.168.20.55' },
+                { type: 'DHCP', src: 'DHCP', dst: 'CLIENT', observer: 'ANALYST', info: 'DHCP ACK 192.168.20.55 lease 86400' },
+                { type: 'DNS', src: 'CLIENT', dst: 'DHCP', observer: 'ANALYST', info: 'Query: intranet.local A' },
+                { type: 'ICMP', src: 'CLIENT', dst: 'DHCP', observer: 'ANALYST', info: 'Echo Request/Reply: 192.168.20.55 -> 192.168.20.10' }
+            ],
+            preConfig: {
+                'ANALYST': { interfaces: { 'eth0': { ip: '192.168.20.100', subnet: '24', state: 'up' } } },
+                'CLIENT': { interfaces: { 'Ethernet0': { ip: '192.168.20.55', subnet: '24', state: 'up' } } },
+                'DHCP': { interfaces: { 'eth0': { ip: '192.168.20.10', subnet: '24', state: 'up' } } }
+            }
+        },
+        tasks: [
+            {
+                description: 'Open Packet Capture on Analyst-PC and identify the protocol that assigned the client address',
+                hints: ['Look for the Discover, Offer, Request, ACK sequence.', 'Mark one of the DHCP packets as evidence.'],
+                checks: [{ type: 'pcap_protocol_identified', node: 'ANALYST', protocol: 'DHCP' }]
+            },
+            {
+                description: 'Confirm the capture includes a DHCP ACK for 192.168.20.55',
+                hints: ['The ACK is the server response that finalizes the lease.'],
+                checks: [{ type: 'pcap_protocol_identified', node: 'ANALYST', protocol: 'DHCP' }]
+            }
+        ]
+    },
+    {
+        id: 'comptia-net-15',
+        certification: 'Network+',
+        category: 'Linux Troubleshooting',
+        difficulty: 'Easy',
+        timeEstimate: '15 mins',
+        title: 'Linux CLI Network Triage',
+        description: 'Use the Linux terminal to inspect addressing, routing, and DNS configuration on a workstation.',
+        topology: {
+            nodes: [
+                { id: 'PC1', template: 'linux_pc', x: 260, y: 220, name: 'Linux-Client' },
+                { id: 'GW', template: 'cisco_router_4321', x: 520, y: 220, name: 'Gateway' }
+            ],
+            edges: [
+                { source: 'PC1', sourcePort: 'eth0', target: 'GW', targetPort: 'GigabitEthernet0/0/0', cableType: 'copper_straight' }
+            ],
+            preConfig: {
+                'PC1': {
+                    interfaces: { 'eth0': { ip: '10.40.0.25', subnet: '24', state: 'up' } },
+                    gateway: '10.40.0.1'
+                },
+                'GW': {
+                    interfaces: { 'GigabitEthernet0/0/0': { ip: '10.40.0.1', subnet: '24', state: 'up' } }
+                }
+            }
+        },
+        tasks: [
+            {
+                description: 'Run ip addr to verify the client interface address',
+                hints: ['Open Terminal on Linux-Client and run "ip addr".'],
+                checks: [{ type: 'command_ran', node: 'PC1', command: 'ip addr' }]
+            },
+            {
+                description: 'Run ip route to verify the default gateway',
+                hints: ['The route table should show the default route via 10.40.0.1.'],
+                checks: [{ type: 'command_ran', node: 'PC1', command: 'ip route' }]
+            },
+            {
+                description: 'Ping the default gateway to confirm local connectivity',
+                hints: ['Run "ping 10.40.0.1" from Linux-Client.'],
+                checks: [
+                    { type: 'command_ran', node: 'PC1', command: 'ping 10.40.0.1' },
+                    { type: 'ping_success', source: 'PC1', targetIp: '10.40.0.1' }
+                ]
+            }
+        ]
     }
 ];

@@ -81,6 +81,7 @@ export class LabEngine {
         this.hintsRevealed = {};
 
         this.graph.clear();
+        if (this.engine?.clearPacketLog) this.engine.clearPacketLog();
 
         const nodeIdMap = {}; // lab node reference -> actual node ID
 
@@ -99,6 +100,8 @@ export class LabEngine {
         }
 
         this.currentLab._nodeIdMap = nodeIdMap;
+
+        this._seedLabPackets(lab, nodeIdMap);
 
         if (lab.topology.preConfig) {
             for (const [ref, config] of Object.entries(lab.topology.preConfig)) {
@@ -168,6 +171,54 @@ export class LabEngine {
         if (config.natConfig) {
             Object.assign(node.natConfig, config.natConfig);
         }
+        if (config.firewallRules) {
+            node.firewallRules = config.firewallRules.map(rule => ({ ...rule }));
+        }
+        if (config.labAnswers) {
+            node.labAnswers = { ...config.labAnswers };
+        }
+        if (config.commandHistory) {
+            node.commandHistory = [...config.commandHistory];
+        }
+        if (config.installedPackages) {
+            node._installedPackages = new Set(config.installedPackages);
+        }
+        if (config.services) {
+            node._services = { ...(node._services || {}), ...config.services };
+        }
+        if (config.filesystem) {
+            this._mergeFilesystem(node.filesystem['/'], config.filesystem['/'] || config.filesystem);
+        }
+    }
+
+    _mergeFilesystem(target, source) {
+        if (!target || !source) return;
+        if (source.type) target.type = source.type;
+        if (source.content !== undefined) target.content = source.content;
+        if (!source.children) return;
+        if (!target.children) target.children = {};
+        for (const [name, child] of Object.entries(source.children)) {
+            if (!target.children[name]) {
+                target.children[name] = child.type === 'dir'
+                    ? { type: 'dir', children: {} }
+                    : { type: 'file', content: child.content || '' };
+            }
+            this._mergeFilesystem(target.children[name], child);
+        }
+    }
+
+    _seedLabPackets(lab, nodeIdMap) {
+        if (!this.engine || !Array.isArray(lab.topology?.packetLog)) return;
+        lab.topology.packetLog.forEach((packet, idx) => {
+            this.engine._logPacket({
+                id: idx + 1,
+                timestamp: Date.now() + idx,
+                ...packet,
+                src: nodeIdMap[packet.src] || packet.src,
+                dst: nodeIdMap[packet.dst] || packet.dst,
+                observer: nodeIdMap[packet.observer] || packet.observer
+            });
+        });
     }
 
     // ─── Validation Engine ────────────────────────
@@ -226,6 +277,7 @@ export class LabEngine {
 
         switch (check.type) {
             case 'hostname_set':
+            case 'hostname':
                 return this._checkHostname(node, check);
             case 'interface_ip':
                 return this._checkInterfaceIP(node, check);
@@ -265,6 +317,8 @@ export class LabEngine {
                 return this._checkAclExists(node, check);
             case 'acl_entry':
                 return this._checkAclEntry(node, check);
+            case 'acl_applied':
+                return this._checkAclApplied(node, check);
             case 'dhcp_pool':
                 return this._checkDhcpPool(node, check);
             case 'nat_inside':
@@ -283,6 +337,42 @@ export class LabEngine {
                 return this._checkStaticRoute(node, check);
             case 'switchport_mode':
                 return this._checkSwitchportMode(node, check);
+            case 'dns_set':
+                return this._checkDnsSet(node, check);
+            case 'spanning_tree_root':
+                return this._checkSpanningTreeRoot(node, check);
+            case 'command_ran':
+            case 'command_run':
+                return this._checkCommandRan(node, check);
+            case 'package_installed':
+                return this._checkPackageInstalled(node, check);
+            case 'service_state':
+                return this._checkServiceState(node, check);
+            case 'file_contains':
+                return this._checkFileContains(node, check);
+            case 'pcap_protocol_identified':
+                return this._checkPcapProtocol(node, check);
+            case 'firewall_rule':
+                return this._checkFirewallRule(node, check);
+            case 'aaa_enabled':
+            case 'aaa_auth_login':
+            case 'cdp_disabled':
+            case 'crypto_key':
+            case 'dhcp_snooping':
+            case 'ip_routing':
+            case 'ipv6_routing':
+            case 'lldp_enabled':
+            case 'local_user':
+            case 'ntp_server':
+            case 'ospfv3_enabled':
+            case 'ospfv3_router_id':
+            case 'radius_server':
+            case 'syslog_server':
+            case 'vrf_exists':
+            case 'vtp_domain':
+            case 'vty_access_class':
+            case 'vty_config':
+                return this._checkCommandBackedFeature(node, check);
             default:
                 return { passed: false, message: `Unknown check type: ${check.type}` };
         }
@@ -328,10 +418,10 @@ export class LabEngine {
         if (!iface) return { passed: false, message: `Interface ${check.interface} not found` };
 
         return {
-            passed: iface.state === check.expected,
-            message: iface.state === check.expected
-                ? `${check.interface} is ${check.expected}`
-                : `${check.interface} should be ${check.expected} but is ${iface.state}`
+            passed: iface.state === (check.expected ?? check.state),
+            message: iface.state === (check.expected ?? check.state)
+                ? `${check.interface} is ${check.expected ?? check.state}`
+                : `${check.interface} should be ${check.expected ?? check.state} but is ${iface.state}`
         };
     }
 
@@ -423,6 +513,151 @@ export class LabEngine {
             message: iface.switchportMode === check.expected
                 ? `${check.interface} is in ${check.expected} mode`
                 : `${check.interface} should be ${check.expected} but is ${iface.switchportMode || 'none'}`
+        };
+    }
+
+    _checkDnsSet(node, check) {
+        const actual = node.dnsServer || node.dns || node.resolver || '';
+        return {
+            passed: actual === check.expected,
+            message: actual === check.expected
+                ? `DNS server is ${check.expected}`
+                : `DNS server should be ${check.expected} but is "${actual || 'not set'}"`
+        };
+    }
+
+    _checkSpanningTreeRoot(node, check) {
+        const vlanPriority = node.stpConfig?.vlanPriorities?.[check.vlan];
+        const priority = vlanPriority ?? node.stpConfig?.priority;
+        const expected = check.expected ?? 24576;
+        return {
+            passed: node.stpConfig?.rootBridge === true || priority <= expected,
+            message: priority <= expected || node.stpConfig?.rootBridge
+                ? `STP root bridge intent is configured for VLAN ${check.vlan}`
+                : `Set STP priority for VLAN ${check.vlan} to ${expected} or lower`
+        };
+    }
+
+    _checkCommandRan(node, check) {
+        const needle = (check.command || '').toLowerCase();
+        const history = (node.commandHistory || []).map(cmd => cmd.toLowerCase());
+        const found = history.some(cmd => check.exact ? cmd === needle : cmd.includes(needle));
+        return {
+            passed: found,
+            message: found ? `Command "${check.command}" was run` : `Run command: ${check.command}`
+        };
+    }
+
+    _checkPackageInstalled(node, check) {
+        const installed = node._installedPackages instanceof Set
+            ? node._installedPackages.has(check.package)
+            : Array.isArray(node._installedPackages) && node._installedPackages.includes(check.package);
+        return {
+            passed: installed,
+            message: installed ? `${check.package} is installed` : `Install package ${check.package}`
+        };
+    }
+
+    _checkServiceState(node, check) {
+        const state = node._services?.[check.service] || node.services?.[check.service];
+        return {
+            passed: state === check.expected,
+            message: state === check.expected
+                ? `${check.service} is ${check.expected}`
+                : `${check.service} should be ${check.expected} but is "${state || 'unknown'}"`
+        };
+    }
+
+    _checkFileContains(node, check) {
+        const file = this._getFileNode(node, check.path);
+        const content = file?.content || '';
+        const needle = check.contains || '';
+        return {
+            passed: file?.type === 'file' && content.includes(needle),
+            message: file?.type === 'file' && content.includes(needle)
+                ? `${check.path} contains the expected text`
+                : `${check.path} should contain "${needle}"`
+        };
+    }
+
+    _getFileNode(node, path) {
+        const parts = String(path || '').split('/').filter(Boolean);
+        let current = node.filesystem?.['/'];
+        for (const part of parts) {
+            if (!current?.children?.[part]) return null;
+            current = current.children[part];
+        }
+        return current;
+    }
+
+    _checkPcapProtocol(node, check) {
+        const selected = node.labAnswers?.pcapProtocol;
+        return {
+            passed: selected === check.protocol,
+            message: selected === check.protocol
+                ? `Identified ${check.protocol} traffic in the capture`
+                : `Select a ${check.protocol} packet in Packet Capture and mark it as evidence`
+        };
+    }
+
+    _checkFirewallRule(node, check) {
+        const rules = node.firewallRules || [];
+        const found = rules.some(rule =>
+            (!check.action || rule.action === check.action) &&
+            (!check.port || String(rule.port) === String(check.port)) &&
+            (!check.protocol || rule.protocol === check.protocol) &&
+            (!check.from || rule.from === check.from)
+        );
+        return {
+            passed: found,
+            message: found
+                ? `Firewall has ${check.action} ${check.protocol || 'tcp'} ${check.port} rule`
+                : `Add firewall rule: ${check.action} ${check.port}/${check.protocol || 'tcp'}`
+        };
+    }
+
+    _checkAclApplied(node, check) {
+        const iface = node.interfaces[check.interface];
+        if (!iface) return { passed: false, message: `Interface ${check.interface} not found` };
+        const direction = check.direction || 'in';
+        const applied = iface.aclApplied?.[direction];
+        return {
+            passed: applied === check.aclId,
+            message: applied === check.aclId
+                ? `ACL ${check.aclId} is applied ${direction} on ${check.interface}`
+                : `Apply ACL ${check.aclId} ${direction} on ${check.interface}`
+        };
+    }
+
+    _checkCommandBackedFeature(node, check) {
+        const history = (node.commandHistory || []).map(cmd => cmd.toLowerCase());
+        const commandHints = {
+            aaa_enabled: ['aaa new-model'],
+            aaa_auth_login: ['aaa authentication login'],
+            cdp_disabled: ['no cdp run', 'no cdp enable'],
+            crypto_key: ['crypto key generate'],
+            dhcp_snooping: ['ip dhcp snooping'],
+            ip_routing: ['ip routing'],
+            ipv6_routing: ['ipv6 unicast-routing'],
+            lldp_enabled: ['lldp run'],
+            local_user: [`username ${check.username || ''}`.trim()],
+            ntp_server: [`ntp server ${check.ip || ''}`.trim()],
+            ospfv3_enabled: ['ipv6 ospf', 'ospfv3'],
+            ospfv3_router_id: [`router-id ${check.id || ''}`.trim()],
+            radius_server: [`${check.ip || ''}`.trim(), 'radius server'],
+            syslog_server: [`logging host ${check.ip || ''}`.trim()],
+            vrf_exists: [`vrf definition ${check.vrfName || ''}`.trim(), `ip vrf ${check.vrfName || ''}`.trim()],
+            vtp_domain: [`vtp domain ${check.expected || ''}`.trim()],
+            vty_access_class: [`access-class ${check.aclId || ''}`.trim()],
+            vty_config: [`transport input ${check.transport || ''}`.trim()]
+        };
+        const needles = (commandHints[check.type] || [check.type.replace(/_/g, ' ')]).filter(Boolean);
+        const found = needles.some(needle => history.some(cmd => cmd.includes(needle)));
+        return {
+            passed: found,
+            message: found
+                ? `${check.type.replace(/_/g, ' ')} configuration was entered`
+                : `Enter configuration for ${check.type.replace(/_/g, ' ')}`
         };
     }
 

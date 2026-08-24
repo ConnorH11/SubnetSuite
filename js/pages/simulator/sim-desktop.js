@@ -217,7 +217,7 @@ export class SimDesktop {
         const content = this.wm.createWindow(id, 'Terminal', 'bi-terminal-fill', { width: 680, height: 420 });
         content.classList.add('wm-terminal');
 
-        const cli = createCLI(this.node, () => this.engine.graph.notify());
+        const cli = createCLI(this.node, () => this.engine.graph.notify(), this.engine);
 
         content.innerHTML = `
             <div class="cli-output"><div class="cli-welcome">${this._termWelcome()}</div></div>
@@ -586,27 +586,37 @@ export class SimDesktop {
         const content = this.wm.createWindow(id, 'Packet Capture', 'bi-reception-4', { width: 700, height: 420 });
         
         const renderCapture = () => {
-            const packets = this.engine.packetLog.filter(p => p.src === this.node.id || p.dst === this.node.id);
+            const packets = this.engine.packetLog.filter(p => p.src === this.node.id || p.dst === this.node.id || p.observer === this.node.id);
+            const selectedProtocol = this.node.labAnswers?.pcapProtocol || '';
             content.innerHTML = `
                 <div class="app-padded">
                     <div class="app-btn-row" style="margin-bottom:12px">
                         <button class="app-btn app-btn-primary" id="btn-refresh-capture"><i class="bi bi-arrow-clockwise"></i> Refresh</button>
                         <button class="app-btn app-btn-secondary" id="btn-clear-capture"><i class="bi bi-trash"></i> Clear</button>
                         <span class="app-badge">${packets.length} packets</span>
+                        ${selectedProtocol ? `<span class="app-badge">Marked: ${selectedProtocol}</span>` : ''}
                     </div>
                     <table class="app-table app-table-compact">
-                        <thead><tr><th>#</th><th>Time</th><th>Protocol</th><th>Source</th><th>Destination</th><th>Info</th></tr></thead>
+                        <thead><tr><th>#</th><th>Time</th><th>Protocol</th><th>Source</th><th>Destination</th><th>Info</th><th></th></tr></thead>
                         <tbody>${packets.length > 0 ? packets.map(p => {
                             const srcName = this.engine.graph.getNode(p.src)?.name || p.src;
                             const dstName = this.engine.graph.getNode(p.dst)?.name || p.dst;
                             const typeClass = p.type === 'ICMP' ? 'proto-icmp' : p.type === 'ARP' ? 'proto-arp' : p.type === 'DHCP' ? 'proto-dhcp' : p.type === 'DNS' ? 'proto-dns' : '';
-                            return `<tr class="${typeClass}"><td>${p.id}</td><td>${new Date(p.timestamp).toLocaleTimeString()}</td><td><span class="proto-badge">${p.type}</span></td><td>${srcName}</td><td>${dstName}</td><td class="mono" style="font-size:11px">${p.info || ''}</td></tr>`;
-                        }).join('') : '<tr><td colspan="6" style="text-align:center;opacity:0.5">No packets captured. Send a ping to see traffic.</td></tr>'}</tbody>
+                            return `<tr class="${typeClass}"><td>${p.id}</td><td>${new Date(p.timestamp).toLocaleTimeString()}</td><td><span class="proto-badge">${p.type}</span></td><td>${srcName}</td><td>${dstName}</td><td class="mono" style="font-size:11px">${p.info || ''}</td><td><button class="app-btn app-btn-secondary app-btn-sm btn-mark-packet" data-protocol="${p.type}">Mark</button></td></tr>`;
+                        }).join('') : '<tr><td colspan="7" style="text-align:center;opacity:0.5">No packets captured. Send a ping to see traffic.</td></tr>'}</tbody>
                     </table>
                 </div>
             `;
             content.querySelector('#btn-refresh-capture').addEventListener('click', renderCapture);
             content.querySelector('#btn-clear-capture').addEventListener('click', () => { this.engine.clearPacketLog(); renderCapture(); });
+            content.querySelectorAll('.btn-mark-packet').forEach(btn => {
+                btn.addEventListener('click', () => {
+                    this.node.labAnswers = this.node.labAnswers || {};
+                    this.node.labAnswers.pcapProtocol = btn.dataset.protocol;
+                    this.engine.graph.notify();
+                    renderCapture();
+                });
+            });
         };
         renderCapture();
     }

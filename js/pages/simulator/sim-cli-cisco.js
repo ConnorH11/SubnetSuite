@@ -19,6 +19,7 @@ export class CiscoCLI {
         this.enablePassword = '';
         this.bannerMotd = '';
         this.template = DEVICE_TEMPLATES[node.templateId] || {};
+        if (!this.node.commandHistory) this.node.commandHistory = [];
     }
 
     getPrompt() {
@@ -42,6 +43,8 @@ export class CiscoCLI {
         if (cmd && cmd.trim()) {
             this.history.push(cmd);
             if (this.history.length > 100) this.history.shift();
+            this.node.commandHistory.push(cmd);
+            if (this.node.commandHistory.length > 200) this.node.commandHistory.shift();
         }
         this.historyIndex = this.history.length;
     }
@@ -807,10 +810,17 @@ export class CiscoCLI {
         // spanning-tree vlan priority
         if (cmd.startsWith('spanning-tree vlan ')) {
             const vlanId = args[2];
+            this.node.stpConfig.vlanPriorities = this.node.stpConfig.vlanPriorities || {};
             if (args[3] === 'priority') {
-                this.node.stpConfig.priority = parseInt(args[4]) || 32768;
-                this.notifyGraph();
+                const priority = parseInt(args[4]) || 32768;
+                this.node.stpConfig.priority = priority;
+                this.node.stpConfig.vlanPriorities[vlanId] = priority;
+            } else if (args[3] === 'root' && args[4] === 'primary') {
+                this.node.stpConfig.rootBridge = true;
+                this.node.stpConfig.priority = 24576;
+                this.node.stpConfig.vlanPriorities[vlanId] = 24576;
             }
+            this.notifyGraph();
             return '';
         }
 
@@ -957,7 +967,10 @@ export class CiscoCLI {
 
         // ip access-group
         if (cmd.startsWith('ip access-group ')) {
-            return ''; // Tracked for reference
+            iface.aclApplied = iface.aclApplied || {};
+            iface.aclApplied[args[3] || 'in'] = args[2];
+            this.notifyGraph();
+            return '';
         }
 
         // clock rate (serial)

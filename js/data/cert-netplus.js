@@ -959,6 +959,102 @@ export const data = {
         {
             "domain": "2.0",
             "type": "multiple-choice",
+            "text": "A technician connects an IP phone and a workstation to the same switchport using the phone's built-in pass-through port. The phone should use VLAN 30 and the workstation should remain on VLAN 10. Which switchport configuration concept makes this possible?",
+            "options": [
+                "Native VLAN only",
+                "Voice VLAN tagging with an access VLAN",
+                "Router-on-a-stick subinterfaces only",
+                "Private VLAN isolated ports"
+            ],
+            "answer": [
+                "Voice VLAN tagging with an access VLAN"
+            ],
+            "explanation": "A switchport can carry untagged data traffic for the access VLAN and tagged voice traffic for the voice VLAN so the phone and workstation remain logically separated.",
+            "id": "netplus_q_vlan_voice_2000"
+        },
+        {
+            "domain": "2.0",
+            "type": "multiple-choice",
+            "text": "Two switches are connected together, but hosts in VLAN 20 on opposite switches cannot communicate. Hosts in VLAN 10 work normally. Which configuration should be checked first on the inter-switch link?",
+            "options": [
+                "Whether VLAN 20 is allowed on the trunk",
+                "Whether the access ports are set to half duplex",
+                "Whether port security sticky learning is enabled",
+                "Whether the DNS suffix is configured"
+            ],
+            "answer": [
+                "Whether VLAN 20 is allowed on the trunk"
+            ],
+            "explanation": "A trunk link must carry the VLANs that need to cross between switches. If VLAN 20 is missing from the allowed VLAN list, only that VLAN will fail across the trunk.",
+            "id": "netplus_q_vlan_trunk_2001"
+        },
+        {
+            "domain": "5.0",
+            "type": "multiple-choice",
+            "text": "A user reports intermittent network drops. The switch interface shows many CRC errors, and replacing the patch cable resolves the issue. Which layer and likely cause best match this symptom?",
+            "options": [
+                "Layer 1, damaged copper cabling",
+                "Layer 2, duplicate IP address",
+                "Layer 3, incorrect default gateway",
+                "Layer 7, failed web service"
+            ],
+            "answer": [
+                "Layer 1, damaged copper cabling"
+            ],
+            "explanation": "CRC errors and fixes from cable replacement point to a Physical layer issue such as a bad cable, connector, or interference.",
+            "id": "netplus_q_hw_crc_2002"
+        },
+        {
+            "domain": "5.0",
+            "type": "multiple-choice",
+            "text": "After a desktop is moved, the link light on the NIC and switchport is off. Other users on the same switch are online. What should the technician check first?",
+            "options": [
+                "Patch cable seating and port status",
+                "The workstation's DNS server",
+                "The remote site's BGP table",
+                "The user's browser cache"
+            ],
+            "answer": [
+                "Patch cable seating and port status"
+            ],
+            "explanation": "No link light is a Physical layer symptom. Start with cable seating, patch panel/switchport, and NIC status before higher-layer troubleshooting.",
+            "id": "netplus_q_hw_link_2003"
+        },
+        {
+            "domain": "1.0",
+            "type": "multiple-choice",
+            "text": "A router forwards a packet based on the destination IP address. Which OSI layer is primarily responsible for this decision?",
+            "options": [
+                "Layer 2 Data Link",
+                "Layer 3 Network",
+                "Layer 4 Transport",
+                "Layer 7 Application"
+            ],
+            "answer": [
+                "Layer 3 Network"
+            ],
+            "explanation": "Routers make forwarding decisions using logical addressing, which is a Layer 3 Network function.",
+            "id": "netplus_q_osi_route_2004"
+        },
+        {
+            "domain": "1.0",
+            "type": "multiple-choice",
+            "text": "A technician sees a TCP three-way handshake complete, but the web page returns HTTP 500. Which OSI layer is the best next focus?",
+            "options": [
+                "Layer 1 Physical",
+                "Layer 2 Data Link",
+                "Layer 4 Transport",
+                "Layer 7 Application"
+            ],
+            "answer": [
+                "Layer 7 Application"
+            ],
+            "explanation": "The TCP session is established, so lower-layer connectivity is working. HTTP 500 is an application response and should be investigated at Layer 7.",
+            "id": "netplus_q_osi_http_2005"
+        },
+        {
+            "domain": "2.0",
+            "type": "multiple-choice",
             "text": "Which well-known port is utilized by the SNMP protocol?",
             "options": [
                 "161",

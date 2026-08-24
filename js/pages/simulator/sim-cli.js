@@ -39,6 +39,8 @@ export class LinuxCLI {
         if (!this.node._services) {
             this.node._services = { ssh: 'active', networking: 'active', cron: 'active' };
         }
+        if (!this.node.commandHistory) this.node.commandHistory = [];
+        if (!this.node.firewallRules) this.node.firewallRules = [];
     }
 
     getPrompt() {
@@ -48,6 +50,7 @@ export class LinuxCLI {
 
     addHistory(cmd) {
         if (cmd && cmd.trim()) { this.history.push(cmd); if (this.history.length > 100) this.history.shift(); }
+        if (cmd && cmd.trim()) { this.node.commandHistory.push(cmd); if (this.node.commandHistory.length > 200) this.node.commandHistory.shift(); }
         this.historyIndex = this.history.length;
     }
     getPrevHistory() { if (this.historyIndex > 0) { this.historyIndex--; return this.history[this.historyIndex]; } return this.history[0] || ''; }
@@ -113,7 +116,7 @@ export class LinuxCLI {
             case 'mkdir': return this._mkdir(args);
             case 'rm': return this._rm(args);
             case 'touch': return this._touch(args);
-            case 'echo': return args.slice(1).join(' ');
+            case 'echo': return this._echo(args);
             case 'clear': return '__CLEAR__';
             case 'history': return this.history.map((h, i) => `  ${i + 1}  ${h}`).join('\n');
             case 'export': if (args[1]) { const [k, v] = args[1].split('='); this.env[k] = v; } return '';
@@ -142,10 +145,7 @@ export class LinuxCLI {
                 return 'Usage: docker <ps|run>';
             case 'ufw':
                 if (!this.node._installedPackages.has('ufw')) return 'bash: ufw: command not found';
-                if (args[1] === 'status') return 'Status: active\n\nTo                         Action      From\n--                         ------      ----\n22/tcp                     ALLOW       Anywhere\n80/tcp                     ALLOW       Anywhere';
-                if (args[1] === 'enable') return 'Firewall is active and enabled on system startup';
-                if (args[1] === 'disable') return 'Firewall stopped and disabled on system startup';
-                return 'Usage: ufw <status|enable|disable>';
+                return this._ufw(args);
             case 'fail2ban-client': case 'fail2ban':
                 if (!this.node._installedPackages.has('fail2ban')) return `bash: ${cmd}: command not found`;
                 if (args[1] === 'status') return 'Status\n|- Number of jail:\t1\n`- Jail list:\tsshd';
@@ -424,6 +424,59 @@ export class LinuxCLI {
             parent.children[fileName] = { type: 'file', content: '' };
         }
         return '';
+    }
+
+    _echo(args) {
+        const redirectIdx = args.findIndex(a => a === '>' || a === '>>');
+        if (redirectIdx === -1) return args.slice(1).join(' ');
+
+        const target = args[redirectIdx + 1];
+        if (!target) return 'bash: syntax error near unexpected token `newline`';
+
+        const path = this._resolvePath(target);
+        const parts = path.split('/').filter(Boolean);
+        const fileName = parts.pop();
+        const parent = this._getNode('/' + parts.join('/'));
+        if (!parent || parent.type !== 'dir') return `bash: ${target}: No such file or directory`;
+
+        let text = args.slice(1, redirectIdx).join(' ');
+        text = text.replace(/^['"]|['"]$/g, '');
+        const existing = parent.children[fileName];
+        const current = existing?.type === 'file' ? existing.content || '' : '';
+        parent.children[fileName] = {
+            type: 'file',
+            content: args[redirectIdx] === '>>' && current ? current + '\n' + text : text
+        };
+        this.notifyGraph();
+        return '';
+    }
+
+    _ufw(args) {
+        const action = args[1];
+        if (action === 'enable') {
+            this.node.firewallEnabled = true;
+            return 'Firewall is active and enabled on system startup';
+        }
+        if (action === 'disable') {
+            this.node.firewallEnabled = false;
+            return 'Firewall stopped and disabled on system startup';
+        }
+        if (action === 'status') {
+            const status = this.node.firewallEnabled ? 'active' : 'inactive';
+            const rules = (this.node.firewallRules || []).map(rule =>
+                `${String(rule.port + '/' + (rule.protocol || 'tcp')).padEnd(26)}${rule.action.toUpperCase().padEnd(12)}${rule.from || 'Anywhere'}`
+            );
+            return `Status: ${status}\n\nTo                         Action      From\n--                         ------      ----\n${rules.join('\n') || '(no rules)'}`;
+        }
+        if (action === 'allow' || action === 'deny') {
+            const spec = args[2] || '';
+            const [port, protocol = 'tcp'] = spec.split('/');
+            if (!port) return `Usage: ufw ${action} <port>/<protocol>`;
+            this.node.firewallRules.push({ action, port, protocol, from: 'Anywhere' });
+            this.notifyGraph();
+            return `Rule added\nRule added (v6)`;
+        }
+        return 'Usage: ufw <status|enable|disable|allow|deny>';
     }
 
     _iptables(args) {

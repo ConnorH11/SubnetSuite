@@ -45,6 +45,102 @@ export const data = {
     ],
     "questions": [
         {
+            "domain": "1.0",
+            "type": "multiple-choice",
+            "text": "A company needs to protect customer data at rest in a database. The same key is used to encrypt and decrypt the records. Which cryptographic method is being used?",
+            "options": [
+                "Asymmetric encryption",
+                "Symmetric encryption",
+                "Hashing",
+                "Steganography"
+            ],
+            "answer": [
+                "Symmetric encryption"
+            ],
+            "explanation": "Symmetric encryption uses the same secret key for encryption and decryption and is commonly used for bulk data protection.",
+            "id": "secplus_q_crypto_sym_2000"
+        },
+        {
+            "domain": "1.0",
+            "type": "multiple-choice",
+            "text": "A security analyst must verify that a downloaded firmware file has not changed since the vendor published it. Which cryptographic control best satisfies this requirement?",
+            "options": [
+                "Hash comparison",
+                "Full-disk encryption",
+                "Key escrow",
+                "Certificate pinning"
+            ],
+            "answer": [
+                "Hash comparison"
+            ],
+            "explanation": "A hash provides an integrity check. If the locally computed hash matches the vendor's published hash, the file is unlikely to have been altered.",
+            "id": "secplus_q_crypto_hash_2001"
+        },
+        {
+            "domain": "1.0",
+            "type": "multiple-choice",
+            "text": "A user encrypts a message with a recipient's public key. Which key is required to decrypt the message?",
+            "options": [
+                "The sender's public key",
+                "The sender's private key",
+                "The recipient's private key",
+                "The recipient's public key"
+            ],
+            "answer": [
+                "The recipient's private key"
+            ],
+            "explanation": "In asymmetric encryption, data encrypted with a public key can only be decrypted with the matching private key.",
+            "id": "secplus_q_crypto_asym_2002"
+        },
+        {
+            "domain": "3.0",
+            "type": "multiple-choice",
+            "text": "A switchport is configured with an unused native VLAN and DTP is disabled. Which attack is this configuration primarily intended to reduce?",
+            "options": [
+                "VLAN hopping",
+                "DNS cache poisoning",
+                "Credential stuffing",
+                "Birthday attack"
+            ],
+            "answer": [
+                "VLAN hopping"
+            ],
+            "explanation": "Disabling dynamic trunk negotiation and avoiding user traffic on the native VLAN are common controls against VLAN hopping techniques.",
+            "id": "secplus_q_vlan_hopping_2003"
+        },
+        {
+            "domain": "4.0",
+            "type": "multiple-choice",
+            "text": "An analyst reviews a capture and sees repeated ARP replies claiming that the attacker's MAC address owns the default gateway IP. Which control would best help prevent this on access switches?",
+            "options": [
+                "Dynamic ARP Inspection",
+                "Port forwarding",
+                "Split tunneling",
+                "DNSSEC"
+            ],
+            "answer": [
+                "Dynamic ARP Inspection"
+            ],
+            "explanation": "Dynamic ARP Inspection validates ARP messages against trusted bindings, reducing ARP spoofing and poisoning attacks.",
+            "id": "secplus_q_l2_dai_2004"
+        },
+        {
+            "domain": "1.0",
+            "type": "multiple-choice",
+            "text": "Which option is a digital signature primarily used to provide?",
+            "options": [
+                "Confidentiality only",
+                "Integrity, authentication, and non-repudiation",
+                "Network address translation",
+                "Data compression"
+            ],
+            "answer": [
+                "Integrity, authentication, and non-repudiation"
+            ],
+            "explanation": "Digital signatures use asymmetric cryptography to prove who signed data and whether the signed data changed.",
+            "id": "secplus_q_crypto_sig_2005"
+        },
+        {
             "domain": "2.0",
             "type": "multiple-choice",
             "text": "Which well-known port is utilized by the IMAP protocol?",

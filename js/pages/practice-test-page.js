@@ -229,6 +229,7 @@ export default {
         
         gradingMode = document.getElementById('pt-mode-select').value;
         userAnswers = {};
+        this.hasGradedInstant = {};
         flaggedQuestions.clear();
         currentIdx = 0;
         isReviewMode = false;

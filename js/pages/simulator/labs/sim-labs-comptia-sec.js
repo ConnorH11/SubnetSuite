@@ -422,5 +422,53 @@ export const COMPTIA_SEC_LABS = [
                 checks: [{ type: 'nat_outside', node: 'R1', interface: 'GigabitEthernet0/0/1' }] // Soft check
             }
         ]
+    },
+    {
+        id: 'comptia-sec-13',
+        certification: 'Security+',
+        category: 'Host Firewall',
+        difficulty: 'Medium',
+        timeEstimate: '15 mins',
+        title: 'UFW Host Firewall Rule Configuration',
+        description: 'Configure a Linux host firewall to block insecure Telnet while allowing SSH administration.',
+        topology: {
+            nodes: [
+                { id: 'SRV1', template: 'linux_server', x: 350, y: 200, name: 'Secure-App' },
+                { id: 'ADMIN', template: 'linux_pc', x: 120, y: 280, name: 'Admin-PC' },
+                { id: 'ATTACKER', template: 'linux_pc', x: 580, y: 280, name: 'Untrusted-PC' }
+            ],
+            edges: [
+                { source: 'SRV1', sourcePort: 'eth0', target: 'ADMIN', targetPort: 'eth0', cableType: 'copper_straight' },
+                { source: 'SRV1', sourcePort: 'eth1', target: 'ATTACKER', targetPort: 'eth0', cableType: 'copper_straight' }
+            ],
+            preConfig: {
+                'SRV1': {
+                    interfaces: {
+                        'eth0': { ip: '10.10.10.20', subnet: '24', state: 'up' },
+                        'eth1': { ip: '198.51.100.20', subnet: '24', state: 'up' }
+                    },
+                    installedPackages: ['bash', 'coreutils', 'net-tools', 'iproute2', 'iputils-ping', 'ufw']
+                },
+                'ADMIN': { interfaces: { 'eth0': { ip: '10.10.10.10', subnet: '24', state: 'up' } } },
+                'ATTACKER': { interfaces: { 'eth0': { ip: '198.51.100.50', subnet: '24', state: 'up' } } }
+            }
+        },
+        tasks: [
+            {
+                description: 'Enable UFW on Secure-App',
+                hints: ['Open Terminal on Secure-App and run "ufw enable".'],
+                checks: [{ type: 'command_ran', node: 'SRV1', command: 'ufw enable' }]
+            },
+            {
+                description: 'Allow SSH administration on port 22/tcp',
+                hints: ['Use "ufw allow 22/tcp".'],
+                checks: [{ type: 'firewall_rule', node: 'SRV1', action: 'allow', port: '22', protocol: 'tcp' }]
+            },
+            {
+                description: 'Deny Telnet on port 23/tcp',
+                hints: ['Use "ufw deny 23/tcp".'],
+                checks: [{ type: 'firewall_rule', node: 'SRV1', action: 'deny', port: '23', protocol: 'tcp' }]
+            }
+        ]
     }
 ];

@@ -266,6 +266,9 @@ export class NetworkGraph {
             const serialNode = { ...node };
             serialNode.macTable = Object.fromEntries(node.macTable);
             serialNode.arpTable = Object.fromEntries(node.arpTable);
+            serialNode._installedPackages = node._installedPackages instanceof Set
+                ? Array.from(node._installedPackages)
+                : (node._installedPackages || []);
             serialNode.dhcpPools = node.dhcpPools.map(p => ({
                 ...p,
                 leases: p.leases ? Object.fromEntries(p.leases) : {}
@@ -290,6 +293,7 @@ export class NetworkGraph {
             for (const nodeData of data.nodes) {
                 nodeData.macTable = new Map(Object.entries(nodeData.macTable || {}));
                 nodeData.arpTable = new Map(Object.entries(nodeData.arpTable || {}));
+                nodeData._installedPackages = new Set(nodeData._installedPackages || []);
                 nodeData.dhcpPools = (nodeData.dhcpPools || []).map(p => ({
                     ...p,
                     leases: new Map(Object.entries(p.leases || {}))
