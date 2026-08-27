@@ -4,6 +4,11 @@ import { CiscoCLI } from './sim-cli-cisco.js';
 import { JuniperCLI } from './sim-cli-juniper.js';
 import { isValidIP, getNetAddr } from './sim-math.js';
 
+const LINUX_BASE_PACKAGES = ['bash', 'coreutils', 'findutils', 'grep', 'sed', 'tar', 'gzip', 'procps', 'util-linux', 'iproute2', 'iputils-ping', 'net-tools', 'dnsutils', 'traceroute', 'curl', 'wget', 'openssh-client', 'openssh-server', 'nano', 'vim-tiny'];
+const WINDOWS_BASE_PACKAGES = ['cmd', 'powershell', 'tcpip', 'net-tools', 'system-tools', 'curl', 'openssh-client'];
+const LINUX_COMMANDS = ['adduser', 'apt', 'apt-get', 'arp', 'cat', 'cd', 'chmod', 'chown', 'clear', 'cp', 'crontab', 'curl', 'date', 'df', 'dhclient', 'dig', 'dmesg', 'docker', 'dpkg', 'du', 'echo', 'env', 'exit', 'export', 'fail2ban', 'fail2ban-client', 'find', 'free', 'grep', 'groups', 'gunzip', 'gzip', 'head', 'help', 'history', 'hostname', 'hostnamectl', 'htop', 'id', 'ifconfig', 'ip', 'iptables', 'journalctl', 'kill', 'less', 'ln', 'ls', 'lsblk', 'lscpu', 'lspci', 'lsusb', 'man', 'mkdir', 'more', 'mount', 'mv', 'mysql', 'nano', 'netstat', 'nmap', 'node', 'nodejs', 'nslookup', 'passwd', 'ping', 'printenv', 'ps', 'psql', 'pwd', 'python3', 'resolvectl', 'rm', 'route', 'sed', 'service', 'snmp', 'snmpd', 'sort', 'ss', 'ssh', 'sudo', 'systemctl', 'tail', 'tar', 'tcpdump', 'telnet', 'timedatectl', 'tmux', 'touch', 'traceroute', 'tshark', 'ufw', 'umount', 'uname', 'useradd', 'usermod', 'vi', 'vim', 'wc', 'wget', 'whereis', 'which', 'who', 'whoami', 'wireshark', 'wireshark-cli'];
+const WINDOWS_COMMANDS = ['arp', 'certutil', 'chdir', 'chkdsk', 'cls', 'copy', 'curl', 'date', 'del', 'dir', 'echo', 'erase', 'exit', 'findstr', 'ftp', 'getmac', 'gpresult', 'help', 'hostname', 'ipconfig', 'mkdir', 'more', 'nbtstat', 'net', 'netsh', 'netstat', 'nslookup', 'pathping', 'ping', 'powershell', 'rd', 'route', 'rmdir', 'set', 'sfc', 'shutdown', 'ssh', 'systeminfo', 'taskkill', 'tasklist', 'time', 'tracert', 'tree', 'type', 'ver', 'where', 'whoami', 'wmic'];
+
 export function createCLI(node, notifyGraph, engine) {
     switch (node.cliType) {
         case 'cisco': return new CiscoCLI(node, notifyGraph);
@@ -34,7 +39,7 @@ export class LinuxCLI {
         };
         // Package management state
         if (!this.node._installedPackages) {
-            this.node._installedPackages = new Set(['bash', 'coreutils', 'net-tools', 'iproute2', 'openssh-server', 'curl', 'wget', 'iputils-ping', 'dnsutils', 'traceroute', 'nano', 'vim-tiny']);
+            this.node._installedPackages = new Set(LINUX_BASE_PACKAGES);
         }
         if (!this.node._services) {
             this.node._services = { ssh: 'active', networking: 'active', cron: 'active' };
@@ -57,12 +62,7 @@ export class LinuxCLI {
     getNextHistory() { if (this.historyIndex < this.history.length - 1) { this.historyIndex++; return this.history[this.historyIndex]; } this.historyIndex = this.history.length; return ''; }
 
     tabComplete(partial) {
-        const cmds = ['ping', 'traceroute', 'ifconfig', 'ip', 'route', 'arp', 'netstat', 'nslookup', 'dig', 'curl', 'wget',
-                       'ssh', 'telnet', 'ftp', 'cat', 'ls', 'cd', 'pwd', 'mkdir', 'rm', 'echo', 'touch', 'clear', 'man',
-                       'hostname', 'whoami', 'uname', 'date', 'uptime', 'free', 'df', 'ps', 'kill', 'history', 'export',
-                       'iptables', 'tcpdump', 'nmap', 'ss', 'grep', 'find', 'chmod', 'chown', 'nano', 'vi',
-                       'sudo', 'dhclient', 'apt', 'apt-get', 'dpkg', 'systemctl', 'journalctl', 'service', 'useradd', 'passwd', 'exit', 'help', 'python3', 'node'];
-        return cmds.filter(c => c.startsWith(partial.toLowerCase()));
+        return LINUX_COMMANDS.filter(c => c.startsWith(partial.toLowerCase()));
     }
 
     execute(commandStr) {
@@ -115,16 +115,49 @@ export class LinuxCLI {
             case 'ps': return args[1] === 'aux' ? this._psAux() : '  PID TTY          TIME CMD\n    1 ?        00:00:01 systemd\n  234 tty1     00:00:00 bash\n  567 tty1     00:00:00 ps';
             case 'cat': return this._cat(args);
             case 'ls': return this._ls(args);
+            case 'cp': return args.length < 3 ? 'Usage: cp <source> <destination>' : '';
+            case 'mv': return args.length < 3 ? 'Usage: mv <source> <destination>' : '';
+            case 'ln': return args.length < 3 ? 'Usage: ln <target> <link_name>' : '';
             case 'cd': return this._cd(args);
             case 'pwd': return this.cwd;
             case 'mkdir': return this._mkdir(args);
             case 'rm': return this._rm(args);
             case 'touch': return this._touch(args);
             case 'echo': return this._echo(args);
+            case 'grep': return args.length < 3 ? 'Usage: grep <pattern> <file>' : this._grepFile(args);
+            case 'find': return args.length < 2 ? 'Usage: find <path> [-name pattern]' : this._find(args);
+            case 'head': return args[1] ? this._headTailFile(args, 'head') : 'Usage: head [-n count] <file>';
+            case 'tail': return args[1] ? this._headTailFile(args, 'tail') : 'Usage: tail [-n count] <file>';
+            case 'wc': return args[1] ? this._wcFile(args) : 'Usage: wc <file>';
+            case 'sort': return args[1] ? this._sortFile(args) : 'Usage: sort <file>';
+            case 'more': case 'less': return args[1] ? this._cat(['cat', args[1]]) : '';
+            case 'tar': return args.length < 2 ? 'Usage: tar <options> <archive> [files]' : 'tar: archive operation completed (simulated)';
+            case 'gzip': return args[1] ? '' : 'Usage: gzip <file>';
+            case 'gunzip': return args[1] ? '' : 'Usage: gunzip <file.gz>';
             case 'clear': return '__CLEAR__';
             case 'history': return this.history.map((h, i) => `  ${i + 1}  ${h}`).join('\n');
             case 'export': if (args[1]) { const [k, v] = args[1].split('='); this.env[k] = v; } return '';
             case 'env': case 'printenv': return Object.entries(this.env).map(([k, v]) => `${k}=${v}`).join('\n');
+            case 'which': return args[1] ? (LINUX_COMMANDS.includes(args[1]) ? `/usr/bin/${args[1]}` : '') : 'Usage: which <command>';
+            case 'whereis': return args[1] ? `${args[1]}: /usr/bin/${args[1]} /usr/share/man/man1/${args[1]}.1.gz` : 'Usage: whereis <command>';
+            case 'id': return 'uid=0(root) gid=0(root) groups=0(root),27(sudo),1000(user)';
+            case 'groups': return 'root sudo user';
+            case 'who': return 'root     pts/0        ' + new Date().toLocaleString();
+            case 'su': return args[1] ? `Password:\nsu: Authentication failure` : 'Password:\nsu: Authentication failure';
+            case 'adduser': return args[1] ? `Adding user \`${args[1]}' ...\nAdding new group \`${args[1]}' (1001) ...\nAdding new user \`${args[1]}' (1001) with group \`${args[1]}' ...\nDone.` : 'Usage: adduser <username>';
+            case 'usermod': return args.length < 3 ? 'Usage: usermod [options] LOGIN' : '';
+            case 'crontab': return args.includes('-l') ? 'no crontab for root' : 'crontab: installing new crontab (simulated)';
+            case 'du': return '4.0K\t./configs\n8.0K\t.';
+            case 'mount': return '/dev/sda1 on / type ext4 (rw,relatime)\nproc on /proc type proc (rw,nosuid,nodev,noexec,relatime)';
+            case 'umount': return args[1] ? '' : 'Usage: umount <target>';
+            case 'lsblk': return 'NAME   MAJ:MIN RM  SIZE RO TYPE MOUNTPOINTS\nsda      8:0    0   50G  0 disk\n`-sda1   8:1    0   50G  0 part /';
+            case 'lscpu': return 'Architecture: x86_64\nCPU(s): 2\nModel name: Simulated CPU\nVirtualization: full';
+            case 'lsusb': return 'Bus 001 Device 001: ID 1d6b:0002 Linux Foundation 2.0 root hub';
+            case 'lspci': return '00:03.0 Ethernet controller: Intel Corporation 82540EM Gigabit Ethernet Controller';
+            case 'dmesg': return '[    0.000000] Linux version 5.15.0-sim\n[    1.224000] e1000: eth0 NIC Link is Up 1000 Mbps Full Duplex';
+            case 'hostnamectl': return ` Static hostname: ${this.hostname}\n       Icon name: computer-vm\n Operating System: Ubuntu 22.04 LTS\n          Kernel: Linux 5.15.0-sim`;
+            case 'timedatectl': return `               Local time: ${new Date().toString()}\n           Universal time: ${new Date().toUTCString()}\n                 RTC time: ${new Date().toUTCString()}\n                Time zone: UTC`;
+            case 'resolvectl': return `Global\n       Protocols: +LLMNR +mDNS -DNSOverTLS DNSSEC=no/unsupported\nresolv.conf mode: stub\n\nLink 2 (${Object.keys(this.node.interfaces)[0] || 'eth0'})\n    Current DNS Server: ${this.node.dnsServer || 'none'}\n           DNS Servers: ${this.node.dnsServer || 'none'}`;
             case 'iptables': 
                 if (!this.node._installedPackages.has('iptables')) return 'bash: iptables: command not found';
                 return this._iptables(args);
@@ -183,7 +216,7 @@ export class LinuxCLI {
                 return 'Welcome to Node.js v18.13.0.\nType ".help" for more information.\n> .exit\n';
             case 'man': return args[1] ? `Manual page for ${args[1]}\n\nNAME\n    ${args[1]} - simulated command\n\nDESCRIPTION\n    This is a simulated environment. Type the command for usage info.` : 'What manual page do you want?';
             case 'exit': case 'logout': return '__EXIT__';
-            case 'help': return 'Available commands:\n  ping, traceroute, ifconfig, ip, route, arp, netstat, nslookup, dig,\n  curl, wget, ssh, telnet, cat, ls, cd, pwd, mkdir, rm, echo, touch,\n  hostname, whoami, uname, date, uptime, free, df, ps, history,\n  sudo, dhclient, apt, dpkg, systemctl, service, useradd, passwd,\n  iptables, tcpdump, nmap, git, docker, ufw, tmux, mysql, psql, node,\n  clear, exit, help';
+            case 'help': return this._generalHelp();
             default: 
                 if (cmd === 'python3' && this.node._installedPackages.has('python3')) return 'Python 3.10.12 (main, Nov 20 2023, 15:14:05) [GCC 11.4.0] on linux\nType "help", "copyright", "credits" or "license" for more information.\n>>> exit()\n';
                 if ((cmd === 'nano' || cmd === 'vim' || cmd === 'vi') && (this.node._installedPackages.has('nano') || this.node._installedPackages.has('vim'))) {
@@ -219,7 +252,14 @@ export class LinuxCLI {
     }
 
     _generalHelp() {
-        return 'Available commands:\n  ping, traceroute, ifconfig, ip, route, arp, netstat, nslookup, dig,\n  curl, wget, ssh, telnet, cat, ls, cd, pwd, mkdir, rm, echo, touch,\n  hostname, whoami, uname, date, uptime, free, df, ps, history,\n  sudo, dhclient, apt, dpkg, systemctl, service, useradd, passwd,\n  iptables, tcpdump, nmap, git, docker, ufw, tmux, mysql, psql, node,\n  clear, exit, help';
+        const installed = Array.from(this.node._installedPackages || []).sort().join(', ');
+        return `Available commands:
+  ${LINUX_COMMANDS.join(', ').replace(/(.{1,88})(, |$)/g, '$1\n  ').trim()}
+
+Installed packages:
+  ${installed || '(none)'}
+
+Use "help <command>", "man <command>", or "<command> --help" for usage. Software Center and apt installs unlock extra command behavior.`;
     }
 
     _helpFor(cmd) {
@@ -234,6 +274,7 @@ export class LinuxCLI {
             nslookup: 'Usage: nslookup <hostname>\nQuery DNS for a hostname.',
             dig: 'Usage: dig <hostname>\nQuery DNS for a hostname.',
             curl: 'Usage: curl <url>\nTransfer a URL from a simulated remote service.',
+            wget: 'Usage: wget <url>\nDownload a URL from a simulated remote service.',
             systemctl: 'Usage: systemctl <status|start|stop|restart|enable|disable|list-units> [service]\nInspect or manage simulated services.',
             journalctl: 'Usage: journalctl [-u service]\nDisplay simulated system journal messages.',
             service: 'Usage: service <name> <start|stop|restart|status>\nCompatibility wrapper for systemctl.',
@@ -244,7 +285,22 @@ export class LinuxCLI {
             cd: 'Usage: cd [path]\nChange the current working directory.',
             cat: 'Usage: cat <file>\nPrint file contents.',
             chmod: 'Usage: chmod <mode> <file>\nChange file permissions.',
-            chown: 'Usage: chown <owner>[:group] <file>\nChange file ownership.'
+            chown: 'Usage: chown <owner>[:group] <file>\nChange file ownership.',
+            cp: 'Usage: cp <source> <destination>\nCopy files or directories in the simulated filesystem.',
+            mv: 'Usage: mv <source> <destination>\nMove or rename files in the simulated filesystem.',
+            find: 'Usage: find <path> -name <pattern>\nSearch for files. Simulated output is scoped to lab files.',
+            grep: 'Usage: grep <pattern> <file>\nFilter matching lines. Also works in pipes.',
+            head: 'Usage: head [-n count]\nPrint the first lines of piped output.',
+            tail: 'Usage: tail [-n count]\nPrint the last lines of piped output.',
+            wc: 'Usage: wc\nCount lines, words, and bytes from piped output.',
+            tar: 'Usage: tar -czf archive.tar.gz <path>\nCreate or inspect simulated archives.',
+            crontab: 'Usage: crontab [-l|-e]\nList or edit scheduled cron jobs.',
+            docker: 'Usage: docker <ps|run>\nContainer runtime. Install docker.io first.',
+            nmap: 'Usage: nmap <target>\nScan common ports. Install nmap first.',
+            tcpdump: 'Usage: tcpdump [options]\nCapture packets. Install tcpdump first.',
+            tshark: 'Usage: tshark [-i iface]\nDisplay packet capture summaries. Install wireshark first.',
+            python3: 'Usage: python3 [script]\nRun Python. Install python3 first.',
+            node: 'Usage: node [script]\nRun Node.js. Install nodejs first.'
         };
         return help[cmd] || `No help entry for ${cmd}. Try "help" to list available commands.`;
     }
@@ -513,6 +569,62 @@ export class LinuxCLI {
         return '';
     }
 
+    _grepFile(args) {
+        const pattern = args[1]?.replace(/^['"]|['"]$/g, '').toLowerCase();
+        const file = args[2];
+        const text = this._cat(['cat', file]);
+        if (text.startsWith('cat:')) return text;
+        return text.split('\n').filter(line => line.toLowerCase().includes(pattern)).join('\n');
+    }
+
+    _find(args) {
+        const start = args[1] || '.';
+        const nameIdx = args.indexOf('-name');
+        const pattern = nameIdx !== -1 ? (args[nameIdx + 1] || '').replace(/\*/g, '').toLowerCase() : '';
+        const rootPath = this._resolvePath(start);
+        const root = this._getNode(rootPath);
+        if (!root) return `find: '${start}': No such file or directory`;
+        const lines = [];
+        const walk = (path, node) => {
+            const base = path.split('/').pop().toLowerCase();
+            if (!pattern || base.includes(pattern)) lines.push(path || '/');
+            if (node.type === 'dir') {
+                for (const [name, child] of Object.entries(node.children || {})) {
+                    walk((path === '/' ? '' : path) + '/' + name, child);
+                }
+            }
+        };
+        walk(rootPath, root);
+        return lines.join('\n');
+    }
+
+    _headTailFile(args, mode) {
+        let count = 10;
+        let file = args[1];
+        if (args[1] === '-n' && args[2] && args[3]) {
+            count = parseInt(args[2], 10) || 10;
+            file = args[3];
+        }
+        const text = this._cat(['cat', file]);
+        if (text.startsWith('cat:')) return text;
+        const lines = text.split('\n');
+        return (mode === 'head' ? lines.slice(0, count) : lines.slice(-count)).join('\n');
+    }
+
+    _wcFile(args) {
+        const text = this._cat(['cat', args[1]]);
+        if (text.startsWith('cat:')) return text;
+        const lines = text ? text.split('\n').length : 0;
+        const words = text.trim() ? text.trim().split(/\s+/).length : 0;
+        return `${String(lines).padStart(7)}${String(words).padStart(8)}${String(text.length).padStart(8)} ${args[1]}`;
+    }
+
+    _sortFile(args) {
+        const text = this._cat(['cat', args[1]]);
+        if (text.startsWith('cat:')) return text;
+        return text.split('\n').sort().join('\n');
+    }
+
     _ufw(args) {
         const action = args[1];
         if (action === 'enable') {
@@ -557,10 +669,60 @@ export class LinuxCLI {
     }
 
     _iptables(args) {
-        if (args.includes('-L')) {
-            return 'Chain INPUT (policy ACCEPT)\ntarget     prot opt source               destination\n\nChain FORWARD (policy ACCEPT)\ntarget     prot opt source               destination\n\nChain OUTPUT (policy ACCEPT)\ntarget     prot opt source               destination';
+        const valueAfter = (flag) => {
+            const idx = args.indexOf(flag);
+            return idx !== -1 ? args[idx + 1] : '';
+        };
+        const chain = valueAfter('-A') || valueAfter('-I') || '';
+        if ((args.includes('-A') || args.includes('-I')) && chain.toUpperCase() === 'INPUT') {
+            const jump = valueAfter('-j');
+            const action = jump && ['DROP', 'REJECT'].includes(jump.toUpperCase())
+                ? 'deny'
+                : jump?.toUpperCase() === 'ACCEPT'
+                    ? 'allow'
+                    : '';
+            const protocol = valueAfter('-p') || 'tcp';
+            const port = valueAfter('--dport') || valueAfter('--destination-port') || '';
+            const source = valueAfter('-s') || 'Anywhere';
+
+            if (!action || !port) {
+                return 'Usage: iptables -A INPUT -p <protocol> --dport <port> -j <ACCEPT|DROP|REJECT>';
+            }
+
+            this.node.firewallEnabled = true;
+            this.node.firewallRules.push({ action, port, protocol, from: source });
+            this.notifyGraph();
+            return '';
         }
-        return 'Usage: iptables [-L]';
+
+        if (args.includes('-D')) {
+            const port = valueAfter('--dport') || valueAfter('--destination-port') || '';
+            const source = valueAfter('-s') || '';
+            const jump = valueAfter('-j') || '';
+            const action = ['DROP', 'REJECT'].includes(jump.toUpperCase()) ? 'deny' : jump.toUpperCase() === 'ACCEPT' ? 'allow' : '';
+            const idx = this.node.firewallRules.findIndex(rule =>
+                (!port || String(rule.port) === String(port)) &&
+                (!source || rule.from === source) &&
+                (!action || rule.action === action)
+            );
+            if (idx === -1) return 'iptables: Bad rule (does a matching rule exist in that chain?).';
+            this.node.firewallRules.splice(idx, 1);
+            this.notifyGraph();
+            return '';
+        }
+
+        if (args.includes('-L')) {
+            const rules = (this.node.firewallRules || []).map(rule => {
+                const target = rule.action === 'deny' ? 'DROP' : 'ACCEPT';
+                const protocol = rule.protocol || 'tcp';
+                const source = rule.from || 'Anywhere';
+                const destination = '0.0.0.0/0';
+                const dpt = rule.port ? ` tcp dpt:${rule.port}` : '';
+                return `${target.padEnd(10)}${protocol.padEnd(5)}--  ${String(source).padEnd(19)}${destination}${dpt}`;
+            });
+            return `Chain INPUT (policy ACCEPT)\ntarget     prot opt source               destination\n${rules.join('\n')}\n\nChain FORWARD (policy ACCEPT)\ntarget     prot opt source               destination\n\nChain OUTPUT (policy ACCEPT)\ntarget     prot opt source               destination`;
+        }
+        return 'Usage: iptables [-L] | iptables -A INPUT -p <protocol> --dport <port> -j <ACCEPT|DROP|REJECT>';
     }
 
     _sudo(args) {
@@ -825,6 +987,9 @@ export class WindowsCLI {
             SystemRoot: 'C:\\Windows',
             TEMP: 'C:\\Users\\Admin\\AppData\\Local\\Temp',
         };
+        if (!this.node._installedPackages) {
+            this.node._installedPackages = new Set(WINDOWS_BASE_PACKAGES);
+        }
     }
 
     getPrompt() { return `${this.cwd}>`; }
@@ -843,11 +1008,9 @@ export class WindowsCLI {
     getNextHistory() { if (this.historyIndex < this.history.length - 1) { this.historyIndex++; return this.history[this.historyIndex]; } this.historyIndex = this.history.length; return ''; }
 
     tabComplete(partial) {
-        return ['ping', 'tracert', 'ipconfig', 'netstat', 'arp', 'nslookup', 'route', 'hostname',
-                'systeminfo', 'cls', 'dir', 'echo', 'exit', 'help', 'netsh', 'pathping', 'whoami',
-                'tasklist', 'type', 'cd', 'mkdir', 'rmdir', 'del', 'copy', 'set', 'ver', 'getmac',
-                'net', 'wmic', 'shutdown', 'taskkill', 'findstr', 'more', 'tree', 'chkdsk', 'sfc',
-                'powershell', 'gpresult', 'nbtstat']
+        return WINDOWS_COMMANDS
+            .concat(this._installedWindowsCommands())
+            .filter((cmd, idx, arr) => arr.indexOf(cmd) === idx)
             .filter(c => c.startsWith(partial.toLowerCase()));
     }
 
@@ -900,6 +1063,36 @@ export class WindowsCLI {
             case 'taskkill': return args.length < 2 ? 'ERROR: Invalid syntax.' : `SUCCESS: The process with PID ${Math.floor(Math.random()*9000)+1000} has been terminated.`;
             case 'net': return this._net(args);
             case 'wmic': return this._wmic(args);
+            case 'curl': return args.length < 2 ? 'Usage: curl <url>' : `__CURL__${args[1]}`;
+            case 'ssh': return this._hasWindowsPackage('openssh-client') ? (args.length < 2 ? 'usage: ssh user@host' : `__SSH__${args[1]}`) : `'ssh' is not recognized as an internal or external command,\noperable program or batch file.`;
+            case 'ftp': return args.length < 2 ? 'ftp> ' : `Connected to ${args[1]}.\n220 Simulated FTP service ready.\nUser (${args[1]}:(none)):`;
+            case 'certutil': return this._certutil(args);
+            case 'where': return args[1] ? `C:\\Windows\\System32\\${args[1]}.exe` : 'INFO: Could not find files for the given pattern(s).';
+            case 'date': return 'The current date is: ' + new Date().toLocaleDateString();
+            case 'time': return 'The current time is: ' + new Date().toLocaleTimeString();
+            case 'nmap':
+                if (!this._hasWindowsPackage('nmap')) return `'nmap' is not recognized as an internal or external command,\noperable program or batch file.`;
+                return args[1] ? `Starting Nmap scan of ${args[1]}...\nPORT    STATE SERVICE\n22/tcp  open  ssh\n80/tcp  open  http\n443/tcp open  https\nNmap done: 1 IP address scanned.` : 'Usage: nmap <target>';
+            case 'git':
+                if (!this._hasWindowsPackage('git')) return `'git' is not recognized as an internal or external command,\noperable program or batch file.`;
+                if (args[1] === 'status') return 'On branch main\nnothing to commit, working tree clean';
+                if (args[1] === '--version') return 'git version 2.45.1.windows.1';
+                if (args[1] === 'clone') return `Cloning into '${args[2]?.split('/').pop() || 'repo'}'...\nremote: Enumerating objects: 18, done.\nremote: Counting objects: 100% (18/18), done.\nReceiving objects: 100% (18/18), done.`;
+                return 'usage: git <status|clone|add|commit|push>';
+            case 'python': case 'python3':
+                if (!this._hasWindowsPackage('python')) return `'${cmd}' is not recognized as an internal or external command,\noperable program or batch file.`;
+                if (args[1]) return `Running ${args[1]}...\nmalicious domain: payroll-login.secure-update.example\nindicator IP: 198.51.100.44`;
+                return 'Python 3.12.3 (tags/v3.12.3) [MSC v.1938 64 bit (AMD64)] on win32\nType "help", "copyright", "credits" or "license" for more information.\n>>> exit()';
+            case 'node': case 'nodejs':
+                if (!this._hasWindowsPackage('nodejs')) return `'${cmd}' is not recognized as an internal or external command,\noperable program or batch file.`;
+                return 'Welcome to Node.js v20.11.1.\nType ".help" for more information.\n> .exit';
+            case 'tshark': case 'wireshark':
+                if (!this._hasWindowsPackage('wireshark')) return `'${cmd}' is not recognized as an internal or external command,\noperable program or batch file.`;
+                if (cmd === 'wireshark') return 'Launching Wireshark GUI is represented by the desktop Packet Capture app.';
+                return '1 0.000000 10.0.0.10 -> 10.0.0.1 ICMP Echo request\n2 0.001000 10.0.0.1 -> 10.0.0.10 ICMP Echo reply';
+            case 'putty': case 'plink':
+                if (!this._hasWindowsPackage('putty')) return `'${cmd}' is not recognized as an internal or external command,\noperable program or batch file.`;
+                return args[1] ? `Connecting to ${args[1]}...\nlogin as:` : 'Usage: putty host';
             case 'shutdown': return 'System shutdown initiated. (simulated)';
             case 'findstr': return args.length < 2 ? 'FINDSTR: Bad command line' : '(no matches found in simulated environment)';
             case 'tree': return 'C:\\Users\\Admin\n├── Desktop\n├── Documents\n├── Downloads\n└── AppData';
@@ -908,7 +1101,7 @@ export class WindowsCLI {
             case 'gpresult': return `Computer Name:     ${this.hostname}\nUser Name:         ${this.hostname}\\Admin\nDomain:            WORKGROUP\nApplied Group Policy Objects: None`;
             case 'nbtstat': return this._nbtstat(args);
             case 'powershell': return 'Windows PowerShell\nCopyright (C) Microsoft Corporation.\n\nPS C:\\Users\\Admin> (type commands or "exit" to return to CMD)';
-            case 'help': return 'Available commands:\n  ping         tracert      ipconfig     netstat      arp\n  nslookup     route        hostname     systeminfo   cls\n  dir          cd           type         mkdir        rmdir\n  del          copy         echo         set          ver\n  getmac       whoami       tasklist     taskkill     net\n  wmic         netsh        pathping     findstr      tree\n  chkdsk       sfc          gpresult     nbtstat      shutdown\n  powershell   exit         help';
+            case 'help': return this._generalHelp();
             default: return `'${cmd}' is not recognized as an internal or external command,\noperable program or batch file.`;
         }
     }
@@ -942,7 +1135,15 @@ export class WindowsCLI {
     }
 
     _generalHelp() {
-        return 'Available commands:\n  ping         tracert      ipconfig     netstat      arp\n  nslookup     route        hostname     systeminfo   cls\n  dir          cd           type         mkdir        rmdir\n  del          copy         echo         set          ver\n  getmac       whoami       tasklist     taskkill     net\n  wmic         netsh        pathping     findstr      tree\n  chkdsk       sfc          gpresult     nbtstat      shutdown\n  powershell   exit         help';
+        const commands = WINDOWS_COMMANDS.concat(this._installedWindowsCommands()).filter((cmd, idx, arr) => arr.indexOf(cmd) === idx).sort();
+        const installed = Array.from(this.node._installedPackages || []).sort().join(', ');
+        return `Available commands:
+  ${commands.join('         ').replace(/(.{1,88})(\s+|$)/g, '$1\n  ').trim()}
+
+Installed packages:
+  ${installed || '(none)'}
+
+Use "help <command>" or "<command> /?" for usage. Store installs unlock tools such as nmap, git, Python, Node.js, PuTTY, and tshark.`;
     }
 
     _helpFor(cmd) {
@@ -950,13 +1151,26 @@ export class WindowsCLI {
             ping: 'Usage: ping [-t] [-n count] target_name\nOptions:\n  -t          Ping the specified host until stopped.\n  -n count    Number of echo requests to send.',
             tracert: 'Usage: tracert target_name\nTrace the route to a remote host.',
             pathping: 'Usage: pathping target_name\nTrace route and report packet loss.',
-            ipconfig: 'Usage: ipconfig [/all] [/release] [/renew]\nDisplay or refresh Windows IP configuration.',
+            ipconfig: 'Usage: ipconfig [/all] [/release] [/renew] [/flushdns] [/displaydns]\nDisplay or refresh Windows IP configuration.',
             netstat: 'Usage: netstat\nDisplay active TCP connections and listening ports.',
             arp: 'Usage: arp -a\nDisplay ARP cache entries.',
             nslookup: 'Usage: nslookup hostname\nQuery DNS for a hostname.',
             route: 'Usage: route print\nDisplay the local routing table.',
             netsh: 'Usage: netsh interface ip show config\n       netsh wlan show interfaces\n       netsh firewall show state',
             net: 'Usage: net start [service]\n       net stop [service]\nStart or stop simulated Windows services.',
+            curl: 'Usage: curl <url>\nTransfer a URL from a simulated remote service.',
+            ssh: 'Usage: ssh user@host\nConnect to a remote shell if OpenSSH Client is installed.',
+            nmap: 'Usage: nmap <target>\nScan common ports. Install Nmap from Store first.',
+            git: 'Usage: git <status|clone|add|commit|push>\nVersion control client. Install Git from Store first.',
+            python: 'Usage: python\nStart the Python interpreter. Install Python from Store first.',
+            python3: 'Usage: python3\nStart the Python interpreter. Install Python from Store first.',
+            node: 'Usage: node [script]\nStart Node.js. Install Node.js from Store first.',
+            tshark: 'Usage: tshark\nShow packet capture summaries. Install Wireshark from Store first.',
+            wireshark: 'Usage: wireshark\nUse the Packet Capture desktop app for the simulated GUI.',
+            putty: 'Usage: putty host\nOpen an SSH/Telnet client. Install PuTTY from Store first.',
+            plink: 'Usage: plink host\nCommand-line PuTTY client. Install PuTTY from Store first.',
+            certutil: 'Usage: certutil -hashfile <file> <algorithm>\nDisplay a simulated file hash.',
+            where: 'Usage: where <command>\nLocate commands in PATH.',
             dir: 'Usage: dir\nList files and folders in the current directory.',
             cd: 'Usage: cd [path]\nChange or display the current directory.',
             type: 'Usage: type filename\nDisplay a text file.',
@@ -965,6 +1179,32 @@ export class WindowsCLI {
             sfc: 'Usage: sfc /scannow\nScan protected system files.'
         };
         return help[cmd] || `No help entry for ${cmd}. Type help to list available commands.`;
+    }
+
+    _installedWindowsCommands() {
+        const installed = this.node._installedPackages || new Set();
+        const commands = [];
+        if (installed.has('nmap')) commands.push('nmap');
+        if (installed.has('git')) commands.push('git');
+        if (installed.has('python')) commands.push('python', 'python3');
+        if (installed.has('nodejs')) commands.push('node', 'nodejs');
+        if (installed.has('wireshark')) commands.push('wireshark', 'tshark');
+        if (installed.has('putty')) commands.push('putty', 'plink');
+        if (installed.has('openssh-client')) commands.push('ssh');
+        return commands;
+    }
+
+    _hasWindowsPackage(pkg) {
+        return (this.node._installedPackages || new Set()).has(pkg);
+    }
+
+    _certutil(args) {
+        if (args[1]?.toLowerCase() === '-hashfile') {
+            const file = args[2] || 'file';
+            const alg = (args[3] || 'SHA256').toUpperCase();
+            return `${alg} hash of ${file}:\n4f 2c 9a 1d 62 7e 80 1f 90 ac 4d 20 ad b5 62 10\nCertUtil: -hashfile command completed successfully.`;
+        }
+        return 'Usage: certutil -hashfile <file> <MD5|SHA1|SHA256>';
     }
 
     _pipeFilter(input, filterCmd) {
@@ -980,6 +1220,19 @@ export class WindowsCLI {
 
     _ipconfig(args) {
         const lowerArgs = args.map(a => a.toLowerCase());
+        if (lowerArgs.includes('/flushdns')) {
+            this.node.dnsCache = {};
+            return '\nWindows IP Configuration\n\nSuccessfully flushed the DNS Resolver Cache.';
+        }
+
+        if (lowerArgs.includes('/displaydns')) {
+            const entries = Object.entries(this.node.dnsCache || {});
+            if (!entries.length) return '\nWindows IP Configuration\n\nCould not display the DNS Resolver Cache.';
+            return '\nWindows IP Configuration\n\n' + entries.map(([name, rec]) =>
+                `${name}\n----------------------------------------\nRecord Name . . . . . : ${name}\nRecord Type . . . . . : ${rec.type || 'A'}\nTime To Live  . . . . : ${rec.ttl || 300}\nData Length . . . . . : 4\nSection . . . . . . . : Answer\nA (Host) Record . . . : ${rec.value}`
+            ).join('\n\n');
+        }
+
         if (lowerArgs.includes('/release')) {
             const iface = Object.values(this.node.interfaces)[0];
             if (!iface) return 'No operation can be performed because there are no adapters.';

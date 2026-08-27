@@ -283,6 +283,83 @@ export class NetworkGraph {
         return JSON.stringify(data, null, 2);
     }
 
+    exportLabSkeleton() {
+        const topology = JSON.parse(this.exportTopology());
+        const nodeIdMap = {};
+        topology.nodes.forEach((node, index) => {
+            nodeIdMap[node.id] = this._stableLabNodeId(node, index);
+        });
+
+        return JSON.stringify({
+            id: 'custom-lab-id',
+            certification: 'Network+',
+            category: 'Custom Lab',
+            difficulty: 'Medium',
+            timeEstimate: '20 mins',
+            title: 'Custom Troubleshooting Lab',
+            description: 'Describe the scenario students need to investigate and repair.',
+            topology: {
+                nodes: topology.nodes.map(node => ({
+                    id: nodeIdMap[node.id],
+                    template: node.templateId,
+                    x: node.x,
+                    y: node.y,
+                    name: node.name
+                })),
+                edges: topology.edges.map(edge => ({
+                    source: nodeIdMap[edge.source] || edge.source,
+                    sourcePort: edge.sourcePort,
+                    target: nodeIdMap[edge.target] || edge.target,
+                    targetPort: edge.targetPort,
+                    cableType: edge.cableType
+                })),
+                preConfig: Object.fromEntries(topology.nodes.map(node => [
+                    nodeIdMap[node.id],
+                    {
+                        interfaces: node.interfaces,
+                        gateway: node.gateway || '',
+                        dnsServer: node.dnsServer || '',
+                        vlans: node.vlans || {},
+                        routingTable: node.routingTable || [],
+                        dhcpPools: node.dhcpPools || [],
+                        dnsRecords: node.dnsRecords || [],
+                        httpEnabled: !!node.httpEnabled,
+                        firewallEnabled: !!node.firewallEnabled,
+                        firewallRules: node.firewallRules || [],
+                        nodeServices: node.services || {},
+                        services: node._services || {},
+                        scenarioState: {
+                            ticket: 'Write the user-facing trouble ticket here.',
+                            fault: 'custom_fault'
+                        }
+                    }
+                ]))
+            },
+            tasks: [
+                {
+                    description: 'Describe the first student task.',
+                    hints: ['Add a discovery hint.', 'Add a more specific hint.'],
+                    checks: []
+                }
+            ]
+        }, null, 2);
+    }
+
+    _stableLabNodeId(node, index) {
+        const prefixMap = {
+            pc: 'PC',
+            server: 'SRV',
+            router: 'R',
+            switch: 'SW',
+            l3switch: 'L3SW',
+            firewall: 'FW',
+            cloud: 'CLOUD',
+            wireless_ap: 'AP'
+        };
+        const prefix = prefixMap[node.type] || 'NODE';
+        return `${prefix}${index + 1}`;
+    }
+
     importTopology(jsonStr) {
         try {
             const data = JSON.parse(jsonStr);

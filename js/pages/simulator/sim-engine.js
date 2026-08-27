@@ -213,6 +213,8 @@ export class SimEngine {
             const match = this._findDnsRecord(dnsNode, hostname);
             if (match) {
                 this._logDnsPacket(clientNodeId, dnsNode.id, hostname, 'NoError', `Query: ${hostname} -> ${match.value}`, match.value);
+                if (!clientNode.dnsCache) clientNode.dnsCache = {};
+                clientNode.dnsCache[hostname.toLowerCase()] = { type: 'A', value: match.value, ttl: 300, timestamp: Date.now() };
                 return { ok: true, ip: match.value, server: dnsNode.id };
             }
             this._logDnsPacket(clientNodeId, dnsNode.id, hostname, 'NXDOMAIN', `Query: ${hostname} -> NXDOMAIN`);
@@ -224,6 +226,8 @@ export class SimEngine {
             const match = this._findDnsRecord(node, hostname);
             if (match) {
                 this._logDnsPacket(clientNodeId, id, hostname, 'NoError', `Query: ${hostname} -> ${match.value}`, match.value);
+                if (!clientNode.dnsCache) clientNode.dnsCache = {};
+                clientNode.dnsCache[hostname.toLowerCase()] = { type: 'A', value: match.value, ttl: 300, timestamp: Date.now() };
                 return { ok: true, ip: match.value, server: id };
             }
         }
@@ -1104,7 +1108,7 @@ export class SimEngine {
             node.httpEnabled = isInstall;
             if (isInstall) node._services[appId] = 'active';
             else delete node._services[appId];
-        } else if (['mysql-server', 'postgresql', 'snmpd', 'docker.io'].includes(appId)) {
+        } else if (['mysql-server', 'postgresql', 'snmpd', 'docker.io', 'fail2ban'].includes(appId)) {
             if (isInstall) node._services[appId] = 'active';
             else delete node._services[appId];
         }

@@ -229,6 +229,7 @@ export class SimulatorUI {
 
         const primaryIP = this.graph.getPrimaryIP(node.id);
         const statusColor = node.powered ? '#4caf50' : '#f44336';
+        const health = this._nodeHealth(node);
 
         el.innerHTML = `
             <div class="sim-node-badge" style="background:${vendor.color}" title="${vendor.name} ${node.model}"></div>
@@ -236,6 +237,7 @@ export class SimulatorUI {
             <i class="bi ${node.icon}" style="color:${vendor.color}"></i>
             <div class="sim-node-label">${node.name}</div>
             ${primaryIP ? `<div class="sim-node-ip">${primaryIP}</div>` : ''}
+            ${health ? `<div class="sim-node-alert ${health.level}" title="${health.message}"><i class="bi ${health.icon}"></i></div>` : ''}
             <div class="sim-port-hint"></div>
         `;
 
@@ -379,6 +381,20 @@ export class SimulatorUI {
 
                 const led = el.querySelector('.sim-node-status-led');
                 if (led) led.style.background = node.powered ? '#4caf50' : '#f44336';
+
+                const health = this._nodeHealth(node);
+                let alert = el.querySelector('.sim-node-alert');
+                if (health) {
+                    if (!alert) {
+                        alert = document.createElement('div');
+                        el.appendChild(alert);
+                    }
+                    alert.className = `sim-node-alert ${health.level}`;
+                    alert.title = health.message;
+                    alert.innerHTML = `<i class="bi ${health.icon}"></i>`;
+                } else if (alert) {
+                    alert.remove();
+                }
             }
             existingNodeEls.delete(id);
         });
@@ -432,6 +448,28 @@ export class SimulatorUI {
         this.updateInspector();
         this._updateMiniMap();
         this._updateStatusBar();
+    }
+
+    _nodeHealth(node) {
+        if (!node.powered) return { level: 'danger', icon: 'bi-power', message: 'Device is powered off' };
+        const ifaces = Object.values(node.interfaces || {});
+        if (ifaces.length && ifaces.every(iface => iface.state !== 'up')) {
+            return { level: 'danger', icon: 'bi-ethernet', message: 'All interfaces are down' };
+        }
+        const primaryIP = this.graph.getPrimaryIP(node.id);
+        if ((node.type === 'pc' || node.type === 'server') && !primaryIP) {
+            return { level: 'warning', icon: 'bi-exclamation-triangle-fill', message: 'No configured IP address' };
+        }
+        if (node.services?.dhcpClientService === false) {
+            return { level: 'warning', icon: 'bi-sliders', message: 'DHCP Client service is stopped' };
+        }
+        if (node.services?.dnsClient === false) {
+            return { level: 'warning', icon: 'bi-sliders', message: 'DNS Client service is stopped' };
+        }
+        if (node.firewallEnabled) {
+            return { level: 'info', icon: 'bi-shield-lock-fill', message: 'Host firewall is enabled' };
+        }
+        return null;
     }
 
     selectNode(id) {
@@ -513,6 +551,12 @@ export class SimulatorUI {
                 <h4 class="insp-section-title">Features</h4>
                 <div class="insp-features">${node.features.map(f => `<span class="insp-feature-tag">${f}</span>`).join('')}</div>
             </div>
+            <div class="insp-section">
+                <button class="sim-action-btn" style="width:100%; justify-content:center" id="btn-export-device-config">
+                    <i class="bi bi-clipboard"></i> Copy Device Config
+                </button>
+                <p class="insp-hint">Copy a study-friendly snapshot of this device's current interfaces, services, and tables.</p>
+            </div>
         `;
 
         this.inspectorBody.innerHTML = html;
@@ -528,11 +572,128 @@ export class SimulatorUI {
             if (!node.powered) return;
             this.engine.openCLI(node.id);
         });
+        this.inspectorBody.querySelector('#btn-export-device-config')?.addEventListener('click', async () => {
+            await this._copyText(this._deviceConfigExport(node));
+            this._showToast(`${node.name} config copied.`);
+        });
 
         this.inspector.querySelector('.inspector-icon i').className = `bi ${node.icon}`;
         this.inspector.querySelector('.inspector-icon i').style.color = vendor.color;
         this.inspector.querySelector('.inspector-title h3').textContent = node.name;
         this.inspector.querySelector('.inspector-title span').textContent = `${vendor.name} ${node.type}`;
+    }
+
+    _deviceConfigExport(node) {
+        if (node.cliType === 'cisco') return this._ciscoConfigExport(node);
+        if (node.cliType === 'juniper') return this._juniperConfigExport(node);
+        if (node.os === 'linux') return this._linuxConfigExport(node);
+        if (node.os === 'windows') return this._windowsConfigExport(node);
+        return this._genericConfigExport(node);
+    }
+
+    _ciscoConfigExport(node) {
+        const lines = ['!', `hostname ${node.hostname || node.name}`, '!'];
+        for (const [id, vlan] of Object.entries(node.vlans || {})) {
+            if (String(id) !== '1') lines.push(`vlan ${id}`, ` name ${vlan.name || 'VLAN' + id}`, '!');
+        }
+        for (const [name, iface] of Object.entries(node.interfaces || {})) {
+            lines.push(`interface ${name}`);
+            if (iface.description) lines.push(` description ${iface.description}`);
+            if (iface.switchportMode) {
+                lines.push(` switchport mode ${iface.switchportMode}`);
+                if (iface.switchportMode === 'access') lines.push(` switchport access vlan ${iface.accessVlan || 1}`);
+                if (iface.switchportMode === 'trunk') lines.push(` switchport trunk allowed vlan ${iface.trunkAllowed || 'all'}`);
+            }
+            if (iface.ip) lines.push(` ip address ${iface.ip} ${this._cidrToMask(iface.subnet || 24)}`);
+            lines.push(iface.state === 'down' ? ' shutdown' : ' no shutdown', '!');
+        }
+        for (const route of node.routingTable || []) {
+            lines.push(`ip route ${route.network} ${route.mask || this._cidrToMask(route.cidr || 24)} ${route.nextHop || route.interface || '0.0.0.0'}`);
+        }
+        return lines.join('\n');
+    }
+
+    _juniperConfigExport(node) {
+        const lines = [`set system host-name ${node.hostname || node.name}`];
+        for (const [name, iface] of Object.entries(node.interfaces || {})) {
+            if (iface.ip) lines.push(`set interfaces ${name} unit 0 family inet address ${iface.ip}/${iface.subnet || 24}`);
+            if (iface.description) lines.push(`set interfaces ${name} description "${iface.description}"`);
+            if (iface.state === 'down') lines.push(`set interfaces ${name} disable`);
+        }
+        for (const route of node.routingTable || []) {
+            lines.push(`set routing-options static route ${route.network}/${route.cidr || 24} next-hop ${route.nextHop || 'discard'}`);
+        }
+        return lines.join('\n');
+    }
+
+    _linuxConfigExport(node) {
+        const lines = [`# ${node.name} Linux network snapshot`, '$ ip addr'];
+        for (const [name, iface] of Object.entries(node.interfaces || {})) {
+            lines.push(`${name}: ${iface.state || 'down'} ${iface.ip ? iface.ip + '/' + (iface.subnet || 24) : 'no address'} ${iface.mac || ''}`.trim());
+        }
+        lines.push('', '$ ip route');
+        if (node.gateway) lines.push(`default via ${node.gateway} dev ${Object.keys(node.interfaces || {})[0] || 'eth0'}`);
+        for (const route of node.routingTable || []) lines.push(`${route.network}/${route.cidr || 24} via ${route.nextHop || 'direct'} dev ${route.interface || 'eth0'}`);
+        lines.push('', '$ systemctl --state=running');
+        for (const [name, state] of Object.entries(node._services || {})) lines.push(`${name}.service ${state}`);
+        return lines.join('\n');
+    }
+
+    _windowsConfigExport(node) {
+        const lines = [`REM ${node.name} Windows network snapshot`, 'ipconfig /all'];
+        for (const [name, iface] of Object.entries(node.interfaces || {})) {
+            lines.push(`${name}: ${iface.ip || '169.254.x.x'}/${iface.subnet || '16'} gateway=${node.gateway || '-'} dns=${node.dnsServer || '-'} mac=${iface.mac || '-'}`);
+        }
+        lines.push('', 'net start');
+        const services = [
+            ['DHCP Client', node.services?.dhcpClientService !== false],
+            ['DNS Client', node.services?.dnsClient !== false],
+            ['Windows Defender Firewall', !!node.firewallEnabled],
+            ['World Wide Web Publishing Service', !!node.httpEnabled],
+        ];
+        for (const [name, running] of services) lines.push(`${running ? 'RUNNING' : 'STOPPED'} ${name}`);
+        return lines.join('\n');
+    }
+
+    _genericConfigExport(node) {
+        return JSON.stringify({
+            name: node.name,
+            model: node.model,
+            interfaces: node.interfaces,
+            services: node.services,
+            routingTable: node.routingTable
+        }, null, 2);
+    }
+
+    _cidrToMask(cidr) {
+        const c = parseInt(cidr, 10) || 24;
+        const mask = (0xffffffff << (32 - c)) >>> 0;
+        return [(mask >>> 24) & 255, (mask >>> 16) & 255, (mask >>> 8) & 255, mask & 255].join('.');
+    }
+
+    async _copyText(text) {
+        try {
+            await navigator.clipboard.writeText(text);
+        } catch {
+            const input = document.createElement('textarea');
+            input.value = text;
+            input.style.position = 'fixed';
+            input.style.opacity = '0';
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand('copy');
+            input.remove();
+        }
+    }
+
+    _showToast(message) {
+        document.querySelector('#sim-toast')?.remove();
+        const toast = document.createElement('div');
+        toast.id = 'sim-toast';
+        toast.className = 'sim-toast success';
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 2500);
     }
 
     // ─── Mini Map ──────────────────────────────────

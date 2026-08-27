@@ -8,6 +8,8 @@ export class LabUI {
         this.engine = engine;
         this.browserModal = null;
         this.taskPanel = null;
+        this.showToolLabsOnly = false;
+        this.cleanupTaskResize = null;
 
         this.engine.subscribe(() => this._updateTaskPanel());
     }
@@ -48,7 +50,11 @@ export class LabUI {
                 <div class="lab-browser-main">
                     <div class="lab-search-bar">
                         <i class="bi bi-search"></i>
-                        <input type="text" id="lab-search" placeholder="Search labs by title or description..." autocomplete="off">
+                        <input type="text" id="lab-search" placeholder="Search labs by title, description, or tool..." autocomplete="off">
+                        <button class="lab-tool-filter" id="lab-tool-filter" title="Show labs that require installed tools">
+                            <i class="bi bi-bag-check"></i>
+                            <span>Tool Labs</span>
+                        </button>
                     </div>
                     <div class="lab-grid" id="lab-grid"></div>
                 </div>
@@ -77,6 +83,13 @@ export class LabUI {
             this._renderLabGrid(activeFilter, e.target.value);
         });
 
+        this.browserModal.querySelector('#lab-tool-filter').addEventListener('click', (e) => {
+            this.showToolLabsOnly = !this.showToolLabsOnly;
+            e.currentTarget.classList.toggle('active', this.showToolLabsOnly);
+            const activeFilter = filterList.querySelector('.active').dataset.filter;
+            this._renderLabGrid(activeFilter, this.browserModal.querySelector('#lab-search').value);
+        });
+
         this._renderLabGrid('all', '');
     }
 
@@ -87,9 +100,18 @@ export class LabUI {
         if (certFilter !== 'all') {
             labs = labs.filter(l => l.certification === certFilter);
         }
+        if (this.showToolLabsOnly) {
+            labs = labs.filter(l => this._requiredTools(l).length > 0);
+        }
         if (searchQuery) {
             const q = searchQuery.toLowerCase();
-            labs = labs.filter(l => l.title.toLowerCase().includes(q) || l.description.toLowerCase().includes(q));
+            labs = labs.filter(l => {
+                const tools = this._requiredTools(l).join(' ').toLowerCase();
+                return l.title.toLowerCase().includes(q) ||
+                    l.description.toLowerCase().includes(q) ||
+                    l.category.toLowerCase().includes(q) ||
+                    tools.includes(q);
+            });
         }
 
         if (labs.length === 0) {
@@ -108,6 +130,7 @@ export class LabUI {
 
         grid.innerHTML = labs.map(lab => {
             const progress = this.engine.getLabProgress(lab.id);
+            const requiredTools = this._requiredTools(lab);
             let progressHtml = '';
             if (progress) {
                 const percent = Math.round((progress.score / progress.total) * 100);
@@ -128,6 +151,11 @@ export class LabUI {
                     </div>
                     <h3 class="lab-card-title">${lab.title}</h3>
                     <p class="lab-card-desc">${lab.description}</p>
+                    ${requiredTools.length ? `
+                        <div class="lab-card-tools">
+                            ${requiredTools.map(tool => `<span><i class="bi bi-bag-check"></i> ${this._esc(tool)}</span>`).join('')}
+                        </div>
+                    ` : ''}
                     <div class="lab-card-meta">
                         <span><i class="bi bi-clock"></i> ${lab.timeEstimate}</span>
                         <span><i class="bi bi-tags"></i> ${lab.category}</span>
@@ -150,6 +178,16 @@ export class LabUI {
         });
     }
 
+    _requiredTools(lab) {
+        const tools = [];
+        for (const task of lab.tasks || []) {
+            for (const check of task.checks || []) {
+                if (check.type === 'package_installed' && check.package) tools.push(check.package);
+            }
+        }
+        return [...new Set(tools)].slice(0, 4);
+    }
+
     // ─── Task Panel ────────────────────────────────
 
     openTaskPanel() {
@@ -158,20 +196,9 @@ export class LabUI {
             this.taskPanel = document.createElement('div');
             this.taskPanel.className = 'sim-task-panel collapsed';
             
-            let isResizing = false;
             const handle = document.createElement('div');
             handle.className = 'sim-task-panel-resize';
             this.taskPanel.appendChild(handle);
-            
-            handle.addEventListener('mousedown', () => isResizing = true);
-            window.addEventListener('mousemove', (e) => {
-                if (!isResizing) return;
-                const width = window.innerWidth - e.clientX;
-                if (width > 250 && width < 800) {
-                    this.taskPanel.style.width = `${width}px`;
-                }
-            });
-            window.addEventListener('mouseup', () => isResizing = false);
 
             document.body.appendChild(this.taskPanel);
         }
@@ -202,6 +229,7 @@ export class LabUI {
 
         const lab = this.engine.currentLab;
         const results = this.engine.taskResults;
+        const requiredTools = this._requiredTools(lab);
         
         let score = 0;
         results.forEach(r => { if (r.status === 'passed') score++; });
@@ -222,6 +250,14 @@ export class LabUI {
             <div class="task-panel-body">
                 <p class="task-panel-desc">${lab.description}</p>
                 ${this._scenarioBriefingHtml(lab)}
+                ${requiredTools.length ? `
+                    <div class="task-toolbox">
+                        <div class="task-toolbox-title"><i class="bi bi-bag-check"></i> Required Add-ons</div>
+                        <div class="task-toolbox-list">
+                            ${requiredTools.map(tool => `<span>${this._esc(tool)}</span>`).join('')}
+                        </div>
+                    </div>
+                ` : ''}
                 <div class="task-list">
                     ${lab.tasks.map((task, idx) => {
                         const res = results[idx];
@@ -260,12 +296,14 @@ export class LabUI {
 
         this.taskPanel.querySelector('#btn-close-lab').addEventListener('click', () => {
             this.engine.closeLab();
+            if (this.cleanupTaskResize) this.cleanupTaskResize();
             this.taskPanel.remove();
             this.taskPanel = null;
             document.getElementById('btn-toggle-tasks')?.remove();
         });
 
         makeDraggable(this.taskPanel, this.taskPanel.querySelector('.task-panel-header'));
+        this._attachTaskPanelResize();
 
         this.taskPanel.querySelectorAll('.btn-check-task').forEach(btn => {
             btn.addEventListener('click', () => {
@@ -300,6 +338,38 @@ export class LabUI {
         `;
     }
 
+    _attachTaskPanelResize() {
+        if (this.cleanupTaskResize) this.cleanupTaskResize();
+        const handle = this.taskPanel?.querySelector('.sim-task-panel-resize');
+        if (!handle) return;
+
+        let isResizing = false;
+        const onMouseDown = (e) => {
+            isResizing = true;
+            e.preventDefault();
+        };
+        const onMouseMove = (e) => {
+            if (!isResizing || !this.taskPanel) return;
+            const width = window.innerWidth - e.clientX;
+            if (width > 250 && width < 800) {
+                this.taskPanel.style.width = `${width}px`;
+            }
+        };
+        const onMouseUp = () => {
+            isResizing = false;
+        };
+
+        handle.addEventListener('mousedown', onMouseDown);
+        window.addEventListener('mousemove', onMouseMove);
+        window.addEventListener('mouseup', onMouseUp);
+        this.cleanupTaskResize = () => {
+            handle.removeEventListener('mousedown', onMouseDown);
+            window.removeEventListener('mousemove', onMouseMove);
+            window.removeEventListener('mouseup', onMouseUp);
+            this.cleanupTaskResize = null;
+        };
+    }
+
     _showSuccessConfetti() {
         const duration = 3000;
         const end = Date.now() + duration;
@@ -321,15 +391,57 @@ export class LabUI {
 
         const successModal = document.createElement('div');
         successModal.className = 'sim-lab-success-modal';
+        const review = this._completionReview();
         successModal.innerHTML = `
             <div class="success-content">
                 <i class="bi bi-award-fill"></i>
                 <h2>Lab Completed!</h2>
                 <p>Great job! You've successfully completed all tasks for "${this.engine.currentLab.title}".</p>
+                ${review}
                 <button class="app-btn app-btn-primary" id="btn-success-close">Awesome</button>
             </div>
         `;
         document.body.appendChild(successModal);
         successModal.querySelector('#btn-success-close').addEventListener('click', () => successModal.remove());
+    }
+
+    _completionReview() {
+        const lab = this.engine.currentLab;
+        if (!lab) return '';
+        const configs = Object.values(lab.topology?.preConfig || {});
+        const scenario = configs.map(config => config.scenarioState).find(Boolean) || {};
+        const commands = [];
+        this.engine.graph.nodes.forEach(node => {
+            (node.commandHistory || []).slice(-4).forEach(cmd => commands.push(`${node.name}: ${cmd}`));
+        });
+        const packetCount = this.engine.engine?.packetLog?.length || 0;
+
+        return `
+            <div class="lab-review">
+                <div class="lab-review-row"><span>Certification</span><strong>${lab.certification || 'Practice'}</strong></div>
+                <div class="lab-review-row"><span>Objective Area</span><strong>${lab.category || 'Troubleshooting'}</strong></div>
+                ${scenario.fault ? `<div class="lab-review-row"><span>Root Cause</span><strong>${this._prettyFault(scenario.fault)}</strong></div>` : ''}
+                <div class="lab-review-row"><span>Tasks Passed</span><strong>${lab.tasks.length}/${lab.tasks.length}</strong></div>
+                <div class="lab-review-row"><span>Packets Reviewed</span><strong>${packetCount}</strong></div>
+                ${commands.length ? `
+                    <div class="lab-review-commands">
+                        <strong>Recent Commands</strong>
+                        <pre>${this._esc(commands.slice(-6).join('\n'))}</pre>
+                    </div>
+                ` : ''}
+            </div>
+        `;
+    }
+
+    _prettyFault(fault) {
+        return String(fault).replace(/_/g, ' ').replace(/\b\w/g, ch => ch.toUpperCase());
+    }
+
+    _esc(value) {
+        return String(value ?? '')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
     }
 }

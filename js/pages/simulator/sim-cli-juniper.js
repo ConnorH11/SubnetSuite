@@ -12,6 +12,7 @@ export class JuniperCLI {
         this.historyIndex = -1;
         this.configBuffer = []; // uncommitted changes
         this.committed = true;
+        if (!this.node.commandHistory) this.node.commandHistory = [];
     }
 
     getPrompt() {
@@ -23,6 +24,8 @@ export class JuniperCLI {
         if (cmd && cmd.trim()) {
             this.history.push(cmd);
             if (this.history.length > 100) this.history.shift();
+            this.node.commandHistory.push(cmd);
+            if (this.node.commandHistory.length > 200) this.node.commandHistory.shift();
         }
         this.historyIndex = this.history.length;
     }
@@ -59,6 +62,8 @@ export class JuniperCLI {
         const rawArgs = raw.split(/\s+/);
 
         if (cmd === '?' || cmd === 'help') return this._help();
+        if (cmd.endsWith('?')) return this._contextHelp(raw);
+        if (cmd.endsWith(' help')) return this._contextHelp(raw.replace(/\s+help$/i, ' ?'));
         if (cmd === 'quit' || cmd === 'exit') return this._exit();
 
         if (this.mode === 'operational') return this._opMode(cmd, args, rawArgs);
@@ -104,6 +109,46 @@ export class JuniperCLI {
             out += `  ${c.padEnd(18)}${helpMap[c] || ''}\n`;
         }
         return out;
+    }
+
+    _contextHelp(raw) {
+        const beforeQuestion = raw.replace(/\?$/, '').trim().toLowerCase();
+        const tokens = beforeQuestion.split(/\s+/).filter(Boolean);
+        if (!tokens.length) return this._help();
+
+        const format = entries => entries
+            .map(([cmd, desc]) => `  ${cmd.padEnd(28)}${desc}`)
+            .join('\n');
+
+        const op = {
+            show: [['arp', 'Show ARP table'], ['bgp summary', 'Show BGP peers'], ['chassis hardware', 'Show hardware inventory'], ['configuration', 'Show active configuration'], ['ethernet-switching table', 'Show learned MAC addresses'], ['interfaces', 'Show interface details'], ['interfaces terse', 'Show compact interface status'], ['ospf neighbor', 'Show OSPF adjacencies'], ['route', 'Show routing table'], ['system uptime', 'Show uptime'], ['version', 'Show Junos version'], ['vlans', 'Show VLAN table']],
+            request: [['system reboot', 'Reboot the simulated device']],
+            configure: [['<cr>', 'Enter configuration mode']],
+            ping: [['host', 'Ping remote target']],
+            traceroute: [['host', 'Trace route to remote target']]
+        };
+        const cfg = {
+            set: [['interfaces', 'Configure interfaces'], ['protocols', 'Configure routing protocols'], ['routing-options', 'Configure static routes'], ['security', 'Configure zones and policies'], ['system', 'Configure system settings'], ['vlans', 'Configure VLANs']],
+            'set interfaces': [['<interface>', 'Interface name such as ge-0/0/0']],
+            'set interfaces ge-0/0/0': [['description', 'Interface description'], ['disable', 'Administratively disable'], ['unit', 'Logical unit configuration']],
+            'set interfaces ge-0/0/0 unit 0 family inet': [['address', 'IPv4 address and prefix']],
+            'set routing-options': [['static', 'Static route configuration']],
+            'set routing-options static route': [['A.B.C.D/M', 'Destination prefix']],
+            'set protocols': [['bgp', 'Border Gateway Protocol'], ['ospf', 'Open Shortest Path First']],
+            'set vlans': [['NAME', 'VLAN name']],
+            delete: [['interfaces', 'Delete interface configuration'], ['routing-options', 'Delete routing options'], ['vlans', 'Delete VLAN configuration']],
+            show: [['| compare', 'Show candidate diff'], ['configuration', 'Show configuration']],
+            commit: [['check', 'Validate candidate configuration'], ['confirmed', 'Commit with automatic rollback timer']]
+        };
+
+        const table = this.mode === 'operational' ? op : cfg;
+        const line = tokens.join(' ');
+        if (table[line]) return format(table[line]);
+        if (tokens.length === 1) {
+            const matches = this.getAvailableCommands().filter(c => c.startsWith(tokens[0]));
+            if (matches.length) return format(matches.map(c => [c, '']));
+        }
+        return 'unknown command.';
     }
 
     // ─── OPERATIONAL MODE ──────────────────────────

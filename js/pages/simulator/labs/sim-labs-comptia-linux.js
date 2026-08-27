@@ -402,5 +402,231 @@ export const COMPTIA_LINUX_LABS = [
                 checks: [{ type: 'http_success', source: 'PC1', destination: 'SRV1', targetIp: '192.168.60.80' }]
             }
         ]
+    },
+    {
+        id: 'comptia-linux-12',
+        certification: 'Linux+',
+        category: 'Services',
+        difficulty: 'Medium',
+        timeEstimate: '20 mins',
+        title: 'Scenario: Install and Enable a Missing Web Service',
+        description: 'A newly provisioned Linux server has network connectivity but no web service installed. Install nginx, start it, and verify clients can reach the service.',
+        topology: {
+            nodes: [
+                { id: 'SW1', template: 'cisco_switch_2960', x: 320, y: 220, name: 'Access-Switch' },
+                { id: 'PC1', template: 'linux_pc', x: 140, y: 340, name: 'Admin-PC' },
+                { id: 'SRV1', template: 'linux_server', x: 520, y: 340, name: 'New-Web' }
+            ],
+            edges: [
+                { source: 'PC1', sourcePort: 'eth0', target: 'SW1', targetPort: 'FastEthernet0/1', cableType: 'copper_straight' },
+                { source: 'SRV1', sourcePort: 'eth0', target: 'SW1', targetPort: 'FastEthernet0/2', cableType: 'copper_straight' }
+            ],
+            preConfig: {
+                'PC1': {
+                    interfaces: { 'eth0': { ip: '192.168.90.25', subnet: '24', state: 'up' } }
+                },
+                'SRV1': {
+                    interfaces: { 'eth0': { ip: '192.168.90.80', subnet: '24', state: 'up' } },
+                    installedPackages: ['bash', 'coreutils', 'findutils', 'grep', 'iproute2', 'iputils-ping', 'curl', 'wget', 'openssh-server'],
+                    services: { ssh: 'active', networking: 'active' },
+                    nodeServices: { http: false },
+                    httpEnabled: false,
+                    filesystem: {
+                        '/': { children: {
+                            'var': { children: {
+                                'www': { type: 'dir', children: {
+                                    'html': { type: 'dir', children: {
+                                        'index.html': { type: 'file', content: '<!doctype html><html><body style="font-family:sans-serif;padding:32px"><h1>New-Web</h1><p>nginx was installed and started.</p></body></html>' }
+                                    }}
+                                }}
+                            }}
+                        }}
+                    }
+                }
+            }
+        },
+        tasks: [
+            {
+                description: 'Confirm New-Web is reachable over the network',
+                hints: ['From Admin-PC, run "ping 192.168.90.80".'],
+                checks: [
+                    { type: 'command_ran', node: 'PC1', command: 'ping 192.168.90.80', exact: false },
+                    { type: 'can_reach', source: 'PC1', destination: 'SRV1' }
+                ]
+            },
+            {
+                description: 'Install nginx on New-Web',
+                hints: ['Use Software Center or run "apt install nginx".'],
+                checks: [{ type: 'package_installed', node: 'SRV1', package: 'nginx' }]
+            },
+            {
+                description: 'Start the nginx service',
+                hints: ['Run "systemctl start nginx".'],
+                checks: [{ type: 'service_state', node: 'SRV1', service: 'nginx', expected: 'active' }]
+            },
+            {
+                description: 'Verify HTTP access from Admin-PC',
+                hints: ['Open Browser on Admin-PC and visit 192.168.90.80.'],
+                checks: [{ type: 'http_success', source: 'PC1', destination: 'SRV1', targetIp: '192.168.90.80' }]
+            }
+        ]
+    },
+    {
+        id: 'comptia-linux-13',
+        certification: 'Linux+',
+        category: 'Security',
+        difficulty: 'Medium',
+        timeEstimate: '20 mins',
+        title: 'Scenario: Install Fail2Ban for SSH Protection',
+        description: 'A Linux jump host is receiving repeated SSH login failures. Install Fail2Ban, confirm the service is active, and review jail status.',
+        topology: {
+            nodes: [
+                { id: 'SRV1', template: 'linux_server', x: 420, y: 260, name: 'Jump-Host' },
+                { id: 'PC1', template: 'linux_pc', x: 160, y: 260, name: 'Admin-PC' }
+            ],
+            edges: [
+                { source: 'PC1', sourcePort: 'eth0', target: 'SRV1', targetPort: 'eth0', cableType: 'copper_straight' }
+            ],
+            preConfig: {
+                'PC1': { interfaces: { 'eth0': { ip: '10.95.0.25', subnet: '24', state: 'up' } } },
+                'SRV1': {
+                    interfaces: { 'eth0': { ip: '10.95.0.10', subnet: '24', state: 'up' } },
+                    installedPackages: ['bash', 'coreutils', 'findutils', 'grep', 'iproute2', 'iputils-ping', 'openssh-server', 'curl', 'wget'],
+                    services: { ssh: 'active', sshd: 'active' },
+                    syslogMessages: [
+                        '15:08 sshd[3301]: Failed password for invalid user test from 10.95.0.88 port 41440 ssh2',
+                        '15:09 sshd[3312]: Failed password for root from 10.95.0.88 port 41442 ssh2',
+                        '15:10 sshd[3320]: Failed password for admin from 10.95.0.88 port 41444 ssh2'
+                    ]
+                }
+            }
+        },
+        tasks: [
+            {
+                description: 'Review SSH authentication failures on Jump-Host',
+                hints: ['Run "journalctl -u ssh" on Jump-Host.', 'The logs show repeated failed passwords from one source.'],
+                checks: [{ type: 'command_ran', node: 'SRV1', command: 'journalctl -u ssh', exact: false }]
+            },
+            {
+                description: 'Install Fail2Ban on Jump-Host',
+                hints: ['Use Software Center or run "apt install fail2ban".'],
+                checks: [{ type: 'package_installed', node: 'SRV1', package: 'fail2ban' }]
+            },
+            {
+                description: 'Verify the Fail2Ban service is active',
+                hints: ['Run "systemctl status fail2ban".'],
+                checks: [{ type: 'service_state', node: 'SRV1', service: 'fail2ban', expected: 'active' }]
+            },
+            {
+                description: 'Review Fail2Ban jail status',
+                hints: ['Run "fail2ban-client status".'],
+                checks: [{ type: 'command_ran', node: 'SRV1', command: 'fail2ban-client status', exact: false }]
+            }
+        ]
+    },
+    {
+        id: 'comptia-linux-14',
+        certification: 'Linux+',
+        category: 'Containers',
+        difficulty: 'Medium',
+        timeEstimate: '20 mins',
+        title: 'Scenario: Install Docker and Validate a Test Container',
+        description: 'A Linux server is ready for containerized workloads but the container runtime is missing. Install Docker, run a test container, and verify it appears in the container list.',
+        topology: {
+            nodes: [
+                { id: 'SRV1', template: 'linux_server', x: 420, y: 260, name: 'Container-Host' },
+                { id: 'PC1', template: 'linux_pc', x: 160, y: 260, name: 'Admin-PC' }
+            ],
+            edges: [
+                { source: 'PC1', sourcePort: 'eth0', target: 'SRV1', targetPort: 'eth0', cableType: 'copper_straight' }
+            ],
+            preConfig: {
+                'PC1': { interfaces: { 'eth0': { ip: '192.168.95.25', subnet: '24', state: 'up' } } },
+                'SRV1': {
+                    interfaces: { 'eth0': { ip: '192.168.95.50', subnet: '24', state: 'up' } },
+                    installedPackages: ['bash', 'coreutils', 'findutils', 'grep', 'iproute2', 'iputils-ping', 'curl', 'wget'],
+                    services: { networking: 'active' }
+                }
+            }
+        },
+        tasks: [
+            {
+                description: 'Confirm Container-Host is reachable from Admin-PC',
+                hints: ['From Admin-PC, run "ping 192.168.95.50".'],
+                checks: [
+                    { type: 'command_ran', node: 'PC1', command: 'ping 192.168.95.50', exact: false },
+                    { type: 'can_reach', source: 'PC1', destination: 'SRV1' }
+                ]
+            },
+            {
+                description: 'Install Docker on Container-Host',
+                hints: ['Use Software Center or run "apt install docker.io".'],
+                checks: [{ type: 'package_installed', node: 'SRV1', package: 'docker.io' }]
+            },
+            {
+                description: 'Run a test nginx container',
+                hints: ['Run "docker run nginx".'],
+                checks: [{ type: 'command_ran', node: 'SRV1', command: 'docker run nginx', exact: false }]
+            },
+            {
+                description: 'List containers and verify the nginx container is present',
+                hints: ['Run "docker ps".'],
+                checks: [{ type: 'command_ran', node: 'SRV1', command: 'docker ps', exact: false }]
+            }
+        ]
+    },
+    {
+        id: 'comptia-linux-15',
+        certification: 'Linux+',
+        category: 'Change Control',
+        difficulty: 'Easy',
+        timeEstimate: '15 mins',
+        title: 'Scenario: Install Git for Configuration Change Tracking',
+        description: 'A Linux administrator needs to clone the approved configuration repository before editing service files on a server.',
+        topology: {
+            nodes: [
+                { id: 'SRV1', template: 'linux_server', x: 420, y: 260, name: 'Config-Worker' },
+                { id: 'REPO', template: 'linux_server', x: 160, y: 260, name: 'Repo-Server' }
+            ],
+            edges: [
+                { source: 'SRV1', sourcePort: 'eth0', target: 'REPO', targetPort: 'eth0', cableType: 'copper_straight' }
+            ],
+            preConfig: {
+                'SRV1': {
+                    interfaces: { 'eth0': { ip: '10.96.0.30', subnet: '24', state: 'up' } },
+                    installedPackages: ['bash', 'coreutils', 'findutils', 'grep', 'iproute2', 'iputils-ping', 'openssh-client']
+                },
+                'REPO': {
+                    interfaces: { 'eth0': { ip: '10.96.0.10', subnet: '24', state: 'up' } },
+                    installedPackages: ['bash', 'coreutils', 'git', 'openssh-server'],
+                    services: { ssh: 'active', sshd: 'active' }
+                }
+            }
+        },
+        tasks: [
+            {
+                description: 'Verify Config-Worker can reach Repo-Server',
+                hints: ['Run "ping 10.96.0.10" from Config-Worker.'],
+                checks: [
+                    { type: 'command_ran', node: 'SRV1', command: 'ping 10.96.0.10', exact: false },
+                    { type: 'can_reach', source: 'SRV1', destination: 'REPO' }
+                ]
+            },
+            {
+                description: 'Install Git on Config-Worker',
+                hints: ['Use Software Center or run "apt install git".'],
+                checks: [{ type: 'package_installed', node: 'SRV1', package: 'git' }]
+            },
+            {
+                description: 'Clone the approved configuration repository',
+                hints: ['Run "git clone ssh://10.96.0.10/etc-configs".'],
+                checks: [{ type: 'command_ran', node: 'SRV1', command: 'git clone', exact: false }]
+            },
+            {
+                description: 'Check repository status before making changes',
+                hints: ['Run "git status".'],
+                checks: [{ type: 'command_ran', node: 'SRV1', command: 'git status', exact: false }]
+            }
+        ]
     }
 ];

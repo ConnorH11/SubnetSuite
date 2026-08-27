@@ -1584,7 +1584,7 @@ export class SimDesktop {
         const isLinux = this.node.os === 'linux';
         const content = this.wm.createWindow(id, isLinux ? 'Software Center' : 'App Store', 'bi-bag-fill', { width: 640, height: 500 });
 
-        const STORE_APPS = [
+        const LINUX_STORE_APPS = [
             { id: 'python3', name: 'Python 3', icon: 'bi-filetype-py', category: 'Development', desc: 'Interactive high-level programming language', size: '5.1 MB' },
             { id: 'nodejs', name: 'Node.js', icon: 'bi-filetype-js', category: 'Development', desc: 'Event-based server-side JavaScript engine', size: '12.3 MB' },
             { id: 'git', name: 'Git', icon: 'bi-git', category: 'Development', desc: 'Distributed version control system', size: '3.8 MB' },
@@ -1592,6 +1592,7 @@ export class SimDesktop {
             { id: 'nginx', name: 'Nginx', icon: 'bi-hdd-network-fill', category: 'Networking', desc: 'High-performance web server', size: '2.0 MB' },
             { id: 'apache2', name: 'Apache2', icon: 'bi-hdd-network-fill', category: 'Networking', desc: 'Apache HTTP web server', size: '3.5 MB' },
             { id: 'nmap', name: 'Nmap', icon: 'bi-radar', category: 'Networking', desc: 'Network exploration and security scanner', size: '4.3 MB' },
+            { id: 'tcpdump', name: 'tcpdump', icon: 'bi-terminal', category: 'Networking', desc: 'Command-line packet capture utility', size: '512 KB' },
             { id: 'wireshark', name: 'Wireshark CLI', icon: 'bi-reception-4', category: 'Networking', desc: 'Network traffic analyzer (CLI tools)', size: '6.1 MB' },
             { id: 'snmpd', name: 'SNMP Daemon', icon: 'bi-broadcast-pin', category: 'Networking', desc: 'SNMP agent for monitoring', size: '768 KB' },
             { id: 'docker.io', name: 'Docker', icon: 'bi-box-seam-fill', category: 'System', desc: 'Linux container runtime', size: '48.1 MB' },
@@ -1599,9 +1600,20 @@ export class SimDesktop {
             { id: 'tmux', name: 'tmux', icon: 'bi-layout-split', category: 'System', desc: 'Terminal multiplexer', size: '512 KB' },
             { id: 'fail2ban', name: 'Fail2Ban', icon: 'bi-shield-lock-fill', category: 'Security', desc: 'Intrusion prevention framework', size: '1.3 MB' },
             { id: 'ufw', name: 'UFW', icon: 'bi-bricks', category: 'Security', desc: 'Uncomplicated Firewall', size: '384 KB' },
+            { id: 'iptables', name: 'iptables', icon: 'bi-filter-square', category: 'Security', desc: 'Classic Linux packet filtering tools', size: '384 KB' },
             { id: 'mysql-server', name: 'MySQL', icon: 'bi-database-fill', category: 'Databases', desc: 'MySQL relational database server', size: '24.6 MB' },
             { id: 'postgresql', name: 'PostgreSQL', icon: 'bi-database-fill-gear', category: 'Databases', desc: 'Object-relational SQL database', size: '18.4 MB' },
         ];
+        const WINDOWS_STORE_APPS = [
+            { id: 'python', name: 'Python 3', icon: 'bi-filetype-py', category: 'Development', desc: 'Python interpreter and launcher commands', size: '98 MB' },
+            { id: 'nodejs', name: 'Node.js', icon: 'bi-filetype-js', category: 'Development', desc: 'Node runtime and npm-style tooling', size: '32 MB' },
+            { id: 'git', name: 'Git for Windows', icon: 'bi-git', category: 'Development', desc: 'Git command-line client', size: '52 MB' },
+            { id: 'nmap', name: 'Nmap', icon: 'bi-radar', category: 'Networking', desc: 'Network scanner and port discovery CLI', size: '28 MB' },
+            { id: 'wireshark', name: 'Wireshark', icon: 'bi-reception-4', category: 'Networking', desc: 'Packet analyzer with tshark CLI', size: '74 MB' },
+            { id: 'putty', name: 'PuTTY', icon: 'bi-key-fill', category: 'Networking', desc: 'SSH and Telnet client utilities', size: '3 MB' },
+            { id: 'openssh-client', name: 'OpenSSH Client', icon: 'bi-terminal', category: 'Networking', desc: 'ssh command-line client', size: '8 MB' },
+        ];
+        const STORE_APPS = isLinux ? LINUX_STORE_APPS : WINDOWS_STORE_APPS;
 
         const hasConnectivity = () => {
             const iface = Object.values(this.node.interfaces)[0];
@@ -1610,7 +1622,9 @@ export class SimDesktop {
 
         // Initialize installed packages on node if not present
         if (!this.node._installedPackages) {
-            this.node._installedPackages = new Set(['bash', 'coreutils', 'net-tools', 'iproute2', 'openssh-server', 'curl', 'wget', 'iputils-ping', 'dnsutils', 'traceroute', 'nano', 'vim-tiny']);
+            this.node._installedPackages = isLinux
+                ? new Set(['bash', 'coreutils', 'findutils', 'grep', 'sed', 'tar', 'gzip', 'procps', 'util-linux', 'iproute2', 'iputils-ping', 'net-tools', 'dnsutils', 'traceroute', 'curl', 'wget', 'openssh-client', 'openssh-server', 'nano', 'vim-tiny'])
+                : new Set(['cmd', 'powershell', 'tcpip', 'net-tools', 'system-tools', 'curl', 'openssh-client']);
         }
 
         const renderStore = (filter = 'All') => {

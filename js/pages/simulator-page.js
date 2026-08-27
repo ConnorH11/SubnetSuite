@@ -29,6 +29,13 @@ export default {
         <li>Select the connection tool <i class="bi bi-ethernet"></i> to link devices.</li>
         <li>Double-click a device to open its CLI or Desktop environment.</li>
         <li>Right-click nodes for power, web UI, CLI, and delete options.</li>
+        <li>Use Labs to launch guided Network+, Security+, CCNA, Linux+, and Juniper practice scenarios.</li>
+        <li>Open a device desktop and use CMD, Terminal, IP Config, Services, Event Viewer/Logs, Packet Capture, DHCP Server, DNS Server, Firewall tools, and the Software Center/Store.</li>
+        <li>Use <strong>Save</strong> and <strong>Load</strong> for browser-local topologies. Use <strong>Export</strong> and <strong>Import</strong> to move a topology between browsers or machines.</li>
+        <li>Use <strong>Share Code</strong> to copy or paste a full topology as text.</li>
+        <li>Use <strong>Copy Lab Skeleton</strong> for instructor mode. Build a topology, configure devices, then paste the generated lab object into a lab data file and add task checks.</li>
+        <li>Use device inspector <strong>Copy Device Config</strong> to collect running-config, Junos set-style, Linux, or Windows evidence snapshots.</li>
+        <li>Inside CLIs, type <code>help</code>, <code>command --help</code>, <code>command /?</code>, or Cisco/Juniper-style <code>?</code> for contextual command help.</li>
     </ul>
 </div>
 
@@ -99,6 +106,8 @@ export default {
                     <div class="sim-tool-group">
                         <button class="sim-tool-btn" id="sim-btn-save" title="Save Topology"><i class="bi bi-save"></i></button>
                         <button class="sim-tool-btn" id="sim-btn-load" title="Load Topology"><i class="bi bi-folder2-open"></i></button>
+                        <button class="sim-tool-btn" id="sim-btn-sharecode" title="Share Code"><i class="bi bi-file-earmark-code"></i></button>
+                        <button class="sim-tool-btn" id="sim-btn-lab-export" title="Copy Lab Skeleton"><i class="bi bi-braces"></i></button>
                         <button class="sim-tool-btn" id="sim-btn-savefile" title="Export to File"><i class="bi bi-download"></i></button>
                         <button class="sim-tool-btn" id="sim-btn-loadfile" title="Import from File"><i class="bi bi-upload"></i></button>
                     </div>
@@ -191,6 +200,8 @@ export default {
         const labEngine = new LabEngine(graph, engine);
         const labUI = new LabUI(container, labEngine);
 
+        this._loadSharedTopology(graph, ui);
+
         container.querySelectorAll('.sim-tool-btn[data-tool]').forEach(btn => {
             btn.addEventListener('click', () => ui.setTool(btn.dataset.tool));
         });
@@ -243,25 +254,20 @@ export default {
         container.querySelector('#sim-btn-pause')?.addEventListener('click', () => engine.stopSimulation());
 
         container.querySelector('#sim-btn-save')?.addEventListener('click', () => {
-            const name = prompt('Save topology as:', 'default');
-            if (name) {
-                graph.saveToLocalStorage(name);
-                alert(`Topology "${name}" saved!`);
-            }
+            this._openTopologyManager(graph, ui, 'save');
         });
 
         container.querySelector('#sim-btn-load')?.addEventListener('click', () => {
-            const saved = graph.getSavedTopologies();
-            if (saved.length === 0) { alert('No saved topologies found.'); return; }
-            const name = prompt(`Load topology:\n\nAvailable: ${saved.join(', ')}`, saved[0]);
-            if (name) {
-                if (graph.loadFromLocalStorage(name)) {
-                    ui.selectNode(null);
-                    alert(`Topology "${name}" loaded!`);
-                } else {
-                    alert('Failed to load topology.');
-                }
-            }
+            this._openTopologyManager(graph, ui, 'load');
+        });
+
+        container.querySelector('#sim-btn-sharecode')?.addEventListener('click', () => {
+            this._openShareCodeManager(graph, ui);
+        });
+
+        container.querySelector('#sim-btn-lab-export')?.addEventListener('click', async () => {
+            await this._copyText(graph.exportLabSkeleton());
+            this._showSimToast('Lab skeleton copied.');
         });
 
         container.querySelector('#sim-btn-savefile')?.addEventListener('click', () => {
@@ -399,5 +405,173 @@ export default {
             window.removeEventListener('keydown', handleKeyDown);
             loadFileInput.remove();
         };
+    },
+
+    _openTopologyManager(graph, ui, mode = 'save') {
+        document.querySelector('#sim-topology-modal')?.remove();
+        const saved = graph.getSavedTopologies();
+        const modal = document.createElement('div');
+        modal.id = 'sim-topology-modal';
+        modal.className = 'sim-lightbox';
+        modal.innerHTML = `
+            <div class="sim-lightbox-card">
+                <div class="sim-lightbox-header">
+                    <h3>${mode === 'save' ? 'Save Topology' : 'Load Topology'}</h3>
+                    <button class="sim-lightbox-close" title="Close"><i class="bi bi-x-lg"></i></button>
+                </div>
+                <div class="sim-lightbox-body">
+                    <div class="sim-form-group">
+                        <label>Topology Name</label>
+                        <input class="sim-input" id="topology-save-name" value="default" placeholder="default">
+                    </div>
+                    <div class="app-btn-row" style="margin-top:12px">
+                        <button class="app-btn app-btn-primary" id="topology-save-btn"><i class="bi bi-save"></i> Save Current</button>
+                    </div>
+                    <h4 class="insp-section-title" style="margin-top:18px">Saved Topologies</h4>
+                    <div class="topology-save-list">
+                        ${saved.map(name => `
+                            <div class="topology-save-item">
+                                <span>${this._esc(name)}</span>
+                                <div class="app-btn-row">
+                                    <button class="app-btn app-btn-secondary app-btn-sm" data-load="${this._esc(name)}">Load</button>
+                                    <button class="app-btn app-btn-danger app-btn-sm" data-delete="${this._esc(name)}"><i class="bi bi-trash"></i></button>
+                                </div>
+                            </div>
+                        `).join('') || '<div class="webui-empty">No saved topologies yet.</div>'}
+                    </div>
+                    <div class="app-status-msg info">Saved topologies stay in this browser. Use Share Code, Export, or Import to move labs between machines.</div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+
+        modal.querySelector('.sim-lightbox-close').addEventListener('click', () => modal.remove());
+        modal.addEventListener('mousedown', e => { if (e.target === modal) modal.remove(); });
+        modal.querySelector('#topology-save-btn').addEventListener('click', () => {
+            const name = modal.querySelector('#topology-save-name').value.trim() || 'default';
+            if (graph.saveToLocalStorage(name)) {
+                modal.remove();
+                this._showSimToast(`Topology "${name}" saved.`);
+            } else {
+                this._showSimToast('Could not save topology.', 'error');
+            }
+        });
+        modal.querySelectorAll('[data-load]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                if (graph.loadFromLocalStorage(btn.dataset.load)) {
+                    ui.selectNode(null);
+                    modal.remove();
+                    this._showSimToast(`Topology "${btn.dataset.load}" loaded.`);
+                } else {
+                    this._showSimToast('Could not load topology.', 'error');
+                }
+            });
+        });
+        modal.querySelectorAll('[data-delete]').forEach(btn => {
+            btn.addEventListener('click', () => {
+                localStorage.removeItem(`sim_topology_${btn.dataset.delete}`);
+                modal.remove();
+                this._openTopologyManager(graph, ui, 'load');
+            });
+        });
+    },
+
+    _openShareCodeManager(graph, ui) {
+        document.querySelector('#sim-sharecode-modal')?.remove();
+        const modal = document.createElement('div');
+        modal.id = 'sim-sharecode-modal';
+        modal.className = 'sim-lightbox';
+        modal.innerHTML = `
+            <div class="sim-lightbox-card sim-sharecode-card">
+                <div class="sim-lightbox-header">
+                    <h3>Share Topology Code</h3>
+                    <button class="sim-lightbox-close" title="Close"><i class="bi bi-x-lg"></i></button>
+                </div>
+                <div class="sim-lightbox-body">
+                    <div class="app-status-msg info">Copy this code to move a full simulator topology without URL length limits. Paste a code here and click Import to load it.</div>
+                    <textarea class="sim-input sim-sharecode-text" id="sim-sharecode-text" spellcheck="false">${this._esc(graph.exportTopology())}</textarea>
+                    <div class="app-btn-row" style="margin-top:12px">
+                        <button class="app-btn app-btn-primary" id="sharecode-copy"><i class="bi bi-clipboard"></i> Copy Code</button>
+                        <button class="app-btn app-btn-secondary" id="sharecode-import"><i class="bi bi-upload"></i> Import Code</button>
+                        <button class="app-btn app-btn-secondary" id="sharecode-download"><i class="bi bi-download"></i> Download JSON</button>
+                    </div>
+                </div>
+            </div>
+        `;
+        document.body.appendChild(modal);
+
+        const textarea = modal.querySelector('#sim-sharecode-text');
+        modal.querySelector('.sim-lightbox-close').addEventListener('click', () => modal.remove());
+        modal.addEventListener('mousedown', e => { if (e.target === modal) modal.remove(); });
+        modal.querySelector('#sharecode-copy').addEventListener('click', async () => {
+            await this._copyText(textarea.value);
+            this._showSimToast('Topology share code copied.');
+        });
+        modal.querySelector('#sharecode-import').addEventListener('click', () => {
+            if (graph.importTopology(textarea.value)) {
+                ui.selectNode(null);
+                modal.remove();
+                this._showSimToast('Topology imported from share code.');
+            } else {
+                this._showSimToast('That share code is not valid topology JSON.', 'error');
+            }
+        });
+        modal.querySelector('#sharecode-download').addEventListener('click', () => {
+            const blob = new Blob([textarea.value], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'subnetsuite-topology.json';
+            a.click();
+            URL.revokeObjectURL(url);
+        });
+    },
+
+    _loadSharedTopology(graph, ui) {
+        const match = window.location.hash.match(/(?:^#|&)sim=([^&]+)/);
+        if (!match) return;
+        try {
+            const json = decodeURIComponent(escape(atob(match[1])));
+            if (graph.importTopology(json)) {
+                ui.selectNode(null);
+                this._showSimToast('Shared topology loaded from URL.');
+            }
+        } catch (error) {
+            console.warn('Failed to load shared topology:', error);
+            this._showSimToast('Shared topology link could not be loaded.', 'error');
+        }
+    },
+
+    async _copyText(text) {
+        try {
+            await navigator.clipboard.writeText(text);
+        } catch {
+            const input = document.createElement('textarea');
+            input.value = text;
+            input.style.position = 'fixed';
+            input.style.opacity = '0';
+            document.body.appendChild(input);
+            input.select();
+            document.execCommand('copy');
+            input.remove();
+        }
+    },
+
+    _showSimToast(message, type = 'success') {
+        document.querySelector('#sim-toast')?.remove();
+        const toast = document.createElement('div');
+        toast.id = 'sim-toast';
+        toast.className = `sim-toast ${type}`;
+        toast.textContent = message;
+        document.body.appendChild(toast);
+        setTimeout(() => toast.remove(), 3200);
+    },
+
+    _esc(value) {
+        return String(value ?? '')
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;');
     }
 };

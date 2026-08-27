@@ -601,5 +601,226 @@ export const COMPTIA_SEC_LABS = [
                 checks: [{ type: 'pcap_packet_info_contains', node: 'ANALYST', contains: ['SYN retransmission', 'no response'] }]
             }
         ]
+    },
+    {
+        id: 'comptia-sec-16',
+        certification: 'Security+',
+        category: 'Packet Analysis',
+        difficulty: 'Medium',
+        timeEstimate: '20 mins',
+        title: 'Scenario: Install tcpdump to Prove SSH Brute Force Attempts',
+        description: 'A Linux server is logging repeated SSH authentication failures. Install a packet capture utility and collect network evidence that the attempts are hitting TCP/22.',
+        topology: {
+            nodes: [
+                { id: 'SRV1', template: 'linux_server', x: 420, y: 260, name: 'Auth-Server' },
+                { id: 'ADMIN', template: 'linux_pc', x: 160, y: 260, name: 'Admin-PC' }
+            ],
+            edges: [
+                { source: 'ADMIN', sourcePort: 'eth0', target: 'SRV1', targetPort: 'eth0', cableType: 'copper_straight' }
+            ],
+            preConfig: {
+                'ADMIN': { interfaces: { 'eth0': { ip: '10.80.0.50', subnet: '24', state: 'up' } } },
+                'SRV1': {
+                    interfaces: { 'eth0': { ip: '10.80.0.22', subnet: '24', state: 'up' } },
+                    installedPackages: ['bash', 'coreutils', 'findutils', 'grep', 'iproute2', 'iputils-ping', 'openssh-server', 'curl', 'wget'],
+                    services: { ssh: 'active', sshd: 'active' },
+                    syslogMessages: [
+                        '14:08 sshd[2112]: Failed password for invalid user admin from 10.80.0.99 port 51844 ssh2',
+                        '14:09 sshd[2119]: Failed password for root from 10.80.0.99 port 51846 ssh2',
+                        '14:10 sshd[2124]: Connection closed by authenticating user root 10.80.0.99 port 51848'
+                    ]
+                }
+            }
+        },
+        tasks: [
+            {
+                description: 'Review SSH-related logs on Auth-Server',
+                hints: ['Open Terminal on Auth-Server.', 'Run "journalctl -u ssh" or use the Logs app.'],
+                checks: [{ type: 'command_ran', node: 'SRV1', command: 'journalctl -u ssh', exact: false }]
+            },
+            {
+                description: 'Install tcpdump on Auth-Server',
+                hints: ['Use Software Center or run "apt install tcpdump".'],
+                checks: [{ type: 'package_installed', node: 'SRV1', package: 'tcpdump' }]
+            },
+            {
+                description: 'Run tcpdump to capture SSH traffic on TCP port 22',
+                hints: ['A useful command is "tcpdump -i eth0 port 22".'],
+                checks: [{ type: 'command_ran', node: 'SRV1', command: 'tcpdump', exact: false }]
+            },
+            {
+                description: 'Confirm the SSH service is still active',
+                hints: ['Run "systemctl status ssh" or "systemctl status sshd".'],
+                checks: [{ type: 'service_state', node: 'SRV1', service: 'ssh', expected: 'active' }]
+            }
+        ]
+    },
+    {
+        id: 'comptia-sec-17',
+        certification: 'Security+',
+        category: 'Packet Analysis',
+        difficulty: 'Medium',
+        timeEstimate: '20 mins',
+        title: 'Scenario: Install Wireshark Tools to Analyze Suspicious DNS',
+        description: 'A Windows analyst workstation needs packet analysis tools installed before the analyst can inspect a suspicious DNS capture and identify the malicious lookup.',
+        topology: {
+            nodes: [
+                { id: 'ANALYST', template: 'windows_pc', x: 180, y: 240, name: 'SOC-Workstation' },
+                { id: 'SW1', template: 'cisco_switch_2960', x: 360, y: 240, name: 'Capture-Switch' },
+                { id: 'CLIENT', template: 'windows_pc', x: 540, y: 340, name: 'User-PC' },
+                { id: 'DNS', template: 'linux_server', x: 540, y: 140, name: 'DNS-Server' }
+            ],
+            edges: [
+                { source: 'ANALYST', sourcePort: 'Ethernet0', target: 'SW1', targetPort: 'FastEthernet0/1', cableType: 'copper_straight' },
+                { source: 'CLIENT', sourcePort: 'Ethernet0', target: 'SW1', targetPort: 'FastEthernet0/2', cableType: 'copper_straight' },
+                { source: 'DNS', sourcePort: 'eth0', target: 'SW1', targetPort: 'FastEthernet0/3', cableType: 'copper_straight' }
+            ],
+            packetLog: [
+                { type: 'DNS', src: 'CLIENT', dst: 'DNS', observer: 'ANALYST', info: 'Query: updates.microsoft.com A', details: { transport: 'UDP', srcPort: 53044, dstPort: 53, queryName: 'updates.microsoft.com', queryType: 'A', responseCode: 'NoError', answer: '13.107.246.45' } },
+                { type: 'DNS', src: 'CLIENT', dst: 'DNS', observer: 'ANALYST', info: 'Query: payroll-login.secure-update.example A', details: { transport: 'UDP', srcPort: 53045, dstPort: 53, queryName: 'payroll-login.secure-update.example', queryType: 'A', responseCode: 'NoError', answer: '198.51.100.44' } },
+                { type: 'TCP', src: 'CLIENT', dst: 'DNS', observer: 'ANALYST', info: 'TCP SYN 10.90.0.25:50122 -> 198.51.100.44:443', details: { srcPort: 50122, dstPort: 443, flags: 'SYN', destinationIp: '198.51.100.44' } }
+            ],
+            preConfig: {
+                'ANALYST': {
+                    interfaces: { 'Ethernet0': { ip: '10.90.0.100', subnet: '24', state: 'up' } },
+                    installedPackages: ['cmd', 'powershell', 'tcpip', 'net-tools', 'system-tools', 'curl', 'openssh-client']
+                },
+                'CLIENT': { interfaces: { 'Ethernet0': { ip: '10.90.0.25', subnet: '24', state: 'up' } }, dnsServer: '10.90.0.53' },
+                'DNS': {
+                    interfaces: { 'eth0': { ip: '10.90.0.53', subnet: '24', state: 'up' } },
+                    nodeServices: { dnsServer: true }
+                }
+            }
+        },
+        tasks: [
+            {
+                description: 'Install Wireshark tools from the Store on SOC-Workstation',
+                hints: ['Open Store on SOC-Workstation.', 'Install Wireshark from the Networking category.'],
+                checks: [{ type: 'package_installed', node: 'ANALYST', package: 'wireshark' }]
+            },
+            {
+                description: 'Use tshark from CMD to review captured traffic',
+                hints: ['Open CMD on SOC-Workstation and run "tshark".'],
+                checks: [{ type: 'command_ran', node: 'ANALYST', command: 'tshark', exact: false }]
+            },
+            {
+                description: 'Mark the suspicious DNS lookup as evidence in Packet Capture',
+                hints: ['Open Packet Capture on SOC-Workstation.', 'Mark the DNS packet for payroll-login.secure-update.example.'],
+                checks: [
+                    { type: 'pcap_protocol_identified', node: 'ANALYST', protocol: 'DNS' },
+                    { type: 'pcap_packet_info_contains', node: 'ANALYST', contains: ['payroll-login.secure-update.example'] }
+                ]
+            }
+        ]
+    },
+    {
+        id: 'comptia-sec-18',
+        certification: 'Security+',
+        category: 'Host Firewall',
+        difficulty: 'Medium',
+        timeEstimate: '20 mins',
+        title: 'Scenario: Install iptables to Block a Malicious SSH Source',
+        description: 'An internet-facing Linux jump host is receiving SSH attempts from a known-bad source. Install packet filtering tools and add a host firewall rule blocking that source on TCP/22.',
+        topology: {
+            nodes: [
+                { id: 'ADMIN', template: 'linux_pc', x: 160, y: 260, name: 'Admin-PC' },
+                { id: 'SRV1', template: 'linux_server', x: 440, y: 260, name: 'Border-Jump' }
+            ],
+            edges: [
+                { source: 'ADMIN', sourcePort: 'eth0', target: 'SRV1', targetPort: 'eth0', cableType: 'copper_straight' }
+            ],
+            preConfig: {
+                'ADMIN': { interfaces: { 'eth0': { ip: '10.88.0.25', subnet: '24', state: 'up' } } },
+                'SRV1': {
+                    interfaces: { 'eth0': { ip: '10.88.0.22', subnet: '24', state: 'up' } },
+                    installedPackages: ['bash', 'coreutils', 'findutils', 'grep', 'iproute2', 'iputils-ping', 'openssh-server'],
+                    services: { ssh: 'active', sshd: 'active' },
+                    syslogMessages: [
+                        '16:40 sshd[4110]: Failed password for root from 198.51.100.66 port 51544 ssh2',
+                        '16:41 sshd[4121]: Failed password for admin from 198.51.100.66 port 51546 ssh2',
+                        '16:42 sshd[4130]: Accepted publickey for admin from 10.88.0.25 port 51548 ssh2'
+                    ]
+                }
+            }
+        },
+        tasks: [
+            {
+                description: 'Review SSH logs and identify the attacking source IP',
+                hints: ['Run "journalctl -u ssh" on Border-Jump.', 'Look for repeated failed logins from the same external IP.'],
+                checks: [{ type: 'command_ran', node: 'SRV1', command: 'journalctl -u ssh', exact: false }]
+            },
+            {
+                description: 'Install iptables on Border-Jump',
+                hints: ['Use Software Center or run "apt install iptables".'],
+                checks: [{ type: 'package_installed', node: 'SRV1', package: 'iptables' }]
+            },
+            {
+                description: 'Add an INPUT rule blocking 198.51.100.66 from SSH',
+                hints: ['Run "iptables -A INPUT -s 198.51.100.66 -p tcp --dport 22 -j DROP".'],
+                checks: [{ type: 'firewall_rule', node: 'SRV1', action: 'deny', port: '22', protocol: 'tcp', from: '198.51.100.66' }]
+            },
+            {
+                description: 'List iptables rules to confirm the drop entry exists',
+                hints: ['Run "iptables -L".'],
+                checks: [{ type: 'command_ran', node: 'SRV1', command: 'iptables -L', exact: false }]
+            }
+        ]
+    },
+    {
+        id: 'comptia-sec-19',
+        certification: 'Security+',
+        category: 'Automation',
+        difficulty: 'Easy',
+        timeEstimate: '15 mins',
+        title: 'Scenario: Install Python for IOC Triage',
+        description: 'A SOC workstation has a suspicious indicators file but no scripting runtime. Install Python and run the provided triage script.',
+        topology: {
+            nodes: [
+                { id: 'SOC1', template: 'windows_pc', x: 260, y: 260, name: 'SOC-Analyst' },
+                { id: 'DNS', template: 'linux_server', x: 520, y: 260, name: 'DNS-Server' }
+            ],
+            edges: [
+                { source: 'SOC1', sourcePort: 'Ethernet0', target: 'DNS', targetPort: 'eth0', cableType: 'copper_straight' }
+            ],
+            preConfig: {
+                'SOC1': {
+                    interfaces: { 'Ethernet0': { ip: '10.91.0.50', subnet: '24', state: 'up' } },
+                    installedPackages: ['cmd', 'powershell', 'tcpip', 'net-tools', 'system-tools', 'curl', 'openssh-client'],
+                    filesystem: {
+                        '/': { type: 'dir', children: {
+                            'Users': { type: 'dir', children: {
+                                'Admin': { type: 'dir', children: {
+                                    'Downloads': { type: 'dir', children: {
+                                        'parse_iocs.py': { type: 'file', content: 'print("malicious domain: payroll-login.secure-update.example")' },
+                                        'iocs.txt': { type: 'file', content: 'payroll-login.secure-update.example\n198.51.100.44' }
+                                    }}
+                                }}
+                            }}
+                        }}
+                    }
+                },
+                'DNS': {
+                    interfaces: { 'eth0': { ip: '10.91.0.53', subnet: '24', state: 'up' } },
+                    nodeServices: { dnsServer: true }
+                }
+            }
+        },
+        tasks: [
+            {
+                description: 'Install Python from the Store on SOC-Analyst',
+                hints: ['Open Store on SOC-Analyst.', 'Install Python from the Developer Tools category.'],
+                checks: [{ type: 'package_installed', node: 'SOC1', package: 'python' }]
+            },
+            {
+                description: 'Verify Python launches from CMD',
+                hints: ['Run "python" or "python --version".'],
+                checks: [{ type: 'command_ran', node: 'SOC1', command: 'python', exact: false }]
+            },
+            {
+                description: 'Run the IOC triage script from Downloads',
+                hints: ['Run "python Downloads\\parse_iocs.py" from C:\\Users\\Admin.'],
+                checks: [{ type: 'command_ran', node: 'SOC1', command: 'python Downloads\\parse_iocs.py', exact: false }]
+            }
+        ]
     }
 ];

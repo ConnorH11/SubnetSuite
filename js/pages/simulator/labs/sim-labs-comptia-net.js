@@ -1166,5 +1166,229 @@ export const COMPTIA_NET_LABS = [
                 checks: [{ type: 'pcap_packet_info_contains', node: 'ANALYST', contains: ['payroll.local', 'NXDOMAIN'] }]
             }
         ]
+    },
+    {
+        id: 'comptia-net-24',
+        certification: 'Network+',
+        category: 'Discovery Tools',
+        difficulty: 'Medium',
+        timeEstimate: '15 mins',
+        title: 'Scenario: Install Nmap to Find an Unknown Web Service',
+        description: 'A technician knows a Linux server is reachable, but does not know which service port is open. Install a scanner on the Windows admin workstation and use it to identify the service.',
+        topology: {
+            nodes: [
+                { id: 'SW1', template: 'cisco_switch_2960', x: 320, y: 220, name: 'Access-Switch' },
+                { id: 'PC1', template: 'windows_pc', x: 140, y: 340, name: 'Admin-Workstation' },
+                { id: 'SRV1', template: 'linux_server', x: 520, y: 340, name: 'Inventory-Web' }
+            ],
+            edges: [
+                { source: 'PC1', sourcePort: 'Ethernet0', target: 'SW1', targetPort: 'FastEthernet0/1', cableType: 'copper_straight' },
+                { source: 'SRV1', sourcePort: 'eth0', target: 'SW1', targetPort: 'FastEthernet0/2', cableType: 'copper_straight' }
+            ],
+            preConfig: {
+                'PC1': {
+                    interfaces: { 'Ethernet0': { ip: '10.70.10.50', subnet: '24', state: 'up' } },
+                    gateway: '10.70.10.1',
+                    installedPackages: ['cmd', 'powershell', 'tcpip', 'net-tools', 'system-tools', 'curl', 'openssh-client']
+                },
+                'SRV1': {
+                    interfaces: { 'eth0': { ip: '10.70.10.80', subnet: '24', state: 'up' } },
+                    installedPackages: ['bash', 'coreutils', 'iproute2', 'iputils-ping', 'nginx'],
+                    services: { nginx: 'active' },
+                    nodeServices: { http: true },
+                    httpEnabled: true
+                }
+            }
+        },
+        tasks: [
+            {
+                description: 'Confirm the Inventory-Web server is reachable from Admin-Workstation',
+                hints: ['Open CMD on Admin-Workstation and run "ping 10.70.10.80".'],
+                checks: [
+                    { type: 'command_ran', node: 'PC1', command: 'ping 10.70.10.80', exact: false },
+                    { type: 'can_reach', source: 'PC1', destination: 'SRV1' }
+                ]
+            },
+            {
+                description: 'Install Nmap from the Store on Admin-Workstation',
+                hints: ['Open Store on Admin-Workstation.', 'Install the Nmap app from the Networking category.'],
+                checks: [{ type: 'package_installed', node: 'PC1', package: 'nmap' }]
+            },
+            {
+                description: 'Run an Nmap scan against Inventory-Web',
+                hints: ['Run "nmap 10.70.10.80" from CMD.', 'The scan should identify common open service ports.'],
+                checks: [{ type: 'command_ran', node: 'PC1', command: 'nmap 10.70.10.80', exact: false }]
+            },
+            {
+                description: 'Verify web access to the discovered HTTP service',
+                hints: ['Open Browser on Admin-Workstation and visit 10.70.10.80.'],
+                checks: [{ type: 'http_success', source: 'PC1', destination: 'SRV1', targetIp: '10.70.10.80' }]
+            }
+        ]
+    },
+    {
+        id: 'comptia-net-25',
+        certification: 'Network+',
+        category: 'Remote Access',
+        difficulty: 'Easy',
+        timeEstimate: '15 mins',
+        title: 'Scenario: Install PuTTY for Remote Switch/Server Access',
+        description: 'An admin workstation can reach a Linux management host, but the required remote access client is missing. Install PuTTY and initiate an SSH session.',
+        topology: {
+            nodes: [
+                { id: 'SW1', template: 'cisco_switch_2960', x: 320, y: 220, name: 'Mgmt-Switch' },
+                { id: 'PC1', template: 'windows_pc', x: 140, y: 340, name: 'Admin-PC' },
+                { id: 'SRV1', template: 'linux_server', x: 520, y: 340, name: 'Mgmt-Jumpbox' }
+            ],
+            edges: [
+                { source: 'PC1', sourcePort: 'Ethernet0', target: 'SW1', targetPort: 'FastEthernet0/1', cableType: 'copper_straight' },
+                { source: 'SRV1', sourcePort: 'eth0', target: 'SW1', targetPort: 'FastEthernet0/2', cableType: 'copper_straight' }
+            ],
+            preConfig: {
+                'PC1': {
+                    interfaces: { 'Ethernet0': { ip: '10.85.0.25', subnet: '24', state: 'up' } },
+                    installedPackages: ['cmd', 'powershell', 'tcpip', 'net-tools', 'system-tools', 'curl', 'openssh-client']
+                },
+                'SRV1': {
+                    interfaces: { 'eth0': { ip: '10.85.0.10', subnet: '24', state: 'up' } },
+                    installedPackages: ['bash', 'coreutils', 'iproute2', 'iputils-ping', 'openssh-server'],
+                    services: { ssh: 'active', sshd: 'active' }
+                }
+            }
+        },
+        tasks: [
+            {
+                description: 'Verify Admin-PC can reach Mgmt-Jumpbox',
+                hints: ['Open CMD on Admin-PC and run "ping 10.85.0.10".'],
+                checks: [
+                    { type: 'command_ran', node: 'PC1', command: 'ping 10.85.0.10', exact: false },
+                    { type: 'can_reach', source: 'PC1', destination: 'SRV1' }
+                ]
+            },
+            {
+                description: 'Install PuTTY from the Store on Admin-PC',
+                hints: ['Open Store on Admin-PC.', 'Install PuTTY from the Networking category.'],
+                checks: [{ type: 'package_installed', node: 'PC1', package: 'putty' }]
+            },
+            {
+                description: 'Start an SSH session to Mgmt-Jumpbox using PuTTY',
+                hints: ['Run "putty 10.85.0.10" or "plink 10.85.0.10" from CMD.'],
+                checks: [{ type: 'command_ran', node: 'PC1', commands: ['putty 10.85.0.10', 'plink 10.85.0.10'], command: 'putty 10.85.0.10', exact: false }]
+            }
+        ]
+    },
+    {
+        id: 'comptia-net-26',
+        certification: 'Network+',
+        category: 'Operations',
+        difficulty: 'Easy',
+        timeEstimate: '15 mins',
+        title: 'Scenario: Install Git to Pull Network Backups',
+        description: 'A junior admin workstation needs Git installed before it can pull the switch backup repository from an internal server.',
+        topology: {
+            nodes: [
+                { id: 'SW1', template: 'cisco_switch_2960', x: 320, y: 220, name: 'Ops-Switch' },
+                { id: 'PC1', template: 'windows_pc', x: 140, y: 340, name: 'Ops-Workstation' },
+                { id: 'GIT1', template: 'linux_server', x: 520, y: 340, name: 'Config-Repo' }
+            ],
+            edges: [
+                { source: 'PC1', sourcePort: 'Ethernet0', target: 'SW1', targetPort: 'FastEthernet0/1', cableType: 'copper_straight' },
+                { source: 'GIT1', sourcePort: 'eth0', target: 'SW1', targetPort: 'FastEthernet0/2', cableType: 'copper_straight' }
+            ],
+            preConfig: {
+                'PC1': {
+                    interfaces: { 'Ethernet0': { ip: '10.86.10.25', subnet: '24', state: 'up' } },
+                    installedPackages: ['cmd', 'powershell', 'tcpip', 'net-tools', 'system-tools', 'curl', 'openssh-client']
+                },
+                'GIT1': {
+                    interfaces: { 'eth0': { ip: '10.86.10.40', subnet: '24', state: 'up' } },
+                    installedPackages: ['bash', 'coreutils', 'git', 'openssh-server'],
+                    services: { ssh: 'active', sshd: 'active' }
+                }
+            }
+        },
+        tasks: [
+            {
+                description: 'Verify Ops-Workstation can reach Config-Repo',
+                hints: ['Open CMD on Ops-Workstation and run "ping 10.86.10.40".'],
+                checks: [
+                    { type: 'command_ran', node: 'PC1', command: 'ping 10.86.10.40', exact: false },
+                    { type: 'can_reach', source: 'PC1', destination: 'GIT1' }
+                ]
+            },
+            {
+                description: 'Install Git from the Store on Ops-Workstation',
+                hints: ['Open Store on Ops-Workstation.', 'Install Git from the Developer Tools category.'],
+                checks: [{ type: 'package_installed', node: 'PC1', package: 'git' }]
+            },
+            {
+                description: 'Verify Git is available from CMD',
+                hints: ['Run "git --version".'],
+                checks: [{ type: 'command_ran', node: 'PC1', command: 'git --version', exact: false }]
+            },
+            {
+                description: 'Clone the internal network backup repository',
+                hints: ['Run "git clone ssh://10.86.10.40/network-backups".'],
+                checks: [{ type: 'command_ran', node: 'PC1', command: 'git clone', exact: false }]
+            }
+        ]
+    },
+    {
+        id: 'comptia-net-27',
+        certification: 'Network+',
+        category: 'Packet Analysis',
+        difficulty: 'Medium',
+        timeEstimate: '20 mins',
+        title: 'Scenario: Install tshark to Identify DHCP Traffic',
+        description: 'A capture workstation needs Wireshark CLI tools installed before the technician can confirm a client is sending DHCP Discover packets.',
+        topology: {
+            nodes: [
+                { id: 'ANALYST', template: 'linux_pc', x: 180, y: 240, name: 'Capture-Station' },
+                { id: 'SW1', template: 'cisco_switch_2960', x: 360, y: 240, name: 'Access-Switch' },
+                { id: 'CLIENT', template: 'windows_pc', x: 540, y: 340, name: 'Lobby-PC' },
+                { id: 'DHCP1', template: 'linux_server', x: 540, y: 140, name: 'DHCP-Server' }
+            ],
+            edges: [
+                { source: 'ANALYST', sourcePort: 'eth0', target: 'SW1', targetPort: 'FastEthernet0/1', cableType: 'copper_straight' },
+                { source: 'CLIENT', sourcePort: 'Ethernet0', target: 'SW1', targetPort: 'FastEthernet0/2', cableType: 'copper_straight' },
+                { source: 'DHCP1', sourcePort: 'eth0', target: 'SW1', targetPort: 'FastEthernet0/3', cableType: 'copper_straight' }
+            ],
+            packetLog: [
+                { type: 'DHCP', src: 'CLIENT', dst: 'broadcast', observer: 'ANALYST', info: 'DHCP Discover from Lobby-PC', details: { bootpOp: 'Discover', srcPort: 68, dstPort: 67, messageType: 'DHCP Discover', clientMac: '00:11:22:33:44:55' } },
+                { type: 'DHCP', src: 'DHCP1', dst: 'CLIENT', observer: 'ANALYST', info: 'DHCP Offer 10.44.20.75 to Lobby-PC', details: { bootpOp: 'Offer', srcPort: 67, dstPort: 68, messageType: 'DHCP Offer', offeredIp: '10.44.20.75' } },
+                { type: 'ARP', src: 'CLIENT', dst: 'broadcast', observer: 'ANALYST', info: 'Who has 10.44.20.1? Tell 10.44.20.75' }
+            ],
+            preConfig: {
+                'ANALYST': {
+                    interfaces: { 'eth0': { ip: '10.44.20.100', subnet: '24', state: 'up' } },
+                    installedPackages: ['bash', 'coreutils', 'iproute2', 'iputils-ping']
+                },
+                'CLIENT': { interfaces: { 'Ethernet0': { ip: '', subnet: '', state: 'up' } } },
+                'DHCP1': {
+                    interfaces: { 'eth0': { ip: '10.44.20.10', subnet: '24', state: 'up' } },
+                    nodeServices: { dhcpServer: true }
+                }
+            }
+        },
+        tasks: [
+            {
+                description: 'Install Wireshark CLI tools on Capture-Station',
+                hints: ['Use Software Center or run "apt install wireshark".'],
+                checks: [{ type: 'package_installed', node: 'ANALYST', package: 'wireshark' }]
+            },
+            {
+                description: 'Run tshark to review captured traffic',
+                hints: ['Open Terminal on Capture-Station and run "tshark".'],
+                checks: [{ type: 'command_ran', node: 'ANALYST', command: 'tshark', exact: false }]
+            },
+            {
+                description: 'Mark the DHCP Discover packet as evidence',
+                hints: ['Open Packet Capture on Capture-Station.', 'DHCP clients send Discover from UDP/68 to UDP/67.'],
+                checks: [
+                    { type: 'pcap_protocol_identified', node: 'ANALYST', protocol: 'DHCP' },
+                    { type: 'pcap_packet_info_contains', node: 'ANALYST', contains: ['DHCP Discover'] }
+                ]
+            }
+        ]
     }
 ];
