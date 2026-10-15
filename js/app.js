@@ -12,8 +12,6 @@ const routes = {
     'converter': () => import('./pages/converter-page.js'),
     'visualizer': () => import('./pages/visualizer-page.js'),
     'simulator': () => import('./pages/simulator-page.js'),
-    'flashcards': () => import('./pages/flashcards-page.js'),
-    'practice-test': () => import('./pages/practice-test-page.js'),
     'publicip': () => import('./pages/public-ip-page.js'),
     'maclookup': () => import('./pages/mac-lookup-page.js'),
     'cheatsheet': () => import('./pages/cheatsheet-page.js'),
@@ -25,7 +23,7 @@ const routes = {
 };
 
 const seoMetadata = {
-    '': { title: 'SubnetSuite – Free Network Toolkit & Simulators', desc: 'Master networking with free IPv4/IPv6 calculators, visual topology builders, simulators, and IT certification practice tests.' },
+    '': { title: 'SubnetSuite – Free Network Toolkit & Simulators', desc: 'Master networking with free IPv4/IPv6 calculators, visual topology builders, and network simulators.' },
     'subnet': { title: 'IPv4 Subnet Calculator | SubnetSuite', desc: 'Calculate IPv4 subnets, network IDs, broadcast addresses, and usable host ranges instantly.' },
     'vlsm': { title: 'VLSM Calculator | SubnetSuite', desc: 'Variable Length Subnet Mask (VLSM) calculator to efficiently partition an IP address space.' },
     'supernet': { title: 'Supernetting & Route Summarization | SubnetSuite', desc: 'Calculate supernets and summarize multiple IP networks into a single routing prefix.' },
@@ -36,8 +34,6 @@ const seoMetadata = {
     'converter': { title: 'Base Converter | SubnetSuite', desc: 'Convert numbers between binary, octal, decimal, and hexadecimal bases for networking and computer science.' },
     'visualizer': { title: 'Network Topology Visualizer | SubnetSuite', desc: 'Build and visualize network topologies interactively.' },
     'simulator': { title: 'Network Simulator | SubnetSuite', desc: 'Practice Cisco and Juniper CLI commands in a virtual network simulation environment.' },
-    'flashcards': { title: 'IT Certification Flashcards | SubnetSuite', desc: 'Study for CCNA, Network+, Security+, and JNCIA with spaced-repetition flashcards.' },
-    'practice-test': { title: 'IT Certification Practice Tests | SubnetSuite', desc: 'Take realistic practice exams and PBQs for Cisco CCNA, CompTIA Network+, and more.' },
     'publicip': { title: 'Public IP Checker | SubnetSuite', desc: 'Check your current public IPv4 and IPv6 address, ISP, location, and network details instantly.' },
     'maclookup': { title: 'MAC Vendor Lookup | SubnetSuite', desc: 'Lookup MAC address vendor, OUI, and manufacturer details instantly using our comprehensive database.' },
     'cheatsheet': { title: 'Subnetting Cheat Sheet | SubnetSuite', desc: 'Quick reference subnetting cheat sheet for IPv4 CIDR block sizes, wildcard masks, and usable host counts.' },

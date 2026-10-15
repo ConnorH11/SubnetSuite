@@ -39,14 +39,6 @@ $routesData = [ordered]@{
         Title = "Network Simulator | SubnetSuite"
         Desc = "Practice Cisco and Juniper CLI commands in a virtual network simulation environment."
     }
-    "flashcards" = @{
-        Title = "IT Certification Flashcards | SubnetSuite"
-        Desc = "Study for CCNA, Network+, Security+, and JNCIA with spaced-repetition flashcards."
-    }
-    "practice-test" = @{
-        Title = "IT Certification Practice Tests | SubnetSuite"
-        Desc = "Take realistic practice exams and PBQs for Cisco CCNA, CompTIA Network+, and more."
-    }
     "publicip" = @{
         Title = "Public IP Checker | SubnetSuite"
         Desc = "Check your current public IPv4 and IPv6 address, ISP, location, and network details instantly."
@@ -97,7 +89,7 @@ foreach ($key in $routesData.Keys) {
         "<title>$($data.Title)</title>"
     )
     $pageContent = $pageContent.Replace(
-        '<meta name="description" content="SubnetSuite is a free, comprehensive network toolkit. Features include IPv4/IPv6 subnetting, VLSM, CIDR, ACL generation, a visual topology builder, network simulation, and spaced-repetition flashcards for CCNA, Network+, and more.">',
+        '<meta name="description" content="SubnetSuite is a free, comprehensive network toolkit. Features include IPv4/IPv6 subnetting, VLSM, CIDR, ACL generation, a visual topology builder, and network simulation.">',
         "<meta name=`"description`" content=`"$($data.Desc)`">"
     )
     $pageContent = $pageContent.Replace(
@@ -105,7 +97,7 @@ foreach ($key in $routesData.Keys) {
         "<meta property=`"og:title`" content=`"$($data.Title)`">"
     )
     $pageContent = $pageContent.Replace(
-        '<meta property="og:description" content="Master networking with free calculators, a visual topology builder, network simulators, and certification practice tests (CCNA, Network+).">',
+        '<meta property="og:description" content="Master networking with free calculators, a visual topology builder, and network simulators.">',
         "<meta property=`"og:description`" content=`"$($data.Desc)`">"
     )
     $pageContent = $pageContent.Replace(
@@ -113,7 +105,7 @@ foreach ($key in $routesData.Keys) {
         "<meta property=`"twitter:title`" content=`"$($data.Title)`">"
     )
     $pageContent = $pageContent.Replace(
-        '<meta property="twitter:description" content="Master networking with free calculators, a visual topology builder, network simulators, and certification practice tests.">',
+        '<meta property="twitter:description" content="Master networking with free calculators, a visual topology builder, and network simulators.">',
         "<meta property=`"twitter:description`" content=`"$($data.Desc)`">"
     )
     $pageContent = $pageContent.Replace(

@@ -35,11 +35,6 @@ export function render() {
     ${card('Route Generator', 'Generate Cisco and Juniper routing configurations.', '/route')}
   </div>
 
-  <h4 class="mt-5 mb-3">Exams</h4>
-  <div class="row">
-    ${card('Flashcards', 'Spaced-repetition flashcards for CCNA, Network+, and more.', '/flashcards')}
-    ${card('Practice Tests', 'Configurable practice exams with instant grading and explanations.', '/practice-test')}
-  </div>
 </div>`;
 }
 

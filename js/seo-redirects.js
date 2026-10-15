@@ -1,7 +1,7 @@
 (function () {
   const routes = [
     'subnet', 'vlsm', 'supernet', 'ipv6', 'acl', 'route', 'binary', 'converter',
-    'visualizer', 'simulator', 'flashcards', 'practice-test', 'publicip',
+    'visualizer', 'simulator', 'publicip',
     'maclookup', 'cheatsheet', 'overlap', 'headers', 'bandwidth', 'ports', 'about'
   ];
   const legacyRoutes = {
